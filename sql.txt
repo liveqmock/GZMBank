@@ -1,0 +1,2 @@
+insert into TRANS_DEF values (70,'00070','手机银行移动缴费','手机银行移动缴费','x.jpg','8')
+insert into TRANS_DEF values (210,'00210','手机银行银旅通','手机银行银旅通','x.jpg','8')
