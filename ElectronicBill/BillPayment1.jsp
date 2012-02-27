@@ -31,7 +31,7 @@
 			<br/>
 			<lable>输入格式： </lable>
 			<br/>
-			<lable>1: 如果想查询特定年月的电费，请输入六位号码，前4位为年份，后2位为月份</lable>
+			<lable>1: 如果想查询特定年月的电费，请输入六位号码，前4位为年份，后2位为月份，如：201202</lable>
 			<br/>
 			<lable>2: 如果想查询所有电费账单，请输入9</lable>
 			<input type='text' name='LChkTm' style="-wap-input-format:'N'; -wap-input-required:'true'" maxleng='8'/>

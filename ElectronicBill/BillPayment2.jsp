@@ -2,7 +2,7 @@
 <%@ page import="com.viatt.util.*"%>
 <%@ page import="com.bocom.mobilebank.security.*"%>
 <%@ page import="com.viatt.util.GzLog" %>
-<%@ page import="java.text.DecimalFormat"%>
+<%@ page import="com.gdbocom.util.format.TxnAmtFormat"%>
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String cdno = MessManTool.changeChar(request.getHeader("MBK_ACCOUNT"));  
@@ -43,17 +43,14 @@
 		if("000000".equals(MGID)){
 	%>
 	<%		
-		String TxnAmt = MessManTool.getValueByName(message, "TxnAmt");//金额
+		String strTxnAmt = MessManTool.getValueByName(message, "TxnAmt");//金额
 		String ChkTim = MessManTool.getValueByName(message, "ChkTim");//交易日期时间
 		String DptTyp = MessManTool.getValueByName(message, "DptTyp");//配营部类型
 		String UsrNam = MessManTool.getValueByName(message, "UsrNam");//用户姓名
 		String UsrAdd = MessManTool.getValueByName(message, "UsrAdd");//用电地址	
 		
 		//用来将数字格式化
-		DecimalFormat df = new DecimalFormat("###,###,###.##");
-		double temp = Double.parseDouble(TxnAmt);
-		String displayTxnAmt = df.format(temp);
-		
+		String displayTxnAmt = TxnAmtFormat.format(strTxnAmt);
 		
 		String display_zone = MessManTool.getValueByName(message, "display_zone");//用电地址	
 	%>

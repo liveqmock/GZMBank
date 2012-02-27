@@ -2,7 +2,7 @@
 <%@ page import="com.viatt.util.*"%>
 <%@ page import="com.bocom.mobilebank.security.*"%>
 <%@ page import="com.viatt.util.GzLog" %>
-<%@ page import="java.text.DecimalFormat"%>
+<%@ page import="com.gdbocom.util.format.TxnAmtFormat"%>
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String cdno = MessManTool.changeChar(request.getHeader("MBK_ACCOUNT"));  //银行卡号
@@ -22,13 +22,10 @@
 <res> 
 	<content>
 		<%			
-			String txnAmt = MessManTool.getValueByName(reportMessage, "TxnAmt");//金额
+			String strTxnAmt = MessManTool.getValueByName(reportMessage, "TxnAmt");//金额
+			String displayTxnAmt = TxnAmtFormat.format(strTxnAmt);
 			
-			DecimalFormat df = new DecimalFormat("###,###,###.##");
-			double temp = Double.parseDouble(txnAmt);
-			String displayTxnAmt = df.format(temp);
-			
-			gzLog.Write("这是电力缴费的STPE3" + "=======即将缴纳的金额是" + txnAmt);
+			gzLog.Write("这是电力缴费的STPE3" + "=======即将缴纳的金额是" + strTxnAmt);
 		%>
 		<form method='post' action='/GZMBank/ElectronicBill/BillPayment4.jsp'>
 			<label>
