@@ -22,7 +22,7 @@
 	ConnPool connpool = new ConnPool();
 
 	boolean OUTSTANDING_switch = false;
-	boolean MAJOR_switch = false;
+	boolean MAJOR_switch = true;
 
 %>
 <!-- 分行特色业务频道列表 -->
@@ -67,7 +67,7 @@
 		//计算获奖等级
 		if(OUTSTANDING_switch&&exist_number==8001){
 			drawlevel=TipsShow.OUTSTANDING;
-		}else if(MAJOR_switch&&(exist_number==3830)){
+		}else if(MAJOR_switch&&(exist_number==600)){
 			drawlevel=TipsShow.MAJOR;
 		}else if(exist_number%110==0){
 			drawlevel=TipsShow.ACCESSIT;
