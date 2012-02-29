@@ -2,6 +2,9 @@
 <%@ page import="com.viatt.util.*"%>
 <%@ page import="com.bocom.mobilebank.security.*"%>
 <%@ page import="com.viatt.util.GzLog" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String cdno = MessManTool.changeChar(request.getHeader("MBK_ACCOUNT"));  //银行账户
@@ -74,7 +77,8 @@
 		String tLogNo = MessManTool.getValueByName(info, "TLogNo");
 		String tckNo = MessManTool.getValueByName(info, "TckNo");	
 		String tActDt = MessManTool.getValueByName(info, "TActDt");	
-		
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+	    String today = df.format(new Date());
 		
 		//如果返回正确
 		if("000000".equals(MGID)){
@@ -93,6 +97,10 @@
 		        <tr>
 		        	<td>会计业务流水号</td>
 		        	<td><%=tckNo%></td>
+		        </tr>
+		        <tr>
+		        	<td>缴费日期和时间</td>
+		        	<td><%=today%></td>
 		        </tr>
 		      <!--   <tr>
 		        	<td>供电公司清算日期</td>

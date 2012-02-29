@@ -8,14 +8,16 @@
 	String cdno = MessManTool.changeChar(request.getHeader("MBK_ACCOUNT"));  
 	String sjNo = MessManTool.changeChar(request.getHeader("MBK_MOBILE"));
 	String tCusId = MessManTool.changeChar(request.getParameter("TCusId"));  
-	
+	String displayTime = "";
 	String lChkTm = MessManTool.changeChar(request.getParameter("LChkTm"));  //前台用户输入的日期
-		
+	
 	if(lChkTm == "" ||lChkTm == "9"||lChkTm.length()!=6){
 		lChkTm = "99999999";   /*标示所有月份的查询*/
+		displayTime = "所有欠费月份";
 	}
 	
 	if(lChkTm.length() == 6){
+		displayTime = lChkTm.substring(0,4)+"年"+(("0".equals(lChkTm.substring(4, 5)))?lChkTm.substring(5, 6):lChkTm.substring(4, 6))+"月";
 		lChkTm = lChkTm + "99";
 	}
 	
@@ -64,7 +66,11 @@
 			
 			<table border = '1'>
 		        <tr>
-		        	<td>交易金额</td>
+		        	<td>缴费月份</td>
+		        	<td><%=displayTime%></td>
+		        </tr>
+		        <tr>
+		        	<td>应缴金额</td>
 		        	<td><%=displayTxnAmt%></td>
 		        </tr>
 		         <tr>

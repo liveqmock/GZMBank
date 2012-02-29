@@ -29,7 +29,7 @@
 		%>
 		<form method='post' action='/GZMBank/ElectronicBill/BillPayment4.jsp'>
 			<label>
-				您现在的欠费金额是：
+				您的应缴金额为：
 			</label>
 			<br/>
 			<%=displayTxnAmt%>
