@@ -25,6 +25,7 @@
 			
 			<input type='text' name='TCusId' style="-wap-input-required:'true'" maxleng='21'/>
 			<br/>
+			<label>（请仔细核对客户编号的准确性，因客户编号信息录入错误导致缴费失败的，将不予退还缴费金额）</label>
 			<br/>
 			<br/>
 			<lable>电费月份</lable>
