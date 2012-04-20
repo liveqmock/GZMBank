@@ -21,7 +21,7 @@
 		lChkTm = lChkTm + "99";
 	}
 	
-	gzLog.Write("电力缴费的step2"+"银行卡号"+cdno+"手机号码"+sjNo+"tCusId客户编号"+tCusId+"电费查询日期LChktm"+lChkTm);
+	gzLog.Write("电力缴费====Step2"+"银行卡号"+cdno+"手机号码"+sjNo+"tCusId客户编号"+tCusId+"电费查询日期LChktm"+lChkTm);
 %>
 
 <?xml version = "1.0" encoding = "utf-8"?>

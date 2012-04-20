@@ -37,51 +37,52 @@
 		String sendContext = "biz_id,31|biz_step_id,2|ActNo,"+ActNo+"|TCusId,"+TCusId+"|TCusNm,"+UsrNam+"|LChkTm,"+LChkTm
 		+"|DptTyp,"+DptTyp+"|TxnAmt,"+TxnAmt+"|Fee,"+""+"|VchTyp,"+"007"+"|VchNo,"+""+"|BilDat,"+""+"|PSWD,"+plantPwd+"|";
 		
+		String sendContextNoPSWD = "biz_id,31|biz_step_id,2|ActNo,"+ActNo+"|TCusId,"+TCusId+"|TCusNm,"+UsrNam+"|LChkTm,"+LChkTm
+		+"|DptTyp,"+DptTyp+"|TxnAmt,"+TxnAmt+"|Fee,"+""+"|VchTyp,"+"007"+"|VchNo,"+""+"|BilDat,"+""+"|PSWD,******|";
 		
 		//这是在做测试的时候 要将密码做一下修改。 不做加密等操作，实际使用要用上卖弄的一段代码
 		//String sendContext = "biz_id,31|biz_step_id,2|ActNo,"+ActNo+"|TCusId,"+TCusId+"|TCusNm,"+UsrNam+"|LChkTm,"+LChkTm
 		//+"|DptTyp,"+DptTyp+"|TxnAmt,"+TxnAmt+"|Fee,"+""+"|VchTyp,"+""+"|VchNo,"+""+"|BilDat,"+""+"|PSWD,"+"1234567890"+"|";
 		
-		gzLog.Write("这是电卡缴费=====最后阶段=====STEP4"+"\n上传的报文组装完毕，内容如下："+sendContext);  //log
+		gzLog.Write("这是电卡缴费=====最后阶段=====STEP4"+"\n上传的报文组装完毕，内容如下："+sendContextNoPSWD);  //log
 		
 		//这里开始才会转到网关上啊
 		MidServer midServer = new MidServer();
+		BwResult bwResult = new BwResult();
 		
 	//BEGIN 身份认证
 	//
-	//	String verify = request.getHeader("MBK_VERIFY_RESULT");
-	//  String info = "";
-	//	if(verify!=null&&verify.equals("P")){
-	//	   //通过身份认证，向后台发送交易
-	//	   bwResult = midServer.sendMessage(sendContext);
-	//	   info = bwResult.getContext();
-	//	   gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n接收报文为："+info);
-	//	}else if(verify.equals("F")){
-	//		info = "|MGID,000333|RspMsg,身份验证不通过|";
-	//	}else if(verify.equals("N")){
-	//	    info = "|MGID,000444|RspMsg,身份未验证|";
-	//	}else {
-	//	    info = "|MGID,000555|RspMsg,身份验证系统出错|";
-	//	}
-	//
+		String verify = request.getHeader("MBK_VERIFY_RESULT");
+	  	String info = "";
+		if(verify!=null&&verify.equals("P")){
+		   //通过身份认证，向后台发送交易
+		   bwResult = midServer.sendMessage(sendContext);
+		   info = bwResult.getContext();
+		   gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n接收报文为："+info);
+		}else if(verify.equals("F")){
+			info = "|MGID,000333|RspMsg,身份验证不通过|";
+		}else if(verify.equals("N")){
+		    info = "|MGID,000444|RspMsg,身份未验证|";
+		}else {
+		    info = "|MGID,000555|RspMsg,身份验证系统出错|";
+		}
+	
     //END 身份认证
 		
-		//开始发送报文，并且立刻接受返回的信息
-		BwResult bwResult = midServer.sendMessage(sendContext);
-		String info = bwResult.getContext();
 		gzLog.Write("这是电卡缴费=====最后阶段=====STEP4"+"\n服务器下行返回的报文内容："+info);
 		
 		String MGID = MessManTool.getValueByName(info, "MGID");	
 		gzLog.Write("这里是缴费Step4报文返回的第一站，检查MGID"+MGID);
 		
-		String tLogNo = MessManTool.getValueByName(info, "TLogNo");
-		String tckNo = MessManTool.getValueByName(info, "TckNo");	
-		String tActDt = MessManTool.getValueByName(info, "TActDt");	
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-	    String today = df.format(new Date());
-		
 		//如果返回正确
 		if("000000".equals(MGID)){
+
+			String tLogNo = MessManTool.getValueByName(info, "TLogNo");
+			String tckNo = MessManTool.getValueByName(info, "TckNo");	
+			String tActDt = MessManTool.getValueByName(info, "TActDt");	
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+		    String today = df.format(new Date());
+		
 	 %>	 
 			<label>
 				交易成功！感谢您的使用。

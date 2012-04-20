@@ -6,7 +6,7 @@
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String cdno = MessManTool.changeChar(request.getHeader("MBK_ACCOUNT"));
 	String sjNo = MessManTool.changeChar(request.getHeader("MBK_MOBILE")); 
-	gzLog.Write("电卡缴费====Step1"+"卡号："+cdno+"手机号："+sjNo+"\n电费查询1");
+	gzLog.Write("电力缴费====Step1"+"卡号："+cdno+"手机号："+sjNo+"\n电费查询1");
 %>
 
 <!-- 分行特色业务频道列表 -->

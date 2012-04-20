@@ -40,9 +40,7 @@
 		<input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
 		<input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input>
 		
-		<!-- test
 		<input type='hidden'  name='MBK_VERIFY' value='true'></input>
-		-->
 		<input type='hidden' name='MESS' value="<%=mess%>"></input>
 		
 		<input type='submit' value='下一步'></input> 
