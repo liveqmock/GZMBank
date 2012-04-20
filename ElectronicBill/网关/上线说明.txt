@@ -1,7 +1,7 @@
 广州电力手机银行上线
 1.网关配置
 备份下列文件:
-tar cvf ConfigFile_20120420.tar /home/netbank_mid/include/trans_struct.h /home/netbank_mid/src/mid_process.c /home/netbank_mid/src/subtrans/makefile /home/netbank_mid/src/subtrans/subtrans460244_df.c /home/netbank_mid/src/subtrans/subtrans460245_df.c /home/netbank_mid/config/netbank.cfg
+tar cvf ConfigFile_20120420.tar /home/netbank_mid/include/trans_struct.h /home/netbank_mid/src/mid_process.c /home/netbank_mid/src/subtrans/makefile /home/netbank_mid/config/netbank.cfg
 
 备份现有程序
 tar cvf AllFile_20120420.tar /home/netbank_mid/include/ /home/netbank_mid/bin/ /home/netbank_mid/src/
@@ -126,6 +126,15 @@ ICS_PORT_GJDW=30101 #电费缴费
 2.weblogic配置
 
 添加com.gdbocom.util.format.TxnAmtFormat类
+
+在菜单中添加
+  <channel>
+		<id>441017</id>
+		<title>电费缴纳</title>
+		<url>/GZMBank/ElectronicBill/BillPayment1.jsp</url>
+  </channel>
+
+
 添加网页内容
 停止web服务
 清空缓存
