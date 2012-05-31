@@ -9,9 +9,3 @@ create table dbo.TICKETDRAW (
    constraint PK_LOTTDRAW primary key (ID)
          on "default"
 )
-
-  <channel>
-      <id>441013</id>
-      <title>Με²ΚΉΊ²Κ³ι½±</title>
-      <url>/GZMBank/SportsTicket/TicketDraw1.jsp</url>
-  </channel>
