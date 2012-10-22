@@ -14,7 +14,7 @@
 	
 	
 	
-	gzLog.Write("这是电卡缴费=====最后阶段=====STEP4"+message);
+	gzLog.Write("这是电卡缴费=====最后阶段=====STEP4：\n"+message);
 	
 	String ActNo  = MessManTool.getValueByName(message, "ActNo"); //银行账号
 	String TCusId = MessManTool.getValueByName(message, "TCusId");//用户编号
@@ -71,8 +71,8 @@
 		
 		gzLog.Write("这是电卡缴费=====最后阶段=====STEP4"+"\n服务器下行返回的报文内容："+info);
 		
-		String MGID = MessManTool.getValueByName(info, "MGID");	
-		gzLog.Write("这里是缴费Step4报文返回的第一站，检查MGID"+MGID);
+		String MGID = MessManTool.getValueByName(info, "RspCod");	
+		gzLog.Write("这里是缴费Step4报文返回的第一站，检查RspCod:  "+MGID);
 		
 		//如果返回正确
 		if("000000".equals(MGID)){
@@ -81,7 +81,7 @@
 			String tckNo = MessManTool.getValueByName(info, "TckNo");	
 			String tActDt = MessManTool.getValueByName(info, "TActDt");	
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-		    String today = df.format(new Date());
+		  String today = df.format(new Date());
 		
 	 %>	 
 			<label>
@@ -103,10 +103,6 @@
 		        	<td>缴费日期和时间</td>
 		        	<td><%=today%></td>
 		        </tr>
-		      <!--   <tr>
-		        	<td>供电公司清算日期</td>
-		        	<td><%=tActDt%></td>
-		        </tr>  -->
 		    </table>
 		    <br/>    
 		
@@ -127,6 +123,5 @@
     <%
 	gzLog.Write("电力缴费完毕！！！！！");
     %>	
-    </form>
 	</content>
 </res>
