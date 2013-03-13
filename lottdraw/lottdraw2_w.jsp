@@ -101,11 +101,11 @@
 	    
 		if(OUTSTANDING_switch&&exist_number==99999){//特等奖
 			return TipsShow.OUTSTANDING;
-		}else if(MAJOR_switch&&(exist_number==2641)){//一等奖
+		}else if(MAJOR_switch&&(exist_number==99999)){//一等奖
 			return TipsShow.MAJOR;
-		}else if(ACCESSIT_switch&&(exist_number!=1999)){//二等奖
+		}else if(ACCESSIT_switch&&(exist_number==4360)){//二等奖
 			return TipsShow.ACCESSIT;
-		}else if(exist_number%2==0){//三等奖
+		}else if(exist_number%3==2){//三等奖
 			return TipsShow.THIRD_CLASS;
 		}else{//不中
 			return TipsShow.NONE;
