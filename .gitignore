@@ -1,0 +1,4 @@
+*.bak
+WEB-INF/classes/*
+*.tar
+*.rar
