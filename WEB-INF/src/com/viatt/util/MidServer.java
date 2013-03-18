@@ -97,7 +97,8 @@ public class MidServer {
 	
 	
 	public static void main(String arg[]){
-		String content = "bocom_mid|biz_id,25|i_biz_step_id,1|CDNO,60142890710180319|";
+//		String content = "bocom_mid|biz_id,25|i_biz_step_id,1|CDNO,60142890710180319|";
+		String content = "biz_id,28|biz_step_id,1|TXNSRC,WE441|CDNO,|PSWD,null|CTSQ,1231231234|";
 		MidServer midServer=new MidServer();
 		BwResult bwResult = midServer.sendMessage(content);
 		MessManTool messManTool = new MessManTool();

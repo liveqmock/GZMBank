@@ -20,6 +20,7 @@
 			<select name="optType">
 				<option value="0">移动充值</option>
 				<option value="1">电信充值</option>
+				<option value="2">联通充值</option>
 			</select>
 			<br/>			
 		    <br/>

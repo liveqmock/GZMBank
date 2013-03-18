@@ -26,8 +26,7 @@
 		<form method='post' action='/GZMBank/yinLvTong/yinLvTongMPYD2.jsp'>
 		<table border="1">
 			<tr>
-				<td> 选择 </td>
-				<td> 景区名称 </td>
+				<td colspan="2"> 景区名称 </td>
 			</tr>
 <%
 	for (int i = 0; i < total; i++) {
@@ -36,8 +35,7 @@
 			String tmpstr = (String)map.get("param2")+"#:>"+(String)map.get("param3");
 %>
 			<tr>
-				<td><input type="radio" value="<%=tmpstr %>" name="sightCode"/></td>
-				<td><%=map.get("param3")%></td>
+				<td colspan="2"><input type="radio" value="<%=tmpstr %>" name="sightCode"><%=map.get("param3")%></input></td>
 			</tr>
 <%
 		}

@@ -122,9 +122,11 @@ public class CommonReport {
 			this.SendFileonFTP();
 		}catch(SQLException e){
 			gzLog.Write("数据库故障:"+e.getMessage());
+			e.printStackTrace();
 			System.exit(-1);
 		}catch(IOException e){
 			gzLog.Write("写入文件失败:"+e.getMessage());
+			e.printStackTrace();
 			System.exit(-1);
 		}catch(Exception e){
 			gzLog.Write("其他故障:"+e.getMessage());

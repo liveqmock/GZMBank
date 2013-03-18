@@ -6,7 +6,7 @@
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String cdno = MessManTool.changeChar(request.getHeader("MBK_ACCOUNT"));
 	String sjNo = MessManTool.changeChar(request.getHeader("MBK_MOBILE"));
-	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\联通缴费开始");
+	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n联通缴费开始");
 %>
 <?xml version="1.0" encoding="utf-8"?> 
 <res> 

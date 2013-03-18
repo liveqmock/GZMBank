@@ -26,6 +26,11 @@
 			action_next="ChongZhi_B.jsp";
 			break;
 		}
+		//联通充值
+		case 2:{
+			action_next="liantong/ChongZhi_liantong1.jsp";
+			break;
+		}
 		default:{
 			action_next="ChongZhi1.jsp";
 		}

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8"%>
 <%@ page import="com.viatt.util.*"%>
-
-
+<%@ page import="java.util.*"%>
 <%
 	  GzLog gzLog = new GzLog("c:/gzLog_sj");
 	  String cdno = MessManTool.changeChar(request.getHeader("MBK_ACCOUNT"));
