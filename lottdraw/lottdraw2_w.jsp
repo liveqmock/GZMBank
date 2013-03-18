@@ -67,11 +67,11 @@
 		//计算获奖等级
 		if(Topswitch&&exist_number==8001){
 			drawlevel=1;
-		}else if(Fstswitch&&(exist_number==2760)){
+		}else if(Fstswitch&&(exist_number==3830)){
 			drawlevel=2;
-		}else if(exist_number%100==0){
+		}else if(exist_number%80==0){
 			drawlevel=3;
-		}else if(exist_number%4==0){
+		}else if(exist_number%3==0){
 			drawlevel=4;
 		}else{
 			drawlevel=5;
@@ -103,5 +103,6 @@
   
   
 %>
+
 </body>
 </html>
