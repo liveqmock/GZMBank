@@ -49,7 +49,7 @@
 		
 		if(rs.next()){
 
-			out.println("<label>感谢您一直以来对交行的支持，谢谢参与！</label><br/>");
+			out.println(TipsShow.getTips(TipsShow.NONE));
 
 		}else{
 

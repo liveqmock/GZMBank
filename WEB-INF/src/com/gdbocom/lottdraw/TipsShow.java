@@ -52,19 +52,19 @@ public class TipsShow {
 		String Tips="";
 		switch(drawlevel){
 			case TipsShow.OUTSTANDING:{
-				Tips="<label>恭喜您！您喜获本次活动的特等奖价值4600元iPhone4！请联系我行客服中心“95559-粤语”进行兑奖！</label><br/>";
+				Tips="<label>恭喜您！您喜获本次活动的特等奖价值4799元iPhone4S！请联系我行客服中心“95559”进行兑奖！</label><br/>";
 				break;
 			}
 			case TipsShow.MAJOR:{
-				Tips="<label>恭喜您！您喜获本次活动的一等奖价值2680元天语云手机！请联系我行客服中心“95559-粤语”进行兑奖！</label><br/>";
+				Tips="<label>恭喜您！您喜获本次活动的一等奖价值3799元iPhone4手机！请联系我行客服中心“95559”进行兑奖！</label><br/>";
 				break;
 			}
 			case TipsShow.ACCESSIT:{
-				Tips="<label>恭喜您！您喜获本次活动的二等奖100元移动充值卡！我行客服中心95559将于次周联系您，并将话费充入您指定手机号码！</label><br/>";
+				Tips="<label>恭喜您！您喜获本次活动的二等奖价值2680元天语云手机！请联系我行客服中心“95559”进行兑奖！</label><br/>";
 				break;
 			}
 			case TipsShow.THIRD_CLASS:{
-				Tips="<label>恭喜您！您喜获本次活动的三等奖50元移动充值卡！我行客服中心95559将于次周联系您，并将话费充入您指定手机号码！</label><br/>";
+				Tips="<label>恭喜您！您喜获本次活动的三等奖20元话费！我行充值人员将于次周将话费充入您登录手机银行的手机号码！</label><br/>";
 				break;
 			}
 			case TipsShow.NONE:{
@@ -88,19 +88,19 @@ public class TipsShow {
 		String Tips="";
 		switch(drawlevel){
 			case TipsShow.OUTSTANDING:{
-				Tips="<label>恭喜您！您喜获本次活动的特等奖价值4600元iPhone4！奖品已经兑现。</label><br/>";
+				Tips="<label>恭喜您！您喜获本次活动的特等奖价值4799元iPhone4S！奖品已经兑现。</label><br/>";
 				break;
 			}
 			case TipsShow.MAJOR:{
-				Tips="<label>恭喜您！您喜获本次活动的一等奖价值2680元天语云手机！奖品已经兑现。</label><br/>";
+				Tips="<label>恭喜您！您喜获本次活动的一等奖价值3799元iPhone4手机！奖品已经兑现。</label><br/>";
 				break;
 			}
 			case TipsShow.ACCESSIT:{
-				Tips="<label>恭喜您！您喜获本次活动的二等奖100元移动充值卡！奖品已经兑现。</label><br/>";
+				Tips="<label>恭喜您！您喜获本次活动的二等奖价值2680元天语云手机！奖品已经兑现。</label><br/>";
 				break;
 			}
 			case TipsShow.THIRD_CLASS:{
-				Tips="<label>恭喜您！您喜获本次活动的三等奖50元移动充值卡！奖品已经兑现。</label><br/>";
+				Tips="<label>恭喜您！您喜获本次活动的三等奖20元话费！奖品已经兑现。</label><br/>";
 				break;
 			}
 			case TipsShow.NONE:{
