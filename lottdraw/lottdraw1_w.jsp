@@ -53,17 +53,16 @@
 
 		}else{
 
-			rs = st.executeQuery("select Drawlevel from LOTTDRAW where PhoneNO='"+sjNo+"'");
+			rs = st.executeQuery("select Drawlevel, RecvSign from LOTTDRAW where PhoneNO='"+sjNo+"'");
 			if(rs.next()){
 			
 				int drawlevel = rs.getInt("Drawlevel");
 				int RecvSign = rs.getInt("RecvSign");
-			
 				if(drawlevel>=1&&drawlevel<=5){
 					if(1==RecvSign){
-						out.println(new TipsShow().getTipsRev(drawlevel));
+						out.println(TipsShow.getTipsRev(drawlevel));
 					}else{
-						out.println(new TipsShow().getTips(drawlevel));
+						out.println(TipsShow.getTips(drawlevel));
 					}
 				}else{
 

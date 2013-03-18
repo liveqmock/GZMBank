@@ -21,8 +21,8 @@
 	ResultSet rs = null;
 	ConnPool connpool = new ConnPool();
 
-	boolean Topswitch = false;
-	boolean Fstswitch = true;
+	boolean OUTSTANDING_switch = false;
+	boolean MAJOR_switch = false;
 
 %>
 <!-- 分行特色业务频道列表 -->
@@ -65,21 +65,21 @@
 		}
 		
 		//计算获奖等级
-		if(Topswitch&&exist_number==8001){
-			drawlevel=1;
-		}else if(Fstswitch&&(exist_number==3830)){
-			drawlevel=2;
-		}else if(exist_number%80==0){
-			drawlevel=3;
-		}else if(exist_number%3==0){
-			drawlevel=4;
+		if(OUTSTANDING_switch&&exist_number==8001){
+			drawlevel=TipsShow.OUTSTANDING;
+		}else if(MAJOR_switch&&(exist_number==3830)){
+			drawlevel=TipsShow.MAJOR;
+		}else if(exist_number%110==0){
+			drawlevel=TipsShow.ACCESSIT;
+		}else if(exist_number%60==0){
+			drawlevel=TipsShow.THIRD_CLASS;
 		}else{
-			drawlevel=5;
+			drawlevel=TipsShow.NONE;
 		}
 		
 		st.executeUpdate("update LOTTDRAW set NO="+exist_number+", Drawlevel='"+drawlevel+"' where PhoneNO='"+sjNo+"'");
 		
-		out.println(new TipsShow().getTips(drawlevel));
+		out.println(TipsShow.getTips(drawlevel));
 		
 	}catch(NamingException e){
 		gzLog.Write("MidServPoolDs连接池故障:"+e.getMessage());

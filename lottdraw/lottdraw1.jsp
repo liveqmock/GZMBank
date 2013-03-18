@@ -55,9 +55,9 @@
 			
 				if(drawlevel>=1&&drawlevel<=5){
 					if(1==RecvSign){
-						out.println(new TipsShow().getTipsRev(drawlevel));
+						out.println(TipsShow.getTipsRev(drawlevel));
 					}else{
-						out.println(new TipsShow().getTips(drawlevel));
+						out.println(TipsShow.getTips(drawlevel));
 					}
 				}else{
 
