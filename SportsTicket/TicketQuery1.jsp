@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <%@ page import="com.viatt.util.GzLog" %>
-<%@ page import="com.viatt.util.*"%>
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String cdno = request.getHeader("MBK_ACCOUNT");
@@ -15,10 +14,9 @@
 	<content>
 		
 		<form method='post' action='/GZMBank/SportsTicket/TicketQuery2.jsp'>
-		<label>请输入购彩流水号: </label>
-		<br/>
-		<input type='text' name='TLogNo' style="-wap-input-format: 'N'; -wap-input-required: 'true'"  maxleng='20'/>
-		<input type='submit' value='下一步'/>
+		<label>请输入购彩流水号: </label><br/>
+		<input type='text' name='TLogNo' style="-wap-input-format: 'N'; -wap-input-required: 'true'"  maxleng='28'></input><br/>
+		<input type='submit' value='下一步'></input>
 		</form>
 	</content>
 </res>

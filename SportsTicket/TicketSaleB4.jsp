@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <%@ page import="com.viatt.util.GzLog" %>
-<%@ page import="com.viatt.util.*"%>
 <!-- 分行特色业务频道列表 -->
 <?xml version="1.0" encoding="utf-8"?>
 <res>
@@ -11,6 +10,7 @@
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String cdno = request.getHeader("MBK_ACCOUNT");
 	String sjNo = request.getHeader("MBK_MOBILE");
+	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n体育彩票购买步骤4");
 
 	String SigDup="0";
 	String LotNum="";
@@ -18,7 +18,6 @@
 	
 	for(int i=1;i<=12;i++){
 		if(request.getParameter("LotNum"+i)!=null){
-			//out.println(request.getParameter("rear"+i)+"<br/>");
 			LotNum+=request.getParameter("LotNum"+i);
 			LotNum_cnt++;
 		}
@@ -32,7 +31,7 @@
 			SigDup="2";
 		}
 %>
-		<jsp:forward page="TicketSaleB5.jsp">
+		<jsp:forward page="TicketSaleA5.jsp">
 			<jsp:param name="SigDup" value="<%=SigDup%>"/>
 			<jsp:param name="LotNum" value="<%=LotNum%>"/>
 		</jsp:forward>

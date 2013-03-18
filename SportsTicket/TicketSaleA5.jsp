@@ -3,6 +3,7 @@
 <%request.setCharacterEncoding("UTF-8");%>
 <%@ page import="com.viatt.util.GzLog" %>
 <%@ page import="com.viatt.util.*"%>
+<%@ page import="com.sportticket.format.*" %>
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String cdno = request.getHeader("MBK_ACCOUNT");
@@ -12,7 +13,7 @@
 	String SigDup = request.getParameter("SigDup");
 	String NotNum = request.getParameter("NotNum");
 	String LotNum = request.getParameter("LotNum");//接收前一表单的投注号码
-	String[] LotNums = new String[6];              //接收返回表单的投注号码
+	String[] LotNums = new String[7];              //接收返回表单的投注号码
 	String LotNumDis = "";                         //回显投注号码
 	String LotTyp = request.getParameter("LotTyp");
 	String MulTip = request.getParameter("MulTip");
@@ -48,27 +49,28 @@
 	
 	String message = bwResult.getContext();
 	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n接收报文为："+message);
-	//成功报文
-	//message = "0394|bocom_mid|biz_id,21|biz_no,00021|biz_step_id,1|display_zone,预定内容： 广之旅调试线路20090510 test <br>服务商： 广之旅国内游总部  <br>总金额： 1.00  <br>已付金额： 0.00  <br>欠费金额： 1.00  <br>|MGID,000000|Reserve_Code,4538477|Product_Name,广之旅调试线路20090510 test|Provide_Name,广之旅国内游总部|Trans_Toal_Amount,00000000000100|Paid_Amount,00000000000000|Arrearage_Amount,00000000000100|";
-	//失败报文
-	//message = "0189|bocom_mid|biz_id,21|biz_no,00021|biz_step_id,1|display_zone,<font color=ff0000><b>--->订单号已缴清！<br>--->如有疑问或问题请咨询银旅通客户服务热线：4008-960-168</b></font><br>|MGID,482199|";
 	String MGID = MessManTool.getValueByName(message, "MGID");
 	if ("000000".equals(MGID)) {
 
 		String TRspCd = MessManTool.getValueByName(message, "TRspCd");
 		NotNum = MessManTool.getValueByName(message, "NotNum");
-		for(int i=1;i<=6;i++){
+		for(int i=1;i<=5;i++){
 			if(MessManTool.getValueByName(message, "LotNum"+i).indexOf("*")!=-1){
 				LotNums[i] = MessManTool.getValueByName(message, "LotNum"+i);
-				LotNumDis = LotNumDis + this.returnsinglenumberformat(MessManTool.getValueByName(message, "LotNum"+i)) + "<br/>";
+				LotNumDis = LotNumDis + "<label>" + LotNumFormat.OneSimplexRecordFormat(MessManTool.getValueByName(message, "LotNum"+i),LotTyp) + "</label><br/>";
 			}
 		}
+		if(MessManTool.getValueByName(message, "LotNum6").indexOf("*")!=-1){
+				LotNums[6] = MessManTool.getValueByName(message, "LotNum6");
+				LotNumDis = LotNumDis + "<label>" + LotNumFormat.OneMultipleRecordFormat(MessManTool.getValueByName(message, "LotNum6"), LotTyp) + "</label><br/>";
+		}
+		gzLog.Write("投注号码为："+LotNumDis);
 		String TxnAmt = MessManTool.getValueByName(message, "TxnAmt");
  		MulTip = MessManTool.getValueByName(message, "MulTip");
  		String TrmCod = MessManTool.getValueByName(message, "TrmCod");
  %> 
- 	<h1>大乐透</h1><br/>
- 	<label>&nbsp;请确认购彩信息</label>
+ 	<label><%=new LotTypFormat().NtoC(LotTyp)%></label><br/>
+ 	<label>&nbsp;请确认购彩信息</label><br/>
 	<table border="1">
 		<!--tr>
 			<td>状态:</td><td><%=TRspCd%></td>
@@ -97,28 +99,32 @@
 	</table>
 
     <form method='post' action='/GZMBank/SportsTicket/TicketSaleA6.jsp'>
+		<label>请输入交易密码:</label>
+		<br/>
+		<input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt></input>
+		<input type='hidden' name='MBK_SECURITY_PASSWORD'  value='password'></input>
 		<!--卡号-->
-		<input type='hidden' name='CrdNo'  value='<%=cdno%>'  />
+		<input type='hidden' name='CrdNo'  value='<%=cdno%>'  ></input>
 		<!--交易金额-->
-		<input type='hidden' name='TxnAmt' value='<%=TxnAmt%>'/>
+		<input type='hidden' name='TxnAmt' value='<%=TxnAmt%>'></input>
 		<!--期号-->
-		<input type='hidden' name='TrmCod' value='<%=TrmCod%>'/>
+		<input type='hidden' name='TrmCod' value='<%=TrmCod%>'></input>
 		<!--购票方式-->
-		<input type='hidden' name='TikMod' value='<%=TikMod%>'/>
+		<input type='hidden' name='TikMod' value='<%=TikMod%>'></input>
 		<!--彩票类型-->
-		<input type='hidden' name='LotTyp' value='<%=LotTyp%>'/>
+		<input type='hidden' name='LotTyp' value='<%=LotTyp%>'></input>
 		<!--单复式区分-->
-		<input type='hidden' name='SigDup' value='<%=SigDup%>'/>
+		<input type='hidden' name='SigDup' value='<%=SigDup%>'></input>
 		<!--注数-->
-		<input type='hidden' name='NotNum' value='<%=NotNum%>'/>
+		<input type='hidden' name='NotNum' value='<%=NotNum%>'></input>
 		<!--倍数-->
-		<input type='hidden' name='MulTip' value='<%=MulTip%>'/>
+		<input type='hidden' name='MulTip' value='<%=MulTip%>'></input>
 		<!--扩展号码-->
-		<input type='hidden' name='ExtNum' value='<%=ExtNum%>'/>
+		<input type='hidden' name='ExtNum' value='<%=ExtNum%>'></input>
 		<!--投注号码-->
-		<input type='hidden' name='LotNum' value='<%=LotNum%>'/>
+		<input type='hidden' name='LotNum' value='<%=LotNum%>'></input>
 		
-		<input type='submit' value='下一步'/>
+		<input type='submit' value='下一步'></input>
     </form>
 
 <%
@@ -134,18 +140,3 @@
 
 	</content>
 </res>
-<%!
-	public String returnsinglenumberformat(String inputstr){
-		String[] tmpstr=inputstr.split("\\*");
-		String outputstr;
-		outputstr=  tmpstr[0]+","
-					+tmpstr[1]+","
-					+tmpstr[2]+","
-					+tmpstr[3]+","
-					+tmpstr[4]+","
-					+"|"
-					+tmpstr[5]+","
-					+tmpstr[6];
-		return outputstr;
-	}
-%>

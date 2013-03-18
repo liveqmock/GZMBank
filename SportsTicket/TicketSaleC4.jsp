@@ -12,21 +12,15 @@
 	String sjNo = request.getHeader("MBK_MOBILE");
 
 	String workflow = request.getParameter("workflow");
-	if("A3".equals(workflow)){//从TicketSalA3.jsp进入
+	if("C3".equals(workflow)){//从TicketSalC3.jsp进入
 	
 		String TikMod = request.getParameter("TikMod");
 		String NotNum = request.getParameter("NotNum");
 		String SigDup;
 		String LotNum;
-		String LotTyp;
+		String LotTyp = request.getParameter("LotTyp");
 		String MulTip = request.getParameter("MulTip");
-		String[] add_tag = (request.getParameterValues("add"));
 		String ExtNum = request.getParameter("ExtNum");
-		if(add_tag==null){
-				LotTyp = "26";
-		}else{
-				LotTyp = "27";
-		}
 		if("02".equals(TikMod)){//机选
 			SigDup = "1";
 			LotNum = NotNum;
@@ -36,7 +30,6 @@
 						+"|LotNum:"+LotNum
 						+"|LotTyp:"+LotTyp
 						+"|MulTip:"+MulTip
-						+"|add_tag:"+add_tag
 						+"|ExtNum:"+ExtNum
 						+"|");
 			%>
@@ -50,7 +43,6 @@
 			gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n体育彩票购买步骤4(机选)：TikMod:"+TikMod
 						+"|LotTyp:"+LotTyp
 						+"|MulTip:"+MulTip
-						+"|add_tag:"+add_tag
 						+"|ExtNum:"+ExtNum
 						+"|");
 		%>
@@ -69,17 +61,17 @@
 		
 		for(int i=1;i<=35;i++){
 			if(request.getParameter("forepart"+i)!=null){
+				//out.println(request.getParameter("forepart"+i)+"<br/>");
 				forepart+=request.getParameter("forepart"+i);
 				forepart_cnt++;
-				gzLog.Write("前区号码为:"+i);
 			}
 		}
 		
 		for(int i=1;i<=12;i++){
 			if(request.getParameter("rear"+i)!=null){
+				//out.println(request.getParameter("rear"+i)+"<br/>");
 				rear+=request.getParameter("rear"+i);
 				rear_cnt++;
-				gzLog.Write("后区号码为:"+i);
 			}
 		}
 		

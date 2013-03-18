@@ -2,8 +2,8 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <%@ page import="com.viatt.util.*"%>
-<%@ page import="com.bocom.mobilebank.security.*"%>
 <%@ page import="com.viatt.util.GzLog" %>
+<%@ page import="com.sportticket.format.*" %>
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String cdno = request.getHeader("MBK_ACCOUNT");
@@ -26,10 +26,6 @@
 	
 	String message = bwResult.getContext();
 	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n接收报文为："+message);
-	//成功报文
-	//message = "0394|bocom_mid|biz_id,21|biz_no,00021|biz_step_id,1|display_zone,预定内容： 广之旅调试线路20090510 test <br>服务商： 广之旅国内游总部  <br>总金额： 1.00  <br>已付金额： 0.00  <br>欠费金额： 1.00  <br>|MGID,000000|Reserve_Code,4538477|Product_Name,广之旅调试线路20090510 test|Provide_Name,广之旅国内游总部|Trans_Toal_Amount,00000000000100|Paid_Amount,00000000000000|Arrearage_Amount,00000000000100|";
-	//失败报文
-	//message = "0189|bocom_mid|biz_id,21|biz_no,00021|biz_step_id,1|display_zone,<font color=ff0000><b>--->订单号已缴清！<br>--->如有疑问或问题请咨询银旅通客户服务热线：4008-960-168</b></font><br>|MGID,482199|";
 	String MGID = MessManTool.getValueByName(message, "MGID");
 	if ("000000".equals(MGID)) {
 %> 
@@ -43,7 +39,7 @@
  		String NotNum = MessManTool.getValueByName(message, "NotNum");
  		String TxnAmt = MessManTool.getValueByName(message, "TxnAmt");
  %> 
-		<label>购彩信息如下</label>
+		<label>购彩信息如下</label><br/>
 		<table border="1">
 			<!--tr>
 				<td>
@@ -66,7 +62,7 @@
 					单复式类型:
 				</td>
 				<td>
-					<%=SigDup%>
+					<%=new SigDupFormat().NtoC(SigDup)%>
 				</td>
 			</tr>
 			<tr>
@@ -74,7 +70,7 @@
 					彩票类型:
 				</td>
 				<td>
-					<%=LotTyp%> 
+					<%=new LotTypFormat().NtoC(LotTyp)%> 
 				</td>
 			</tr>
 			<tr>
@@ -90,7 +86,7 @@
 					投注号码:
 				</td>
 				<td>
-					<%=LotNum%> 
+					<%=LotNumFormat.ReturnManyFormatedRecords(LotNum, LotTyp)%> 
 				</td>
 			</tr>
 			<tr>
@@ -110,6 +106,7 @@
 				</td>
 			</tr>
 		</table>
+		<label>所有数据以广东省体育彩票发行中心数据为准</label>
 <%
  	}else{
  		String RspCod = MessManTool.getValueByName(message, "RspCod");
