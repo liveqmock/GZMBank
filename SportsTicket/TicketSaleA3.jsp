@@ -21,7 +21,7 @@
 	<label>请选择购票方式: </label>
 	<br/>
 	<select name="TikMod">
-		<option value='01' checked='checked'>自选</option>
+		<option value='01'  invisible='NotNum_Msg,NotNum' checked>自选</option>
         <option value='02' visible='NotNum_Msg,NotNum'>机选</option>
 	</select>
 
@@ -30,7 +30,7 @@
 	<label name='NotNum_Msg'>请选择机选注数: </label>
 	<br/>
 	<select name="NotNum">
-        <option value='01' checked='checked'>1注</option>
+        <option value='01' checked>1注</option>
         <option value='02'>2注</option>
         <option value='03'>3注</option>
         <option value='04'>4注</option>
@@ -45,7 +45,7 @@
 	<input type='text' name='MulTip' style="-wap-input-format: 'N'; -wap-input-required: 'true'" maxleng='2'></input><br/>
 
 <!-- 追加 -->
-	<input type='checkbox' name='add' value='0'></input><label>是否追加</label><br/>
+	<input type='checkbox' name='add' value='0'>是否追加</input><br/>
 
 <!-- 扩展号码 -->
 	<input type='hidden' name='ExtNum' value=''></input><br/>
