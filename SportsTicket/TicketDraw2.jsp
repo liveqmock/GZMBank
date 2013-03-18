@@ -7,7 +7,6 @@
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="javax.naming.NamingException" %>
 <%@ page import="com.gdbocom.util.ConnPool" %>
-<%@ page import="com.gdbocom.lottdraw.TipsShow" %>
 <%@ page import="com.viatt.util.GzLog" %>
 
 <%
@@ -75,10 +74,10 @@
 			out.println("<input type='hidden' name='cntdiff'  value='"+cntdiff+"' ></input>");
 			//ID
 			out.println("<input type='hidden' name='ID'  value='"+id+"' ></input>");
-			out.println("<label>恭喜您！<br/>在本次购彩活动中喜中50元移动话费充值卡!详情请资讯“95559”</label><br/>");
+			out.println("<label>恭喜您！<br/>在本次购彩活动中喜中100元移动话费充值卡!详情请咨询“95559”</label><br/>");
 			//充值手机号
 			out.println("<label>请输入充值手机号码（必须为移动手机号码）</label><br/>");
-			out.println("<input type='text' name='MobTel' style=\"-wap-input-format: 'N'; -wap-input-required: 'true'\" maxleng='11'></input><br/>");
+			out.println("<input type='text' name='MobTel' style=\"-wap-input-format: 'N'; -wap-input-required: 'true'\" minleng='11' maxleng='11'></input><br/>");
 			out.println("<input type='submit' value='提交' />");
 			out.println("</form>");
 		}else if(remcnt>0){
@@ -93,11 +92,14 @@
 		
 	}catch(NamingException e){
 		gzLog.Write("MidServPoolDs连接池故障:"+e.getMessage());
+		out.println("<label>系统繁忙，请稍后再试！</label><br/>");
 	}catch(SQLException e){
 		gzLog.Write("数据库故障:"+e.getMessage());
+		out.println("<label>系统繁忙，请稍后再试！</label><br/>");
 	}catch(Exception e){
 		gzLog.Write("其他故障:"+e.getMessage());
 		e.printStackTrace();
+		out.println("<label>系统繁忙，请稍后再试！</label><br/>");
 	}finally{
 		if(rs != null){
 			rs.close();

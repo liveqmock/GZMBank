@@ -82,12 +82,24 @@
 				</td>
 			</tr>
 			<tr>
+				<td colspan='2'>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan='2'>&nbsp;</td>
+			</tr>
+			<tr>
 				<td>
 					投注号码:
 				</td>
 				<td>
 					<%=LotNumFormat.ReturnManyFormatedRecords(LotNum, LotTyp)%> 
 				</td>
+			</tr>
+			<tr>
+				<td colspan='2'>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan='2'>&nbsp;</td>
 			</tr>
 			<tr>
 				<td>

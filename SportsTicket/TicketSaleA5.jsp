@@ -57,12 +57,12 @@
 		for(int i=1;i<=5;i++){
 			if(MessManTool.getValueByName(message, "LotNum"+i).indexOf("*")!=-1){
 				LotNums[i] = MessManTool.getValueByName(message, "LotNum"+i);
-				LotNumDis = LotNumDis + "<label>" + LotNumFormat.OneSimplexRecordFormat(MessManTool.getValueByName(message, "LotNum"+i),LotTyp) + "</label><br/>";
+				LotNumDis = LotNumDis + LotNumFormat.OneSimplexRecordFormat(MessManTool.getValueByName(message, "LotNum"+i),LotTyp);
 			}
 		}
 		if(MessManTool.getValueByName(message, "LotNum6").indexOf("*")!=-1){
 				LotNums[6] = MessManTool.getValueByName(message, "LotNum6");
-				LotNumDis = LotNumDis + "<label>" + LotNumFormat.OneMultipleRecordFormat(MessManTool.getValueByName(message, "LotNum6"), LotTyp) + "</label><br/>";
+				LotNumDis = LotNumDis + LotNumFormat.OneMultipleRecordFormat(MessManTool.getValueByName(message, "LotNum6"), LotTyp);
 		}
 		gzLog.Write("投注号码为："+LotNumDis);
 		String TxnAmt = MessManTool.getValueByName(message, "TxnAmt");

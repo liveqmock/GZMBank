@@ -82,11 +82,14 @@
 		
 	}catch(NamingException e){
 		gzLog.Write("MidServPoolDs连接池故障:"+e.getMessage());
+		out.println("<label>系统繁忙，请稍后再试！</label><br/>");
 	}catch(SQLException e){
 		gzLog.Write("连接数据库故障:"+e.getMessage());
+		out.println("<label>系统繁忙，请稍后再试！</label><br/>");
 	}catch(Exception e){
 		gzLog.Write("其他故障:"+e.getMessage());
 		e.printStackTrace();
+		out.println("<label>系统繁忙，请稍后再试！</label><br/>");
 	}finally{
 		if(rs != null){
 			rs.close();
