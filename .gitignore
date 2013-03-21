@@ -2,3 +2,4 @@
 WEB-INF/classes/*
 *.tar
 *.rar
+*.tmp
