@@ -109,12 +109,12 @@ d<%@ page language="java" contentType="text/xml; charset=UTF-8"%>
 		
 	<%
 		} else {
-		  String errorMsg = "";
-		  int i =0;
-		  int j =0; 
 		  //将[]中的错误原因拆分出来
-		  if(display_zone!=null||display_zone.length()!=0){
-			 
+			String errorMsg = "";
+		  if(display_zone==null){
+			  errorMsg = "";
+		  }else if(display_zone.length()!=0){
+			 int i,j;
 			  i=display_zone.lastIndexOf("[");
 			  j=display_zone.lastIndexOf("]");
 			  errorMsg= display_zone.substring(i,j+1);

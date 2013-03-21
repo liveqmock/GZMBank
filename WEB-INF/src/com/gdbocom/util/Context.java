@@ -5,6 +5,8 @@ import javax.servlet.http.*;
 
 public class Context {
 
+	private Map context = new HashMap();
+
 	/**
 	 * 用于将表单数据自动转换成<key,value>字符串,如:|biz_id,28|biz_step_id,1|TXNSRC,MB441|.已经测试过text、select、radio等控件，不过<b>checkbox</b>除外
 	 * @param request 前一页面的请求对象
