@@ -28,7 +28,7 @@
 		}
 		//联通充值
 		case 2:{
-			action_next="liantong/ChongZhi_liantong1.jsp";
+			action_next="liantong/ChongZhi_liantong_TelNum.jsp";
 			break;
 		}
 		default:{

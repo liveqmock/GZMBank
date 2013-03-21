@@ -12,14 +12,14 @@
 	gzLog.Write("进入["+uri+"]");
 
 	//设置正常情况需要跳转的页面
-	String forwardPage = "ChongZhi_liantong_TxnAmt.jsp";
+	String forwardPage = "ChongZhi_liantong_Result.jsp";
 	//设置出错情况需要跳转的页面
 	String errPage = "../../errPage.jsp";
 	//设置需要从网关正常返回中获取下来的值的名称,
-	String saveKey = "AreCod";
+	String saveKey = "ActDat,TckNo,TLogNo";	
 
 	//在这里开始拼装即将发往服务器的一串报文
-	String requestContext = Context.createContext(request, "33", "1");
+	String requestContext = Context.createContext(request, "33", "2");
 	gzLog.Write("["+uri+"]网关请求报文："+requestContext);
 	
 
@@ -35,30 +35,19 @@
 	String MGID = MessManTool.getValueByName(responseContext, "MGID");	
 	
 	if("000000".equals(MGID)){//如果返回正确
-		String AreCod = MessManTool.getValueByName(responseContext, "AreCod");
-		if(false){//TODO
-			gzLog.Write("["+uri+"]手机号输入不正确");
-			StringBuffer forwardString = new StringBuffer();
-			forwardString.append(errPage).append("?");
-			forwardString.append("RspCod").append("=").append(AreCod);
-			forwardString.append("&");
-			forwardString.append("RspMsg").append("=").append("输入手机号不正确");
-	        pageContext.forward(forwardString.toString());
+		gzLog.Write("["+uri+"]forward到"+forwardPage);
 
-		}else{
-			gzLog.Write("["+uri+"]forward到"+forwardPage);
-
-			String[] saveKeys = saveKey.split(",");
-			StringBuffer forwardString = new StringBuffer();
-			forwardString.append(forwardPage).append("?");
-			for(int index=0; index<saveKeys.length; index++){
-				forwardString.append(saveKeys[index]).append("=").append(MessManTool.getValueByName(responseContext, saveKeys[index]));
-				if(index<saveKeys.length-1){//如果还有值的话需要添加&做间隔
-					forwardString.append("&");
-				}
+		String[] saveKeys = saveKey.split(",");
+		StringBuffer forwardString = new StringBuffer();
+		forwardString.append(forwardPage).append("?");
+		for(int index=0; index<saveKeys.length; index++){
+			forwardString.append(saveKeys[index]).append("=").append(MessManTool.getValueByName(responseContext, saveKeys[index]));
+			if(index<saveKeys.length-1){//如果还有值的话需要添加&做间隔
+				forwardString.append("&");
 			}
-	    pageContext.forward(forwardString.toString());
 		}
+	    pageContext.forward(forwardString.toString());
+
 	}else{//如果返回不正确
 		String RspCod = MessManTool.getValueByName(responseContext, "RspCod");
 		String RspMsg = MessManTool.getValueByName(responseContext, "RspMsg"); 

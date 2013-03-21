@@ -15,35 +15,27 @@
 	String sjNo = request.getHeader("MBK_MOBILE");  //手机号码
 	gzLog.Write("进入["+uri+"]");
 	
+	//设置需要显示的值和名称,
+	String showKey = "TelNum,充值手机号|TxnAmt,充值金额|ActDat,会计日期|TckNo,银行流水号|TLogNo,联通流水号";	
+
 %>
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
 	<content>	
-		<form method='post' action='/GZMBank/ChongZhi/liantong/ChongZhi_liantong_Confirm.jsp'>
-			<label>请选择充值金额</label><br/>
-			<select name="TxnAmt">
-				<option value="50">50  元</option>
-				<option value="100">100 元</option>
-				<option value="150">150 元</option>
-				<option value="200">200 元</option>
-				<option value="500">500 元</option>
-			</select><br/>
-			
+			<label>交易成功:</label><br/>
 <%
+
 	Map form = request.getParameterMap();
 
-	Iterator itKeys = form.keySet().iterator();
-	while(itKeys.hasNext()){
-		String key = (String)itKeys.next();
-		String[] values = ( (String[]) form.get(key) );
-		if(1==values.length){
-			out.println("<input type='hidden' name='"+key+"' value=\""+values[0]+"\"/><br/>");
+	String[] showKeys = showKey.split("\\|");
+	for(int pairsIndex=0;pairsIndex<showKeys.length;pairsIndex++){
+		String[] keyValue = showKeys[pairsIndex].split(",");
+		if(form.containsKey(keyValue[0])){
+			out.println("<label>"+keyValue[1]+":"+( (String[]) form.get(keyValue[0]) )[0]+"</label><br/>");
+		}else{
+			out.println("<label>"+keyValue[1]+":null</label><br/>");
 		}
 	}
-
-
 %>
-			<input type='submit' value='确定'/><br/>
-		</form>
 	</content>
 </res>
