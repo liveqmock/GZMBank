@@ -16,7 +16,7 @@
 	gzLog.Write("进入["+uri+"]");
 	
 	//设置需要显示的值和名称,
-	String showKey = "TelNum,充值手机号|TxnAmt,充值金额|ActDat,会计日期|TckNo,银行流水号|TLogNo,联通流水号";	
+	String showKey = "TelNum,充值手机号|TxnAmt,充值金额|ActDat,充值日期|TckNo,银行流水号|TLogNo,联通流水号";	
 
 %>
 <?xml version = "1.0" encoding = "utf-8"?>

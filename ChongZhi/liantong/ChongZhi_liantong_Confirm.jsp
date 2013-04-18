@@ -16,7 +16,9 @@
 	gzLog.Write("进入["+uri+"]");
 	
 	//设置需要显示的值和名称,
-	String showKey = "TelNum,充值手机号|TxnAmt,充值金额";	
+	String showKey = "TelNum,充值手机号|TxnAmt,充值金额";
+	//备注
+	String remark = "请仔细核对充值手机号码的准确性，如因客户输入错误导致充值失败的，将不予退还充值金额";
 %>
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
@@ -55,5 +57,6 @@
 
 			<input type='submit' value='确定'/><br/>
 		</form>
+		<label><%=remark%></label>
 	</content>
 </res>

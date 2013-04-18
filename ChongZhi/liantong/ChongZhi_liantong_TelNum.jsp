@@ -16,7 +16,7 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <res> 
 	<content>
-		<form method='post' action='/GZMBank/ChongZhi/liantong/ChongZhi_liantong_460601.jsp'>
+		<form method='post' action='/GZMBank/ChongZhi/liantong/ChongZhi_liantong_TxnAmt.jsp'>
 			<label>请输入充值的联通手机号:</label><br/>
 			<input type='text' name='TelNum' /><br/>
 			<input type='hidden' name='CrdNo' value="<%=CrdNo%>"/><br/>
