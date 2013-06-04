@@ -5,7 +5,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 /**
- * IcsServer类用于针对ICS服务器进行通讯和对ICS的GBK编码进行转换
+ * IcsServer类用于针对ICS服务器进行通讯
  * @author qm
  *
  */
@@ -26,6 +26,11 @@ public class IcsServer {
         this.post = post;
     }
 
+    /**
+     * 通过标签配置实例化IcsServer对象，该对象将使用配置文件中的IP和端口
+     * @param configTag 标签名
+     * @return 实例化后的IcsServer对象
+     */
     public static IcsServer getServer(String configTag){
         String host_post = ConfigProps.getInstance()
                 .getProperty(configTag);
@@ -36,7 +41,7 @@ public class IcsServer {
     }
 
     /**
-     * 发送报文至ICS并获取返回报文
+     * 发送报文至服务器并获取返回报文
      * @param request 发送报文字节数组(GBK)
      * @return 返回报文字节数组(GBK)
      */
@@ -72,6 +77,7 @@ public class IcsServer {
             //先通过前置长度获取返回包长度
             byte[] responsePreLength = new byte[preLength];
             is.read(responsePreLength);
+            //得到报文总长度
             int responseLength =
                     Integer.valueOf(new String(responsePreLength, "GBK"));
 
