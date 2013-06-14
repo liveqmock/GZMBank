@@ -1,4 +1,4 @@
-package com.gdbocom.util.communication.custom;
+package com.gdbocom.util.communication.custom.lsha;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;

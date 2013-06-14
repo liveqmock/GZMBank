@@ -61,18 +61,8 @@ public abstract class Transation {
 
         byte[] requestHead = buildTiaHead(request);
         byte[] requestBody = buildRequestBody(request);
-        byte[] requestPacket
-            = new byte[requestHead.length+requestBody.length];
-        //复制原有数组
-        System.arraycopy(
-                requestHead, 0, requestPacket, 0, requestHead.length);
-        //复制新增数组
-        System.arraycopy(
-                requestBody, 0,
-                requestPacket, requestHead.length,
-                requestBody.length);
 
-        return requestPacket;
+        return Transation.mergeByte(requestHead, requestBody);
     }
 
     /**
@@ -170,22 +160,6 @@ public abstract class Transation {
 
         return responseData;
 
-    }
-
-    /**
-     * 更新MsgTyp项的值
-     * @param map 表单项
-     * @param value 更新后的值
-     */
-    private void updateMsgTyp(Map<String, String> map, String value){
-        if(!map.containsKey("MsgTyp")){//不存在，直接赋值
-            map.put("MsgTyp", value);
-            return;
-        }
-        if(!value.equals(map.get("MsgTyp"))){//存在，不同，删除后赋值
-            map.remove("MsgTyp");
-            map.put("MsgTyp", value);
-        }
     }
 
     /**
@@ -341,5 +315,37 @@ public abstract class Transation {
         return responseData;
     }
 
+    /**
+     * 合并两个字节数组
+     * @param byteFront 第一个数组
+     * @param byteBehind 第二个数组
+     * @return 合并后的新数组，长度为byteFront.length + byteBehind.length
+     */
+    protected static byte[] mergeByte(byte[] byteFront, byte[] byteBehind){
+        byte[] byteMerged = new byte[byteFront.length + byteBehind.length];
+        System.arraycopy(byteFront, 0, byteMerged, 0, byteFront.length);
+        System.arraycopy(
+                byteBehind, 0,
+                byteMerged, byteFront.length,
+                byteBehind.length);
+        return byteMerged;
+
+    }
+
+    /**
+     * 更新MsgTyp项的值
+     * @param map 表单项
+     * @param value 更新后的值
+     */
+    private void updateMsgTyp(Map<String, String> map, String value){
+        if(!map.containsKey("MsgTyp")){//不存在，直接赋值
+            map.put("MsgTyp", value);
+            return;
+        }
+        if(!value.equals(map.get("MsgTyp"))){//存在，不同，删除后赋值
+            map.remove("MsgTyp");
+            map.put("MsgTyp", value);
+        }
+    }
 
 }

@@ -1,1 +1,0 @@
-java com/gdbocom/test/InsertNRecord %1

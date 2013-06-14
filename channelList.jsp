@@ -71,6 +71,12 @@
 <res>
 
   <channel>
+      <id>441025</id>
+      <title>缴费一站通</title>
+      <url>/GZMBank/SignAtOne/Gds_Pub_Agree.jsp</url>
+  </channel>
+
+  <channel>
       <id>441005</id>
       <title>非税业务</title>
       <url>/GZMBank/Feishui/feishui0.jsp</url>
