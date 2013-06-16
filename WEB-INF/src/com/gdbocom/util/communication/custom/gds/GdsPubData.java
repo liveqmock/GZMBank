@@ -67,10 +67,13 @@ public class GdsPubData extends Transation {
                 {"IExtFg", "%-1s",  "Y"}, //私有数据标识
         };
         return Transation.packetSequence(request, format);
-        //return "20140320GZ_UNC  1";
     }
 
+    /**
+     * 由于没有统一的公共头回应，因此这个方法直接返回空集的Map对象
+     */
     @Override
+    @Deprecated
     protected Map<String, String> parseNormalResponseBody(byte[] response)
             throws UnsupportedEncodingException {
 

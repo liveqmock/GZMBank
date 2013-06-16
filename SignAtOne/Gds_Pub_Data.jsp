@@ -17,6 +17,7 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <res> 
 	<content>
+
 		<form method='post' action='/GZMBank/SignAtOne/Gds_Spe_Router.jsp'>
 
 			<input type='hidden' name='Func' value='<%=GdsPubData.functionAdd%>' /><br/>

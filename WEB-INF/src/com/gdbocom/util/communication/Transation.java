@@ -46,8 +46,8 @@ public abstract class Transation {
         //通过通讯返回报文得到Map值
         Map<String, String> response
             = ts.parseResponseMap(responsePacket);
-        System.out.println(response);
-        return null;
+        //System.out.println(response);
+        return response;
     }
 
     /**
