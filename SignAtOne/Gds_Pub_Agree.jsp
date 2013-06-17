@@ -16,7 +16,7 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
 	<content>	
-		<form method='post' action='/GZMBank/SignAtOne/Gds_Pub_Menu.jsp'>
+		<form method='post' action='/GZMBank/SignAtOne/Gds_469901_Qry.jsp'>
 			<label>请确认协议条款:</label><br/>
 			<label><%=agreeText%></label><br/>
 <%

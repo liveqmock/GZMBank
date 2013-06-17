@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.gdbocom.util.communication.FieldSource;
+import com.gdbocom.util.communication.FieldTypes;
 import com.gdbocom.util.communication.IcsServer;
 import com.gdbocom.util.communication.Transation;
 import com.gdbocom.util.communication.TransationFactory;
@@ -24,6 +25,8 @@ public class Gds469901 extends Transation {
     protected static String statusTrue  = "0";
     protected static String statusFalse = "1";
 
+    private String Func = "";
+
     /**
      * 469901交易时，功能为新增和变更与其他交易的报文不一样，分别调用
      * buildAddOrUpdateRequestBody和buildQueryRequestBody方法
@@ -34,8 +37,10 @@ public class Gds469901 extends Transation {
 
         byte[] pubData = new GdsPubData().buildRequestBody(request);
         byte[] body;
-        String Func = request.get("Func");
-        if(GdsPubData.functionAdd==Func||GdsPubData.functionUpdate==Func){
+        this.Func = request.get("Func");
+ 
+        if(GdsPubData.functionAdd==this.Func
+                ||GdsPubData.functionUpdate==this.Func){
             body = buildAddOrUpdateRequestBody(request);
         }else{
             body = buildQueryRequestBody(request);
@@ -47,12 +52,36 @@ public class Gds469901 extends Transation {
     /**
      * 由于新增和变更的时候，只有TOA报文头，因此返回空集Map对象
      */
-    @Deprecated
     @Override
     protected Map<String, String> parseNormalResponseBody(byte[] response)
             throws UnsupportedEncodingException {
 
-        return new HashMap<String, String>();
+        if(this.Func.equals(GdsPubData.functionQuery)){
+            return parseQueryResponseBody(response);
+        }else if(this.Func.equals(GdsPubData.functionAdd)
+                ||this.Func.equals(GdsPubData.functionUpdate)){
+            return new HashMap<String, String>();
+        }else{
+            throw new IllegalArgumentException();
+        }
+ 
+    }
+
+    /**
+     * 解析查询返回报文
+     * @param response
+     * @return
+     * @throws UnsupportedEncodingException
+     */
+    private Map<String, String> parseQueryResponseBody(byte[] response)
+            throws UnsupportedEncodingException {
+        Object[][] format = {
+                {"TmpDat","4",FieldTypes.STATIC},
+                {"ApCode","2",FieldTypes.STATIC},
+                {"OFmtCd","3",FieldTypes.STATIC},
+                {"RecNum","2",FieldTypes.STATIC},
+        };
+        return Transation.unpacketsSequence(response, format);
     }
 
     /**
@@ -106,7 +135,7 @@ public class Gds469901 extends Transation {
         request.put("GdsBId", String.valueOf(GdsPubData.businessOfProvTv));
         request.put("ActNo", "6222600710007815865");
         //request.put("ActTyp", ); //账户性质已经写死太平洋卡4
-        request.put("ActNm", "顾启明");
+        /*request.put("ActNm", "顾启明");
         //request.put("VchTyp", ); //账户性质已经写死太平洋卡4
         //request.put("VchNo", ); //账户性质已经写死太平洋卡4
         //request.put("BokSeq", ); //账户性质已经写死太平洋卡4
@@ -114,22 +143,22 @@ public class Gds469901 extends Transation {
         //request.put("PfaSub",   );
         //request.put("BCusId", );
         //request.put("IdType",   );
-        request.put("IdNo", "44010419850301501X");
-        request.put("TelTyp", "");
+        request.put("IdNo", "44010419850301501X");*/
+        /*request.put("TelTyp", "");
         request.put("TelNo", "");
         request.put("MobTyp", String.valueOf(GdsPubData.contactMobile));
         request.put("MobTel", "13570959854");
         request.put("EMail", "");
-        request.put("Addr", "");
+        request.put("Addr", "");*/
         //request.put("IExtFg", );
         //水费44101I字段
-        request.put("BnkNo", "441118");
+        /*request.put("BnkNo", "441118");
         request.put("OrgCod", "726482280");
         request.put("TBusTp", "00505");
         request.put("TCusId", "123456");
         request.put("TCusNm", "顾启明");
         request.put("GdsAId", "015810190426853002013016222600710007815865");
-        request.put("EffDat", "20130615");
+        request.put("EffDat", "20130615");*/
         
 
         Map<String, String> test = Transation
