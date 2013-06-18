@@ -10,22 +10,49 @@
 	String CrdNo = request.getHeader("MBK_ACCOUNT");  //银行账户
 	String sjNo = request.getHeader("MBK_MOBILE");  //手机号码
 	gzLog.Write(sjNo+"进入["+uri+"]");
-	
+
+//特色部分
+	String signResult = request.getParameter("signResult");
+	Map<String, String> business = new HashMap<String, String>();
+	business.put(GdsPubData.businessOfMobile, "移动划扣");
+	business.put(GdsPubData.businessOfUnicom, "联通划扣");
+	business.put(GdsPubData.businessOfTele, "电信划扣");
+	business.put(GdsPubData.businessOfProvTv, "省有线电视划扣");
+	business.put(GdsPubData.businessOfCityTv, "市有线电视（珠江数码）划扣");
+	business.put(GdsPubData.businessOfGas, "燃气划扣");
+	business.put(GdsPubData.businessOfWater, "水费划扣");
+	business.put(GdsPubData.businessOfElectricity, "电费划扣");
 %>
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
-	<content>	
+	<content>
 		<form method='post' action='/GZMBank/SignAtOne/Gds_Pub_Router.jsp'>
+
+			<label>已签约</label><br/>
+<%
+				Iterator<String> itBusiness = business.keySet().iterator();
+				while(itBusiness.hasNext()){
+				    String businessKey = itBusiness.next();
+					if(signResult.indexOf(businessKey)>0){
+						out.println("<label>"
+							+business.get(businessKey)
+							+"</label><br/>");
+					}
+				}
+%>
 			<label>请选择签约业务的类型</label><br/>
 			<select name="GdsBId">
-				<option value="<%=GdsPubData.businessOfMobile%>">移动划扣签约</option>
-				<option value="<%=GdsPubData.businessOfUnicom%>">联通划扣签约</option>
-				<option value="<%=GdsPubData.businessOfTele%>"  >电信划扣签约</option>
-				<option value="<%=GdsPubData.businessOfProvTv%>">省有线电视划扣签约</option>
-				<option value="<%=GdsPubData.businessOfCityTv%>">市有线电视（珠江数码）划扣签约</option>
-				<option value="<%=GdsPubData.businessOfGas%>"   >燃气划扣签约</option>
-				<option value="<%=GdsPubData.businessOfWater%>" >水费划扣签约</option>
-				<option value="<%=GdsPubData.businessOfElectricity%>">电费划扣签约</option>
+<%
+				itBusiness = business.keySet().iterator();
+				while(itBusiness.hasNext()){
+				    String businessKey = itBusiness.next();
+					if(signResult.indexOf(businessKey)<0){
+						out.println("<option value='"+businessKey+"'>"
+							+business.get(businessKey)
+							+"</option>");
+					}
+				}
+%>
 			</select><br/>
 			
 <%
