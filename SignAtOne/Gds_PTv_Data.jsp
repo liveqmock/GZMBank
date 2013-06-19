@@ -15,9 +15,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <res>
 	<content>
+        request.put("OrgCod", "726482280");
+        request.put("TBusTp", "00505");
+        request.put("TCusId", "123456");
+        request.put("TCusNm", "顾启明");
+        request.put("GdsAId", "015810190426853002013016222600710007815865");
+        request.put("EffDat", "20130615");
 
 		<form method='post' action='/GZMBank/SignAtOne/Gds_Spe_Router.jsp'>
 
+			<input type='hidden' name='BnkNo' value='441800' /><br/>
 			<input type='hidden' name='ActNo' value='<%=CrdNo%>' /><br/>
 			<input type='hidden' name='TelTyp' value='' /><br/>
 			<input type='hidden' name='TelNo' value='' /><br/>

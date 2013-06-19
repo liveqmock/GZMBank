@@ -14,30 +14,12 @@
 
 /** 根据购彩类型设置跳转页面 */	
 	switch(businessType){
-		case GdsPubData.businessOfMobile:{
-			action_next="Gds_Pub_Data.jsp";
-			break;
-		}
-		case GdsPubData.businessOfUnicom:{
-			action_next="Gds_Pub_Data.jsp";
-			break;
-		}
-		case GdsPubData.businessOfTele:{
-			action_next="Gds_Pub_Data.jsp";
-			break;
-		}
-		case GdsPubData.businessOfProvTv:{
-			action_next="Gds_Pub_Data.jsp";
-			break;
-		}
-		case GdsPubData.businessOfCityTv:{
-			action_next="Gds_Pub_Data.jsp";
-			break;
-		}
-		case GdsPubData.businessOfGas:{
-			action_next="Gds_Pub_Data.jsp";
-			break;
-		}
+		case GdsPubData.businessOfMobile:
+		case GdsPubData.businessOfUnicom:
+		case GdsPubData.businessOfTele:
+		case GdsPubData.businessOfProvTv:
+		case GdsPubData.businessOfCityTv:
+		case GdsPubData.businessOfGas:
 		case GdsPubData.businessOfWater:{
 			action_next="Gds_Pub_Data.jsp";
 			break;

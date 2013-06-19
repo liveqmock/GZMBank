@@ -27,7 +27,7 @@
 			break;
 		}
 		case GdsPubData.businessOfProvTv:{
-			action_next="Gds_PTv_Ent.jsp";
+			action_next="Gds_469901_PTv.jsp";
 			break;
 		}
 		case GdsPubData.businessOfCityTv:{

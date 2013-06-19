@@ -46,9 +46,9 @@ public class Gds469998 extends Transation {
                 {"VchCod", "3", FieldTypes.STATIC},//凭证代码
                 {"Vch", "8", FieldTypes.STATIC},//凭证号码
                 {"IDTyp", "2", FieldTypes.STATIC},//证件种类
-                {"IDNo", "30", FieldTypes.STATIC},//证件号码
-                {"CusNo", "13", FieldTypes.STATIC},//客户号
-                {"ActNam", "60", FieldTypes.STATIC},//户名
+                {"IdNo", "30", FieldTypes.STATIC},//证件号码
+                {"TCusId", "13", FieldTypes.STATIC},//客户号
+                {"TCusNm", "60", FieldTypes.STATIC},//户名
                 {"ManFlg", "1", FieldTypes.STATIC},//主附卡标志
                 {"CpFlg", "1", FieldTypes.STATIC},//商户个人标志
         };
