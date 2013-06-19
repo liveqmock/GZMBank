@@ -13,7 +13,6 @@ public class IcsServer {
     private String host;
     private int post;
 
-    @SuppressWarnings("unused")
     private IcsServer(){}
 
     /**
@@ -36,7 +35,7 @@ public class IcsServer {
                 .getProperty(configTag);
         String[] hostPost = host_post.split(",");
         return new IcsServer(hostPost[0],
-                Integer.valueOf(hostPost[1]));
+                Integer.valueOf(hostPost[1]).intValue());
 
     }
 
@@ -54,8 +53,8 @@ public class IcsServer {
         byte[] requestPacket = new byte[preLength+request.length];
         //复制前置长度
         System.arraycopy(
-            (String.format("%08d", request.length)).getBytes("GBK")
-                , 0, requestPacket, 0, preLength);
+            ((String.format("%08d", request.length)).getBytes("GBK"),
+                    0, requestPacket, 0, preLength);
         //复制报文字节
         System.arraycopy(
                 request, 0, requestPacket, preLength, request.length);
@@ -79,7 +78,8 @@ public class IcsServer {
             is.read(responsePreLength);
             //得到报文总长度
             int responseLength =
-                    Integer.valueOf(new String(responsePreLength, "GBK"));
+                    Integer.valueOf(new String(responsePreLength, "GBK"))
+                    .intValue();
 
             //获取返回报文
             byte[] responsePacket = new byte[responseLength];
