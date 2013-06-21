@@ -53,7 +53,7 @@ public class IcsServer {
         byte[] requestPacket = new byte[preLength+request.length];
         //复制前置长度
         System.arraycopy(
-            ((String.format("%08d", request.length)).getBytes("GBK"),
+            ((String.format("%08d", new Integer(request.length))).getBytes("GBK"),
                     0, requestPacket, 0, preLength);
         //复制报文字节
         System.arraycopy(

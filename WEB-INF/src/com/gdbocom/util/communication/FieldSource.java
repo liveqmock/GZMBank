@@ -5,6 +5,7 @@ package com.gdbocom.util.communication;
  * @author qm
  *
  */
-public enum FieldSource {
-    VAR, PROPS;
+public class FieldSource {
+    public static final int VAR = 1;
+    public static final int PROPS = 2;
 }

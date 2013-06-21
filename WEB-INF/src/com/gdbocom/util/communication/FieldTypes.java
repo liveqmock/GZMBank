@@ -5,6 +5,9 @@ package com.gdbocom.util.communication;
  * @author qm
  *
  */
-public enum FieldTypes {
-    STATIC, LOOPSTART, LOOPEND, LOOPING;
+public class FieldTypes {
+    public static final int STATIC = 1;
+    public static final int LOOPSTART = 2;
+    public static final int LOOPEND =3;
+    public static final int LOOPING =4;
 }
