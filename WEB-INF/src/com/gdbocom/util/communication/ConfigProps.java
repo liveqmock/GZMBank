@@ -1,11 +1,13 @@
 package com.gdbocom.util.communication;
-import java.io.FileInputStream;
+
+import java.io.InputStream;
 import java.util.Properties;
 
 /**
  * Properties类的单例实现。初始化后将寻找项目中的config.properties文件，并加载。
+ * 
  * @author qm
- *
+ * 
  */
 public class ConfigProps extends Properties {
 
@@ -14,20 +16,20 @@ public class ConfigProps extends Properties {
 
     /**
      * 获取单例
+     * 
      * @return Props单例
      */
-    public static ConfigProps getInstance(){
-        if(null==INSTANCE){
-            synchronized(ConfigProps.class){
-                if(null==INSTANCE){
+    public static ConfigProps getInstance() {
+        if (null == INSTANCE) {
+            synchronized (ConfigProps.class) {
+                if (null == INSTANCE) {
                     INSTANCE = new ConfigProps();
-                    try{
-                        String config = ClassLoader
-                                .getSystemResource("config.properties")
-                                .getPath();
-                        INSTANCE.load(new FileInputStream(config));
+                    try {
+                        InputStream is = ClassLoader
+                                .getSystemResourceAsStream("config.properties");
+                        INSTANCE.load(is);
 
-                    }catch(Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                         throw new IllegalArgumentException();
                     }
@@ -37,13 +39,15 @@ public class ConfigProps extends Properties {
         return INSTANCE;
     }
 
-    /*不使用*/
-    private ConfigProps(){}
+    /* 不使用 */
+    private ConfigProps() {
+    }
 
     /**
      * @param args
      */
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
+
         System.out.println(ConfigProps.getInstance().getProperty("TrmNo"));
         System.out.println(ConfigProps.getInstance().getProperty("TlrId"));
         System.out.println(ConfigProps.getInstance().getProperty("NodNo"));
