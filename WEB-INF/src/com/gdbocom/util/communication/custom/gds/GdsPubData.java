@@ -34,8 +34,8 @@ public class GdsPubData extends Transation {
     public static String contactPHS    = "4";
     public static String contactTianyi = "5";
 
-    @Override
-    protected byte[] buildRequestBody(Map<String, String> request)
+   
+    protected byte[] buildRequestBody(Map request)
             throws UnsupportedEncodingException {
         /*
          *  key:关键字, 
@@ -71,13 +71,13 @@ public class GdsPubData extends Transation {
 
     /**
      * 由于没有统一的公共头回应，因此这个方法直接返回空集的Map对象
+     * 
      */
-    @Override
-    @Deprecated
-    protected Map<String, String> parseNormalResponseBody(byte[] response)
+
+    protected Map parseNormalResponseBody(byte[] response)
             throws UnsupportedEncodingException {
 
-        return new HashMap<String, String>();
+        return new HashMap();
     }
 
     /**

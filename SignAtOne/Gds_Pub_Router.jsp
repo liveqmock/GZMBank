@@ -9,22 +9,24 @@
 	String sjNo = request.getHeader("MBK_MOBILE");
 	String uri = request.getRequestURI();
 	gzLog.Write(sjNo+"进入["+uri+"]");
-	int businessType = (int)request.getParameter("GdsBId");
+	int businessType = new Integer(request.getParameter("GdsBId")).intValue();
+	System.out.println(businessType);
 	String action_next;
+
 
 /** 根据购彩类型设置跳转页面 */	
 	switch(businessType){
-		case GdsPubData.businessOfMobile:
-		case GdsPubData.businessOfUnicom:
-		case GdsPubData.businessOfTele:
-		case GdsPubData.businessOfProvTv:
-		case GdsPubData.businessOfCityTv:
-		case GdsPubData.businessOfGas:
-		case GdsPubData.businessOfWater:{
+		case 44101:
+		case 44102:
+		case 44103:
+		case 44104:
+        case 44105:
+		case 44107:
+		case 44108:{
 			action_next="Gds_Pub_Data.jsp";
 			break;
 		}
-		case GdsPubData.businessOfElectricity:{
+		case 44106:{
 			action_next="Gds_Ele_Note.jsp";
 			break;
 		}

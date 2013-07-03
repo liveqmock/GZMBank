@@ -14,8 +14,8 @@ import com.gdbocom.util.communication.TransationFactory;
 
 public class Gds469998 extends Transation {
 
-    @Override
-    protected byte[] buildRequestBody(Map<String, String> request)
+    
+    protected byte[] buildRequestBody(Map request)
             throws UnsupportedEncodingException {
 
         Object[][] format = {
@@ -28,8 +28,8 @@ public class Gds469998 extends Transation {
         return Transation.packetSequence(request, format);
     }
 
-    @Override
-    protected Map<String, String> parseNormalResponseBody(byte[] response)
+    
+    protected Map parseNormalResponseBody(byte[] response)
             throws UnsupportedEncodingException {
 
         Object[][] format = {
@@ -57,7 +57,7 @@ public class Gds469998 extends Transation {
     }
 
     public static void main(String[] args) throws UnknownHostException, IOException{
-        Map<String, String> request = new HashMap<String, String>();
+        Map request = new HashMap();
         //报文头字段
         request.put("TTxnCd", "469998");
         request.put("FeCod", "469998");
