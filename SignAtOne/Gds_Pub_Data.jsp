@@ -16,7 +16,7 @@
 <res>
 	<content>
 
-		<form method='post' action='/GZMBank/SignAtOne/Gds_Spe_Router.jsp'>
+		<form method='post' action='/GZMBank/SignAtOne/Gds_Spe_Data.jsp'>
 
 			<input type='hidden' name='ActNo' value='<%=CrdNo%>' /><br/>
 			<input type='hidden' name='TelTyp' value='' /><br/>
@@ -38,10 +38,11 @@
 	Map form = new HashMap();
 	form.putAll(request.getParameterMap());
 
-	//卡号缺省需要添加
-	if(!form.containsKey("CrdNo")&&CrdNo!=null){
-		form.put("CrdNo",CrdNo);
-	}
+    //卡号缺省需要添加
+    if (!form.containsKey("CrdNo") && CrdNo != null) {
+        String[] values = { CrdNo };
+        form.put("CrdNo", values);
+    }
 
 	//前一页面提交的表单域同时在本页面进行提交,防止数据的丢失
 	Iterator itKeys = form.keySet().iterator();

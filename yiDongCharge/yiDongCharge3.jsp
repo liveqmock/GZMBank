@@ -64,6 +64,8 @@
 		<br/>
 		<br/>
 		<label>请您保持签约手机通迅的畅通，该签约信息最后以移动公司发送的确认短信为准。如果您在48小时内未完成移动公司签约短信的确认，交通银行将自动取消您本次签约信息。</label>
+
+        <a href='/GZMBank/SignAtOne/Gds_Pub_Agree.jsp'>返回</a>
 		
 		<%
 			}else{

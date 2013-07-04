@@ -17,14 +17,14 @@ public class GdsPubData extends Transation {
     public static String functionBrow   = "4";
 
     /* 企业种类 */
-    public static int businessOfWater       = 44101;
-    public static int businessOfMobile      = 44102;
-    public static int businessOfUnicom      = 44103;
-    public static int businessOfTele        = 44104;
-    public static int businessOfGas         = 44105;
-    public static int businessOfElectricity = 44106;
-    public static int businessOfProvTv      = 44107;
-    public static int businessOfCityTv      = 44108;
+    public static String businessOfWater       = "44101";
+    public static String businessOfMobile      = "44102";
+    public static String businessOfUnicom      = "44103";
+    public static String businessOfTele        = "44104";
+    public static String businessOfGas         = "44105";
+    public static String businessOfElectricity = "44106";
+    public static String businessOfProvTv      = "44107";
+    public static String businessOfCityTv      = "44108";
 
     /* 固话类型 */
     public static String contactNone   = "0";
@@ -34,7 +34,7 @@ public class GdsPubData extends Transation {
     public static String contactPHS    = "4";
     public static String contactTianyi = "5";
 
-   
+
     protected byte[] buildRequestBody(Map request)
             throws UnsupportedEncodingException {
         /*
@@ -104,5 +104,21 @@ public class GdsPubData extends Transation {
         }else{
             return GdsPubData.contactNone;
         }
+    }
+
+    public static Map getSignBusiness(){
+        Map business = new HashMap();
+        //移动划扣直接使用全品牌划扣
+        //business.put(GdsPubData.businessOfMobile, "移动划扣");
+        business.put(GdsPubData.businessOfUnicom, "联通划扣");
+        business.put(GdsPubData.businessOfTele, "电信划扣");
+        business.put(GdsPubData.businessOfProvTv, "省有线电视划扣");
+        business.put(GdsPubData.businessOfCityTv,
+                "市有线电视（珠江数码）划扣");
+        business.put(GdsPubData.businessOfGas, "燃气划扣");
+        business.put(GdsPubData.businessOfWater, "水费划扣");
+        //排除电费划扣
+        //business.put(GdsPubData.businessOfElectricity, "电费划扣");
+        return business;
     }
 }

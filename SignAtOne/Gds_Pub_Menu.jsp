@@ -14,50 +14,46 @@
     gzLog.Write(sjNo + "进入[" + uri + "]");
 
     //特色部分
+    //获取已签约数据
     String signResult = request.getParameter("signResult");
     signResult = "44104";
-    Map business = new HashMap();
-    business.put(new Integer(GdsPubData.businessOfMobile), "移动划扣");
-    business.put(new Integer(GdsPubData.businessOfUnicom), "联通划扣");
-    business.put(new Integer(GdsPubData.businessOfTele), "电信划扣");
-    business.put(new Integer(GdsPubData.businessOfProvTv), "省有线电视划扣");
-    business.put(new Integer(GdsPubData.businessOfCityTv),
-            "市有线电视（珠江数码）划扣");
-    business.put(new Integer(GdsPubData.businessOfGas), "燃气划扣");
-    business.put(new Integer(GdsPubData.businessOfWater), "水费划扣");
-    business.put(new Integer(GdsPubData.businessOfElectricity), "电费划扣");
-    //int sigedBusiness = 12;
+    //可以签约的交易列表
+    Map business = GdsPubData.getSignBusiness();
 %>
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
 <content>
-<form method='post'
-    action='/GZMBank/SignAtOne/Gds_Pub_Router.jsp'>
+
         <label>已签约</label><br />
 <%
     Iterator itBusiness = business.keySet().iterator();
     while (itBusiness.hasNext()) {
-        Integer businessKey = (Integer) itBusiness.next();
+        String businessKey = (String) itBusiness.next();
         if (signResult.indexOf(String.valueOf(businessKey)) != -1) {
             out.println("<label>" + business.get(businessKey)
                     + "</label><br/>");
         }
     }
 %>
+
     <label>请选择签约业务的类型</label><br />
-    <select name="GdsBId">
+
+    <a href='/GZMBank/SignAtOne/Gds_Ele_Note.jsp'>电费划扣</a>
+    <a href='/GZMBank/yiDongCharge/yiDongCharge0.jsp'>移动全品牌划扣</a>
+
+<form method='post'
+    action='/GZMBank/SignAtOne/Gds_Pub_Data.jsp'>
 <%
     itBusiness = business.keySet().iterator();
     while (itBusiness.hasNext()) {
-        Integer businessKey = (Integer) itBusiness.next();
+        String businessKey = (String) itBusiness.next();
         if (signResult.indexOf(String.valueOf(businessKey)) < 0) {
-            out.println("<option value='" + businessKey + "'>"
-                    + business.get(businessKey) + "</option>");
+            out.println("<input type='checkbox' name='GdsBIds' value='"
+                    +businessKey+"' >"
+                    +business.get(businessKey)+"</input><br/>");
         }
     }
-%>
-    </select><br />
-<%
+
     Map form = new HashMap();
     form.putAll(request.getParameterMap());
 
