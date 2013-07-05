@@ -1,5 +1,9 @@
 package com.gdbocom.util.communication;
 
-public enum LoopTypes {
-    Fixed, SumCnt, PagNo, RecNum, PckLen;
+public class LoopTypes {
+    public int Fixed = 0;
+    public int SumCnt = 0;
+    public int PagNo = 0;
+    public int RecNum = 0;
+    public int PckLen = 0;
 }

@@ -31,6 +31,7 @@
 
         String businessKey = (String) itBusiness.next();
         String businessName = (String) business.get(businessKey);
+        //只显示有勾选的类型
         if(signingBusiness.indexOf(businessKey)!=-1){
             out.println("<label>"+businessName+"：</label><br/>");
             out.println("<label>请输入"+businessName+"缴费号:</label><br/>");
@@ -43,6 +44,7 @@
 
     Map form = new HashMap();
 	form.putAll(request.getParameterMap());
+    gzLog.Write(form.toString());
 
 	//卡号缺省需要添加
 	if(!form.containsKey("CrdNo")&&CrdNo!=null){

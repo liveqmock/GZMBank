@@ -17,8 +17,6 @@
     //获取已签约数据
     String signResult = request.getParameter("signResult");
     signResult = "44104";
-    //可以签约的交易列表
-    Map business = GdsPubData.getSignBusiness();
 %>
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
@@ -26,6 +24,8 @@
 
         <label>已签约</label><br />
 <%
+//可以签约的交易列表
+    Map business = GdsPubData.getSignBusiness();
     Iterator itBusiness = business.keySet().iterator();
     while (itBusiness.hasNext()) {
         String businessKey = (String) itBusiness.next();
@@ -56,6 +56,7 @@
 
     Map form = new HashMap();
     form.putAll(request.getParameterMap());
+    gzLog.Write(form.toString());
 
     //卡号缺省需要添加
     if (!form.containsKey("CrdNo") && CrdNo != null) {

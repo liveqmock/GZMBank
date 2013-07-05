@@ -28,13 +28,14 @@
 			<label>签约成功！</label><br/>
 <%
 	Map form = request.getParameterMap();
+    gzLog.Write(form.toString());
 	//设置隐藏表单值
 	Iterator itKeys = form.keySet().iterator();
 	while(itKeys.hasNext()){
 		String key = (String)itKeys.next();
 		String[] values = ( (String[]) form.get(key) );
 		if(1==values.length){
-			out.println("<input type='hidden' name='"+key+"' value=\""+values[0]+"\"/><br/>");
+			out.println("<input type='hidden' name='"+key+"' value='"+values[0]+"'/><br/>");
 		}
 	}
 

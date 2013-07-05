@@ -21,6 +21,7 @@
             <label><%=agreeText%></label><br/>
 <%
     Map form = request.getParameterMap();
+    gzLog.Write(form.toString());
     //设置隐藏表单值
     Iterator itKeys = form.keySet().iterator();
     while(itKeys.hasNext()){

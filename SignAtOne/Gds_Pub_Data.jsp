@@ -37,6 +37,7 @@
 <%
 	Map form = new HashMap();
 	form.putAll(request.getParameterMap());
+    gzLog.Write(form.toString());
 
     //卡号缺省需要添加
     if (!form.containsKey("CrdNo") && CrdNo != null) {
