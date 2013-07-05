@@ -23,7 +23,7 @@
 <res>
 	<content>
 
-		<form method='post' action='/GZMBank/SignAtOne/Gds_Pub_Suc.jsp'>
+		<form method='post' action='/GZMBank/SignAtOne/Gds_Pub_Confirm.jsp'>
 
 <%
     Iterator itBusiness = business.keySet().iterator();
@@ -35,9 +35,10 @@
         if(signingBusiness.indexOf(businessKey)!=-1){
             out.println("<label>"+businessName+"：</label><br/>");
             out.println("<label>请输入"+businessName+"缴费号:</label><br/>");
-            out.println("<input type='text' name='"+businessKey+"TCusId' value='123456' /><br/>");
+            out.println("<input type='text' name='TCusId"+businessKey+"' value='123456' /><br/>");
             out.println("<label>请输入"+businessName+"缴费户名:</label><br/>");
-            out.println("<input type='text' name='"+businessKey+"TCusNm' value='顾启明' /><br/>");
+            out.println("<input type='text' name='TCusNm"+businessKey+"' value='顾启明' /><br/>");
+            out.println("<br/>");
         }
     }
 

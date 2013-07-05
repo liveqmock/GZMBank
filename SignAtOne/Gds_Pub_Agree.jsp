@@ -20,7 +20,8 @@
             <label>请确认协议条款:</label><br/>
             <label><%=agreeText%></label><br/>
 <%
-    Map form = request.getParameterMap();
+    Map form = new HashMap();
+    form.putAll(request.getParameterMap());
     gzLog.Write(form.toString());
     //设置隐藏表单值
     Iterator itKeys = form.keySet().iterator();

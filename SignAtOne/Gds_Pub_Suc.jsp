@@ -27,7 +27,8 @@
 		<form method='post' action='/GZMBank/SignAtOne/Gds_Pub_Menu.jsp'>
 			<label>签约成功！</label><br/>
 <%
-	Map form = request.getParameterMap();
+	Map form = new HashMap();
+    form.putAll(request.getParameterMap());
     gzLog.Write(form.toString());
 	//设置隐藏表单值
 	Iterator itKeys = form.keySet().iterator();

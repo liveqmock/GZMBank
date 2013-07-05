@@ -24,11 +24,6 @@
 			<input type='hidden' name='MobTyp' value='<%=GdsPubData.telNum2telType(sjNo)%>' /><br/>
 			<input type='hidden' name='MobTel' value='<%=sjNo%>' /><br/>
 
-			<label>请输入交易密码：</label>
-			<br/>
-			<input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/><br/>
-			<input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input><br/>
-
 			<label>请输入您的电子邮件地址：</label><br/>
 			<input type='text' name='EMail' /><br/>
 			<label>请输入您的联系地址：</label><br/>
@@ -38,6 +33,24 @@
 	Map form = new HashMap();
 	form.putAll(request.getParameterMap());
     gzLog.Write(form.toString());
+
+    //处理checkbox表单项
+    StringBuffer gdsBIdsBuffer = new StringBuffer();
+    Map business = GdsPubData.getSignBusiness();
+    Iterator itBusiness = business.keySet().iterator();
+    while (itBusiness.hasNext()) {
+        String businessKey = "GdsBId" + (String) itBusiness.next();
+        if(null!=form.get(businessKey)){
+            gzLog.Write(((String[]) form.get(businessKey))[0]);
+            gdsBIdsBuffer.append(((String[]) form.get(businessKey))[0]);
+        }
+    }
+    if("".equals(gdsBIdsBuffer.toString())){
+        pageContext.forward("Gds_Pub_Menu.jsp");
+    }else{
+        String[] gdsBIds = { gdsBIdsBuffer.toString() };
+        form.put("GdsBIds", gdsBIds);
+    }
 
     //卡号缺省需要添加
     if (!form.containsKey("CrdNo") && CrdNo != null) {

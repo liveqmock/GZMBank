@@ -48,7 +48,8 @@
     while (itBusiness.hasNext()) {
         String businessKey = (String) itBusiness.next();
         if (signResult.indexOf(String.valueOf(businessKey)) < 0) {
-            out.println("<input type='checkbox' name='GdsBIds' value='"
+            out.println("<input type='checkbox' name='GdsBId"
+                    +businessKey+"' value='"
                     +businessKey+"' >"
                     +business.get(businessKey)+"</input><br/>");
         }
@@ -72,7 +73,7 @@
         String[] values = ((String[]) form.get(key));
         if (1 == values.length) {
             out.println("<input type='hidden' name='" + key
-                    + "' value=\"" + values[0] + "\"/><br/>");
+                    + "' value='" + values[0] + "'/><br/>");
         }
     }
  %>
