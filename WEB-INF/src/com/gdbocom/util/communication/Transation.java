@@ -80,7 +80,7 @@ public abstract class Transation {
                 { "TTxnCd", "%-6s", FieldSource.VAR },
                 { "FeCod", "%-6s", FieldSource.VAR },
                 { "TrmNo", "%-7s", FieldSource.PROPS },
-                { "TxnSrc", "%-5s", FieldSource.VAR },
+                { "TxnSrc", "%-5s", FieldSource.PROPS },
                 { "NodTrc", "%-15s", "0" },
                 { "TlrId", "%-7s", FieldSource.PROPS },
                 { "TIATyp", "%-1s", "T" },

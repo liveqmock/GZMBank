@@ -39,7 +39,7 @@
     <label>请选择签约业务的类型</label><br />
 
     <a href='/GZMBank/SignAtOne/Gds_Ele_Note.jsp'>电费划扣</a>
-    <a href='/GZMBank/yiDongCharge/yiDongCharge0.jsp'>移动全品牌划扣</a>
+    <!--a href='/GZMBank/yiDongCharge/yiDongCharge0.jsp'>移动全品牌划扣</a-->
 
 <form method='post'
     action='/GZMBank/SignAtOne/Gds_Pub_Data.jsp'>

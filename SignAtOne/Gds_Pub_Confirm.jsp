@@ -38,7 +38,7 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
 	<content>	
-		<form method='post' action='/GZMBank/SignAtOne/Gds_Pub_Suc.jsp'>
+		<form method='post' action='/GZMBank/SignAtOne/Query_469998'>
 			<label>请确认充值信息:</label><br/>
 <%
 	Map form = request.getParameterMap();

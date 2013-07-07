@@ -41,7 +41,6 @@
     while (itBusiness.hasNext()) {
         String businessKey = "GdsBId" + (String) itBusiness.next();
         if(null!=form.get(businessKey)){
-            gzLog.Write(((String[]) form.get(businessKey))[0]);
             gdsBIdsBuffer.append(((String[]) form.get(businessKey))[0]);
         }
     }

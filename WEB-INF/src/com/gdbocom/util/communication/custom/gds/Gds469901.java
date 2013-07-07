@@ -130,7 +130,7 @@ public class Gds469901 extends Transation {
 		// 报文头字段
 		request.put("TTxnCd", "469901");
 		request.put("FeCod", "469901");
-		request.put("TxnSrc", "MB441");
+		//request.put("TxnSrc", "MB441");
 		// 报文体GdsPub字段
 		request.put("Func", GdsPubData.functionAdd);
 		// request.put("Func", GdsPubData.functionQuery);

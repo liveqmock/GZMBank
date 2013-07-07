@@ -11,13 +11,6 @@
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	gzLog.Write(sjNo+"进入["+uri+"]");
 
-	String[] GdsBIds = request.getParameterValues("GdsBIds");
-	StringBuffer signingBusiness = new StringBuffer();
-	for(int i=0; i<GdsBIds.length; i++){
-	    signingBusiness.append(GdsBIds[i]);
-	}
-    //可以签约的交易列表
-    Map business = GdsPubData.getSignBusiness();
 %>
 <?xml version="1.0" encoding="utf-8"?> 
 <res>
@@ -26,6 +19,14 @@
 		<form method='post' action='/GZMBank/SignAtOne/Gds_Pub_Confirm.jsp'>
 
 <%
+    //勾选了的签约交易
+	String[] GdsBIds = request.getParameterValues("GdsBIds");
+	StringBuffer signingBusiness = new StringBuffer();
+	for(int i=0; i<GdsBIds.length; i++){
+	    signingBusiness.append(GdsBIds[i]);
+	}
+	//可以签约的交易列表
+	Map business = GdsPubData.getSignBusiness();
     Iterator itBusiness = business.keySet().iterator();
     while (itBusiness.hasNext()) {
 
