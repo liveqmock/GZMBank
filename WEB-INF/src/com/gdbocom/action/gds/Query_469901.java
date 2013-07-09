@@ -78,17 +78,16 @@ public class Query_469901 extends HttpServlet {
         PageContext pageContext = JspFactory.getDefaultFactory()
                 .getPageContext(this, request, response, null, true,
                         8192, true);
-            String forwardPage = "Gds_Pub_Menu.jsp";
-            String[][] values = {
-                    {"signResult",
-                        StringUtils.valueOf(signResult.toString())}
-                    };
-            String encoding = (request.getCharacterEncoding() == null)
-                    ? "ISO-8859-1" : request.getCharacterEncoding();
-            forwardPage = HttpParsing
-                    .makeURI(forwardPage, values, encoding);
-            System.out.println(forwardPage);
-            pageContext.forward(forwardPage);
+        String forwardPage = "Gds_Pub_Menu.jsp";
+        String[][] values = {
+                {"signResult",
+                    StringUtils.valueOf(signResult.toString())}
+                };
+        String encoding = (request.getCharacterEncoding() == null)
+                ? "ISO-8859-1" : request.getCharacterEncoding();
+        forwardPage = HttpParsing
+                .makeURI(forwardPage, values, encoding);
+        pageContext.forward(forwardPage);
 
     }
 

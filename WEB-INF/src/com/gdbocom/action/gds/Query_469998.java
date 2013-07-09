@@ -68,13 +68,15 @@ public class Query_469998 extends HttpServlet {
 
         StringBuffer queryString = new StringBuffer();
         queryString.append("Add_469901?")
-            .append("ActNm=").append(responseMap.get("TCusNm"))
+            .append("ActNm=")
+            .append(((String)responseMap.get("TCusNm")).trim())
             .append("&")
-            .append("BCusNo=").append(responseMap.get("TCusId"))
+            .append("BCusNo=")
+            .append(((String)responseMap.get("TCusId")).trim())
             .append("&")
-            .append("IdNo=").append(responseMap.get("IdNo"));
+            .append("IdNo=")
+            .append(((String)responseMap.get("IdNo")).trim());
 
-        System.out.println(queryString.toString());
         request.getRequestDispatcher(queryString.toString())
             .forward(request, response);
 
