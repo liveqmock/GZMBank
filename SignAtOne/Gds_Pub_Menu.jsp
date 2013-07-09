@@ -13,10 +13,6 @@
     String sjNo = request.getHeader("MBK_MOBILE"); //手机号码
     gzLog.Write(sjNo + "进入[" + uri + "]");
 
-    //特色部分
-    //获取已签约数据
-    String signResult = request.getParameter("signResult");
-    gzLog.Write(signResult);
 %>
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
@@ -24,7 +20,10 @@
 
         <label>已签约</label><br />
 <%
-//可以签约的交易列表
+	//特色部分
+	//获取已签约数据
+	String signResult = request.getParameter("signResult");
+	//可以签约的交易列表
     Map business = GdsPubData.getSignBusiness();
     Iterator itBusiness = business.keySet().iterator();
     while (itBusiness.hasNext()) {

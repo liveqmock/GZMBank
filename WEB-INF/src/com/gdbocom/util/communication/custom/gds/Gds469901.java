@@ -135,9 +135,9 @@ public class Gds469901 extends Transation {
 		request.put("Func", GdsPubData.functionQuery);
 		// request.put("Func", GdsPubData.functionQuery);
 		request.put("GdsBId", String.valueOf(GdsPubData.businessOfProvTv));
-		request.put("ActNo", "6222600710007800000");
+		//request.put("ActNo", "6222600710007800000");
         //request.put("ActNo", "6222600710007815865");
-        //request.put("ActNo", "60142890710180319");
+        request.put("ActNo", "60142890710180319");
 		// request.put("ActTyp", ); //账户性质已经写死太平洋卡4
 		/*
 		 * request.put("ActNm", "顾启明"); //request.put("VchTyp", );

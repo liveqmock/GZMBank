@@ -69,29 +69,26 @@ public class Query_469901 extends HttpServlet {
             String businessName = (String) business.get(businessKey);
             //只显示有勾选的类型
             if(isSpecicalBusinessSigned(request, businessKey)){
-                gzLog.Write("查询"+businessName+"签约交易");
+                gzLog.Write(sjNo+"已签约"+businessName);
                 signResult.append(businessKey);
             }
         }
+        gzLog.Write(sjNo+"签约情况："+signResult.toString());
 
         PageContext pageContext = JspFactory.getDefaultFactory()
                 .getPageContext(this, request, response, null, true,
                         8192, true);
             String forwardPage = "Gds_Pub_Menu.jsp";
             String[][] values = {
-                    {"signResult", StringUtils.valueOf(signResult)}
+                    {"signResult",
+                        StringUtils.valueOf(signResult.toString())}
                     };
             String encoding = (request.getCharacterEncoding() == null)
                     ? "ISO-8859-1" : request.getCharacterEncoding();
-            forwardPage = HttpParsing.makeURI(forwardPage, values, encoding);
+            forwardPage = HttpParsing
+                    .makeURI(forwardPage, values, encoding);
             System.out.println(forwardPage);
-            try {
-                pageContext.forward(forwardPage);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            pageContext.forward(forwardPage);
 
     }
 
@@ -119,7 +116,6 @@ public class Query_469901 extends HttpServlet {
         Map responseSt = Transation
                 .exchangeData(IcsServer.getServer("@GDS"),
                 requestSt, TransationFactory.GDS469901);
-
         return !"0 ".equals((String)responseSt.get("RecNum"));
     }
 

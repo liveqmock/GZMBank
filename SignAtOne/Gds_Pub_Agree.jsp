@@ -18,8 +18,8 @@
 <res>
     <content>
         <form method='post' action='/GZMBank/SignAtOne/Query_469901'>
-            <label>请确认协议条款:</label><br/>
-            <label>电子渠道“缴费一站通”客户签约协议</label><br/>
+            <label>请仔细阅读以下协议条款，并同意遵守条款内容:</label><br/>
+            <label>《电子渠道“缴费一站通”客户签约协议》</label><br/>
             <label>缴费通业务委托约定</label><br/>
             <label>本人现委托交通银行广东省分行，依照委托扣划的收费单位付款信息，扣划委托银行卡卡号内的相应款项，代理委托人缴纳相应款项。</label><br/>
             <label>1．委托人必须是指定委托银行卡持卡人，指定银行卡可以支付委托人本人和他人的已选项目的相关费用。</label><br/>

@@ -59,7 +59,6 @@ public class Query_469998 extends HttpServlet {
         requestSt.put("FeCod", "469998");
 
         //报文体字段
-        System.out.println((String)request.getParameter("CrdNo"));
         requestSt.put("ActNo", (String)request.getParameter("CrdNo"));
 
         Map responseMap = Transation

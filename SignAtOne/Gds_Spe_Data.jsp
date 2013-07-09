@@ -19,36 +19,48 @@
 		<form method='post' action='/GZMBank/SignAtOne/Gds_Pub_Confirm.jsp'>
 
 <%
-    //勾选了的签约交易
-	String[] GdsBIds = request.getParameterValues("GdsBIds");
-	StringBuffer signingBusiness = new StringBuffer();
-	for(int i=0; i<GdsBIds.length; i++){
-	    signingBusiness.append(GdsBIds[i]);
-	}
-	//可以签约的交易列表
+	Map form = new HashMap();
+	form.putAll(request.getParameterMap());
+	gzLog.Write(form.toString());
+
+	//处理checkbox表单项，通过轮循GdsBid440**，生成GdsBids，以后可以直接通过
+	//gdsBIdsBuffer.indexOf(businessKey)!=-1来判断是否勾选了对应项
+	StringBuffer gdsBIdsBuffer = new StringBuffer();
 	Map business = GdsPubData.getSignBusiness();
-    Iterator itBusiness = business.keySet().iterator();
+	Iterator itBusiness = business.keySet().iterator();
+	while (itBusiness.hasNext()) {
+	    String businessKey = "GdsBId" + (String) itBusiness.next();
+	    if(null!=form.get(businessKey)){
+	        gdsBIdsBuffer.append(((String[]) form.get(businessKey))[0]);
+	    }
+	}
+	//如果没有勾选签约项，返回选择菜单
+	if("".equals(gdsBIdsBuffer.toString())){
+	    pageContext.forward("Gds_Pub_Menu.jsp");
+	}else{
+	    String[] gdsBIds = { gdsBIdsBuffer.toString() };
+	    form.put("GdsBIds", gdsBIds);
+	}
+
+	//可以签约的交易列表
+    itBusiness = business.keySet().iterator();
     while (itBusiness.hasNext()) {
 
         String businessKey = (String) itBusiness.next();
         String businessName = (String) business.get(businessKey);
         //只显示有勾选的类型
-        if(signingBusiness.indexOf(businessKey)!=-1){
+        if(gdsBIdsBuffer.indexOf(businessKey)!=-1){
             out.println("<label>"+businessName+"：</label><br/>");
             out.println("<label>请输入"+businessName+"缴费号:</label><br/>");
             out.println("<input type='text' name='TCusId"+businessKey
-                    +"' style="-wap-input-required: 'true'" /><br/>");
+                    +"' style=\"-wap-input-required: 'true'\" /><br/>");
             out.println("<label>请输入"+businessName+"缴费户名:</label><br/>");
             out.println("<input type='text' name='TCusNm"+businessKey
-                    +"' style="-wap-input-required: 'true'" /><br/>");
+                    +"' style=\"-wap-input-required: 'true'\" /><br/>");
             out.println("<br/>");
         }
     }
 
-
-    Map form = new HashMap();
-	form.putAll(request.getParameterMap());
-    gzLog.Write(form.toString());
 
 	//卡号缺省需要添加
 	if(!form.containsKey("CrdNo")&&CrdNo!=null){
