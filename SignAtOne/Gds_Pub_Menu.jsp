@@ -16,7 +16,7 @@
     //特色部分
     //获取已签约数据
     String signResult = request.getParameter("signResult");
-    signResult = "44104";
+    gzLog.Write(signResult);
 %>
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
@@ -42,7 +42,7 @@
     <!--a href='/GZMBank/yiDongCharge/yiDongCharge0.jsp'>移动全品牌划扣</a-->
 
 <form method='post'
-    action='/GZMBank/SignAtOne/Gds_Pub_Data.jsp'>
+    action='/GZMBank/SignAtOne/Gds_Spe_Data.jsp'>
 <%
     itBusiness = business.keySet().iterator();
     while (itBusiness.hasNext()) {

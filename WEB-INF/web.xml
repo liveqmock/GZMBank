@@ -12,6 +12,16 @@
     <servlet-class>com.gdbocom.action.gds.Query_469901</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>Add_469901</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Add_469901</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Hello</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Hello</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>Query_469998</servlet-name>
     <url-pattern>/SignAtOne/Query_469998</url-pattern>
@@ -20,6 +30,16 @@
   <servlet-mapping>
     <servlet-name>Query_469901</servlet-name>
     <url-pattern>/SignAtOne/Query_469901</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Add_469901</servlet-name>
+    <url-pattern>/SignAtOne/Add_469901</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Hello</servlet-name>
+    <url-pattern>/SignAtOne/Hello</url-pattern>
   </servlet-mapping>
 
   <mime-mapping>

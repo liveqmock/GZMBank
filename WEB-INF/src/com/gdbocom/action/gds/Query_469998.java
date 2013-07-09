@@ -68,7 +68,7 @@ public class Query_469998 extends HttpServlet {
                 TransationFactory.GDS469998);
 
         StringBuffer queryString = new StringBuffer();
-        queryString.append("Query_469901?")
+        queryString.append("Add_469901?")
             .append("ActNm=").append(responseMap.get("TCusNm"))
             .append("&")
             .append("BCusNo=").append(responseMap.get("TCusId"))
