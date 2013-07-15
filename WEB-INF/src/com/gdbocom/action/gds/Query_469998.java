@@ -59,7 +59,7 @@ public class Query_469998 extends HttpServlet {
         requestSt.put("FeCod", "469998");
 
         //报文体字段
-        requestSt.put("ActNo", (String)request.getParameter("CrdNo"));
+        requestSt.put("ActNo", request.getHeader("MBK_ACCOUNT"));//银行账户
 
         Map responseMap = Transation
                 .exchangeData(IcsServer.getServer("@GDS"),

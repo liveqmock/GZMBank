@@ -9,7 +9,7 @@
 <%
     GzLog gzLog = new GzLog("c:/gzLog_sj");
     String uri = request.getRequestURI();
-    String CrdNo = request.getHeader("MBK_ACCOUNT"); //银行账户
+    String crdNo = request.getHeader("MBK_ACCOUNT"); //银行账户
     String sjNo = request.getHeader("MBK_MOBILE"); //手机号码
     gzLog.Write(sjNo + "进入[" + uri + "]");
 
@@ -18,11 +18,12 @@
 <res>
 <content>
 
-        <label>已签约</label><br />
+        <label>已受理</label><br />
 <%
 	//特色部分
 	//获取已签约数据
-	String signResult = request.getParameter("signResult");
+	String signResult = (String)pageContext.getAttribute("Gds_signResult",
+            PageContext.SESSION_SCOPE);
 	//可以签约的交易列表
     Map business = GdsPubData.getSignBusiness();
     Iterator itBusiness = business.keySet().iterator();
@@ -41,7 +42,7 @@
     <!--a href='/GZMBank/yiDongCharge/yiDongCharge0.jsp'>移动全品牌划扣</a-->
 
 <form method='post'
-    action='/GZMBank/SignAtOne/Gds_Spe_Data.jsp'>
+    action='/GZMBank/SignAtOne/Gds_GdsBIds'>
 <%
     itBusiness = business.keySet().iterator();
     while (itBusiness.hasNext()) {
@@ -54,27 +55,6 @@
         }
     }
 
-    Map form = new HashMap();
-    form.putAll(request.getParameterMap());
-    gzLog.Write(form.toString());
-
-    //卡号缺省需要添加
-    if (!form.containsKey("CrdNo") && CrdNo != null) {
-        String[] values = { CrdNo };
-        form.put("CrdNo", values);
-    }
-
-    //System.out.println("CrdNo"+CrdNo);
-    //前一页面提交的表单域同时在本页面进行提交,防止数据的丢失
-    Iterator itKeys = form.keySet().iterator();
-    while (itKeys.hasNext()) {
-        String key = (String) itKeys.next();
-        String[] values = ((String[]) form.get(key));
-        if (1 == values.length) {
-            out.println("<input type='hidden' name='" + key
-                    + "' value='" + values[0] + "'/><br/>");
-        }
-    }
  %>
     <input type='submit' value='确定' /><br />
 </form>

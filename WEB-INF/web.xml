@@ -17,6 +17,21 @@
     <servlet-class>com.gdbocom.action.gds.Add_469901</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>Gds_PreCorfirm</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Gds_PreCorfirm</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Gds_GdsBIds</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Gds_GdsBIds</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Hello</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Hello</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>Query_469998</servlet-name>
     <url-pattern>/SignAtOne/Query_469998</url-pattern>
@@ -30,6 +45,26 @@
   <servlet-mapping>
     <servlet-name>Add_469901</servlet-name>
     <url-pattern>/SignAtOne/Add_469901</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Add_469901</servlet-name>
+    <url-pattern>/SignAtOne/Add_469901</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Gds_PreCorfirm</servlet-name>
+    <url-pattern>/SignAtOne/Gds_PreCorfirm</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Gds_GdsBIds</servlet-name>
+    <url-pattern>/SignAtOne/Gds_GdsBIds</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Hello</servlet-name>
+    <url-pattern>/SignAtOne/Hello</url-pattern>
   </servlet-mapping>
 
   <mime-mapping>

@@ -3,11 +3,12 @@
 <%request.setCharacterEncoding("utf-8");%>
 <%@ page import="com.viatt.util.GzLog" %>
 <%@ page import="java.util.*" %>
+<%@ page import="weblogic.utils.StringUtils" %>
 
 <%
     GzLog gzLog = new GzLog("c:/gzLog_sj");
     String uri = request.getRequestURI();
-    String CrdNo = request.getHeader("MBK_ACCOUNT"); //银行账户
+    String crdNo = request.getHeader("MBK_ACCOUNT"); //银行账户
     String sjNo = request.getHeader("MBK_MOBILE");  //注册手机号码
     gzLog.Write(sjNo+"进入["+uri+"]");
 
@@ -34,28 +35,6 @@
             <label>10．上述规定解释权归交通银行广东省分行。</label><br/>
             <label>本人已阅读并同意遵守《缴费通业务委托约定》条款。</label><br/>
 
-<%
-	Map form = new HashMap();
-	form.putAll(request.getParameterMap());
-	gzLog.Write(form.toString());
-
-	//卡号缺省需要添加
-	if (!form.containsKey("CrdNo") && CrdNo != null) {
-	    String[] values = { CrdNo };
-	    form.put("CrdNo", values);
-	}
-
-    //设置隐藏表单值
-    Iterator itKeys = form.keySet().iterator();
-    while(itKeys.hasNext()){
-        String key = (String)itKeys.next();
-        String[] values = ( (String[]) form.get(key) );
-        if(1==values.length){
-            out.println("<input type='hidden' name='"+key+"' value=\""+values[0]+"\"/><br/>");
-        }
-    }
-
-%>
             <input type='submit' value='同意'/><br/>
         </form>
     </content>

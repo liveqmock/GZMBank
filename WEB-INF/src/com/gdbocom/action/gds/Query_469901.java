@@ -14,7 +14,6 @@ import javax.servlet.jsp.JspFactory;
 import javax.servlet.jsp.PageContext;
 
 import weblogic.utils.StringUtils;
-import weblogic.utils.http.HttpParsing;
 
 import com.gdbocom.util.communication.IcsServer;
 import com.gdbocom.util.communication.Transation;
@@ -25,11 +24,8 @@ import com.viatt.util.GzLog;
 
 public class Query_469901 extends HttpServlet {
 
-    
-    /**
-     * 
-     */
     private static final long serialVersionUID = 1L;
+
 
     private GzLog gzLog = new GzLog("c:/gzLog_sj");
 
@@ -55,7 +51,12 @@ public class Query_469901 extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         request.setCharacterEncoding("utf-8");
         
+        PageContext pageContext = JspFactory.getDefaultFactory()
+                .getPageContext(this, request, response, null, true,
+                        8192, true);
+
         String uri = request.getRequestURI();
+        String crdNo = request.getHeader("MBK_ACCOUNT"); //银行账户
         String sjNo = request.getHeader("MBK_MOBILE");  //注册手机号码
         gzLog.Write(sjNo+"进入["+uri+"]");
 
@@ -68,25 +69,17 @@ public class Query_469901 extends HttpServlet {
             String businessKey = (String) itBusiness.next();
             String businessName = (String) business.get(businessKey);
             //只显示有勾选的类型
-            if(isSpecicalBusinessSigned(request, businessKey)){
+            if(isSpecicalBusinessSigned(crdNo, businessKey)){
                 gzLog.Write(sjNo+"已签约"+businessName);
                 signResult.append(businessKey);
             }
         }
         gzLog.Write(sjNo+"签约情况："+signResult.toString());
 
-        PageContext pageContext = JspFactory.getDefaultFactory()
-                .getPageContext(this, request, response, null, true,
-                        8192, true);
+        pageContext.setAttribute("Gds_signResult",
+                StringUtils.valueOf(signResult.toString()).trim(),
+                PageContext.SESSION_SCOPE);
         String forwardPage = "Gds_Pub_Menu.jsp";
-        String[][] values = {
-                {"signResult",
-                    StringUtils.valueOf(signResult.toString())}
-                };
-        String encoding = (request.getCharacterEncoding() == null)
-                ? "ISO-8859-1" : request.getCharacterEncoding();
-        forwardPage = HttpParsing
-                .makeURI(forwardPage, values, encoding);
         pageContext.forward(forwardPage);
 
     }
@@ -96,7 +89,7 @@ public class Query_469901 extends HttpServlet {
      * @throws UnknownHostException
      * @throws IOException
      */
-    private boolean isSpecicalBusinessSigned(HttpServletRequest request,
+    private boolean isSpecicalBusinessSigned(String crdNo,
             String businessType)
             throws UnknownHostException, IOException {
         //配置发送参数
@@ -108,7 +101,7 @@ public class Query_469901 extends HttpServlet {
         // 报文体GdsPub字段
         requestSt.put("Func", GdsPubData.functionQuery);
         requestSt.put("GdsBId", businessType);
-        requestSt.put("ActNo", (String)request.getParameter("CrdNo"));
+        requestSt.put("ActNo", crdNo);
 
         // 特殊字段，无
 

@@ -77,6 +77,18 @@
   </channel>
 
   <channel>
+      <id>441026</id>
+      <title>内置变量测试</title>
+      <url>/GZMBank/SignAtOne/Hello</url>
+  </channel>
+
+  <channel>
+      <id>441027</id>
+      <title>内置变量测试</title>
+      <url>/GZMBank/SignAtOne/Hello.jsp</url>
+  </channel>
+
+  <channel>
       <id>441005</id>
       <title>非税业务</title>
       <url>/GZMBank/Feishui/feishui0.jsp</url>
