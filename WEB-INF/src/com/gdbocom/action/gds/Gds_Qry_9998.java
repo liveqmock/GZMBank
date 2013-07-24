@@ -15,7 +15,7 @@ import com.gdbocom.util.communication.TransationFactory;
 import com.viatt.util.GzLog;
 
 
-public class Query_469998 extends HttpServlet {
+public class Gds_Qry_9998 extends HttpServlet {
 
     
     /**
@@ -24,7 +24,7 @@ public class Query_469998 extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
 
-    public Query_469998() {
+    public Gds_Qry_9998() {
         super();
     }
 
@@ -67,7 +67,7 @@ public class Query_469998 extends HttpServlet {
                 TransationFactory.GDS469998);
 
         StringBuffer queryString = new StringBuffer();
-        queryString.append("Add_469901?")
+        queryString.append("Gds_Add_9901?")
             .append("ActNm=")
             .append(((String)responseMap.get("TCusNm")).trim())
             .append("&")

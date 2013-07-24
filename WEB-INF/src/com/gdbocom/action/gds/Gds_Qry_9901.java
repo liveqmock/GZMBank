@@ -22,14 +22,14 @@ import com.gdbocom.util.communication.custom.gds.GdsPubData;
 import com.viatt.util.GzLog;
 
 
-public class Query_469901 extends HttpServlet {
+public class Gds_Qry_9901 extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
 
     private GzLog gzLog = new GzLog("c:/gzLog_sj");
 
-    public Query_469901() {
+    public Gds_Qry_9901() {
         super();
     }
 

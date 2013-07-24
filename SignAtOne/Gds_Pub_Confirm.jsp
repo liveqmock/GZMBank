@@ -23,7 +23,7 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
 	<content>	
-		<form method='post' action='/GZMBank/SignAtOne/Query_469998'>
+		<form method='post' action='/GZMBank/SignAtOne/Gds_Qry_9998'>
 			<label>请确认充值信息:</label><br/>
 <%
 

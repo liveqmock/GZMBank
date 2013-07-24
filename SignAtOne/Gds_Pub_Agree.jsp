@@ -18,7 +18,7 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
     <content>
-        <form method='post' action='/GZMBank/SignAtOne/Query_469901'>
+        <form method='post' action='/GZMBank/SignAtOne/Gds_Qry_9901'>
             <label>请仔细阅读以下协议条款，并同意遵守条款内容:</label><br/>
             <label>《电子渠道“缴费一站通”客户签约协议》</label><br/>
             <label>缴费通业务委托约定</label><br/>

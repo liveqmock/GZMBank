@@ -3,23 +3,8 @@
   <display-name>GZMBank</display-name>
 
   <servlet>
-    <servlet-name>Query_469998</servlet-name>
-    <servlet-class>com.gdbocom.action.gds.Query_469998</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>Query_469901</servlet-name>
-    <servlet-class>com.gdbocom.action.gds.Query_469901</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>Add_469901</servlet-name>
-    <servlet-class>com.gdbocom.action.gds.Add_469901</servlet-class>
-  </servlet>
-
-  <servlet>
-    <servlet-name>Gds_PreCorfirm</servlet-name>
-    <servlet-class>com.gdbocom.action.gds.Gds_PreCorfirm</servlet-class>
+    <servlet-name>Gds_Add_9901</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Gds_Add_9901</servlet-class>
   </servlet>
 
   <servlet>
@@ -28,28 +13,33 @@
   </servlet>
 
   <servlet>
+    <servlet-name>Gds_PreCorfirm</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Gds_PreCorfirm</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Gds_Qry_9901</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Gds_Qry_9901</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Gds_Qry_9998</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Gds_Qry_9998</servlet-class>
+  </servlet>
+
+  <servlet>
     <servlet-name>Hello</servlet-name>
     <servlet-class>com.gdbocom.action.gds.Hello</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>Query_469998</servlet-name>
-    <url-pattern>/SignAtOne/Query_469998</url-pattern>
+    <servlet-name>Gds_Add_9901</servlet-name>
+    <url-pattern>/SignAtOne/Gds_Add_9901</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>
-    <servlet-name>Query_469901</servlet-name>
-    <url-pattern>/SignAtOne/Query_469901</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>Add_469901</servlet-name>
-    <url-pattern>/SignAtOne/Add_469901</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>Add_469901</servlet-name>
-    <url-pattern>/SignAtOne/Add_469901</url-pattern>
+    <servlet-name>Gds_GdsBIds</servlet-name>
+    <url-pattern>/SignAtOne/Gds_GdsBIds</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>
@@ -58,8 +48,13 @@
   </servlet-mapping>
 
   <servlet-mapping>
-    <servlet-name>Gds_GdsBIds</servlet-name>
-    <url-pattern>/SignAtOne/Gds_GdsBIds</url-pattern>
+    <servlet-name>Gds_Qry_9901</servlet-name>
+    <url-pattern>/SignAtOne/Gds_Qry_9901</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Gds_Qry_9998</servlet-name>
+    <url-pattern>/SignAtOne/Gds_Qry_9998</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>

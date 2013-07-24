@@ -21,7 +21,7 @@ import com.gdbocom.util.communication.custom.gds.GdsPubData;
 import com.viatt.util.GzLog;
 
 
-public class Add_469901 extends HttpServlet {
+public class Gds_Add_9901 extends HttpServlet {
 
     
     /**
@@ -31,7 +31,7 @@ public class Add_469901 extends HttpServlet {
 
     private GzLog gzLog = new GzLog("c:/gzLog_sj");
 
-    public Add_469901() {
+    public Gds_Add_9901() {
         super();
     }
 
