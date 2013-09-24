@@ -15,12 +15,12 @@
 	<content>
 		<form method='post' action='/GZMBank/ElectronicBill/BillPayment2.jsp'>
 		 
-			<lable>缴费卡号：</lable>  
+			<label>缴费卡号：</label>  
 			<br/>
 			<%=cdno%>
 			<br/>
 			
-			<lable>客户编号</lable>
+			<label>客户编号</label>
 			<br/>
 			
 			<input type='text' name='TCusId' style="-wap-input-required:'true'" maxleng='21'/>
@@ -28,13 +28,13 @@
 			<label>（请仔细核对客户编号的准确性，因客户编号信息录入错误导致缴费失败的，将不予退还缴费金额）</label>
 			<br/>
 			<br/>
-			<lable>电费月份</lable>
+			<label>电费月份</label>
 			<br/>
-			<lable>输入格式： </lable>
+			<label>输入格式： </label>
 			<br/>
-			<lable>1: 如果想查询特定年月的电费，请输入六位号码，前4位为年份，后2位为月份，如：201202</lable>
+			<label>1: 如果想查询特定年月的电费，请输入六位号码，前4位为年份，后2位为月份，如：201202</label>
 			<br/>
-			<lable>2: 如果想查询所有电费账单，请输入9</lable>
+			<label>2: 如果想查询所有电费账单，请输入9</label>
 			<input type='text' name='LChkTm' style="-wap-input-format:'N'; -wap-input-required:'true'" maxleng='8'/>
 			<br/>
 			
