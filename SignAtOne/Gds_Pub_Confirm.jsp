@@ -22,7 +22,7 @@
 %>
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
-	<content>	
+	<content>
 		<form method='post' action='/GZMBank/SignAtOne/Gds_Qry_9998'>
 			<label>请确认充值信息:</label><br/>
 <%
@@ -36,7 +36,7 @@
      *         签约卡号
 	 */
 	StringBuffer showKeyBuffer = new StringBuffer();
-	showKeyBuffer.append("reqHead,CrdNo,,String,签约卡号").append("|");
+	showKeyBuffer.append("reqHead,MBK_ACCOUNT,,String,签约卡号").append("|");
 
 
 	//设置需要显示的缴费号和缴费名

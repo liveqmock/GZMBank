@@ -65,9 +65,25 @@ public class Gds_PreCorfirm extends HttpServlet {
         String[] gdsBids = gds_GdsBIds.split(",");
         Map business = GdsPubData.getSignBusiness();
         for(int i=0; i<gdsBids.length; i++){
-            if( null!=gdsBids[i] && (!"".equals(gdsBids[i])) ){
-                String businessId = gdsBids[i];
-                String businessName = (String) business.get(businessId);
+            if( null==gdsBids[i] || ("".equals(gdsBids[i])) ){
+                continue;
+            }
+
+            String businessId = gdsBids[i];
+            String businessName = (String) business.get(businessId);
+            if(businessId.equals(GdsPubData.businessOfMobile)){
+
+                Map gdsMobile = new HashMap();
+                String tAgtTp = request.getParameter("TAgtTp"+businessId);
+                String mCusId = request.getParameter("MCusId"+businessId);
+                String tCusId = request.getParameter("TCusId"+businessId);
+                gdsMobile.put("tAgtTp", tAgtTp);
+                gdsMobile.put("mCusId", mCusId);
+                gdsMobile.put("tCusId", tCusId);
+                pageContext.setAttribute("Gds_Mobile",
+                        gdsMobile, PageContext.SESSION_SCOPE);
+
+            }else{
 
                 String tCusId = request.getParameter("TCusId"+businessId);
                 String tCusNm = request.getParameter("TCusNm"+businessId);
@@ -75,13 +91,13 @@ public class Gds_PreCorfirm extends HttpServlet {
                 gds_TCusId.put(businessId, tCusId);
                 gds_TCusNm.put(businessId, tCusNm);
 
+                pageContext.setAttribute("Gds_TCusId",
+                        gds_TCusId, PageContext.SESSION_SCOPE);
+                pageContext.setAttribute("Gds_TCusNm",
+                        gds_TCusNm, PageContext.SESSION_SCOPE);
             }
         }
 
-        pageContext.setAttribute("Gds_TCusId",
-                gds_TCusId, PageContext.SESSION_SCOPE);
-        pageContext.setAttribute("Gds_TCusNm",
-                gds_TCusNm, PageContext.SESSION_SCOPE);
 
         request.getRequestDispatcher("Gds_Pub_Confirm.jsp")
         .forward(request, response);

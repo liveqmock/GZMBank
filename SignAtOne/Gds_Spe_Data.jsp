@@ -13,7 +13,7 @@
 	gzLog.Write(sjNo+"进入["+uri+"]");
 
 %>
-<?xml version="1.0" encoding="utf-8"?> 
+<?xml version="1.0" encoding="utf-8"?>
 <res>
 	<content>
 
@@ -24,23 +24,43 @@
             .getAttribute("Gds_GdsBIds", PageContext.SESSION_SCOPE);
 	String[] gdsBids = gds_GdsBIds.split(",");
     Map business = GdsPubData.getSignBusiness();
-	for(int i=0; i<gdsBids.length; i++){
-	    if( null!=gdsBids[i] && (!"".equals(gdsBids[i])) ){
-	        String businessId = gdsBids[i];
-	        String businessName = (String) business.get(businessId);
+    for(int i=0; i<gdsBids.length; i++){
+        if( null==gdsBids[i] || ("".equals(gdsBids[i])) ){
+            continue;
+        }
 
-	        out.println("<label>"+businessName+"：</label><br/>");
-            out.println("<label>请输入"+businessName+"缴费号:</label><br/>");
-            out.println("<input type='text' name='TCusId"+businessId
-                    +"' style=\"-wap-input-required: 'true'\" /><br/>");
-            out.println("<label>请输入"+businessName+"缴费户名:</label><br/>");
-            out.println("<input type='text' name='TCusNm"+businessId
-                    +"' style=\"-wap-input-required: 'true'\" /><br/>");
-            out.println("<br/>");
-	    }
-	}
+        String businessId = gdsBids[i];
+        String businessName = (String) business.get(businessId);
+        if(businessId.equals(GdsPubData.businessOfMobile)){
+%>
+      <label><%=businessName %></label><br/>
 
+      <label>请选择签约类型:</label><br/>
+      <input type='radio' name='TAgtTp<%=businessId %>' value='1' >主号签约</input>
+      <input type='radio' name='TAgtTp<%=businessId %>' value='2' >副号签约</input>
 
+      <label><%="请输入"+businessName+"主号:" %></label><br/>
+      <input type='text' name='MCusId<%=businessId %>'
+        style="-wap-input-required: 'true'" /><br/>
+      <label><%="请输入"+businessName+"副号:" %></label><br/>
+      <input type='text' name='TCusId<%=businessId %>'
+        style="-wap-input-required: 'true'" /><br/>
+
+<%
+        }else{
+%>
+      <label><%=businessName %></label><br/>
+
+      <label><%="请输入"+businessName+"缴费号:" %></label><br/>
+      <input type='text' name='TCusId<%=businessId %>'
+        style="-wap-input-required: 'true'" /><br/>
+      <label><%="请输入"+businessName+"缴费户名:" %></label><br/>
+      <input type='text' name='TCusNm<%=businessId %>'
+        style="-wap-input-required: 'true'" /><br/>
+
+<%
+        }
+    }
 %>
 
 			<input type='submit' value='确定'/><br/>
