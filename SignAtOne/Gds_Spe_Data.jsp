@@ -36,13 +36,13 @@
       <label><%=businessName %></label><br/>
 
       <label>请选择签约类型:</label><br/>
-      <input type='radio' name='TAgtTp<%=businessId %>' value='1' >主号签约</input>
-      <input type='radio' name='TAgtTp<%=businessId %>' value='2' >副号签约</input>
+      <input type='radio' name='TAgtTp<%=businessId %>' value='1' invisible='TCusId_Msg,TCusId<%=businessId %>'>主号签约</input>
+      <input type='radio' name='TAgtTp<%=businessId %>' value='2' visible='TCusId_Msg,TCusId<%=businessId %>'>副号签约</input>
 
       <label><%="请输入"+businessName+"主号:" %></label><br/>
       <input type='text' name='MCusId<%=businessId %>'
         style="-wap-input-required: 'true'" /><br/>
-      <label><%="请输入"+businessName+"副号:" %></label><br/>
+      <label name='TCusId_Msg'><%="请输入"+businessName+"副号:" %></label><br/>
       <input type='text' name='TCusId<%=businessId %>' /><br/>
 
 <%
