@@ -77,6 +77,7 @@ public class Gds_PreCorfirm extends HttpServlet {
                 String tAgtTp = request.getParameter("TAgtTp"+businessId);
                 String mCusId = request.getParameter("MCusId"+businessId);
                 String tCusId = request.getParameter("TCusId"+businessId);
+                tCusId = null == tCusId? "":tCusId;
                 gdsMobile.put("tAgtTp", tAgtTp);
                 gdsMobile.put("mCusId", mCusId);
                 gdsMobile.put("tCusId", tCusId);

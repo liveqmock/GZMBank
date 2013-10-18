@@ -105,6 +105,7 @@ public class Gds_Add_9901 extends HttpServlet {
         requestSt.put("ActNo", request.getHeader("MBK_ACCOUNT"));
         requestSt.put("ActNm", (String)request.getParameter("ActNm"));
         requestSt.put("BCusNo", (String)request.getParameter("BCusNo"));
+        requestSt.put("Pin", (String)request.getParameter("password"));
         requestSt.put("BCusId", "");
         requestSt.put("IdNo", (String)request.getParameter("IdNo"));
         requestSt.put("MobTyp", GdsPubData.contactMobile);
@@ -117,14 +118,34 @@ public class Gds_Add_9901 extends HttpServlet {
         requestSt.put("BnkNo", GdsPubData.bankNo);
         requestSt.put("OrgCod", GdsPubData.getBCusId().get(businessType));
         requestSt.put("TBusTp", GdsPubData.getTBusTp().get(businessType));
-        String TCusId = (String)((Map)pageContext
-                .getAttribute("Gds_TCusId", PageContext.SESSION_SCOPE))
-                .get(businessType);
-        requestSt.put("TCusId", TCusId);
-        String TCusNm = (String)((Map)pageContext
-                .getAttribute("Gds_TCusNm", PageContext.SESSION_SCOPE))
-                .get(businessType);
-        requestSt.put("TCusNm", TCusNm);
+
+
+        if(businessType.equals(GdsPubData.businessOfMobile)){//移动签约
+
+            Map Gds_Mobile = (Map)pageContext
+                    .getAttribute("Gds_Mobile", PageContext.SESSION_SCOPE);
+            String tAgtTp = (String)Gds_Mobile.get("tAgtTp");
+            String mCusId = (String)Gds_Mobile.get("mCusId");
+            String tCusId = (String)Gds_Mobile.get("tCusId");
+
+            requestSt.put("TAgtTp", tAgtTp);
+            requestSt.put("MCusId", mCusId);
+            requestSt.put("TCusId", tCusId);
+
+        }else{//其他签约
+
+            String TCusId = (String)((Map)pageContext
+                    .getAttribute("Gds_TCusId", PageContext.SESSION_SCOPE))
+                    .get(businessType);
+            requestSt.put("TCusId", TCusId);
+            String TCusNm = (String)((Map)pageContext
+                    .getAttribute("Gds_TCusNm", PageContext.SESSION_SCOPE))
+                    .get(businessType);
+            requestSt.put("TCusNm", TCusNm);
+
+        }
+
+
         StringBuffer gdsAId = new StringBuffer().append("01")
                 .append("5810")
                 .append(GdsPubData.getBCusId().get(businessType))

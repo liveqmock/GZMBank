@@ -43,8 +43,7 @@
       <input type='text' name='MCusId<%=businessId %>'
         style="-wap-input-required: 'true'" /><br/>
       <label><%="请输入"+businessName+"副号:" %></label><br/>
-      <input type='text' name='TCusId<%=businessId %>'
-        style="-wap-input-required: 'true'" /><br/>
+      <input type='text' name='TCusId<%=businessId %>' /><br/>
 
 <%
         }else{
