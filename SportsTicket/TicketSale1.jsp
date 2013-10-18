@@ -18,7 +18,6 @@
       <label>请选择彩票类型: </label>
       <br/>
       <input type='radio' name='LotTyp2' value='A' checked>体彩大乐透</input><br/>
-      <input type='radio' name='LotTyp2' value='B'>12选2</input><br/>
       <input type='submit' value='下一步'/>
     </form>
   </content>
