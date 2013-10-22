@@ -103,6 +103,9 @@
 	//显示确认值
 	String[] showKeys = showKeyBuffer.toString().split("\\|");
 	for(int pairsIndex=0;pairsIndex<showKeys.length;pairsIndex++){
+        if("".equals(showKeys[pairsIndex])){
+            continue;
+        }
 		String[] params = showKeys[pairsIndex].split(",");
         String source = params[0];//来源
 		String key = params[1];//关键字
