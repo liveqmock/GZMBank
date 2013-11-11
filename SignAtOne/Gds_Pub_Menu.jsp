@@ -39,7 +39,6 @@
     <label>请选择签约业务的类型</label><br />
 
     <a href='/GZMBank/SignAtOne/Gds_Ele_Note.jsp'>电费划扣</a>
-    <!--a href='/GZMBank/yiDongCharge/yiDongCharge0.jsp'>移动全品牌划扣</a-->
 
 <form method='post'
     action='/GZMBank/SignAtOne/Gds_GdsBIds'>
@@ -57,6 +56,7 @@
 
  %>
     <input type='submit' value='确定' /><br />
+    <label>温馨提示：已受理的签约业务，如要重新办理，请到营业网点柜台办理。</label><br />
 </form>
 </content>
 </res>

@@ -22,7 +22,7 @@
 %>
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
-	<content>	
+	<content>
 		<form method='post' action='/GZMBank/SignAtOne/Gds_Qry_9998'>
 			<label>请确认充值信息:</label><br/>
 <%
@@ -36,7 +36,9 @@
      *         签约卡号
 	 */
 	StringBuffer showKeyBuffer = new StringBuffer();
-	showKeyBuffer.append("reqHead,CrdNo,,String,签约卡号").append("|");
+	//showKeyBuffer.append("reqHead,MBK_ACCOUNT,,String,签约卡号").append("|");
+	showKeyBuffer.append("|");
+    out.println("<label>签约卡号:"+crdNo+"</label><br/>");
 
 
 	//设置需要显示的缴费号和缴费名
@@ -51,26 +53,59 @@
             String businessId = gdsBids[i];
             String businessName = (String) business.get(businessId);
 
-            //添加showKey
-            showKeyBuffer.append("session").append(",")
-                .append("Gds_TCusId").append(",")
-                .append(businessId).append(",")
-                .append("Map").append(",")
-                .append(businessName).append("缴费号")
-                .append("|");
 
-            showKeyBuffer.append("session").append(",")
-	            .append("Gds_TCusNm").append(",")
-	            .append(businessId).append(",")
-	            .append("Map").append(",")
-	            .append(businessName).append("缴费号")
-	            .append("|");
+            if(businessId.equals(GdsPubData.businessOfMobile)){//移动签约
+
+                
+                if(null!=pageContext
+                        .getAttribute("Gds_Mobile",
+                                PageContext.SESSION_SCOPE)){
+
+                    Map Gds_Mobile = (Map)pageContext
+                            .getAttribute("Gds_Mobile", PageContext.SESSION_SCOPE);
+                    String tAgtTp = (String)Gds_Mobile.get("tAgtTp");
+                    tAgtTp = "1".equals(tAgtTp)? "主号签约":"副号签约";
+                    out.println("<label>签约类型:"+tAgtTp+"</label><br/>");
+
+                    String mCusId = (String)Gds_Mobile.get("mCusId");
+                    out.println("<label>签约主号:"+mCusId+"</label><br/>");
+
+                    String tCusId = (String)Gds_Mobile.get("tCusId");
+                    if(!"".equals(tCusId)){
+                        out.println("<label>签约副号:"+tCusId+"</label><br/>");
+                    }
+                }
+
+
+            }else{//其他签约
+
+                //添加showKey
+                showKeyBuffer.append("session").append(",")
+                    .append("Gds_TCusId").append(",")
+                    .append(businessId).append(",")
+                    .append("Map").append(",")
+                    .append(businessName).append("缴费号")
+                    .append("|");
+
+                showKeyBuffer.append("session").append(",")
+                    .append("Gds_TCusNm").append(",")
+                    .append(businessId).append(",")
+                    .append("Map").append(",")
+                    .append(businessName).append("缴费号")
+                    .append("|");
+
+            }
+            
+            
         }
     }
 
 	//显示确认值
 	String[] showKeys = showKeyBuffer.toString().split("\\|");
 	for(int pairsIndex=0;pairsIndex<showKeys.length;pairsIndex++){
+        if("".equals(showKeys[pairsIndex])){
+            continue;
+        }
 		String[] params = showKeys[pairsIndex].split(",");
         String source = params[0];//来源
 		String key = params[1];//关键字
