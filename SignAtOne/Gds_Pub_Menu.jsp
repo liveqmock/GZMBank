@@ -56,6 +56,7 @@
 
  %>
     <input type='submit' value='确定' /><br />
+    <label>温馨提示：已受理的签约业务，如要重新办理，请到营业网点柜台办理。</label><br />
 </form>
 </content>
 </res>
