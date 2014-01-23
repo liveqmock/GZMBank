@@ -13,7 +13,7 @@
 /** 根据购彩类型设置跳转页面 */	
 	switch(LotTyp2[0]){
 		case 'A':{
-			action_next="TicketSaleA3.jsp";
+			action_next="TicketSaleA3_1.jsp";
 			break;
 		}
 		case 'B':{

@@ -69,44 +69,33 @@
  		MulTip = MessManTool.getValueByName(message, "MulTip");
  		String TrmCod = MessManTool.getValueByName(message, "TrmCod");
  %> 
- 	<label><%=new LotTypFormat().NtoC(LotTyp)%></label><br/>
- 	<label>&nbsp;请确认购彩信息</label><br/>
-	<table border="1">
-		<!--tr>
-			<td>状态:</td><td><%=TRspCd%></td>
-		</tr-->
-		<tr>
-			<td>注数:</td><td><%=NotNum%></td>
-		</tr>
+ 	<label><%=new LotTypFormat().NtoC(LotTyp)%></label>
+ 	<label>请确认购彩信息</label>
+	
+			<label>注数:<%=NotNum%></label>
+	
 <%
 		if("01".equals(TikMod)){
 %>
-		<tr>
-			<td>投注号码为:</td><td><%=LotNumDis%></td>
-		</tr>
+	
+			<label>投注号码为:<%=LotNumDis%></label>
+		
 <%
 		}
 %>
-		<tr>
-			<td>金额:</td><td><%=MoneyUtils.FormatMoney(Double.parseDouble(TxnAmt.trim()) / 100, "###0.00")%> </td>
-		</tr>
-		<tr>
-			<td>倍数:</td><td><%=MulTip%></td>
-		</tr>
-		<tr>
-			<td>期号:</td><td><%=TrmCod%></td>
-		</tr>
-	</table>
-
+	
+			<label>金额:<%=MoneyUtils.FormatMoney(Double.parseDouble(TxnAmt.trim()) / 100, "###0.00")%> </label>
+	
+			<label>倍数:<%=MulTip%></label>
+		
+			<label>期号:<%=TrmCod%></label>
+	
     <form method='post' action='/GZMBank/SportsTicket/TicketSaleA6.jsp'>
 		<label>请输入交易密码:</label>
-		<br/>
+		
 		<input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt></input>
 		<input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input>
-		<!-- 更改加密方式此段程序封闭20110419 
-		<input type='hidden' name='MBK_SECURITY_PASSWORD'  value='password'></input>
-		-->
-		<!--卡号-->
+		
 		<input type='hidden' name='CrdNo'  value='<%=cdno%>'  ></input>
 		<!--交易金额-->
 		<input type='hidden' name='TxnAmt' value='<%=TxnAmt%>'></input>

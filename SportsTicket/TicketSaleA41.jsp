@@ -23,61 +23,70 @@
 	<content>
 	<form method='post' action='/GZMBank/SportsTicket/TicketSaleA4.jsp'>
 		<label>大乐透</label><br/>
-		<%if(!ErrMsg.equals("")){out.println("<label>"+ErrMsg+"</label>");}%>
-		<label>请选择前区号码(请任意选择5个或以上号码)</label><br/>
+		<%
+		if(!ErrMsg.equals(""))
+		{
+		%>
+		<label><%=ErrMsg%></label>
+		<%
+		}
+		%>
+		<label>请选择前区号码(请任意选择5个或以上号码)</label>
     
-    <table>
+   
     <%
         for(int i=0; i<7; i++){
     %>
-        <tr>
+       
             <%
                 for(int j=1;j<=5;j++){
 									int tmp = i*5+j;
             %>
-			            <td><input type='checkbox' name='forepart<%=tmp%>' value='<%=this.formatnumber(tmp)%>'></input></td><td><%=tmp%></td>
+			          <input type='checkbox' name='forepart<%=tmp%>' value='<%=this.formatnumber(tmp)%>'></input>
+			          <label><%=tmp%></label>
 						<%				
 						    }
 						%>
-        </tr>
+        
 		<%				
 			}
 		%>
-    </table>
+   
 
 
 		<label>*******************************</label>
 		<label>请选择后区号码(请任意选择2个或以上号码)</label>
 
-    <table>
+   
     <%
         for(int i=0; i<2; i++){
     %>
-        <tr>
+        
             <%
                 for(int j=1;j<=6;j++){
 									int tmp = i*6+j;
             %>
-			            <td><input type='checkbox' name='rear<%=tmp%>' value='<%=this.formatnumber(tmp)%>'></input></td><td><%=tmp%></td>
+			            <input type='checkbox' name='rear<%=tmp%>' value='<%=this.formatnumber(tmp)%>'></input>
+			            <label><%=tmp%></label>
 						<%				
 						    }
 						%>
-        </tr>
+       
 		<%				
 			}
 		%>
-    </table>
+    
 
 		<!--购票方式-->
-		<input type='hidden' name='TikMod' value='<%=TikMod%>'></input><br/>
+		<input type='hidden' name='TikMod' value='<%=TikMod%>'></input>
 		<!--彩票类型-->
-		<input type='hidden' name='LotTyp' value='<%=LotTyp%>'></input><br/>
+		<input type='hidden' name='LotTyp' value='<%=LotTyp%>'></input>
 		<!--倍数-->
-		<input type='hidden' name='MulTip' value='<%=MulTip%>'></input><br/>
+		<input type='hidden' name='MulTip' value='<%=MulTip%>'></input>
 		<!--扩展号码-->
-		<input type='hidden' name='ExtNum' value='<%=ExtNum%>'></input><br/>
+		<input type='hidden' name='ExtNum' value='<%=ExtNum%>'></input>
 		<!-- 控制流程 -->
-		<input type='hidden' name='workflow' value='A41'></input><br/>
+		<input type='hidden' name='workflow' value='A41'></input>
 		<input type='submit' value='下一步'></input>
 	</form>
 	</content>

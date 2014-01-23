@@ -11,14 +11,13 @@
 <!-- 分行特色业务频道列表 -->
 <?xml version="1.0" encoding="utf-8"?>
 <res>
-  <content>
+  <content> 
     
     <form method='post' action='/GZMBank/SportsTicket/TicketSale2.jsp'>
 <!-- 彩票类型-->
       <label>请选择彩票类型: </label>
       <br/>
-      <input type='radio' name='LotTyp2' value='A' checked>体彩大乐透</input><br/>
-      <input type='radio' name='LotTyp2' value='B'>12选2</input><br/>
+      <input type='radio' name='LotTyp2' value='A' checked>体彩大乐透</input>
       <input type='submit' value='下一步'/>
     </form>
   </content>
