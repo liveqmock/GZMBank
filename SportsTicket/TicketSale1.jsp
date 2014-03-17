@@ -11,7 +11,7 @@
 <!-- 分行特色业务频道列表 -->
 <?xml version="1.0" encoding="utf-8"?>
 <res>
-  <content>
+  <content> 
     
     <form method='post' action='/GZMBank/SportsTicket/TicketSale2.jsp'>
 <!-- 彩票类型-->

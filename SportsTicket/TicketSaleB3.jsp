@@ -14,46 +14,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <res>
 	<content>
-	<label>12选2</label><br/>
-	<%if(!ErrMsg.equals("")){out.println("<label>"+ErrMsg+"</label>");}%>
+	<label>12选2</label>
+	<%
+	if(!ErrMsg.equals(""))
+	{
+	%>
+	
+	<label><%=ErrMsg%></label>
+	<%
+	}
+	%>
     <form method='post' action='/GZMBank/SportsTicket/TicketSaleB4.jsp'>
 
 <!-- 投注号码 -->
 	<label>请选择投注号码(选择个数2~12):</label>
-	<br/>
+	
 
-	<table>
+	
 	<%
 	    for(int i=0; i<2; i++){
 	%>
-	    <tr>
+	    
 	        <%
 	            for(int j=1;j<=6;j++){
 							int tmp = i*6+j;
 	        %>
-	            <td><input type='checkbox' name='LotNum<%=tmp%>' value='<%=this.formatnumber(tmp)%>'></input></td><td><%=tmp%></td>
+	            <input type='checkbox' name='LotNum<%=tmp%>' value='<%=this.formatnumber(tmp)%>'></input>
+	            <label><%=tmp%></label>
 				<%				
 				    }
 				%>
-	    </tr>
+	    
 	<%				
 	}
 	%>
-	</table>
+	
 
 <!-- 倍数 -->
 	<label>请输入倍数(输入范围1~99):</label>
-	<br/>
-	<input type='text' name='MulTip' style="-wap-input-format: 'N'; -wap-input-required: 'true'" maxleng='2'></input><br/>
+	
+	<input type='text' name='MulTip' style="-wap-input-format: 'N'; -wap-input-required: 'true'" maxleng='2'></input>
 
 <!-- 购票方式-->
-	<input type='hidden' name='TikMod' value='01'></input><br/>
+	<input type='hidden' name='TikMod' value='01'></input>
 <!-- 购票方式-->
-	<input type='hidden' name='NotNum' value=''></input><br/>
+	<input type='hidden' name='NotNum' value=''></input>
 <!-- 购票方式-->
-	<input type='hidden' name='LotTyp' value='28'></input><br/>
+	<input type='hidden' name='LotTyp' value='28'></input>
 <!-- 扩展号码 -->
-	<input type='hidden' name='ExtNum' value=''></input><br/>
+	<input type='hidden' name='ExtNum' value=''></input>
 
 	<input type='submit' value='下一步'></input>
     </form>

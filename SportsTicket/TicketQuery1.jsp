@@ -14,8 +14,8 @@
 	<content>
 		
 		<form method='post' action='/GZMBank/SportsTicket/TicketQuery2.jsp'>
-		<label>请输入查询流水号: </label><br/>
-		<input type='text' name='TLogNo' style="-wap-input-format: 'N'; -wap-input-required: 'true'"  maxleng='28'></input><br/>
+		<label>请输入查询流水号: </label>
+		<input type='text' name='TLogNo' style="-wap-input-format: 'N'; -wap-input-required: 'true'"  maxleng='28'></input>
 		<input type='submit' value='下一步'></input>
 		</form>
 	</content>

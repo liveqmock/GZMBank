@@ -6,29 +6,31 @@
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String cdno = request.getHeader("MBK_ACCOUNT");
 	String sjNo = request.getHeader("MBK_MOBILE");
-	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n体育彩票购买步骤3");
+		gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n体育彩票购买步骤3_2");
+	
+	String TikMod = request.getParameter("TikMod");
 
 %>
 <!-- 分行特色业务频道列表 -->
 <?xml version="1.0" encoding="utf-8"?>
 <res>
 	<content>
-	<label>大乐透</label>
+	<label>大乐透</label><br/>
 		
-    <form method='post' action='/GZMBank/SportsTicket/TicketSaleA4.jsp'>
+     <form method='post' action='/GZMBank/SportsTicket/TicketSaleA4.jsp'>
 
-<!-- 购票方式-->
-	<label>请选择购票方式: </label>
-	<br/>
-	<select name="TikMod">
-		<option value='01'  invisible='NotNum_Msg,NotNum' checked>自选</option>
-        <option value='02' visible='NotNum_Msg,NotNum'>机选</option>
-	</select>
+	<%
+		if(TikMod.equals("02"))  //机选	
+		{
+	
+	%>
+	
+	
 
 <!-- 机选部分开始 -->
 <!-- 机选注数-->
 	<label name='NotNum_Msg'>请选择机选注数: </label>
-	
+	<br/>
 	<select name="NotNum">
         <option value='01' checked>1注</option>
         <option value='02'>2注</option>
@@ -38,14 +40,26 @@
 	</select>
 <!-- 机选部分结束 -->
 
+	<%
+		}else {
+	%>
+	<input type='hidden' name='NotNum' value=''></input>
+	<%
+		}
+	%>
+
 <!-- 公共部分开始 -->
 <!-- 倍数 -->
 	<label>请输入倍数: (输入范围1~99)</label>
-	<br/>
+	
 	<input type='text' name='MulTip' style="-wap-input-format: 'N'; -wap-input-required: 'true'" maxleng='2'></input>
 
 <!-- 追加 -->
-	<input type='checkbox' name='add' value='0'>是否追加</input>
+	<input type='checkbox' name='add' value='0'></input>
+	<label>是否追加</label>
+	
+<!-- 机选还是自选-->
+   <input type='hidden' name='TikMod' value='<%=TikMod%>'></input>
 
 <!-- 扩展号码 -->
 	<input type='hidden' name='ExtNum' value=''></input>

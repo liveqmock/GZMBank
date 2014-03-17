@@ -39,85 +39,25 @@
  		String NotNum = MessManTool.getValueByName(message, "NotNum");
  		String TxnAmt = MessManTool.getValueByName(message, "TxnAmt");
  %> 
-		<label>购彩信息如下</label><br/>
-		<table border="1">
-			<!--tr>
-				<td>
-					状态:
-				</td>
-				<td>
-					<%=TRspCd%>
-				</td>
-			</tr-->
-			<tr>
-				<td>
-					期号:
-				</td>
-				<td>
-					<%=TrmCod%>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					单复式类型:
-				</td>
-				<td>
-					<%=new SigDupFormat().NtoC(SigDup)%>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					彩票类型:
-				</td>
-				<td>
-					<%=new LotTypFormat().NtoC(LotTyp)%> 
-				</td>
-			</tr>
-			<tr>
-				<td>
-					购彩流水号:
-				</td>
-				<td>
-					<%=TLogNo2%>
-				</td>
-			</tr>
-			<tr>
-				<td colspan='2'>&nbsp;</td>
-			</tr>
-			<tr>
-				<td colspan='2'>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>
-					投注号码:
-				</td>
-				<td>
-					<%=LotNumFormat.ReturnManyFormatedRecords(LotNum, LotTyp)%> 
-				</td>
-			</tr>
-			<tr>
-				<td colspan='2'>&nbsp;</td>
-			</tr>
-			<tr>
-				<td colspan='2'>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>
-					注数:
-				</td>
-				<td>
-					<%=NotNum%> 
-				</td>
-			</tr>
-			<tr>
-				<td>
-					金额:
-				</td>
-				<td>
-					<%=MoneyUtils.FormatMoney(Double.parseDouble(TxnAmt.trim()) / 100, "###0.00")%> 
-				</td>
-			</tr>
-		</table>
+		<label>购彩信息如下:</label>
+		
+			
+				<label>期号:<%=TrmCod%></label>
+			
+				<label>单复式类型:<%=new SigDupFormat().NtoC(SigDup)%></label>
+		
+					<label>彩票类型:<%=new LotTypFormat().NtoC(LotTyp)%></label> 
+				
+		     <label>购彩流水号:<%=TLogNo2%></label>
+			
+			
+					<label>投注号码:<%=LotNumFormat.ReturnManyFormatedRecords(LotNum, LotTyp)%> </label>
+			
+			
+				<label>注数:<%=NotNum%> </label>
+			
+					<label>金额:<%=MoneyUtils.FormatMoney(Double.parseDouble(TxnAmt.trim()) / 100, "###0.00")%> </label>
+		
 		<label>所有数据以广东省体育彩票发行中心数据为准</label>
 <%
  	}else{

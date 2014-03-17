@@ -54,7 +54,7 @@
 <res>
 	<content>
 <%
-	String sendContext = "|biz_id,29|biz_step_id,3|TXNSRC,MB441|"
+	String sendContext = "|biz_id,29|biz_step_id,3|TXNSRC,MB441"
 						+ "|CrdNo,"  + cdno 
 						+ "|PSWD," + plantPwd //交易密码
  						+ "|TxnAmt," + TxnAmt 
@@ -68,7 +68,7 @@
 						+ "|LotNum," + LotNum 
 						+ "|CntTel," + sjNo
 						+ "|";
-	String sendContext2 = "|biz_id,29|biz_step_id,3|TXNSRC,MB441|"
+	String sendContext2 = "|biz_id,29|biz_step_id,3|TXNSRC,MB441"
 						+ "|CrdNo,"  + cdno 
 //						+ "|PSWD," + plantPwd //交易密码
  						+ "|TxnAmt," + TxnAmt 
@@ -110,38 +110,26 @@
  		MulTip = MessManTool.getValueByName(message, "MulTip");
  		TrmCod = MessManTool.getValueByName(message, "TrmCod");
  %> 
-	 	<h1><%=new LotTypFormat().NtoC(LotTyp)%></h1><br/>
-	 	<label>&nbsp;购买成功</label><br/>
-		<table border="1">
-			<tr>
-				<td>查询流水号:</td>
-				<td><%=LogNo%></td>
-			</tr>
-			<tr>
-				<td>购彩流水号:</td>
-				<td><%=TLogNo%></td>
-			</tr>
-			<tr>
-				<td>注数:</td>
-				<td><%=NotNum%></td>
-			</tr>
-			<tr>
-				<td>投注号码为:</td><td><%=LotNumDis%></td>
-			</tr>
-			<tr>
-				<td>倍数:</td>
-				<td><%=MulTip%></td>
-			</tr>
-			<tr>
-				<td>期号:</td>
-				<td><%=TrmCod%></td>
-			</tr>
-		</table>
+	 	<label><%=new LotTypFormat().NtoC(LotTyp)%></label>
+	 	<label>购买成功</label>
+		
+				<label>查询流水号:<%=LogNo%></label>
+		
+				<label>购彩流水号:<%=TLogNo%></label>
+			
+				<label>注数:<%=NotNum%></label>
+			
+				<label>投注号码为:<%=LotNumDis%></label>
+		
+				<label>倍数:<%=MulTip%></label>
+			
+				<label>期号:<%=TrmCod%></label>
+			
 		<label>所有数据以广东省体育彩票发行中心数据为准</label>
 
-	<form method='post' action='/GZMBank/SportsTicket/TicketDraw1.jsp'>
+	<!--form method='post' action='/GZMBank/SportsTicket/TicketDraw1.jsp'>
 <%
-	Connection connection = null;
+	/*Connection connection = null;
 	Statement st = null;
 	ResultSet rs = null;
 	ConnPool connpool = new ConnPool();
@@ -173,18 +161,18 @@
 		if(connection != null){
 			connection.close();
 		}
-	}
+	}*/
   
 %>
-	</form>
+	</form-->
 <%
  	}else{
  		String RspCod = MessManTool.getValueByName(message, "RspCod");
  		String RspMsg = MessManTool.getValueByName(message, "RspMsg");
  		
- 		out.println("<label>错误码为:"+RspCod+"</label><br/>");
+ 		<label>错误码为:<%=RspCod%></label>
 		if("PD5012".equals(RspCod)){
-			 	out.println("<label>错误原因为:密码错</label><br/>");
+		<label>错误原因为:密码错误。</label>
 		}
 	}
 %>
