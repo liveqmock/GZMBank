@@ -85,7 +85,7 @@
   </channel>
   <channel>
 		<id>441017</id>
-		<title>电费缴纳</title>
+		<title>广州电力</title>
 		<url>/GZMBank/ElectronicBill/BillPayment1.jsp</url>
   </channel>
  

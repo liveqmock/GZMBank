@@ -64,8 +64,7 @@
 				days=Integer.parseInt(vali_days);
 %>
 	      <label>选择:  </label>
-			  <input type='radio' value='<%=tmpstr%>' name='sightContext'></input>
-			  <label><%=((String) map.get("param3")).trim()%></label>
+			  <input type='radio' value='<%=tmpstr%>' name='sightContext'><%=((String) map.get("param3")).trim()%></input>
 				
 				<label>原价:      <%=price1%></label> 
 			    

@@ -44,8 +44,7 @@
 			String tmpstr2 =(String)map.get("param3");
     	gzLog.Write(i+":"+tmpstr);
 %>
-			<input type='radio' value='<%=tmpstr%>' name='sightCode'></input>
-			<label><%=tmpstr2%></label>
+			<input type='radio' value='<%=tmpstr%>' name='sightCode'><%=tmpstr2%></input>
 <%
 		}
 	}
