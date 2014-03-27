@@ -60,7 +60,7 @@ if(strPage == null)//表明如果intPage为null时，将显示第一页数据
 <%//连接数据库
 Connection dbConn = null;
     try {
-        dbConn = DriverManager.getConnection("jdbc:sybase:Tds:182.53.15.211:6600/pbbranchdb?CHARSET=cp936&amp;amp;LANGUAGE=en_US", "miduser", "miduser");
+        dbConn = DriverManager.getConnection("jdbc:sybase:Tds:182.53.4.118:6006/pbbranchdb?CHARSET=cp936&amp;amp;LANGUAGE=en_US", "miduser", "miduser");
     } catch (SQLException ex) {
 
         gzLog.Write("db.connect:" + ex.getMessage());

@@ -11,29 +11,32 @@
 	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n银旅通订票开始");
 %>
 <?xml version="1.0" encoding="utf-8"?>
-<res> <content> 
+<res> 
+	<content> 
 	<div id="ewp_back" class="clear"/>
 	<%
  	//BEGIN 密码解密
-	String sessionId = null;
-	Cookie ckies[] = request.getCookies();
-	if(ckies != null){
-		for(int i=0;i<ckies.length;i++){
-			if(ckies[i].getName().equals("JSESSIONID")){
-		    	sessionId = ckies[i].getValue();
-		    	int idx = sessionId.indexOf(":");
-		    	if(idx != -1){
-		    		sessionId = sessionId.substring(0,idx);
-		   		}
-		    	break;
-		    }
-		}
-	}
-  	String pwd = request.getHeader("password");
-  	java.security.Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
-	String plantPwd = MBSecurityUtil.decryptData(cdno,sessionId,pwd);
-	plantPwd = plantPwd.substring(0,6);
+ 	//更改加密方式此段程序封闭20110419
+	//String sessionId = null;
+	//Cookie ckies[] = request.getCookies();
+	//if(ckies != null){
+	//	for(int i=0;i<ckies.length;i++){
+	//		if(ckies[i].getName().equals("JSESSIONID")){
+	//	    	sessionId = ckies[i].getValue();
+	//	    	int idx = sessionId.indexOf(":");
+	//	    	if(idx != -1){
+	//	    		sessionId = sessionId.substring(0,idx);
+	//	   		}
+	//	    	break;
+	//	    }
+	//	}
+	//}
+  //	String pwd = request.getHeader("password");
+  //	java.security.Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
+	//String plantPwd = MBSecurityUtil.decryptData(cdno,sessionId,pwd);
+	//plantPwd = plantPwd.substring(0,6);
 	//END 密码解密
+	String plantPwd = request.getHeader("password");
 	
  	String sightContext = MessManTool.changeChar(request
  			.getParameter("sightContext"));
@@ -116,82 +119,59 @@
  	String tmp ="";
  	//BEGIN 身份认证
 	String verify = request.getHeader("MBK_VERIFY_RESULT");
-//	if(verify!=null&&verify.equals("P")){
+	if(verify!=null&&verify.equals("P")){
 	    //通过身份认证，向后台发送交易
  		bwResult = midServer.sendMessage(content);
  		     tmp = bwResult.getContext();
  		     gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n接收报文为："+tmp);
-//    }else if(verify.equals("F")){
-//		tmp = "|MGID,000333|display_zone,身份验证不通过|";
-//	}else if(verify.equals("N")){
-//	    tmp = "|MGID,000444|display_zone,身份未验证|";
-//	}else {
-//	    tmp = "|MGID,000555|display_zone,身份验证系统出错|";
-//	}
+    }else if(verify.equals("F")){
+		tmp = "|MGID,000333|display_zone,身份验证不通过|";
+	}else if(verify.equals("N")){
+	    tmp = "|MGID,000444|display_zone,身份未验证|";
+	}else {
+	    tmp = "|MGID,000555|display_zone,身份验证系统出错|";
+	}
 	//END 身份认证
  	String MGID = MessManTool.getValueByName(tmp, "MGID");
  	if ("000000".equals(MGID)) {
  %> 
-  <label> 电子门票订购成功 </label>
+ 
  	<form method='post' action='/GZMBank/yinLvTong/yinLvTongMPYD1.jsp'>
-	<table border="1"> 
-		<tr> 
-			<td>景区各称: </td>
-			<td> <%=tmp8[1]%></td> 
-		</tr> 
-		<tr>
-			<td> 门票名称: </td> 
-			<td> <%=tmp8[3]%> </td> 
-		</tr> 
-		<tr> 
-			<td>定单号: </td> 
-			<td> <%=MessManTool.getValueByName(tmp, "TCUSNM")%> </td> 
-		</tr> 
-		<tr>
-			<td> 会计流水号: </td> 
-			<td> <%=MessManTool.getValueByName(tmp, "TckNo")%></td>
-		</tr>
-		<tr> 
-			<td> 客户手机号码: </td> 
-			<td> <%=tmp8[12]%> </td> 
-		</tr> 
-		<tr> 
-			<td>电子优惠价格: </td> 
-			<td> <%=tmp8[5]%> </td>
-		</tr>
-		<tr> 
-			<td> 门票数量: </td>
-			<td> <%=tmp8[10]%></td> 
-		</tr>
-		<tr> 
-			<td> 本次支付金额: </td> 
-			<td> <%=zjrStr%> </td>
-		</tr>
-		<tr> 
-			<td>使用日期:</td> 
-			<td> <%=tmp8[13]%> </td>
-		</tr> 
-		<tr>
-			<td>门票有效天数: </td> 
-			<td><%=tmp9 %> </td> 
-		</tr> 
-		<tr> 
-			<td> 备注: </td> 
-			<td> <%=temp2%> </td> 
-		</tr>	
-	</table>
-	 温馨提示：
-	<br/>
-	请在使用日期之后的有效天数内使用，以免过期！在景区售票处出示购票银行卡或收到手机二维码短信取票，银旅通客户服务热线4008-960-168 <br />
-	<input type="submit" value="确定" /> </form> <%
-	
+	    <label> 电子门票订购成功 </label>
+			<label>景区各称: <%=tmp8[1]%></label> 
+		
+			<label>门票名称:<%=tmp8[3]%> </label> 
+	 
+			<label>定单号:  <%=MessManTool.getValueByName(tmp, "TCUSNM")%> </label> 
+		
+			<label> 会计流水号: <%=MessManTool.getValueByName(tmp, "TckNo")%></label>
+		 
+			<label> 客户手机号码:  <%=tmp8[12]%> </label> 
+		
+			<label>电子优惠价格: <%=tmp8[5]%> </label>
+		
+			<label> 门票数量:  <%=tmp8[10]%></label> 
+		 
+			<label> 本次支付金额:  <%=zjrStr%> </label>
+		
+			<label>使用日期:<%=tmp8[13]%></label>
+		
+			<label>门票有效天数: <%=tmp9 %> </label> 
+		
+			<label>备注:<%=temp2%></label> 
+		
+	 <label>温馨提示：请在使用日期之后的有效天数内使用，以免过期！在景区售票处出示购票银行卡或收到手机二维码短信取票，银旅通客户服务热线4008-960-168!</label>
+	 <input type="submit" value="确定" /> 
+	</form> 
+	<%
  	} else {
  		String temp = MessManTool.getValueByName(tmp, "display_zone");
 		
  %> 
- 	<%=temp%> 
+ 	<label><%=temp%> </label> 
  <%
  	}
  	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n订票结束");
  %>
-</content> </res>
+</content>
+</res>

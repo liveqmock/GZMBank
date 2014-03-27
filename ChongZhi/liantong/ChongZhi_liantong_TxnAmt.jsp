@@ -22,11 +22,11 @@
 		<form method='post' action='/GZMBank/ChongZhi/liantong/ChongZhi_liantong_Confirm.jsp'>
 			<label>请选择充值金额</label><br/>
 			<select name="TxnAmt">
-				<option value="50">50  元</option>
-				<option value="100">100 元</option>
-				<option value="150">150 元</option>
-				<option value="200">200 元</option>
-				<option value="500">500 元</option>
+				<option value="3000">30  元</option>
+				<option value="5000">50 元</option>
+				<option value="10000">100 元</option>
+				<option value="20000">200 元</option>
+				<option value="50000">500 元</option>
 			</select><br/>
 			
 <%

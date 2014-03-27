@@ -11,6 +11,7 @@
 <%
    String dxButton =  MessManTool.changeChar(request.getParameter("dxButton"));
    String mphone = request.getParameter("mphone");
+   System.out.print("dxButton");
 %>
  
 <?xml version="1.0" encoding="utf-8"?> 

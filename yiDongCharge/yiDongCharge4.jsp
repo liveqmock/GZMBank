@@ -23,8 +23,8 @@
 	<content>
 		<%	
 			//|签约类型|凭证号|账号类型|银行卡号|银行账号名称|证件类型|证件号码|客户姓名|主手机号|签约手机号|签约标记|银行交易密码|
-			String sendContext = "biz_id,32|biz_step_id,2|TXNSRC,MB441|BisTyp,1"+"|ActTyp,"+
-			"|ActNo,"+cdno+"|ActNam,"+"|VchNO,"+"|IdTyp,"+IdTyp+"|IdNo,"+IdNo+"|CusNam,"+cusNam+
+			String sendContext = "biz_id,32|biz_step_id,2|TXNSRC,MB441|BisTyp,1"+"|ActTyp,4"+
+			"|ActNo,"+cdno+"|ActNam,"+cusNam+"|VchNO,"+"|IdTyp,"+IdTyp+"|IdNo,"+IdNo+"|CusNam,"+cusNam+
 			"|MstTel,"+mainNo+"|PINDat,"+plantPwd;
 		
 			gzLog.Write("银行卡号"+cdno+"手机号码"+sjNo+"\n接收报文MESSAGE为：>>>>>>>>sendMessage:  "+sendContext);  //log
@@ -37,9 +37,9 @@
 			gzLog.Write("<<<<<<<<<returnMessage:   "+message);
 			gzLog.Write("银行卡号: "+cdno+"手机号码: "+sjNo+"\n接收报文MESSAGE为：" +message);
 		
-			String RspCod = MessManTool.getValueByName(message, "RspCod");
+			String MGID = MessManTool.getValueByName(message, "MGID");
 			//当返回成功
-			if("000000".equals(RspCod)){
+			if("000000".equals(MGID)){
 		%>
 		
 		<label>解约数据已经成功发送给移动！感谢您的使用。</label>
@@ -51,8 +51,8 @@
 		
 		%>
 		<label>交易出错，错误信息为</label>
-		<br/>	
-                <%=errorReport%>          
+		
+    <label><%=errorReport%></label>          
 		  
 		<%
 				 }

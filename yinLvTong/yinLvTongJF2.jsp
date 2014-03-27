@@ -12,7 +12,7 @@
 	<content>
 <%
 	String ddh = request.getParameter("ddh");
-	String sendContext = "|biz_id,21|biz_step_id,1|Reserve_Code,"
+	String sendContext = "|biz_id,21|biz_step_id,1|TXNSRC,MB441|Reserve_Code,"
 			+ ddh + "|";
 	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n发送报文为："+sendContext);
 	MidServer midServer = new MidServer();
@@ -20,7 +20,7 @@
 	
 	String message = bwResult.getContext();
 	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n接收报文为："+message);
-	//String message = "0394|bocom_mid|biz_id,21|biz_no,00021|biz_step_id,1|display_zone,预定内容： 广之旅调试线路20090510 test <br>服务商： 广之旅国内游总部  <br>总金额： 1.00  <br>已付金额： 0.00  <br>欠费金额： 1.00  <br>|MGID,000000|Reserve_Code,4538477|Product_Name,广之旅调试线路20090510 test|Provide_Name,广之旅国内游总部|Trans_Toal_Amount,00000000000100|Paid_Amount,00000000000000|Arrearage_Amount,00000000000100|";
+	//String message = "0394|bocom_mid|biz_id,21|biz_no,00021|biz_step_id,1|TXNSRC,MB441|display_zone,预定内容： 广之旅调试线路20090510 test <br>服务商： 广之旅国内游总部  <br>总金额： 1.00  <br>已付金额： 0.00  <br>欠费金额： 1.00  <br>|MGID,000000|Reserve_Code,4538477|Product_Name,广之旅调试线路20090510 test|Provide_Name,广之旅国内游总部|Trans_Toal_Amount,00000000000100|Paid_Amount,00000000000000|Arrearage_Amount,00000000000100|";
 	String MGID = MessManTool.getValueByName(message, "MGID");
 	if ("000000".equals(MGID)) {
 %> 
@@ -45,70 +45,28 @@
 		<input type='hidden' name='Trans_Toal_Amount' value="<%=Trans_Toal_Amount%>"/>
 		<input type='hidden' name='Paid_Amount' value="<%=Paid_Amount%>"/>
 		<input type='hidden' name='Arrearage_Amount' value="<%=Arrearage_Amount%>"/>
-		<table border="1">
-			<tr>
-				<td>
-					定单号:
-				</td>
-				<td>
-					<%=Reserve_Code%>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					预定内容:
-				</td>
-				<td>
-					<%=Product_Name%>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					服务商:
-				</td>
-				<td>
-					<%=Provide_Name%>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					总金额:
-				</td>
-				<td>
-					<%=MoneyUtils.FormatMoney(Double.parseDouble(Trans_Toal_Amount.trim()) / 100, "###0.00")%> 
-				</td>
-			</tr>
-			<tr>
-				<td>
-					已付金额:
-				</td>
-				<td>
-					<%=MoneyUtils.FormatMoney(Double.parseDouble(Paid_Amount.trim()) / 100, "###0.00")%>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					欠费金额:
-				</td>
-				<td>
-					<%=MoneyUtils.FormatMoney(Double.parseDouble(Arrearage_Amount.trim()) / 100, "###0.00")%> 
-				</td>
-			</tr>
-		</table>
-		<br/>
+	
+					<label>定单号:<%=Reserve_Code%></label>
+				
+					<label>预定内容:<%=Product_Name%></label>
+			
+					<label>服务商:<%=Provide_Name%></label>
+				
+					<label>总金额:<%=MoneyUtils.FormatMoney(Double.parseDouble(Trans_Toal_Amount.trim()) / 100, "###0.00")%></label> 
+				
+					<label>已付金额:<%=MoneyUtils.FormatMoney(Double.parseDouble(Paid_Amount.trim()) / 100, "###0.00")%></label>
+				
+					<label>欠费金额:<%=MoneyUtils.FormatMoney(Double.parseDouble(Arrearage_Amount.trim()) / 100, "###0.00")%></label>
 		<input type='submit' value='下一步' /> 
 	</form> 
 <%
  	}else if ("482199".equals(MGID)) {
 %>
-		订单号已缴清！
-		<br/> 
-		如有疑问或问题请咨询银旅通客户服务热线：4008-960-168 <%
+		<label>订单号已缴清!如有疑问或问题请咨询银旅通客户服务热线：4008-960-168!</label>
+		<%
 	} else {
 %> 
-		定单查询失败！ 
-		<br/> 
-		如有疑问，请及时与开户银行联系！ 
+		<label>定单查询失败!如有疑问，请及时与开户银行联系!</label> 
 <%
 	}
 %>

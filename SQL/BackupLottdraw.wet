@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WinSQLExportTemplate>
+	<exportType>odbc</exportType>
+	<numTargetFields>5</numTargetFields>
+	<suid>miduser</suid>
+	<spwd encrypted="true">r2NrhGWDIMRACQDvH4BZdIh</spwd>
+	<sdsn>182.53.4.118</sdsn>
+	<tuid/>
+	<tpwd encrypted="true">S74Us354ELX31RhC</tpwd>
+	<tdsn>repair_lott</tdsn>
+	<oTable>lottdraw</oTable>
+	<oOwner/>
+	<sourceSQL><![CDATA[select * from dbo.LOTTDRAW l
+]]></sourceSQL>
+	<targetSQL><![CDATA[insert into lottdraw (`id`, `phoneno`, `drawlevel`, `recvsign`, `no`) values(?, ?, ?, ?, ?)]]></targetSQL>
+	<targetFields>
+		<field>
+			<fieldName>id</fieldName>
+			<transfer>1</transfer>
+		</field>
+		<field>
+			<fieldName>phoneno</fieldName>
+			<transfer>1</transfer>
+		</field>
+		<field>
+			<fieldName>drawlevel</fieldName>
+			<transfer>1</transfer>
+		</field>
+		<field>
+			<fieldName>recvsign</fieldName>
+			<transfer>1</transfer>
+		</field>
+		<field>
+			<fieldName>no</fieldName>
+			<transfer>1</transfer>
+		</field>
+	</targetFields>
+</WinSQLExportTemplate>

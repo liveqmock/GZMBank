@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8"%>
 <%@page pageEncoding="utf-8"%>
 <%request.setCharacterEncoding("utf-8");%>
-<%@ page import="com.viatt.util.*"%>
-<%@ page import="com.gdbocom.util.*" %>
-<%@ page import="com.bocom.mobilebank.security.*"%>
 <%@ page import="com.viatt.util.GzLog" %>
 <%@ page import="java.util.*" %>
-<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.text.*" %>
 
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
@@ -16,7 +13,15 @@
 	gzLog.Write("进入["+uri+"]");
 	
 	//设置需要显示的值和名称,
-	String showKey = "TelNum,充值手机号|TxnAmt,充值金额|ActDat,会计日期|TckNo,银行流水号|TLogNo,联通流水号";	
+	Map showKey = new HashMap();
+	showKey.put("TelNum", "充值手机号");
+	showKey.put("TxnAmt", "充值金额");
+	showKey.put("ActDat", "充值日期");
+	showKey.put("TckNo", "银行流水号");
+	showKey.put("TLogNo", "联通流水号");
+
+	Map keyType = new HashMap();
+	keyType.put("TxnAmt", "BigDecimal");
 
 %>
 <?xml version = "1.0" encoding = "utf-8"?>
@@ -27,15 +32,35 @@
 
 	Map form = request.getParameterMap();
 
-	String[] showKeys = showKey.split("\\|");
-	for(int pairsIndex=0;pairsIndex<showKeys.length;pairsIndex++){
-		String[] keyValue = showKeys[pairsIndex].split(",");
-		if(form.containsKey(keyValue[0])){
-			out.println("<label>"+keyValue[1]+":"+( (String[]) form.get(keyValue[0]) )[0]+"</label><br/>");
+
+	//显示确认值
+	Set keys = showKey.keySet();
+
+	for(Iterator it = keys.iterator(); it.hasNext(); ){
+
+		String key = (String) it.next();
+		String showValue = (String)showKey.get(key);
+		String type = (String)keyType.get(key);
+		
+		if(form.containsKey(key)){
+			String formValue = ( (String[])form.get(key) )[0];
+			String formattedValue = null==type?formValue:getFormattedValue(formValue, type);
+			out.println("<label>"+showValue+":"+formattedValue+"</label><br/>");
 		}else{
-			out.println("<label>"+keyValue[1]+":null</label><br/>");
+			out.println("<label>"+showValue+":null</label><br/>");
 		}
 	}
+
 %>
 	</content>
 </res>
+<%!
+	public String getFormattedValue(String value, String type){
+		if("BigDecimal".equals(type)){
+			return new DecimalFormat("#,###.00").format(Double.parseDouble(value)/100.0);
+		}else{
+			return value;
+		}
+
+	}
+%>

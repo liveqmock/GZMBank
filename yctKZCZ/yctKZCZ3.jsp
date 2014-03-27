@@ -19,18 +19,14 @@
 （以上文件内容详情请咨询羊城通有限公司）。</label>
        
              
-         <input type='hidden'  name='param1' value='<%=sParam%>'></input>
-         <table>
-            <tr>
-              <td>  
-                 <input type='button' name='cancel' value='不同意'/>
-              </td>
-              <td>
-                 &nbsp;
-              </td>
-              <td>
-                 <input type='submit' value='同意'/>
-              </td>               
+      <input type='hidden'  name='param1' value='<%=sParam%>'></input>
+      
+      <input type='submit' value='同意'></input>
+
+	    <input type='button' name='cancel' value='不同意'></input><br/>
+	    
+	    
+
 		</form>
 
 	</content>

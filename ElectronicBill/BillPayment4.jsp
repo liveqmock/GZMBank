@@ -34,14 +34,14 @@
 	<%	
 		//在这里开始拼装即将发往服务器的一串报文。 注意有其固定格式
 		
-		String sendContext = "biz_id,31|biz_step_id,2|ActNo,"+ActNo+"|TCusId,"+TCusId+"|TCusNm,"+UsrNam+"|LChkTm,"+LChkTm
+		String sendContext = "biz_id,31|biz_step_id,2|TXNSRC,MB441|ActNo,"+ActNo+"|TCusId,"+TCusId+"|TCusNm,"+UsrNam+"|LChkTm,"+LChkTm
 		+"|DptTyp,"+DptTyp+"|TxnAmt,"+TxnAmt+"|Fee,"+""+"|VchTyp,"+"007"+"|VchNo,"+""+"|BilDat,"+""+"|PSWD,"+plantPwd+"|";
 		
-		String sendContextNoPSWD = "biz_id,31|biz_step_id,2|ActNo,"+ActNo+"|TCusId,"+TCusId+"|TCusNm,"+UsrNam+"|LChkTm,"+LChkTm
+		String sendContextNoPSWD = "biz_id,31|biz_step_id,2|TXNSRC,MB441|ActNo,"+ActNo+"|TCusId,"+TCusId+"|TCusNm,"+UsrNam+"|LChkTm,"+LChkTm
 		+"|DptTyp,"+DptTyp+"|TxnAmt,"+TxnAmt+"|Fee,"+""+"|VchTyp,"+"007"+"|VchNo,"+""+"|BilDat,"+""+"|PSWD,******|";
 		
 		//这是在做测试的时候 要将密码做一下修改。 不做加密等操作，实际使用要用上卖弄的一段代码
-		//String sendContext = "biz_id,31|biz_step_id,2|ActNo,"+ActNo+"|TCusId,"+TCusId+"|TCusNm,"+UsrNam+"|LChkTm,"+LChkTm
+		//String sendContext = "biz_id,31|biz_step_id,2||TXNSRC,MB441ActNo,"+ActNo+"|TCusId,"+TCusId+"|TCusNm,"+UsrNam+"|LChkTm,"+LChkTm
 		//+"|DptTyp,"+DptTyp+"|TxnAmt,"+TxnAmt+"|Fee,"+""+"|VchTyp,"+""+"|VchNo,"+""+"|BilDat,"+""+"|PSWD,"+"1234567890"+"|";
 		
 		gzLog.Write("这是电卡缴费=====最后阶段=====STEP4"+"\n上传的报文组装完毕，内容如下："+sendContextNoPSWD);  //log
@@ -50,8 +50,6 @@
 		MidServer midServer = new MidServer();
 		BwResult bwResult = new BwResult();
 		
-	//BEGIN 身份认证
-	//
 		String verify = request.getHeader("MBK_VERIFY_RESULT");
 	  	String info = "";
 		if(verify!=null&&verify.equals("P")){
@@ -71,8 +69,8 @@
 		
 		gzLog.Write("这是电卡缴费=====最后阶段=====STEP4"+"\n服务器下行返回的报文内容："+info);
 		
-		String MGID = MessManTool.getValueByName(info, "RspCod");	
-		gzLog.Write("这里是缴费Step4报文返回的第一站，检查RspCod:  "+MGID);
+		String MGID = MessManTool.getValueByName(info, "MGID");	
+		gzLog.Write("校验码MGID:  "+MGID);
 		
 		//如果返回正确
 		if("000000".equals(MGID)){
@@ -80,31 +78,15 @@
 			String tLogNo = MessManTool.getValueByName(info, "TLogNo");
 			String tckNo = MessManTool.getValueByName(info, "TckNo");	
 			String tActDt = MessManTool.getValueByName(info, "TActDt");	
-			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		  String today = df.format(new Date());
 		
 	 %>	 
-			<label>
-				交易成功！感谢您的使用。
-			</label>
-		    <br/>
-		    <br/>
-		    
-		    <table border='1'>
-		    	<tr>
-		        	<td>供电公司系统参考号</td>
-		        	<td><%=tLogNo%></td>
-		        </tr>
-		        <tr>
-		        	<td>会计业务流水号</td>
-		        	<td><%=tckNo%></td>
-		        </tr>
-		        <tr>
-		        	<td>缴费日期和时间</td>
-		        	<td><%=today%></td>
-		        </tr>
-		    </table>
-		    <br/>    
+			<label>交易成功！感谢您的使用.</label>
+		  <label>供电公司系统参考号:<%=tLogNo%></label>
+		  <label>会计业务流水号:<%=tckNo%></label>
+		  <label>缴费日期和时间:<%=today%></label>
+	
 		
 	<%
 		} else {
@@ -112,15 +94,12 @@
  	      String RspMsg = MessManTool.getValueByName(info, "RspMsg"); 
  	      
  	      gzLog.Write("****错误码:"+RspCod+"错误信息"+RspMsg);
- 	      
- 	      out.println("<label>错误码为:"+RspCod+"</label><br/>");
-		  if("PD5012".equals(RspCod)){
-			 	out.println("<label>错误原因为:密码错误</label><br/>");
-		}
+ 	       %> 
+ 	      <label>交易失败!</label>
+ 	      <label>错误码为:<%=RspCod%></label>
+ 	      <label>错误信息:<%=RspMsg%></label>
+ 	      <%
  	}
-    %> 
-		
-    <%
 	gzLog.Write("电力缴费完毕！！！！！");
     %>	
 	</content>

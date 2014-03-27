@@ -69,8 +69,8 @@
  		MulTip = MessManTool.getValueByName(message, "MulTip");
  		String TrmCod = MessManTool.getValueByName(message, "TrmCod");
  %> 
- 	<label><%=new LotTypFormat().NtoC(LotTyp)%></label><br/>
- 	<label>&nbsp;请确认购彩信息</label><br/>
+ 	<label><%=new LotTypFormat().NtoC(LotTyp)%></label>
+ 	<label>请确认购彩信息</label>
 	
 			<label>注数:<%=NotNum%></label>
 	

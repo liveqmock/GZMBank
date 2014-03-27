@@ -28,15 +28,8 @@
 			gzLog.Write("这是电力缴费的STPE3" + "=======即将缴纳的金额是" + strTxnAmt);
 		%>
 		<form method='post' action='/GZMBank/ElectronicBill/BillPayment4.jsp'>
-			<label>
-				您的应缴金额为：
-			</label>
-			<br/>
-			<%=displayTxnAmt%>
-			<br/>
-			<label>
-				请输入你的银行卡密码:
-			</label>
+			<label>您的应缴金额为：<%=displayTxnAmt%></label>
+			<label>请输入你的银行卡密码:</label>
 		<input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
 		<input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input>
 		

@@ -60,6 +60,7 @@
 	
 <!-- 机选还是自选-->
    <input type='hidden' name='TikMod' value='<%=TikMod%>'></input>
+   
 
 <!-- 扩展号码 -->
 	<input type='hidden' name='ExtNum' value=''></input>

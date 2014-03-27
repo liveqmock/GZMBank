@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8"%>
 <%@ page import="com.viatt.util.*"%>
-<%@ page import="java.util.*"%>
+
+
 <%
 	  GzLog gzLog = new GzLog("c:/gzLog_sj");
 	  String cdno = MessManTool.changeChar(request.getHeader("MBK_ACCOUNT"));
@@ -18,7 +19,7 @@
       //System.out.println("羊城通自动充值.....");
       String    tmpstr      = "";
       String    sCDNO       = MessManTool.changeChar(request.getHeader("MBK_ACCOUNT"));
-      String    sendContext = "biz_id,25|i_biz_step_id,1|CDNO,"+sCDNO+"|";
+      String    sendContext = "biz_id,25|i_biz_step_id,1|TXNSRC,MB441|CDNO,"+sCDNO+"|";
       MidServer midServer   = new MidServer();
       BwResult  bwResult    = midServer.sendMessage(sendContext);
       String    recvContext = bwResult.getContext();
@@ -35,13 +36,12 @@
         int    iCurrpage  = Integer.parseInt(sCurrpage1);
     %>		
 		
-		<table border="1">
-			<tr>
-				<td> 选择 </td>
-				<td> 姓名 </td>
-				<td> 羊城通卡号 </td>
-				<td> 签约日期 </td>
-			</tr>
+		
+				<label> 选择 </label>
+				<label> 姓名 </label>
+				<label> 羊城通卡号 </label>
+				<label> 签约日期 </label>
+		
 	<%
 	      for (int i = 0; i < total; i++) {
 			    if ((i >= (iCurrpage - 1) * pageSize)
@@ -79,18 +79,18 @@ System.out.println("param23:"+((String) map.get("param23")).trim());
 
 
 	%>
-			<tr>
-				<td> <input type="radio" value="<%=tmpstr%>" name="sightContext"/> </td>
-				<td> <%=((String) map.get("param15")).trim()%> </td>
-				<td> <%=((String) map.get("param22")).trim()%> </td>
-				<td> <%=((String) map.get("param10")).trim().substring(0,4)+"年"+((String) map.get("param10")).trim().substring(4,6)+"月"+((String) map.get("param10")).trim().substring(6,8)+"日"%> </td>
-			</tr>
+			
+				<input type="radio" value="<%=tmpstr%>" name="sightContext"/> 
+				<label> <%=((String) map.get("param15")).trim()%> </label>
+				<label> <%=((String) map.get("param22")).trim()%> </label>
+				<label> <%=((String) map.get("param10")).trim().substring(0,4)+"年"+((String) map.get("param10")).trim().substring(4,6)+"月"+((String) map.get("param10")).trim().substring(6,8)+"日"%> </label>
+			
 
     <%
           }
         }
     %>
-    </table>
+   
     <%
       if (total==4) { 
     %>

@@ -11,8 +11,10 @@
 <%
    String dxButton =  MessManTool.changeChar(request.getParameter("dxButton"));
    String mphone = request.getParameter("mphone");
+
 %>
- <%  ConnDXPT dxpt = new ConnDXPT();
+ <%  System.out.print("dxButton");
+ ConnDXPT dxpt = new ConnDXPT();
 	String rt = dxpt.sendMessage(dxButton,mphone,cdno);	%>
 <?xml version="1.0" encoding="utf-8"?> 
 <res>

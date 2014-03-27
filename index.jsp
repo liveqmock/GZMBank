@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/xml; charset=UTF-8" %>
+<%@ page language="java" contentType="text/xml; charset=UTF-8" %>
 <!-- 分行特色业务频道列表 -->
 <%
 	System.out.println("MBK_ACCOUNT:"+request.getHeader("MBK_ACCOUNT"));
@@ -13,6 +13,42 @@
 	//System.out.println("id："+session.getAttribute("id"));
 %>
 <res>
+	
+  <!--channel>
+      <id>441015</id>
+      <title>我要抽奖</title>
+      <url>/GZMBank/lottdraw/lottdraw1.jsp</url>
+  </channel-->
+ 
+   
+  
+  <channel>
+      <id>441013</id>
+      <title>新客户0元抽奖</title>
+      <url>/GZMBank/lottdraw/lottdraw_new1.jsp</url>
+  </channel>
+  
+ <channel>
+      <id>441016</id>
+      <title>老客户0元抽奖</title>
+      <url>/GZMBank/lottdraw/lottdraw_old1.jsp</url>
+  </channel>
+  
+  <channel>
+      <id>441025</id>
+      <title>缴费一站通</title>
+      <url>/GZMBank/SignAtOne/Gds_Pub_Agree.jsp</url>
+  </channel>
+ <channel>
+		<id>441021</id>
+		<title>广东移动随心充</title>
+		<url>/GZMBank/yiDongCharge/yiDongCharge0.jsp</url>
+  </channel>
+  <channel>
+      <id>441010</id>
+      <title>话费充值</title>
+      <url>/GZMBank/ChongZhi/ChongZhi1.jsp</url>
+  </channel>
   <channel>
       <id>441001</id>
       <title>银旅通电子门票</title>
@@ -30,37 +66,27 @@
   </channel>
   <channel>
       <id>441004</id>
-      <title>营业网点搜索</title>
-      <url>/GZMBank/siteSearch/siteSearch1.jsp</url>
+      <title>交费易</title>
+      <url>/GZMBank/JiaoFei/JiaoFei1.jsp</url>
   </channel>
-  <channel>
-      <id>441005</id>
-      <title>移动缴费</title>
-      <url>/GZMBank/txYiDong/yiDongJF1.jsp</url>
-  </channel>
-  <channel>
-      <id>441006</id>
-      <title>电信缴费</title>
-      <url>/GZMBank/txDianXin/txDianXin1.jsp</url>
-  </channel>
-   <channel>
-      <id>441007</id>
-      <title>联通缴费</title>
-      <url>/GZMBank/txLTong/LTongJF1.jsp</url>
-  </channel>  
   <channel>
       <id>441008</id>
       <title>购买体育彩票</title>
       <url>/GZMBank/SportsTicket/TicketSale1.jsp</url>
+      <!--
+      因为体彩的平台升级，所以暂停使用手机银行的体彩功能
+      <url>/GZMBank/SportsTicket/pause.jsp</url>
+      -->
   </channel>
   <channel>
       <id>441009</id>
       <title>查询体彩投注情况</title>
       <url>/GZMBank/SportsTicket/TicketQuery1.jsp</url>
   </channel>
-  <!--channel>
-      <id>441010</id>
-      <title>测试勿入</title>
-      <url>/GZMBank/Test/kkk.jsp</url>
-  </channel-->
+  <channel>
+		<id>441017</id>
+		<title>电费缴纳</title>
+		<url>/GZMBank/ElectronicBill/BillPayment1.jsp</url>
+  </channel>
+ 
 </res>

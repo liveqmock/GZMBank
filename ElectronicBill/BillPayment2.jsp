@@ -29,7 +29,7 @@
 	<content>
 	<% 		
 		//拼装上传报文
-		String sendContext = "biz_id,31|biz_step_id,1|CDNO,"+cdno+"|TCusId,"+tCusId+"|LChkTm,"+lChkTm+"|";
+		String sendContext = "biz_id,31|biz_step_id,1|TXNSRC,MB441|CDNO,"+cdno+"|TCusId,"+tCusId+"|LChkTm,"+lChkTm+"|";
 		
 		gzLog.Write("银行卡号"+cdno+"手机号码"+sjNo+"\n接收报文MESSAGE为："+sendContext);  //log
 		
@@ -64,25 +64,12 @@
 			<input type='hidden' name='TCusId' value="<%=tCusId%>"/>
 			<input type='hidden' name='LChkTm' value="<%=lChkTm%>"/>
 			
-			<table border = '1'>
-		        <tr>
-		        	<td>缴费月份</td>
-		        	<td><%=displayTime%></td>
-		        </tr>
-		        <tr>
-		        	<td>应缴金额</td>
-		        	<td><%=displayTxnAmt%></td>
-		        </tr>
-		         <tr>
-		        	<td>用户姓名</td>
-		        	<td><%=UsrNam%></td>
-		        </tr>
-		        <tr>
-		        	<td>用电地址</td>
-		        	<td><%=UsrAdd%></td>
-		        </tr>
-			</table>
-			<br/>
+		          <label>客户编号:<%=tCusId%></label>
+		        	<label>缴费月份:<%=displayTime%></label>
+		        	<label>应缴金额:<%=displayTxnAmt%></label>
+		          <label>用户姓名:<%=UsrNam%></label>
+		        	<label>用电地址:<%=UsrAdd%></label>
+		       
 			
 			<input type='submit' value='下一步' />			
 		</form>
@@ -90,11 +77,9 @@
 	<%	
     }else{
 	     String errorReport = MessManTool.getValueByName(message, "RspMsg");
-	     System.out.println("错误信息是："+errorReport );
+	     gzLog.Write("错误信息是："+errorReport );
     %>
-    <lable>查询错误，错误信息为：</lable>
-    <br/>
-         <%=errorReport%>
+    <lable>查询错误，错误信息为： <%=errorReport%></lable>   
     <%
          }
     %>

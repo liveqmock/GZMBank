@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8"%>
 <%@ page import="com.viatt.util.*"%>
 <%@ page import="java.util.*"%>
-<%@ page import="com.viatt.util.*"%>
 <%@ page import="com.bocom.mobilebank.security.*"%>
 <%@ page import="com.viatt.util.GzLog" %>
 <%
@@ -11,16 +10,20 @@
 %>
 <%
 	String sightCode = MessManTool.changeChar(request.getParameter("sightCode"));
+	
 	String tmp[] = sightCode.split("#:>");
 	sightCode = tmp[0];
 	String sightName = tmp[1];
 	List list = new ArrayList();
-	String content = "biz_id,21|i_biz_step_id,4|Provider_Code," + sightCode + "|txncnl,MOB|";
-	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n发送报文为："+content);
+	String content = "biz_id,21|i_biz_step_id,4|Provider_Code,"+sightCode+"|txncnl,MB441|TXNSRC,MB441|";
+	gzLog.Write("sightCocd:"+sightCode);
+	gzLog.Write(content);
+	//gzLog.Write("卡号："+cdno+"手机号："+sjNo+"发送报文为："+content);
 	MidServer midServer = new MidServer();
 	BwResult bwResult = midServer.sendMessage(content);
 	String tmp1 = bwResult.getContext();
-	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n接收报文为："+tmp1);
+	gzLog.Write(tmp1);
+	//gzLog.Write("卡号："+cdno+"手机号："+sjNo+"接收报文为："+tmp1);
 	MessManTool messManTool = new MessManTool();
 	list = messManTool.yinLvTongGetResult2(tmp1);
 	int total = list.size();
@@ -32,10 +35,7 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <res> 
 	<content>
-	<div>
 		<form method='post' action='/GZMBank/yinLvTong/yinLvTongMPYD3.jsp'>
-		<table border="1">
-			<tr><td>选择</td><td>门票名称</td><td>原价</td><td>优惠价</td><td>门票使用日期</td></tr>
 <%
 	for (int i = 0; i < total; i++) {
 			if ((i >= (currPage - 1) * pageSize)
@@ -55,13 +55,28 @@
 						+"#:>"+((String) map.get("param8")).trim()//有效日期8
 						+"#:>"+((String) map.get("param9")).trim()+"TheEnd";//备注9
 				
+				
+				String vali_days = ((String) map.get("param8")).trim();
+				int days =0;
+				days=Integer.parseInt(vali_days);
 %>
-			<tr><td><input type="radio" value="<%=tmpstr%>" name="sightContext"/></td><td><%=((String) map.get("param3")).trim()%></td><td><%=price1%></td><td><%=price2%></td><td><%=((String) map.get("param6")).trim()+"到"+((String) map.get("param7")).trim()%></td></tr>
+	      <label>选择:  </label>
+			  <input type='radio' value='<%=tmpstr%>' name='sightContext'></input>
+			  <label><%=((String) map.get("param3")).trim()%></label>
+				
+				<label>原价:      <%=price1%></label> 
+			    
+				
+				<label>优惠价:    <%=price2%></label> 
+				
+				<label>有效天数:  <%=days%></label> 
+				
+
 <%
 		}
 	}
 %>
-		</table>
+
 		
 <%
 	double d = total * 1.0 / pageSize;
@@ -92,7 +107,6 @@
 %>
 		<input type="submit" value="提交"/>
 		</form>
-		</div>
 	</content>
 	
 </res>

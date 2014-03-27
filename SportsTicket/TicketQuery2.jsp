@@ -51,12 +51,12 @@
 		     <label>购彩流水号:<%=TLogNo2%></label>
 			
 			
-					<label>投注号码:<%=LotNumFormat.ReturnManyFormatedRecords(LotNum, LotTyp)%> </label>
+					<label>投注号码:<%=LotNumFormat.ReturnManyFormatedRecords(LotNum, LotTyp)%></label>
 			
 			
 				<label>注数:<%=NotNum%> </label>
 			
-					<label>金额:<%=MoneyUtils.FormatMoney(Double.parseDouble(TxnAmt.trim()) / 100, "###0.00")%> </label>
+					<label>金额:<%=MoneyUtils.FormatMoney(Double.parseDouble(TxnAmt.trim()) / 100, "###0.00")%></label>
 		
 		<label>所有数据以广东省体育彩票发行中心数据为准</label>
 <%

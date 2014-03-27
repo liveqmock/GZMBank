@@ -10,39 +10,40 @@
 <res>
 	<content>
        <form method='post' action='/GZMBank/yctKZCZ/yctKZCZ6.jsp'>
-       <h4>签约信息确认</h4>
+       <label>签约信息确认</label>
        
-       <table>
-          <tr>
-             <td>用户姓名:</td>    <td><%=sInfo[0].trim()%></td>
-          </tr>
-          <tr>
-             <td>身份证号码:</td>  <td><%=sInfo[1].trim()%></td>
-          </tr>
-          <tr>
-             <td>性别:</td>        <td><%=sInfo[2].trim().equals("0")?"男":"女"%></td>
-          </tr>
-          <tr>
-             <td>羊城通卡号:</td>  <td><%=sInfo[3].trim()%></td>
-          </tr>
-       </table>
        
-		   <h4>请输入交易密码:</h4>
-       <br/>
+             <label>用户姓名:<%=sInfo[0].trim()%></label>
+         
+             <label>身份证号码:<%=sInfo[1].trim()%></label>
+          
+             <label>性别:<%=sInfo[2].trim().equals("0")?"男":"女"%></label>
+          
+             <label>羊城通卡号:<%=sInfo[3].trim()%></label>
+       
+		   <label>请输入交易密码:</label>
        
        <input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
-       <input type='hidden' name='MBK_SECURITY_PASSWORD'  value='password'></input>
+       <input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input>
+       <%
+        //更改加密方式此段程序封闭20110419
+       //<input type='hidden' name='MBK_SECURITY_PASSWORD'  value='password'></input>
+       %>
        <input type='hidden' name='param2' value='<%=sParam2%>'></input>
-       <table>
-          <tr>
-             <td>
-               <input type="submit" value="确定"/>
-             </td>
-             <td>
-                <input type='button' name='cancel' value="取消"/>
-             </td>
-          </tr>
-       </table>
+       <% //iphone
+       //<table>
+       //   <tr>
+       //      <td>
+       //        <input type="submit" value="确定"/>
+       //      </td>
+       //      <td>
+       //         <input type='button' name='cancel' value="取消"/>
+       //      </td>
+       //   </tr>
+       //</table>
+       %>
+       <input type="submit" value="确定"/>
+       <input type='button' name='cancel' value="取消"/>
        </form>
 
 	</content>

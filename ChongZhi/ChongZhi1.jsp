@@ -16,12 +16,11 @@
 		<form method='post' action='/GZMBank/ChongZhi/ChongZhi2.jsp'>
 			<label>请选择充值业务: </label>
 			<br/>
-			<label>(其中包含 移动、电信、联通)</label>
+			<label>(其中包含 移动、电信)</label>
 			<select name="optType">
 				<option value="0">移动充值</option>
 				<option value="1">电信充值</option>
-				<option value="2">联通充值</option>
-			</select>
+				</select>
 			<br/>			
 		    <br/>
 			<br/>

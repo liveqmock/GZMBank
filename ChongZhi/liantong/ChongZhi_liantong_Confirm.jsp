@@ -6,6 +6,7 @@
 <%@ page import="com.bocom.mobilebank.security.*"%>
 <%@ page import="com.viatt.util.GzLog" %>
 <%@ page import="java.util.*" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 
 <%
@@ -16,7 +17,16 @@
 	gzLog.Write("进入["+uri+"]");
 	
 	//设置需要显示的值和名称,
-	String showKey = "TelNum,充值手机号|TxnAmt,充值金额";	
+	Map showKey = new HashMap();
+	showKey.put("TelNum", "充值手机号");
+	showKey.put("TxnAmt", "充值金额");
+
+	Map keyType = new HashMap();
+	keyType.put("TelNum", "String");
+	keyType.put("TxnAmt", "BigDecimal");
+
+	//备注
+	String remark = "请仔细核对充值手机号码的准确性，如因客户输入错误导致充值失败的，将不予退还充值金额";
 %>
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
@@ -36,13 +46,20 @@
 	}
 
 	//显示确认值
-	String[] showKeys = showKey.split("\\|");
-	for(int pairsIndex=0;pairsIndex<showKeys.length;pairsIndex++){
-		String[] keyValue = showKeys[pairsIndex].split(",");
-		if(form.containsKey(keyValue[0])){
-			out.println("<label>"+keyValue[1]+":"+( (String[]) form.get(keyValue[0]) )[0]+"</label><br/>");
+	Set keys = showKey.keySet();
+
+	for(Iterator it = keys.iterator(); it.hasNext(); ){
+
+		String key = (String) it.next();
+		String showValue = (String)showKey.get(key);
+		String type = (String)keyType.get(key);
+		
+		if(form.containsKey(key)){
+			String formValue = ( (String[])form.get(key) )[0];
+			String formattedValue = null==type?formValue:getFormattedValue(formValue, type);
+			out.println("<label>"+showValue+":"+formattedValue+"</label><br/>");
 		}else{
-			out.println("<label>"+keyValue[1]+":null</label><br/>");
+			out.println("<label>"+showValue+":null</label><br/>");
 		}
 	}
 
@@ -55,5 +72,16 @@
 
 			<input type='submit' value='确定'/><br/>
 		</form>
+		<label><%=remark%></label>
 	</content>
 </res>
+<%!
+	public String getFormattedValue(String value, String type){
+		if("BigDecimal".equals(type)){
+			return new DecimalFormat("#,###.00").format(Double.parseDouble(value)/100.0);
+		}else{
+			return value;
+		}
+
+	}
+%>

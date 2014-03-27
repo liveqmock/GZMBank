@@ -41,7 +41,7 @@
 		<%	
 			//|签约类型|凭证号|账号类型|银行卡号|银行账号名称|证件类型|证件号码|客户姓名|主手机号|签约手机号|签约标记|银行交易密码|
 			String sendContext = "biz_id,32|biz_step_id,1|TXNSRC,MB441|SigTyp,"+signType+
-								 "|VchNO,"+"|ActTyp,4"+"|ActNo,"+cdno+"|ActNam,"+"|IdTyp,"+IdTyp+
+								 "|VchNO,"+"|ActTyp,4"+"|ActNo,"+cdno+"|ActNam,"+cusNam+"|IdTyp,"+IdTyp+
 								 "|IdNo,"+IdNo+"|CusNam,"+cusNam+"|MstTel,"+mainNo+
 								 "|SigTel,"+signNo+"|SigFlg,"+signFlg+"|PINDat,"+plantPwd;
 		
@@ -60,12 +60,8 @@
 			if("000000".equals(MGID)){
 		%>
 		
-		<label>签约信息已经成功录入！感谢您的使用。</label>
-		<br/>
-		<br/>
-		<label>请您保持签约手机通迅的畅通，该签约信息最后以移动公司发送的确认短信为准。如果您在48小时内未完成移动公司签约短信的确认，交通银行将自动取消您本次签约信息。</label>
-
-        <a href='/GZMBank/SignAtOne/Gds_Pub_Agree.jsp'>返回</a>
+		<label> 签约信息已经成功录入！感谢您的使用。</label>
+    <label> 请您保持签约手机通迅的畅通，该签约信息最后以移动公司发送的确认短信为准。如果您在48小时内未完成移动公司签约短信的确认，交通银行将自动取消您本次签约信息。</label>
 		
 		<%
 			}else{
@@ -73,9 +69,9 @@
 				gzLog.Write("错误信息是："+errorReport );
 		
 		%>
-		<label>交易出错，错误信息为</label>
-		<br/>	
-                <%=errorReport%>          
+		<label>交易出错，错误信息为:<%=errorReport%></label>
+	
+                          
 		  
 		<%
 				 }

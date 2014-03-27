@@ -69,7 +69,7 @@
 	<%	
         //获取查询回来去得到的值
 
-	  String IdTyp = MessManTool.getValueByName(message, "IdTyp");
+	    String IdTyp = MessManTool.getValueByName(message, "IdTyp");
 		String IdNo  = MessManTool.getValueByName(message, "IdNo");
 		String ActNam= MessManTool.getValueByName(message, "ActNam");
 		String ActSts= MessManTool.getValueByName(message, "ActSts");
@@ -88,7 +88,7 @@
 			case 18: IdTypeName="武警身份证"; break;
 			case 17: IdTypeName="军人身份证"; break;
 			case 21: IdTypeName="其他"; break;
-     	default : IdTypeName="ELSE";
+     		default : IdTypeName="ELSE";
 			
 		}
 		
@@ -105,35 +105,17 @@
 			<input type='hidden' name='signType' value="<%=signType%>"/> 
 			<input type='hidden' name='mainNo'   value="<%=mainNo%>"/> 
 			<input type='hidden' name='signNo'   value="<%=signNo%>"/> 
-			
-			
-			<table border = '1'>
-		        <tr>
-		        	<td>签约类型</td>
-		        	<td><%=signTypeName%></td>
-		        </tr>
-		        <tr>
-		        	<td>证件类型</td>
-		        	<td><%=IdTypeName%></td>
-		        </tr>
-		         <tr>
-		        	<td>客户姓名</td>
-		        	<td><%=ActNam%></td>
-		        </tr>
-		        <tr>
-		        	<td>证件号码</td>
-		        	<td><%=IdNo%></td>
-		        </tr>
-				<tr>
-		        	<td>主手机号</td>
-		        	<td><%=mainNo%></td>
-		        </tr>
-				<tr>
-		        	<td>签约手机号</td>
-		        	<td><%=signNo%></td>
-		        </tr>				
-			</table>
-			<br/>
+		        	<label>签约类型:<%=signTypeName%></label>
+		        	<label>证件类型:<%=IdTypeName%></label>
+		        
+		        	<label>客户姓名:<%=ActNam%></label>
+		        
+		        	<label>证件号码:<%=IdNo%></label>
+		        
+		        	<label>主手机号:<%=mainNo%></label>
+		        
+		        	<label>签约手机号:<%=signNo%></label>
+		       
 			
 			<label>交易密码</label>
 			<br/>
@@ -156,37 +138,23 @@
 			<input type='hidden' name='mainNo'   value="<%=mainNo%>"/>
 			
 			
-			<table border = '1'>
-		        <tr>
-		        	<td>签约类型</td>
-		        	<td><%=signTypeName%></td>
-		        </tr>
-		        <tr>
-		        	<td>证件类型</td>
-		        	<td><%=IdTypeName%></td>
-		        </tr>
-		         <tr>
-		        	<td>客户姓名</td>
-		        	<td><%=ActNam%></td>
-		        </tr>
-		        <tr>
-		        	<td>证件号码</td>
-		        	<td><%=IdNo%></td>
-		        </tr>
-				<tr>
-		        	<td>签约主手机号</td>
-		        	<td><%=mainNo%></td>
-		        </tr>
-				
-			</table>
-			<br/>
+			
+		        	<label>签约类型:<%=signTypeName%></label>
+		       
+		        	<label>证件类型:<%=IdTypeName%></label>
+		       
+		        	<label>客户姓名:<<%=ActNam%></label>
+		      
+		        	<label>证件号码:<%=IdNo%></label>
+		       
+		        	<label>签约主手机号:<%=mainNo%></label>
+		       
 			
 			<label>交易密码</label>
-			<br/>
+			
 			<input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
 			<input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input>
-			<br/>			
-			<br/>
+			
 			<input type='submit' value='解约'/>		
 		</form>		
     <%
@@ -200,8 +168,7 @@
 	     System.out.println("错误信息是："+errorReport );
     %>
     <label>查询信息出错，错误信息为</label>
-    <br/>
-         <%=errorReport%>
+    <label><%=errorReport%></label>
     <%
          }
     %>
