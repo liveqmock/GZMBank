@@ -38,7 +38,7 @@
 
     <label>请选择签约业务的类型</label><br />
 
-    <a href='/GZMBank/SignAtOne/Gds_Ele_Note.jsp'>电费划扣</a>
+    <a href='/GZMBank/SignAtOne/Gds_Ele_Note.jsp'>电费签约</a>
 
 <form method='post'
     action='/GZMBank/SignAtOne/Gds_GdsBIds'>
