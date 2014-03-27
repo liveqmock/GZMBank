@@ -78,8 +78,8 @@
 		if("01".equals(TikMod)){
 %>
 	
-			<label>投注号码为:<%=LotNumDis%></label>
-		
+			<label>投注号码为:</label>
+		  <%=LotNumDis%>
 <%
 		}
 %>
@@ -124,8 +124,10 @@
  		String RspCod = MessManTool.getValueByName(message, "RspCod");
  		String RspMsg = MessManTool.getValueByName(message, "RspMsg");
 %>
-		<label>错误码为:<%=RspCod%></label>
-		<label>错误原因为:<%=RspMsg%></label>
+		<form method='post' action='/GZMBank/SportsTicket/TicketSale1.jsp'>		
+			<label>错误码为:<%=RspCod%></label>
+			<label>错误原因为:<%=RspMsg%></label>
+		</form>
 <%
 	}
 %>

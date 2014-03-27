@@ -28,8 +28,6 @@
 	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n接收报文为："+message);
 	String MGID = MessManTool.getValueByName(message, "MGID");
 	if ("000000".equals(MGID)) {
-%> 
-<%
 		String TRspCd = MessManTool.getValueByName(message, "TRspCd");
  		String TrmCod = MessManTool.getValueByName(message, "TrmCod");
  		String SigDup = MessManTool.getValueByName(message, "SigDup");
@@ -39,33 +37,26 @@
  		String NotNum = MessManTool.getValueByName(message, "NotNum");
  		String TxnAmt = MessManTool.getValueByName(message, "TxnAmt");
  %> 
-		<label>购彩信息如下:</label>
-		
-			
-				<label>期号:<%=TrmCod%></label>
-			
-				<label>单复式类型:<%=new SigDupFormat().NtoC(SigDup)%></label>
-		
-					<label>彩票类型:<%=new LotTypFormat().NtoC(LotTyp)%></label> 
-				
-		     <label>购彩流水号:<%=TLogNo2%></label>
-			
-			
-					<label>投注号码:<%=LotNumFormat.ReturnManyFormatedRecords(LotNum, LotTyp)%></label>
-			
-			
-				<label>注数:<%=NotNum%> </label>
-			
-					<label>金额:<%=MoneyUtils.FormatMoney(Double.parseDouble(TxnAmt.trim()) / 100, "###0.00")%></label>
-		
-		<label>所有数据以广东省体育彩票发行中心数据为准</label>
+		<form method='post' action='/GZMBank/SportsTicket/TicketQuery1.jsp'>		
+  		<label>购彩信息如下:</label>
+  		<label>期号:<%=TrmCod%></label>
+			<label>单复式类型:<%=new SigDupFormat().NtoC(SigDup)%></label>
+			<label>彩票类型:<%=new LotTypFormat().NtoC(LotTyp)%></label> 
+      <label>购彩流水号:<%=TLogNo2%></label>
+			<label>投注号码:<%=LotNumFormat.ReturnManyFormatedRecords(LotNum, LotTyp)%></label>
+  		<label>注数:<%=NotNum%> </label>
+			<label>金额:<%=MoneyUtils.FormatMoney(Double.parseDouble(TxnAmt.trim()) / 100, "###0.00")%></label>
+  		<label>所有数据以广东省体育彩票发行中心数据为准</label>
+		</form>
 <%
  	}else{
  		String RspCod = MessManTool.getValueByName(message, "RspCod");
  		String RspMsg = MessManTool.getValueByName(message, "RspMsg");
 %>
-		<label>错误码为:<%=RspCod%></label>
-		<label>错误原因为:<%=RspMsg%></label>
+		<form method='post' action='/GZMBank/SportsTicket/TicketQuery1.jsp'>		
+  		<label>错误码为:<%=RspCod%></label>
+	  	<label>错误原因为:<%=RspMsg%></label>
+		</form>
 <%
 	}
 %>
