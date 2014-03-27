@@ -59,9 +59,10 @@
 			//当返回成功
 			if("000000".equals(MGID)){
 		%>
-		
-		<label> 签约信息已经成功录入！感谢您的使用。</label>
-    <label> 请您保持签约手机通迅的畅通，该签约信息最后以移动公司发送的确认短信为准。如果您在48小时内未完成移动公司签约短信的确认，交通银行将自动取消您本次签约信息。</label>
+		<form method='post' action='/GZMBank/yiDongCharge/yiDongCharge0.jsp'>
+  		<label> 签约信息已经成功录入！感谢您的使用。</label>
+      <label> 请您保持签约手机通迅的畅通，该签约信息最后以移动公司发送的确认短信为准。如果您在48小时内未完成移动公司签约短信的确认，交通银行将自动取消您本次签约信息。</label>
+		</form>		
 		
 		<%
 			}else{
@@ -69,13 +70,11 @@
 				gzLog.Write("错误信息是："+errorReport );
 		
 		%>
-		<label>交易出错，错误信息为:<%=errorReport%></label>
-	
-                          
-		  
+		<form method='post' action='/GZMBank/yiDongCharge/yiDongCharge0.jsp'>
+  		<label>交易出错，错误信息为:<%=errorReport%></label>
+		</form>		
 		<%
 				 }
 		%>
 	</content>
-	
 </res> 

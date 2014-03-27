@@ -14,7 +14,7 @@
 	String signTypeName="";
 	String IdTypeName="";
 	String URL="";
-	
+
 	
 	if(optType.equals("1")){
 	   signType="0";
@@ -49,7 +49,7 @@
 		
 		String sendContext = "biz_id,32|biz_step_id,3|TXNSRC,MB441|ActNo,"+cdno;
 		
-		gzLog.Write(">>>>>>>>>>>>>>>>>>接收报文MESSAGE为："+sendContext);  //log
+		gzLog.Write(">>>>>>>>>>>>>>>>>>发送报文MESSAGE为："+sendContext);  //log
 		
 		MidServer midServer = new MidServer();
 		
@@ -107,16 +107,12 @@
 			<input type='hidden' name='signNo'   value="<%=signNo%>"/> 
 		        	<label>签约类型:<%=signTypeName%></label>
 		        	<label>证件类型:<%=IdTypeName%></label>
-		        
 		        	<label>客户姓名:<%=ActNam%></label>
-		        
 		        	<label>证件号码:<%=IdNo%></label>
-		        
 		        	<label>主手机号:<%=mainNo%></label>
-		        
 		        	<label>签约手机号:<%=signNo%></label>
-		       
-			
+
+
 			<label>交易密码</label>
 			<br/>
 			<input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
@@ -136,20 +132,17 @@
 			<input type='hidden' name='ActSts'   value="<%=ActSts%>"/>
 			<input type='hidden' name='signType' value="<%=signType%>"/> 
 			<input type='hidden' name='mainNo'   value="<%=mainNo%>"/>
-			
-			
-			
+
 		        	<label>签约类型:<%=signTypeName%></label>
-		       
+
 		        	<label>证件类型:<%=IdTypeName%></label>
-		       
-		        	<label>客户姓名:<<%=ActNam%></label>
-		      
+
+		        	<label>客户姓名:<%=ActNam%></label>
+
 		        	<label>证件号码:<%=IdNo%></label>
-		       
+
 		        	<label>签约主手机号:<%=mainNo%></label>
-		       
-			
+
 			<label>交易密码</label>
 			
 			<input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
@@ -167,8 +160,10 @@
 	     String errorReport = MessManTool.getValueByName(message, "RspMsg");
 	     System.out.println("错误信息是："+errorReport );
     %>
-    <label>查询信息出错，错误信息为</label>
-    <label><%=errorReport%></label>
+		<form method='post' action='/GZMBank/yiDongCharge/yiDongCharge0.jsp'>
+      <label>查询信息出错，错误信息为</label>
+      <label><%=errorReport%></label>
+		</form>		
     <%
          }
     %>

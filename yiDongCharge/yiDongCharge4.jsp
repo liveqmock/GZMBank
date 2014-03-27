@@ -41,18 +41,21 @@
 			//当返回成功
 			if("000000".equals(MGID)){
 		%>
-		
-		<label>解约数据已经成功发送给移动！感谢您的使用。</label>
-		
+		<form method='post' action='/GZMBank/yiDongCharge/yiDongCharge0.jsp'>
+  		<label>解约数据已经成功发送给移动！感谢您的使用。</label>
+		</form>
+
 		<%
 			}else{
 				String errorReport = MessManTool.getValueByName(message, "RspMsg");
 				gzLog.Write("错误信息是："+errorReport );
 		
 		%>
-		<label>交易出错，错误信息为</label>
+		<form method='post' action='/GZMBank/yiDongCharge/yiDongCharge0.jsp'>
+	  	<label>交易出错，错误信息为</label>
 		
-    <label><%=errorReport%></label>          
+      <label><%=errorReport%></label>
+		</form>
 		  
 		<%
 				 }

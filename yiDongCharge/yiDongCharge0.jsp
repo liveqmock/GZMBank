@@ -7,6 +7,7 @@
 	String cdno = MessManTool.changeChar(request.getHeader("MBK_ACCOUNT"));
 	String sjNo = MessManTool.changeChar(request.getHeader("MBK_MOBILE")); 
 	gzLog.Write("#####MobCharge0.jsp====Step1"+"cardNumber:"+cdno+"phoneNumber:"+sjNo+"\n");
+
 %>
 
 <?xml version = "1.0"  encoding = "utf-8"?>
