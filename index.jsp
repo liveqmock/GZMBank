@@ -41,7 +41,7 @@
   </channel>
  <channel>
 		<id>441021</id>
-		<title>广东移动随心充</title>
+		<title>移动随心充</title>
 		<url>/GZMBank/yiDongCharge/yiDongCharge0.jsp</url>
   </channel>
   <channel>
