@@ -55,33 +55,11 @@
 		}
 		if (BusTyp.equals("CDMAprepay") || BusTyp.equals("XLTpay"))  {
 	%>
-        <table border="1">
-			<tr>
-				<td> 选择 </td>
-				<td> 充值金额</td>
-			</tr>
-
-			<tr>
-				<td><input type="radio" value="pay50" name="PayTyp"/></td>
-				<td>50元</td>
-			</tr>
-
-			<tr>
-				<td><input type="radio" value="pay100" name="PayTyp"/></td>
-				<td>100元</td>
-			</tr>
-
-			<tr>
-				<td><input type="radio" value="pay150" name="PayTyp"/></td>
-				<td>150元</td>
-			</tr>
-
-			<tr>
-				<td><input type="radio" value="pay200" name="PayTyp"/></td>
-				<td>200元</td>
-			</tr>
-
-		</table>	
+		<label>选择充值金额</label>
+	  <input type="radio" value="pay50" name="PayTyp" >50元</input>
+    <input type="radio" value="pay100" name="PayTyp" >100元</input>
+    <input type="radio" value="pay150" name="PayTyp" >150元</input>
+    <input type="radio" value="pay200" name="PayTyp" >200元</input>
 	<%
 	    }
 	%>
