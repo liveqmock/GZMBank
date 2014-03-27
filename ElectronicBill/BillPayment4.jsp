@@ -40,7 +40,7 @@
 		String sendContextNoPSWD = "biz_id,31|biz_step_id,2|TXNSRC,MB441|ActNo,"+ActNo+"|TCusId,"+TCusId+"|TCusNm,"+UsrNam+"|LChkTm,"+LChkTm
 		+"|DptTyp,"+DptTyp+"|TxnAmt,"+TxnAmt+"|Fee,"+""+"|VchTyp,"+"007"+"|VchNo,"+""+"|BilDat,"+""+"|PSWD,******|";
 		
-		//这是在做测试的时候 要将密码做一下修改。 不做加密等操作，实际使用要用上卖弄的一段代码
+		//这是在做测试的时候 要将密码做一下修改。 不做加密等操作，实际使用要用上面的一段代码
 		//String sendContext = "biz_id,31|biz_step_id,2||TXNSRC,MB441ActNo,"+ActNo+"|TCusId,"+TCusId+"|TCusNm,"+UsrNam+"|LChkTm,"+LChkTm
 		//+"|DptTyp,"+DptTyp+"|TxnAmt,"+TxnAmt+"|Fee,"+""+"|VchTyp,"+""+"|VchNo,"+""+"|BilDat,"+""+"|PSWD,"+"1234567890"+"|";
 		
@@ -82,11 +82,12 @@
 		  String today = df.format(new Date());
 		
 	 %>	 
+		<form method='post' action='/GZMBank/ElectronicBill/BillPayment1.jsp'>		
 			<label>交易成功！感谢您的使用.</label>
 		  <label>供电公司系统参考号:<%=tLogNo%></label>
 		  <label>会计业务流水号:<%=tckNo%></label>
 		  <label>缴费日期和时间:<%=today%></label>
-	
+		</form>
 		
 	<%
 		} else {
@@ -95,9 +96,11 @@
  	      
  	      gzLog.Write("****错误码:"+RspCod+"错误信息"+RspMsg);
  	       %> 
- 	      <label>交易失败!</label>
- 	      <label>错误码为:<%=RspCod%></label>
- 	      <label>错误信息:<%=RspMsg%></label>
+		<form method='post' action='/GZMBank/ElectronicBill/BillPayment1.jsp'>		
+      <label>交易失败!</label>
+      <label>错误码为:<%=RspCod%></label>
+      <label>错误信息:<%=RspMsg%></label>
+		</form>
  	      <%
  	}
 	gzLog.Write("电力缴费完毕！！！！！");

@@ -79,7 +79,9 @@
 	     String errorReport = MessManTool.getValueByName(message, "RspMsg");
 	     gzLog.Write("错误信息是："+errorReport );
     %>
-    <lable>查询错误，错误信息为： <%=errorReport%></lable>   
+		<form method='post' action='/GZMBank/ElectronicBill/BillPayment1.jsp'>		
+	    <label>查询错误，错误信息为： <%=errorReport%></label>   
+		</form>
     <%
          }
     %>
