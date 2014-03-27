@@ -2,8 +2,10 @@
 <%@ page import="com.viatt.util.*"%>
 
 <%
-   String sParam1 = MessManTool.changeChar(request.getParameter("param1"));
-   //System.out.println("羊城通自动充值yctKZCZ4.....");
+    String sParam1 = MessManTool.changeChar(request.getParameter("param1"));
+		GzLog gzLog = new GzLog("c:/gzLog_sj");
+		gzLog.Write("羊城通自动充值yctKZCZ4.....");
+		gzLog.Write(sParam1);
 
 %>
 <?xml version="1.0" encoding="utf-8"?>

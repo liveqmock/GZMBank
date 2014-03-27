@@ -3,8 +3,9 @@
 
 
 <%
-   //System.out.println("羊城通自动充值yctKZCZ2.....");
-   String sContract = request.getParameter("contract");
+		GzLog gzLog = new GzLog("c:/gzLog_sj");
+		gzLog.Write("羊城通自动充值yctKZCZ2.....\n");
+    String sContract = request.getParameter("contract");
    
 %>
 
@@ -50,15 +51,17 @@
 
          <label>温馨提示：如果您的羊城通卡片号无法读取，请通过我行自助充值机充值后的打印凭条读取羊城通卡号。</label>
          <input type='hidden' name='cusidtyp' value='<%=sIDTyp%>'></input>
-		 <input type='submit' value='下一步'/>
+		     <input type='submit' value='下一步'/>
 	   </form>
 <%
       }
       else {
 %>
-        
-             <label>错误代码:<%=sMGID%></label>
-             <label>错误信息:客户信息查询失败</label>
+		<form method='post' action='/GZMBank/yiDongCharge/yctKZCZ1.jsp'>
+	    <label>错误代码:<%=sMGID%></label>
+	    <label>错误信息:客户信息查询失败</label>
+		</form>
+
          
 <%
       }
@@ -66,7 +69,7 @@
   else if (sContract.equals("2")) { //解约
       String    sCDNO        = MessManTool.changeChar(request.getHeader("MBK_ACCOUNT"));
       String    sSightcontext= request.getParameter("sightContext");
-      String    sInfo[]     = sSightcontext.split("#:>");
+      String    sInfo[]     = sSightcontext.split("\\|");
       String    sendContext = "biz_id,25|i_biz_step_id,3|sign_flag,0|inst_no,交通银行|bank_acc,"+sCDNO+"|card1,"+sInfo[1].trim()+"|card2,|card3,|";
       MidServer midServer   = new MidServer();
       BwResult  bwResult    = midServer.sendMessage(sendContext);
@@ -75,9 +78,10 @@
       if ("000000".equals(sMGID)){
 
 %>
-          <div id="ewp_back" class="refresh"/>
          
-             <label>返回信息:羊城通自动充值解约成功</label>
+		<form method='post' action='/GZMBank/yiDongCharge/yctKZCZ1.jsp'>
+      <label>返回信息:羊城通自动充值解约成功</label>
+		</form>
          
 <%
       }
@@ -85,8 +89,10 @@
           String    sCodeMsg   = MessManTool.getValueByName(recvContext, "PB_Return_Code_Msg");
 %>
         
-             <label>错误代码:<%=sMGID%></label>
-             <label>错误信息:<%=sCodeMsg%></label>
+		<form method='post' action='/GZMBank/yiDongCharge/yctKZCZ1.jsp'>
+      <label>错误代码:<%=sMGID%></label>
+      <label>错误信息:<%=sCodeMsg%></label>
+		</form>
           
 <%
       }

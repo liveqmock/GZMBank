@@ -2,14 +2,15 @@
 <%@ page import="com.viatt.util.*"%>
 
 <%
-   //System.out.println("羊城通自动充值yctKZCZ3.....");
-   String sCusnam  = MessManTool.changeChar(request.getParameter("cusnam"));
-   String sCusid   = MessManTool.changeChar(request.getParameter("cusid"));
-   String sCussex  = MessManTool.changeChar(request.getParameter("cussex"));
-   String sYCTcdno = MessManTool.changeChar(request.getParameter("yctcdno"));
-   String sCusidtyp= MessManTool.changeChar(request.getParameter("cusidtyp"));
-   String sParam   = sCusnam + "#:>"+ sCusid + "#:>"+ sCussex + "#:>"+ sYCTcdno +"#:>"+ sCusidtyp +"#:>"+"TheEnd";    //签约信息传递
-
+		GzLog gzLog = new GzLog("c:/gzLog_sj");
+		gzLog.Write("羊城通自动充值yctKZCZ3.....");
+    String sCusnam  = MessManTool.changeChar(request.getParameter("cusnam"));
+    String sCusid   = MessManTool.changeChar(request.getParameter("cusid"));
+    String sCussex  = MessManTool.changeChar(request.getParameter("cussex"));
+    String sYCTcdno = MessManTool.changeChar(request.getParameter("yctcdno"));
+    String sCusidtyp= MessManTool.changeChar(request.getParameter("cusidtyp"));
+    String sParam   = sCusnam + "|"+ sCusid + "|"+ sCussex + "|"+ sYCTcdno +"|"+ sCusidtyp +"|"+"TheEnd";    //签约信息传递
+		gzLog.Write(sParam);
 %>
 <?xml version="1.0" encoding="utf-8"?>
 <res>

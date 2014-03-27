@@ -3,7 +3,6 @@
 <%@ page import="com.bocom.mobilebank.security.*"%>
 
 <%
-   //System.out.println("羊城通自动充值yctKZCZ6.....");
    GzLog gzLog = new GzLog("c:/gzLog_sj");
    String strCDNO = MessManTool.changeChar(request.getHeader("MBK_ACCOUNT"));
    String strMBNO = MessManTool.changeChar(request.getHeader("MBK_MOBILE"));
@@ -11,7 +10,7 @@
    gzLog.Write("卡号："+strCDNO+"手机号："+strMBNO+"\n"); 
  
    String sParam3  = MessManTool.changeChar(request.getParameter("param2"));
-   String sInfo[] = sParam3.split("#:>");
+   String sInfo[] = sParam3.split("\\|");
 %>
 <?xml version="1.0" encoding="utf-8"?>
 <res>
@@ -55,20 +54,21 @@
       
       if ("000000".equals(sMGID)){
 %>
-         <div id="ewp_back" class="refresh"/>
-         <label>签约成功</label>
-         <label>首次使用可于一年内至市内各地铁入口处通过羊城通自动充值终端进行激活，并进行各种设置，完成后即可轻松充值。</label>
-         <label>羊城通客服电话：96900</label>
+		<form method='post' action='/GZMBank/yiDongCharge/yiDongCharge0.jsp'>
+			<label>签约成功</label>
+			<label>首次使用可于一年内至市内各地铁入口处通过羊城通自动充值终端进行激活，并进行各种设置，完成后即可轻松充值。</label>
+			<label>羊城通客服电话：96900</label>
+		</form>
 <%
       } 
       else {
           String    sCodeMsg   = MessManTool.getValueByName(recvContext, "PB_Return_Code_Msg");
 %>
-          <div id="ewp_back" class="refresh"/>
-          <label>签约失败</label>
-          
-             <label>错误代码:<%=sMGID%></label>
-             <label>错误信息:<%=sCodeMsg%></label>
+		<form method='post' action='/GZMBank/yiDongCharge/yiDongCharge0.jsp'>
+			<label>签约失败</label>
+			<label>错误代码:<%=sMGID%></label>
+			<label>错误信息:<%=sCodeMsg%></label>
+		</form>
          
 <%
       }

@@ -20,9 +20,11 @@
       String    tmpstr      = "";
       String    sCDNO       = MessManTool.changeChar(request.getHeader("MBK_ACCOUNT"));
       String    sendContext = "biz_id,25|i_biz_step_id,1|TXNSRC,MB441|CDNO,"+sCDNO+"|";
+  	  gzLog.Write(">>>>>>"+sendContext);
       MidServer midServer   = new MidServer();
       BwResult  bwResult    = midServer.sendMessage(sendContext);
       String    recvContext = bwResult.getContext();
+  	  gzLog.Write("<<<<<<"+recvContext);
       String    sMGID       = MessManTool.getValueByName(recvContext, "MGID");
 
       if ("000000".equals(sMGID)){
@@ -48,9 +50,9 @@
 			      && (i < iCurrpage * pageSize)) {
 			        HashMap map = (HashMap) list.get(i);
 			             tmpstr = ((String) map.get("param15")).trim()          //客户姓名
-			                        +"#:>"+ ((String) map.get("param22")).trim()  //羊城通卡号
-			                        +"#:>"+ ((String) map.get("param28")).trim()  //签约日期
-			                        +"#:>"+"TheEnd";   
+			                        +"|"+ ((String) map.get("param22")).trim()  //羊城通卡号
+			                        +"|"+ ((String) map.get("param28")).trim()  //签约日期
+			                        +"|"+"TheEnd";   
 /*
 System.out.println("param1:"+((String) map.get("param1")).trim());
 System.out.println("param2:"+((String) map.get("param2")).trim());
@@ -121,7 +123,7 @@ System.out.println("param23:"+((String) map.get("param23")).trim());
     <%
       }
     %>
-		<input type="submit" value="确定"/>
+		  <input type="submit" value="确定"/>
 		</form>
 	</content>
 </res>
