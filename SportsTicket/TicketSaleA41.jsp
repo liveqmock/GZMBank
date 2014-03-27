@@ -42,8 +42,7 @@
                 for(int j=1;j<=5;j++){
 									int tmp = i*5+j;
             %>
-			          <input type='checkbox' name='forepart<%=tmp%>' value='<%=this.formatnumber(tmp)%>'></input>
-			          <label><%=tmp%></label>
+			          <input type='checkbox' name='forepart<%=tmp%>' value='<%=this.formatnumber(tmp)%>'><%=tmp%></input>
 						<%				
 						    }
 						%>
@@ -66,8 +65,7 @@
                 for(int j=1;j<=6;j++){
 									int tmp = i*6+j;
             %>
-			            <input type='checkbox' name='rear<%=tmp%>' value='<%=this.formatnumber(tmp)%>'></input>
-			            <label><%=tmp%></label>
+			            <input type='checkbox' name='rear<%=tmp%>' value='<%=this.formatnumber(tmp)%>'><%=tmp%></input>
 						<%				
 						    }
 						%>
