@@ -13,6 +13,8 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
 	<content>	
+		<form method='post' action='/GZMBank/SigAtOne/Gds_Pub_Agree.jsp'> 
 			<label>暂不支持电费的电子渠道委托签约，您可直接通过我行交博汇网上商城，手机银行或自助通终端进行自助缴费，或携带身份证、任一期缴费发票到交通银行网点办理签约手续。</label><br/>
+		</form> 
 	</content>
 </res>
