@@ -10,22 +10,25 @@
 %>
 <%
 	String sightCode = MessManTool.changeChar(request.getParameter("sightCode"));
-	
-	String tmp[] = sightCode.split("#:>");
-	sightCode = tmp[0];
-	String sightName = tmp[1];
-	List list = new ArrayList();
-	String content = "biz_id,21|i_biz_step_id,4|Provider_Code,"+sightCode+"|txncnl,MB441|TXNSRC,MB441|";
 	gzLog.Write("sightCocd:"+sightCode);
-	gzLog.Write(content);
-	//gzLog.Write("卡号："+cdno+"手机号："+sjNo+"发送报文为："+content);
+	
+	String tmp[] = sightCode.split("\\|");
+	sightCode = tmp[0];
+	gzLog.Write("sightCocd:"+sightCode);
+	String sightName = tmp[1];
+	gzLog.Write("sightName:"+sightName);
+
+	String content = "biz_id,21|i_biz_step_id,4|Provider_Code,"+sightCode+"|txncnl,MB441|TXNSRC,MB441|";
+	gzLog.Write(">>>>>>"+content);
 	MidServer midServer = new MidServer();
 	BwResult bwResult = midServer.sendMessage(content);
 	String tmp1 = bwResult.getContext();
-	gzLog.Write(tmp1);
-	//gzLog.Write("卡号："+cdno+"手机号："+sjNo+"接收报文为："+tmp1);
+	gzLog.Write("<<<<<<"+tmp1);
+
 	MessManTool messManTool = new MessManTool();
+	List list = new ArrayList();
 	list = messManTool.yinLvTongGetResult2(tmp1);
+  //分页处理
 	int total = list.size();
 	int pageSize = 100;
 	String currPage1 = request.getParameter("page") != null ? request
@@ -45,15 +48,15 @@
 				String price2 = MoneyUtils.FormatMoney(Double.parseDouble(((String) map.get("param5")).trim()) / 100, "###0.00");
 				String tmpstr=
 						sightCode.trim()//门票代码0
-						+"#:>"+sightName.trim()//景点名称1
-						+"#:>"+((String) map.get("param2")).trim()//门票代码2
-						+"#:>"+((String) map.get("param3")).trim()//门票名称3
-						+"#:>"+price1//门市价4
-						+"#:>"+price2//电子价5
-						+"#:>"+((String) map.get("param6")).trim()//开始日期6
-						+"#:>"+((String) map.get("param7")).trim()//结束日期7
-						+"#:>"+((String) map.get("param8")).trim()//有效日期8
-						+"#:>"+((String) map.get("param9")).trim()+"TheEnd";//备注9
+						+"|"+sightName.trim()//景点名称1
+						+"|"+((String) map.get("param2")).trim()//门票代码2
+						+"|"+((String) map.get("param3")).trim()//门票名称3
+						+"|"+price1//门市价4
+						+"|"+price2//电子价5
+						+"|"+((String) map.get("param6")).trim()//开始日期6
+						+"|"+((String) map.get("param7")).trim()//结束日期7
+						+"|"+((String) map.get("param8")).trim()//有效日期8
+						+"|"+((String) map.get("param9")).trim()+"TheEnd";//备注9
 				
 				
 				String vali_days = ((String) map.get("param8")).trim();

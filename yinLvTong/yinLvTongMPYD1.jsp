@@ -26,6 +26,7 @@
 	list = messManTool.yinLvTongGetResult1(tmp);
 	int total = list.size();
 	int pageSize = 100;
+	gzLog.Write(request.getParameter("page"));
 	String currPage1 = request.getParameter("page") != null ? request
 			.getParameter("page") : "1";
 	int currPage = Integer.parseInt(currPage1);
@@ -39,8 +40,9 @@
 	for (int i = 0; i < total; i++) {
 		if ((i >= (currPage - 1) * pageSize)&& (i < currPage * pageSize)) {
 			HashMap map = (HashMap) list.get(i);
-			String tmpstr = (String)map.get("param2")+"#:>"+(String)map.get("param3");
+			String tmpstr = (String)map.get("param2")+"|"+(String)map.get("param3");
 			String tmpstr2 =(String)map.get("param3");
+    	gzLog.Write(i+":"+tmpstr);
 %>
 			<input type='radio' value='<%=tmpstr%>' name='sightCode'></input>
 			<label><%=tmpstr2%></label>

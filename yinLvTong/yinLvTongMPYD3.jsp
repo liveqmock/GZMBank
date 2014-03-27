@@ -3,7 +3,7 @@
 <%
 	String sightContext = MessManTool.changeChar(request.getParameter("sightContext"));
 	String sjNo =  MessManTool.changeChar(request.getHeader("MBK_MOBILE"));
-	String tmp[] = sightContext.split("#:>");
+	String tmp[] = sightContext.split("\\|");
 	String kcrq=tmp[6].trim();//开始日期
 	String jsrq=tmp[7].trim();//结束日期
 	String yxrq=tmp[8].trim();//有效日期

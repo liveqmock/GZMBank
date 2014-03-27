@@ -62,11 +62,15 @@
 <%
  	}else if ("482199".equals(MGID)) {
 %>
+	<form method='post' action='/GZMBank/yinLvTong/yinLvTongJF1.jsp'> 
 		<label>订单号已缴清!如有疑问或问题请咨询银旅通客户服务热线：4008-960-168!</label>
+	</form> 
 		<%
 	} else {
 %> 
+	<form method='post' action='/GZMBank/yinLvTong/yinLvTongJF1.jsp'> 
 		<label>定单查询失败!如有疑问，请及时与开户银行联系!</label> 
+	</form> 
 <%
 	}
 %>

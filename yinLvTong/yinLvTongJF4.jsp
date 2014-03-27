@@ -61,7 +61,7 @@
 %>
 	
 	
-	<form method='post' action='/GZMBank/yinLvTong/yinLvTongJF3.jsp'> 
+	<form method='post' action='/GZMBank/yinLvTong/yinLvTongJF1.jsp'> 
 		
 				<label>交费成功! 请及时查询结果</label>
 					<label>定单号:<%=Reserve_Code%></label>
@@ -78,7 +78,9 @@
 <%
 	} else {
 %> 
+	<form method='post' action='/GZMBank/yinLvTong/yinLvTongJF1.jsp'> 
 		<label><%=MessManTool.getValueByName(message, "display_zone")%></label>
+	</form> 
 <%
 	}
 	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n银旅通缴费结束");

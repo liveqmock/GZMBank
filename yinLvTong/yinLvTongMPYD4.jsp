@@ -8,7 +8,7 @@
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String sightContext = MessManTool.changeChar(request.getParameter("sightContext"));
-	String tmp[] = sightContext.split("#:>");
+	String tmp[] = sightContext.split("\\|");
 	String gmzs = MessManTool.changeChar(request.getParameter("gmzs"));//购买张数 
 	String sjlx = MessManTool.changeChar(request.getParameter("sjlx"));//手机类型
 	String syrq = MessManTool.changeChar(request.getParameter("syrq"));//门票日期
@@ -18,10 +18,10 @@
 	}
 	String sjhm1 = MessManTool.changeChar(request.getParameter("sjhm1"));//手机号码
 	String sjhm2 = MessManTool.changeChar(request.getParameter("sjhm2"));
-	sightContext+="#:>"+gmzs;//门票张数10
-	sightContext+="#:>"+sjlx;//手机类型11
-	sightContext+="#:>"+sjhm1;//手机号码12
-	sightContext+="#:>"+syrq;//门票日期13
+	sightContext+="|"+gmzs;//门票张数10
+	sightContext+="|"+sjlx;//手机类型11
+	sightContext+="|"+sjhm1;//手机号码12
+	sightContext+="|"+syrq;//门票日期13
 	
 	String dqrq=DateUtils.FormatDate(new Date(),"yyyyMMdd");
 	

@@ -40,7 +40,7 @@
 	
  	String sightContext = MessManTool.changeChar(request
  			.getParameter("sightContext"));
- 	String tmp8[] = sightContext.split("#:>");
+ 	String tmp8[] = sightContext.split("\\|");
  	String zsStr = tmp8[10];
  	int zs = Integer.parseInt(zsStr);
  	double dzyhj = Double.parseDouble(tmp8[5]);
