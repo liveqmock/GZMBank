@@ -62,6 +62,7 @@
 <%	
 }else{
 	String temp = MessManTool.getValueByName(bwResult.getContext(), "display_zone");
+	gzLog.Write("display_zone:"+temp);
 %>
 <%=temp%>
 <%

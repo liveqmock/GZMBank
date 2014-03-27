@@ -106,8 +106,9 @@
 		for(int i=1;i<tmp3.length;i++){
 			String tmp5=tmp3[i].trim();
 	%>
+	<form method='post' action='/GZMBank/JiaoFei/txDianXin1.jsp'> 
 		<label><%=tmp5%></label>
-			<br/>
+	</form>
 	<%
 		}
 	}

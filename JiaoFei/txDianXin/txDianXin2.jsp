@@ -7,7 +7,6 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <res> 
 	<content>
-		<div id="ewp_back" class="clear"/>
 		<form method='post' action='/GZMBank/JiaoFei/txDianXin/txDianXin3.jsp'>
 		<%
 		  if (BusTyp.equals("Phonepay")) {

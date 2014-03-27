@@ -73,10 +73,10 @@
 	String MGID = MessManTool.getValueByName(message, "MGID");
 	if ("000000".equals(MGID)) {
 %>
+		<form method='post' action='/GZMBank/JiaoFei/LTongJF1.jsp'> 
 	<label>
 		交费成功! 请及时查询结果。
 	</label>
-	<br/>
 	<%
 		String display_zone = MessManTool.getValueByName(message, "display_zone");
 		String tmp3[] = display_zone.split("<br>");
@@ -84,14 +84,16 @@
 			String tmp5=tmp3[i].trim();
 	%>
 		<label><%=tmp5%></label>
-			<br/>
 		<%
 		}
 	%>
+   </form>
 <%
 	} else {
 %> 
+		<form method='post' action='/GZMBank/JiaoFei/LTongJF1.jsp'> 
 		<label><%=MessManTool.getValueByName(message, "display_zone")%></label>
+   </form>
 <%
 	}
 	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n联通缴费结束");

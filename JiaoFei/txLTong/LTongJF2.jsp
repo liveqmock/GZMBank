@@ -90,7 +90,9 @@
      else 
      	{
      %>
+		<form method='post' action='/GZMBank/JiaoFei/LTongJF1.jsp'> 
 	       <label>手机余额查询异常</label>
+   </form>
 	      
 	 <%
 	 }
