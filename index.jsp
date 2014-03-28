@@ -39,7 +39,7 @@
       <title>缴费一站通</title>
       <url>/GZMBank/SignAtOne/Gds_Pub_Agree.jsp</url>
   </channel>
- <channel>
+  <channel>
 		<id>441021</id>
 		<title>移动随心充</title>
 		<url>/GZMBank/yiDongCharge/yiDongCharge0.jsp</url>
@@ -54,21 +54,21 @@
       <title>银旅通电子门票</title>
       <url>/GZMBank/yinLvTong/yinLvTongMPYD1.jsp</url>
   </channel>
-  <channel>
+  <!--channel>
       <id>441002</id>
       <title>银旅通旅游缴费</title>
       <url>/GZMBank/yinLvTong/yinLvTongJF1.jsp</url>
-  </channel>
+  </channel-->
   <channel>
       <id>441003</id>
       <title>羊城通自动充值</title>
       <url>/GZMBank/yctKZCZ/yctKZCZ1.jsp</url>
   </channel>
-  <channel>
+  <!--channel>
       <id>441004</id>
       <title>交费易</title>
       <url>/GZMBank/JiaoFei/JiaoFei1.jsp</url>
-  </channel>
+  </channel-->
   <channel>
       <id>441008</id>
       <title>购买体育彩票</title>
