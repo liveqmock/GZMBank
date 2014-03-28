@@ -77,11 +77,19 @@
 	</form> 
 <%
 	} else {
-%> 
-	<form method='post' action='/GZMBank/yinLvTong/yinLvTongJF1.jsp'> 
-		<label><%=MessManTool.getValueByName(message, "display_zone")%></label>
+ 		String temp = MessManTool.getValueByName(message, "display_zone");
+		
+		String tmp3[] = temp.split("<br>");
+		String rspStr = "";
+		for(int i=0;i<tmp3.length;i++){
+			rspStr =tmp3[i].trim();
+	%>
+ 	<form method='post' action='/GZMBank/yinLvTong/yinLvTongMPYD1.jsp'>
+		<label><%=rspStr%></label>
 	</form> 
-<%
+ <%
+    }
+
 	}
 	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n银旅通缴费结束");
 %>
