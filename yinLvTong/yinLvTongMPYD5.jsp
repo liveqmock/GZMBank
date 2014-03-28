@@ -167,9 +167,16 @@
  	} else {
  		String temp = MessManTool.getValueByName(tmp, "display_zone");
 		
- %> 
- 	<label><%=temp%> </label> 
+		String tmp3[] = temp.split("<br>");
+		String rspStr = "";
+		for(int i=0;i<tmp3.length;i++){
+			rspStr =tmp3[i].trim();
+	%>
+ 	<form method='post' action='/GZMBank/yinLvTong/yinLvTongMPYD1.jsp'>
+		<label><%=rspStr%></label>
+	</form> 
  <%
+    }
  	}
  	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n订票结束");
  %>

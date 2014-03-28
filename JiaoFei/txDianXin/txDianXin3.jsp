@@ -48,6 +48,7 @@
 		String tmp3[] = display_zone.split("<br>");
 		for(int i=0;i<tmp3.length;i++){
 			String tmp5=tmp3[i].trim();
+	 gzLog.Write(tmp5);
 	%>
 		<label><%=tmp5%></label>
 			<br/>
@@ -56,10 +57,10 @@
 		if (BusTyp.equals("CDMAprepay") || BusTyp.equals("XLTpay"))  {
 	%>
 		<label>选择充值金额</label>
-	  <input type="radio" value="pay50" name="PayTyp" >50元</input>
-    <input type="radio" value="pay100" name="PayTyp" >100元</input>
-    <input type="radio" value="pay150" name="PayTyp" >150元</input>
-    <input type="radio" value="pay200" name="PayTyp" >200元</input>
+	  <input type='radio' value='pay50' name='PayTyp' >50元</input>
+    <input type='radio' value='pay100' name='PayTyp' >100元</input>
+    <input type='radio' value='pay150' name='PayTyp' >150元</input>
+    <input type='radio' value='pay200' name='PayTyp' >200元</input>
 	<%
 	    }
 	%>

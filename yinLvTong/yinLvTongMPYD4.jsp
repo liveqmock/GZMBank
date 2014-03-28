@@ -58,8 +58,7 @@
 		%>
 		<%=message%>
 <%
-	}else
-		{
+	}else{
 %>
 		<form method='post' action='/GZMBank/yinLvTong/yinLvTongMPYD5.jsp'>
 		<input type="hidden" name="sightContext" value="<%=sightContext%>"/>
@@ -71,7 +70,7 @@
 		<input type="submit" value="确定"/> 
 		</form>
 <%
-}
+  }
 %>
 	</content>
 </res>
