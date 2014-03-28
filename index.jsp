@@ -49,16 +49,21 @@
       <title>话费充值</title>
       <url>/GZMBank/ChongZhi/ChongZhi1.jsp</url>
   </channel>
-  <channel>
+  <!--channel>
       <id>441001</id>
       <title>银旅通电子门票</title>
       <url>/GZMBank/yinLvTong/yinLvTongMPYD1.jsp</url>
   </channel>
-  <!--channel>
+  <channel>
       <id>441002</id>
       <title>银旅通旅游缴费</title>
       <url>/GZMBank/yinLvTong/yinLvTongJF1.jsp</url>
   </channel-->
+  <channel>
+      <id>441026</id>
+      <title>银旅通业务</title>
+      <url>/GZMBank/yinLvTong/yinLvTong1.jsp</url>
+  </channel>
   <channel>
       <id>441003</id>
       <title>羊城通自动充值</title>
@@ -88,5 +93,4 @@
 		<title>广州电力</title>
 		<url>/GZMBank/ElectronicBill/BillPayment1.jsp</url>
   </channel>
- 
 </res>
