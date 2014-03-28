@@ -74,19 +74,24 @@
       <title>交费易</title>
       <url>/GZMBank/JiaoFei/JiaoFei1.jsp</url>
   </channel-->
-  <channel>
+  <!--channel>
       <id>441008</id>
       <title>购买体育彩票</title>
-      <url>/GZMBank/SportsTicket/TicketSale1.jsp</url>
+      <url>/GZMBank/SportsTicket/TicketSale1.jsp</url-->
       <!--
       因为体彩的平台升级，所以暂停使用手机银行的体彩功能
       <url>/GZMBank/SportsTicket/pause.jsp</url>
       -->
-  </channel>
-  <channel>
+  <!--/channel-->
+  <!--channel>
       <id>441009</id>
       <title>查询体彩投注情况</title>
       <url>/GZMBank/SportsTicket/TicketQuery1.jsp</url>
+  </channel-->
+  <channel>
+      <id>441028</id>
+      <title>体彩业务</title>
+      <url>/GZMBank/SportsTicket/SportsTicket1.jsp</url>
   </channel>
   <channel>
 		<id>441017</id>
