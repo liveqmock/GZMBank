@@ -18,15 +18,15 @@
 			<label> 请选择业务种类: </label>
 			
 			<select name="optType">
-				<option value="0"> 移动划扣业务签约</option>
-				<option value="1"> 移动划扣签约解除</option>
+				<option value="0"> 随心充签约</option>
+				<option value="1"> 随心充解约</option>
 			</select>
 			<br/>
 			<br/>
 			
 		  <label> 业务介绍: </label>
 			<br/>
-			<label> 移动全品牌签约：广东移动客户可通过该业务将银行卡与手机号捆绑，捆绑成功后，系统默认绑定手机话费余额低于10元时，系统将自动从绑定银行账户内划扣50元充值至您的手机号内。</label>
+			<label> 移动随心充签约：广东移动客户可通过该业务将银行卡与手机号捆绑，捆绑成功后，系统默认绑定手机话费余额低于10元时，系统将自动从绑定银行账户内划扣50元充值至您的手机号内。</label>
 			<br/>
 			<label> 注意事项：</label>
 			<br/>
