@@ -12,7 +12,7 @@
 	gzLog.Write("进入["+uri+"]");
 
 	//设置正常情况需要跳转的页面
-	String forwardPage = "Efek_Upd_Input.jsp";
+	String forwardPage = "Efek_Act_Select.jsp";
 	//设置出错情况需要跳转的页面
 	String errPage = "../../errPage.jsp";
 	String qdbz = request.getParameter("QDBZ");

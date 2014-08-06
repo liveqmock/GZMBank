@@ -19,7 +19,7 @@
 	String saveKey = "SKJE,JFJGSM,TckNo";
 
 	//在这里开始拼装即将发往服务器的一串报文
-	String requestContext = Context.createContext(request, "33", "1");
+	String requestContext = Context.createContext(request, "33", "2");
 	gzLog.Write("["+uri+"]网关请求报文："+requestContext);
 	
 

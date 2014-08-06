@@ -19,7 +19,7 @@
 	String saveKey = "WDMC,JYLSH,JYRQ,JYSJ,YJYLSH,YJYRQ,YJYSJ,SFFS,FYLX,RZYHDM,DWBM,JFH,JSHMC,YDDZ,KKZH,KKZHMC,BFJFBZ,ZWLSH,DFNY,QFJE,BJ,WYJ";
 
 	//在这里开始拼装即将发往服务器的一串报文
-	String requestContext = Context.createContext(request, "33", "2");
+	String requestContext = Context.createContext(request, "33", "1");
 	gzLog.Write("["+uri+"]网关请求报文："+requestContext);
 	
 

@@ -12,10 +12,10 @@
 	gzLog.Write("进入["+uri+"]");
 	//准备显示字段
 	Map showE = new HashMap();
-	showE.put("JFH", "缴费号");
 
 	//准备更新字段
 	Map updateE = new HashMap();
+	updateE.put("JFH", "缴费号");
 	updateE.put("JSHMC", "结算户名称");
 	updateE.put("YDDZ", "结算户用电地址");
 	updateE.put("XQYZH", "新签约帐户");
