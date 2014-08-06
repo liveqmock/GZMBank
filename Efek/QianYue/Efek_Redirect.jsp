@@ -6,43 +6,21 @@
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String cdno = request.getHeader("MBK_ACCOUNT");
 	String sjNo = request.getHeader("MBK_MOBILE");
-	gzLog.Write("卡号："+cdno+"手机号："+sjNo+"\n步骤2，选择购彩类型为："+YWLX[0]);
+	String uri = request.getRequestURI();
+	gzLog.Write("进入["+uri+"]");
+
 	String action_next;
 
-	String qdbz = request.getParameter("QDBZ");
-	String qyzt = request.getParameter("QYZT");
-	if("3".equals(qdbz)){
-		//设置需要从网关正常返回中获取下来的值的名称
-		saveKey = "JYLSH,JYRQ,JYSJ,YJYLSH,YJYRQ,YJYSJ,DWBM,JFH,JSHMC,YDDZ,QYZT,YQYYHDM,YQYZH,YQYZHMC,BZ";
-		//网关i_biz_step_id值
-		i_biz_step_id = "3";
-		forwardPage="Efek_Redirect.jsp";
+	String qdbz = request.getParameter("QDBZ").trim();
+	if("1".equals(qdbz)){
+		action_next="Efek_Upd_Input.jsp";
+	}else if("0".equals(qdbz)){
+		action_next="Efek_Add_Input.jsp";
+	}else if("2".equals(qdbz)){
+		action_next="Efek_460444.jsp";
 	}else{
-		//设置需要从网关正常返回中获取下来的值的名称
-		saveKey = "";
-		//网关i_biz_step_id值
-		i_biz_step_id = "4";
-		forwardPage="Efek_Result.jsp";
+		action_next="Efek_Qry_Input.jsp";
 	}
-
-/** 根据购彩类型设置跳转页面 */	
-	switch(YWLX[0]){
-		case '3':{//查询
-			action_next="Efek_Qry_Input.jsp";
-			break;
-		}
-
-		case '0'://新增
-		case '1'://修改
-		case '2':{//注销
-			action_next="Efek_Confirm.jsp";
-			break;
-		}
-		default:{
-			action_next="Efek_Select.jsp";
-		}
-	}
-	
 
 %>
 <!-- 分行特色业务频道列表 -->
