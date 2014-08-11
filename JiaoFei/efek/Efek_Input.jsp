@@ -33,7 +33,7 @@
 			<br/>
 			<lable>查询方式</lable>
 			<br/>
-			<select name='DFNY' >
+			<select name='CXFS' >
 				<option value='0'>所有</option>
 				<option value='1'>单月欠费查询</option>
 			</select>
