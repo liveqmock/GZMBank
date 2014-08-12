@@ -42,7 +42,7 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
 	<content>	
-		<form method='post' action='/GZMBank/Efek/JiaoFei/Efek_460411.jsp'>
+		<form method='post' action='/GZMBank/Efek/JiaoFei/Efek_460444.jsp'>
 			<label>请确认缴费信息:</label><br/>
 <%
 	Map form = request.getParameterMap();

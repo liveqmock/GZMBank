@@ -12,7 +12,7 @@
 	gzLog.Write("进入["+uri+"]");
 
 	//设置正常情况需要跳转的页面
-	String forwardPage = "Efek_Act_Select.jsp";
+	String forwardPage = null;
 	//设置出错情况需要跳转的页面
 	String errPage = "../../errPage.jsp";
 	String qdbz = request.getParameter("QDBZ");
@@ -21,14 +21,16 @@
 	String i_biz_id = "33";
 	//网关i_biz_step_id值
 	String i_biz_step_id = null;
-	if("3".equals(qdbz)){
+	if("3".equals(qdbz)){//查询
 		//设置需要从网关正常返回中获取下来的值的名称
 		saveKey = "JYLSH,JYRQ,JYSJ,YJYLSH,YJYRQ,YJYSJ,DWBM,JFH,JSHMC,YDDZ,QYZT,YQYYHDM,YQYZH,YQYZHMC,BZ";
 		i_biz_step_id = "3";
-	}else{
+		forwardPage = "Efek_Act_Select.jsp";
+	}else{//更新
 		//设置需要从网关正常返回中获取下来的值的名称
 		saveKey = "";
 		i_biz_step_id = "4";
+		forwardPage = "Efek_Result.jsp";
 	}
 
 	//在这里开始拼装即将发往服务器的一串报文
