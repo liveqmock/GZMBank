@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8"%>
 <%@page pageEncoding="utf-8"%>
 <%request.setCharacterEncoding("utf-8");%>
+<%@ page import="java.util.*"%>
 <%@ page import="com.viatt.util.*"%>
 <%@ page import="com.gdbocom.util.*" %>
 <%@ page import="com.viatt.util.GzLog" %>

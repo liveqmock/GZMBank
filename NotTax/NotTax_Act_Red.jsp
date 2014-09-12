@@ -13,11 +13,11 @@
 
 	String adnKnd = request.getParameter("AdnKnd").trim();
 	if("3".equals(adnKnd)){
-		action_next="NotTax_Traffic_Input.jsp";
+		action_next="NotTax_Tra_Input.jsp";
 	}else if("1".equals(adnKnd)){
-		action_next="NotTax_Normal_Input.jsp";
+		action_next="NotTax_N_Input.jsp";
 	}else{
-		action_next="NotTax_Act_Select.jsp";
+		action_next="NotTax_Act_Sel.jsp";
 	}
 
 %>

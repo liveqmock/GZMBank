@@ -16,9 +16,9 @@
 	//设置出错情况需要跳转的页面
 	String errPage = "../../errPage.jsp";
 	//设置需要从网关正常返回中获取下来的值的名称,
-	String saveKey = "AdnCod, PBilTyp, PBilNo, LevFlg, WriDat, DitCod, ColUntCd,"
-		+ " ColUntNm,CsgUntCd,  CsgUntNm, XpayNam, XpayAct, XpayObk, XgatNam, XgatAct, XgatObk, AdnSmr, StpDat, AdnMac, AdnAmt,"
-		+ " FinAccIn, PntAmt, AgtAmt, AgtFlg, RgnFlg, AdnTyp, RecNum";
+	String saveKey = "AdnCod,PBilTyp,PBilNo,LevFlg,WriDat,DitCod,ColUntCd,"
+		+ "ColUntNm,CsgUntCd, CsgUntNm,XPayNam,XPayAct,XPayObk,XGatNam,XGatAct,XGatObk,AdnSmr,StpDat,AdnMac,AdnAmt,"
+		+ "FinAccIn,PntAmt,AgtAmt,AgtFlg,RgnFlg,AdnTyp,RecNum";
 
 	//在这里开始拼装即将发往服务器的一串报文
 	String requestContext = Context.createContext(request, "34", "1");

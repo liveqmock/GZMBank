@@ -32,17 +32,16 @@
 	<content>
 		<form method='post' action='/GZMBank/NotTax/NotTax_461501.jsp'>
 <%
-	Map form = request.getParameterMap();
 
 	Iterator itKeys = form.keySet().iterator();
 	while(itKeys.hasNext()){
 		String key = (String)itKeys.next();
 		String[] values = ( (String[]) form.get(key) );
 		if(showE.containsKey(key)){
-			out.println("<lable>"+showE.get(key)+"</lable>");
-			out.println("<lable>"+values[0]+"</lable>");
+			out.println("<label>"+showE.get(key)+"</label>");
+			out.println("<label>"+values[0]+"</label>");
 		}else if(updateE.containsKey(key)){
-			out.println("<lable>"+showE.get(key)+"</lable>");
+			out.println("<label>"+showE.get(key)+"</label>");
 			out.println("<input type='text' name='"+key+"' value='"+values[0]+"'/>");
 		}else if(1==values.length){
 			out.println("<input type='hidden' name='"+key+"' value=\""+values[0]+"\"/><br/>");

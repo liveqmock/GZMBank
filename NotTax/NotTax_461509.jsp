@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8"%>
 <%@page pageEncoding="utf-8"%>
 <%request.setCharacterEncoding("utf-8");%>
+<%@ page import="java.net.*" %>
 <%@ page import="com.viatt.util.*"%>
 <%@ page import="com.gdbocom.util.*" %>
 <%@ page import="com.viatt.util.GzLog" %>
@@ -16,9 +17,9 @@
 	//设置出错情况需要跳转的页面
 	String errPage = "../../errPage.jsp";
 	//设置需要从网关正常返回中获取下来的值的名称,
-	String saveKey = "AdnCod, PBilTyp, PBilNo, LevFlg, DitCod, ColUntCd,"
-		+ " ColUntNm, CsgUntNm, XpayNam, XgatNam, AdnSmr, AdnAmt,"
-		+ " FinAccIn, PntAmt, AgtAmt, AgtFlg, RgnFlg, AdnTyp, RecNum";
+	String saveKey = "AdnCod,PBilTyp,PBilNo,LevFlg,DitCod,ColUntCd,"
+		+ "ColUntNm,CsgUntNm,XPayNam,XGatNam,AdnSmr,AdnAmt,"
+		+ "FinAccIn,PntAmt,AgtAmt,AgtFlg,RgnFlg,AdnTyp,RecNum";
 
 	//在这里开始拼装即将发往服务器的一串报文
 	String requestContext = Context.createContext(request, "34", "2");
@@ -35,7 +36,7 @@
 
 	//检查返回是否异常
 	String MGID = MessManTool.getValueByName(responseContext, "MGID");	
-	
+
 	if("000000".equals(MGID)){//如果返回正确
 		gzLog.Write("["+uri+"]forward到"+forwardPage);
 
@@ -43,8 +44,10 @@
 		StringBuffer forwardString = new StringBuffer();
 		forwardString.append(forwardPage).append("?");
 		for(int index=0; index<saveKeys.length; index++){
+			String value = MessManTool.getValueByName(responseContext, saveKeys[index]);
+			gzLog.Write(saveKeys[index]+":"+value);
 			forwardString.append(saveKeys[index]).append("=")
-				.append(MessManTool.getValueByName(responseContext, saveKeys[index]));
+				.append(URLEncoder.encode(value.trim(), "UTF-8"));
 			if(index<saveKeys.length-1){//如果还有值的话需要添加&做间隔
 				forwardString.append("&");
 			}

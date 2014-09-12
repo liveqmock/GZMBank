@@ -17,10 +17,10 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <res> 
 	<content>
-		<form method='post' action='/GZMBank/NotTax/NotTax_Act_Redirect.jsp'>
+		<form method='post' action='/GZMBank/NotTax/NotTax_Act_Red.jsp'>
 
-		<lable>请选择缴费类别：</lable>
-		out.println("<input type='radio' name='AdnKnd' value='3' >交通罚款</input>");
+		<label>请选择缴费类别：</label>
+		out.println("<input type='radio' name='AdnKnd' value='3' checked>交通罚款</input>");
 		out.println("<input type='radio' name='AdnKnd' value='1' >普通收缴</input>");
 
 		<input type='submit' value='确定'/><br/>
