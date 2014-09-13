@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <%@ page import="com.viatt.util.GzLog" %>
+<%@ page import="com.gdbocom.util.PreAction" %>
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String cdno = request.getHeader("MBK_ACCOUNT");
@@ -9,9 +10,14 @@
 	String uri = request.getRequestURI();
 	gzLog.Write("进入["+uri+"]");
 
+	//保存上一表单(交易)字段
+	String preSaveKey = request.getParameter("preSaveKey");
+	PreAction.savePreFormValue(pageContext, request, preSaveKey);
+	gzLog.Write(PreAction.strOfPageContext(pageContext));
+
 	String action_next;
 
-	String adnKnd = request.getParameter("AdnKnd").trim();
+	String adnKnd = (String)pageContext.getAttribute("AdnKnd", PageContext.SESSION_SCOPE);
 	if("3".equals(adnKnd)){
 		action_next="NotTax_Tra_Input.jsp";
 	}else if("1".equals(adnKnd)){

@@ -20,8 +20,9 @@
 		<form method='post' action='/GZMBank/NotTax/NotTax_Act_Red.jsp'>
 
 		<label>请选择缴费类别：</label>
-		out.println("<input type='radio' name='AdnKnd' value='3' checked>交通罚款</input>");
-		out.println("<input type='radio' name='AdnKnd' value='1' >普通收缴</input>");
+		<input type='radio' name='AdnKnd' value='3' checked>交通罚款</input>
+		<input type='radio' name='AdnKnd' value='1' >普通收缴</input>
+		<input type='hidden' name='preSaveKey' value='AdnKnd' />
 
 		<input type='submit' value='确定'/><br/>
 		</form>

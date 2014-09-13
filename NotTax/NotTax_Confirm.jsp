@@ -16,13 +16,13 @@
 	String CrdNo = request.getHeader("MBK_ACCOUNT");  //银行账户
 	String sjNo = request.getHeader("MBK_MOBILE");  //手机号码
 	gzLog.Write("进入["+uri+"]");
-	gzLog.Write(request.getQueryString().toString());
+
 	
 	//设置需要显示的值和名称,
 	Map showKey = new HashMap();
-	String AdnKnd = request.getParameter("AdnKnd");
-	gzLog.Write(AdnKnd+"["+AdnKnd+"]");
-	if("3".equals(AdnKnd)){
+	String adnKnd = (String)pageContext.getAttribute("AdnKnd", PageContext.SESSION_SCOPE);
+	gzLog.Write(adnKnd+"["+adnKnd+"]");
+	if("3".equals(adnKnd)){
 		showKey.put("AdnCod", "通知书编号");
 		showKey.put("LevFlg", "征收方式");
 		showKey.put("DitCod", "行政区划");
@@ -39,7 +39,7 @@
 		showKey.put("AgtFlg", "代收标识");
 		showKey.put("RgnFlg", "区域标识");
 		showKey.put("AdnTyp", "通知书种类");
-	}else if("1".equals(AdnKnd)){
+	}else if("1".equals(adnKnd)){
 		showKey.put("AdnCod", "通知书编号");
 		/*showKey.put("AgtFlg", "代收标识");
 		showKey.put("AdnAmt", "应收总金额");
@@ -69,6 +69,11 @@
 	addValue.put("BokSeq", " ");
 	addValue.put("JJCod", " ");
 
+	//保存需要更新的字段
+	String preSaveKey = "HoActNo,OActFg,AccFlg,ActNo,CcyCod,ChkPin,BokSeq,JJCod";
+	PreAction.saveMapValue(pageContext, addValue, preSaveKey);
+	gzLog.Write(PreAction.strOfPageContext(pageContext));
+
 
 	//备注
 	String remark = "请仔细核对信息，如因客户输入错误导致缴费失败的，将不予退还缴费金额";
@@ -77,26 +82,7 @@
 <res>
 	<content>
 		<form method='post' action='/GZMBank/NotTax/NotTax_488010.jsp'>
-<%
-	Map form = request.getParameterMap();
-	//将上一页所有变量设置成隐藏表单值
-	Iterator itKeys = form.keySet().iterator();
-	while(itKeys.hasNext()){
-		String key = (String)itKeys.next();
-		String[] values = ( (String[]) form.get(key));
-		if(1==values.length){
-			out.println("<input type='hidden' name='"+key+"' value=\""+values[0]+"\"/><br/>");
-		}
-	}
 
-	//将需要增加的变量值设置成隐藏表单值
-	itKeys = addValue.keySet().iterator();
-	while(itKeys.hasNext()){
-		String key = (String)itKeys.next();
-		String values = (String) addValue.get(key);
-		out.println("<input type='hidden' name='"+key+"' value=\""+values+"\"/><br/>");
-	}
-%>
             <label>  </label><br/>
             <label>请确认缴费信息:</label><br/>
 <%
@@ -109,14 +95,15 @@
 		String key = (String) it.next();
 		String showValue = (String)showKey.get(key);
 		String type = (String)keyType.get(key);
-		
-		if(form.containsKey(key)){
-			String formValue = ( (String[])form.get(key) )[0];
-			String formattedValue = URLDecoder.decode(null==type?formValue:getFormattedValue(formValue, type), "UTF-8");
+
+		String pageContextValue = (String)pageContext.getAttribute(key, PageContext.SESSION_SCOPE);
+		if(null!=pageContextValue){
+			String formattedValue = null==type?pageContextValue:getFormattedValue(pageContextValue, type);
 			out.println("<label>"+showValue+":"+formattedValue+"</label><br/>");
 		}else{
 			out.println("<label>"+showValue+":null</label><br/>");
 		}
+		
 	}
 
 %>
