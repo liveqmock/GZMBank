@@ -35,11 +35,21 @@
 		showKey.put("AdnTyp", "通知书种类");
 	}else if("1".equals(adnKnd)){
 		showKey.put("AdnCod", "通知书编号");
-		/*showKey.put("AgtFlg", "代收标识");
+		showKey.put("LevFlg", "征收方式");
+		showKey.put("DitCod", "行政区划");
+		showKey.put("ColUntCd", "执收单位编码");
+		showKey.put("ColUntNm", "执收单位名称");
+//		showKey.put("CsgUntNm", "执罚单位名称");
+		showKey.put("XPayNam", "当事人");
+		showKey.put("XGatNam", "收款人名称");
+		showKey.put("AdnSmr", "违法信息备注");
 		showKey.put("AdnAmt", "应收总金额");
-		showKey.put("HoActNo", "银行扣账账号");
-		showKey.put("AdnKnd", "通知书性质");
-		showKey.put("HoActNo", "银行入账账号");*/
+		showKey.put("FinAccIn", "入账账号");
+		showKey.put("PntAmt", "非税收入金额");
+		showKey.put("AgtAmt", "代理代收金额");
+		showKey.put("AgtFlg", "代收标识");
+		showKey.put("RgnFlg", "区域标识");
+		showKey.put("AdnTyp", "通知书种类");
 	}
 
 	//设置需要显示的值的类型

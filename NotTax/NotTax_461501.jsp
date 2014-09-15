@@ -11,13 +11,18 @@
 	String sjNo = request.getHeader("MBK_MOBILE");  //手机号码
 	gzLog.Write("进入["+uri+"]");
 
+	//保存上一表单(交易)字段
+	String preSaveKey = request.getParameter("preSaveKey");
+	PreAction.savePreFormValue(pageContext, request, preSaveKey);
+	gzLog.Write(PreAction.strOfPageContext(pageContext));
+
 	//设置正常情况需要跳转的页面
 	String forwardPage = "NotTax_Confirm.jsp";
 	//设置出错情况需要跳转的页面
 	String errPage = "../../errPage.jsp";
 	//设置需要从网关正常返回中获取下来的值的名称,
 	String saveKey = "AdnCod,PBilTyp,PBilNo,LevFlg,WriDat,DitCod,ColUntCd,"
-		+ "ColUntNm,CsgUntCd, CsgUntNm,XPayNam,XPayAct,XPayObk,XGatNam,XGatAct,XGatObk,AdnSmr,StpDat,AdnMac,AdnAmt,"
+		+ "ColUntNm,CsgUntCd,CsgUntNm,XPayNam,XPayAct,XPayObk,XGatNam,XGatAct,XGatObk,AdnSmr,StpDat,AdnMac,AdnAmt,"
 		+ "FinAccIn,PntAmt,AgtAmt,AgtFlg,RgnFlg,AdnTyp,RecNum";
 
 	//在这里开始拼装即将发往服务器的一串报文
@@ -39,17 +44,8 @@
 	if("000000".equals(MGID)){//如果返回正确
 		gzLog.Write("["+uri+"]forward到"+forwardPage);
 
-		String[] saveKeys = saveKey.split(",");
-		StringBuffer forwardString = new StringBuffer();
-		forwardString.append(forwardPage).append("?");
-		for(int index=0; index<saveKeys.length; index++){
-			forwardString.append(saveKeys[index]).append("=")
-				.append(MessManTool.getValueByName(responseContext, saveKeys[index]));
-			if(index<saveKeys.length-1){//如果还有值的话需要添加&做间隔
-				forwardString.append("&");
-			}
-		}
-	    pageContext.forward(forwardString.toString());
+		PreAction.saveMidServerValue(pageContext, responseContext, saveKey);
+	    pageContext.forward(forwardPage);
 
 	}else{//如果返回不正确
 		String RspCod = MessManTool.getValueByName(responseContext, "RspCod");
