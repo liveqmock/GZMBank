@@ -34,16 +34,12 @@
 
 			<label>文书编号</label>
 			<input type='text' name='AdnCod' style="-wap-input-required: 'true'" /><br/>
-			<label>打印票据种类</label>
-			<input type='text' name='PBilTyp' style="-wap-input-required: 'true'" /><br/>
-			<label>打印票据编号</label>
-			<input type='text' name='PBilNo' style="-wap-input-required: 'true'" /><br/>
 			<label>通知书填写方式</label>
 			<input type='radio' name='HndFlg' value='0'  checked>机打票</input><br/>
 			<input type='radio' name='HndFlg' value='1' >手写票</input><br/>
 			<label>查询刷新标识</label>
-			<input type='radio' name='UpdAdnFg' value='0'  checked>首次查询</input><br/>
-			<input type='radio' name='UpdAdnFg' value='1' >信息刷新</input><br/>
+			<input type='radio' name='UpdAdnFg' value='0' >首次查询</input><br/>
+			<input type='radio' name='UpdAdnFg' value='1' checked>信息刷新</input><br/>
 			<select name="DitCod">
 				<option value="440192">广州南沙经济技术开发区</option>
 				<option value="440100">广州市</option>
@@ -61,6 +57,8 @@
 				<option value="440115">南沙区</option>
 				<option value="440114">花都区</option>
 			</select><br/>			
+			<input type='hidden' name='PBilTyp' value=' ' /><br/>
+			<input type='hidden' name='PBilNo' value=' ' /><br/>
 			<input type='hidden' name='RipFlg' value='0' /><br/>
 			<input type='hidden' name='preSaveKey' value='AdnCod,PBilTyp,PBilNo,HndFlg,UpdAdnFg,RipFlg,DitCod' />
 

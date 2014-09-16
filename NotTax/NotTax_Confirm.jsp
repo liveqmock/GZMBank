@@ -61,6 +61,8 @@
 	//设置需要显示的值的类型
 	Map keyType = new HashMap();
 	keyType.put("AdnAmt", "BigDecimal");
+	keyType.put("PntAmt", "BigDecimal");
+	keyType.put("AgtAmt", "BigDecimal");
 	keyType.put("AdnKnd", "AdnKnd");
 	keyType.put("LevFlg", "LevFlg");
 	keyType.put("DitCod", "DitCod");
@@ -120,8 +122,10 @@
 
 			<label>请输入交易密码：</label>
 			<br/>
-			<input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
+			<input type='password' name='password' isRandomPass='true' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
 			<input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input>
+
+			<input type='hidden'  name='MBK_VERIFY' value='true'></input>
 
 			<input type='submit' value='确定'/><br/>
 		</form>

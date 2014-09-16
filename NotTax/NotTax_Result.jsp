@@ -55,6 +55,8 @@
 	//设置需要显示的值的类型
 	Map keyType = new HashMap();
 	keyType.put("AdnAmt", "BigDecimal");
+	keyType.put("PntAmt", "BigDecimal");
+	keyType.put("AgtAmt", "BigDecimal");
 	keyType.put("AdnKnd", "AdnKnd");
 	keyType.put("LevFlg", "LevFlg");
 	keyType.put("DitCod", "DitCod");

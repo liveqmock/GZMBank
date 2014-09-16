@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8"%>
 <%@page pageEncoding="utf-8"%>
 <%request.setCharacterEncoding("utf-8");%>
+<%@ page import="java.net.*"%>
 <%@ page import="com.viatt.util.*"%>
 <%@ page import="com.gdbocom.util.*" %>
 <%@ page import="com.viatt.util.GzLog" %>
@@ -48,7 +49,7 @@
 
 	}else{//如果返回不正确
 		String RspCod = MessManTool.getValueByName(responseContext, "RspCod");
-		String RspMsg = MessManTool.getValueByName(responseContext, "RspMsg"); 
+		String RspMsg = URLEncoder.encode(MessManTool.getValueByName(responseContext, "RspMsg"), "UTF-8"); 
 		gzLog.Write("["+uri+"]MGID不正确");
 
 		StringBuffer forwardString = new StringBuffer();

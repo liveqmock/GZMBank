@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8"%>
 <%@page pageEncoding="utf-8"%>
 <%request.setCharacterEncoding("utf-8");%>
+<%@ page import="java.net.*" %>
 <%@ page import="com.viatt.util.*"%>
 <%@ page import="com.gdbocom.util.*" %>
 <%@ page import="com.viatt.util.GzLog" %>
@@ -26,7 +27,7 @@
 		+ "FinAccIn,PntAmt,AgtAmt,AgtFlg,RgnFlg,AdnTyp,RecNum";
 
 	//在这里开始拼装即将发往服务器的一串报文
-	String requestContext = Context.createContext(request, "34", "1");
+	String requestContext = Context.createContext(pageContext, "34", "1");
 	gzLog.Write("["+uri+"]网关请求报文："+requestContext);
 	
 
@@ -49,7 +50,7 @@
 
 	}else{//如果返回不正确
 		String RspCod = MessManTool.getValueByName(responseContext, "RspCod");
-		String RspMsg = MessManTool.getValueByName(responseContext, "RspMsg"); 
+		String RspMsg = URLEncoder.encode(MessManTool.getValueByName(responseContext, "RspMsg"), "UTF-8"); 
 		gzLog.Write("["+uri+"]MGID不正确");
 
 		StringBuffer forwardString = new StringBuffer();

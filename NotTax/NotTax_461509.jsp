@@ -52,7 +52,7 @@
 
 	}else{//如果返回不正确
 		String RspCod = MessManTool.getValueByName(responseContext, "RspCod");
-		String RspMsg = MessManTool.getValueByName(responseContext, "RspMsg"); 
+		String RspMsg = URLEncoder.encode(MessManTool.getValueByName(responseContext, "RspMsg"), "UTF-8"); 
 		gzLog.Write("["+uri+"]MGID不正确");
 
 		StringBuffer forwardString = new StringBuffer();
