@@ -4,6 +4,7 @@
 <%@ page import="com.viatt.util.GzLog" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.*" %>
+<%@ page import="java.lang.*" %>
 
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
@@ -14,42 +15,41 @@
 	
 	//设置需要显示的值和名称,
 	Map showKey = new HashMap();
+	Map seque = new HashMap();
 	String adnKnd = (String)pageContext.getAttribute("AdnKnd", PageContext.SESSION_SCOPE);
 	gzLog.Write(adnKnd+"["+adnKnd+"]");
 	if("3".equals(adnKnd)){
 		showKey.put("AdnCod", "通知书编号");
-		showKey.put("LevFlg", "征收方式");
 		showKey.put("DitCod", "行政区划");
-		showKey.put("ColUntCd", "执收单位编码");
 		showKey.put("ColUntNm", "执收单位名称");
 		showKey.put("CsgUntNm", "执罚单位名称");
 		showKey.put("XPayNam", "当事人");
-		showKey.put("XGatNam", "收款人名称");
-		showKey.put("AdnSmr", "违法信息备注");
 		showKey.put("AdnAmt", "应收总金额");
-		showKey.put("FinAccIn", "入账账号");
-		showKey.put("PntAmt", "非税收入金额");
-		showKey.put("AgtAmt", "代理代收金额");
-		showKey.put("AgtFlg", "代收标识");
-		showKey.put("RgnFlg", "区域标识");
-		showKey.put("AdnTyp", "通知书种类");
+		showKey.put("TckNo", "会计流水号");
+
+		seque.put( "0", "AdnCod");
+		seque.put( "1", "DitCod");
+		seque.put( "2", "ColUntNm");
+		seque.put( "3", "CsgUntNm");
+		seque.put( "4", "XPayNam");
+		seque.put( "5", "AdnAmt");
+		seque.put( "6", "TckNo");
+
 	}else if("1".equals(adnKnd)){
 		showKey.put("AdnCod", "通知书编号");
-		showKey.put("LevFlg", "征收方式");
 		showKey.put("DitCod", "行政区划");
-		showKey.put("ColUntCd", "执收单位编码");
 		showKey.put("ColUntNm", "执收单位名称");
-//		showKey.put("CsgUntNm", "执罚单位名称");
 		showKey.put("XPayNam", "当事人");
-		showKey.put("XGatNam", "收款人名称");
-		showKey.put("AdnSmr", "违法信息备注");
 		showKey.put("AdnAmt", "应收总金额");
-		showKey.put("FinAccIn", "入账账号");
-		showKey.put("PntAmt", "非税收入金额");
-		showKey.put("AgtAmt", "代理代收金额");
-		showKey.put("AgtFlg", "代收标识");
-		showKey.put("RgnFlg", "区域标识");
-		showKey.put("AdnTyp", "通知书种类");
+		showKey.put("TckNo", "会计流水号");
+
+		seque.put( "0", "AdnCod");
+		seque.put( "1", "DitCod");
+		seque.put( "2", "ColUntNm");
+		seque.put( "3", "XPayNam");
+		seque.put( "4", "AdnAmt");
+		seque.put( "5", "TckNo");
+		
 	}
 
 	//设置需要显示的值的类型
@@ -75,11 +75,9 @@
 
 
 	//显示确认值
-	Set keys = showKey.keySet();
+	for(int i=0; i<seque.size(); i++){
 
-	for(Iterator it = keys.iterator(); it.hasNext(); ){
-
-		String key = (String) it.next();
+		String key = (String) seque.get(String.valueOf(i));
 		String showValue = (String)showKey.get(key);
 		String type = (String)keyType.get(key);
 
@@ -94,6 +92,7 @@
 	}
 
 %>
+			<label> </label><br/>
 	</content>
 </res>
 <%!

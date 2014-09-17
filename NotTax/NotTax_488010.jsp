@@ -21,6 +21,26 @@
 	//设置需要从网关正常返回中获取下来的值的名称,
 	String saveKey = "ActSts";
 
+	//BEGIN 身份认证
+	//
+	/*String verify = request.getHeader("MBK_VERIFY_RESULT");
+	if(verify!=null&&!verify.equals("P")){
+		String RspCod = "MID999";
+		String RspMsg = "手机短信密码验证不通过"; 
+		gzLog.Write("["+uri+"]MGID不正确");
+
+		StringBuffer forwardString = new StringBuffer();
+		forwardString.append(errPage).append("?");
+		forwardString.append("RspCod").append("=").append(RspCod);
+		forwardString.append("&");
+		forwardString.append("RspMsg").append("=").append(RspMsg);
+        pageContext.forward(forwardString.toString());
+	}*/
+	
+    //END 身份认证
+
+
+
 	//在这里开始拼装即将发往服务器的一串报文
 	String requestContext = Context.createContext(pageContext, "34", "5");
 	String password = request.getHeader("password");

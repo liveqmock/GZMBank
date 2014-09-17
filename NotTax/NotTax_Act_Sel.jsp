@@ -21,7 +21,7 @@
 
 		<label>请选择缴费类别：</label>
 		<input type='radio' name='AdnKnd' value='3' checked>交通罚款</input>
-		<input type='radio' name='AdnKnd' value='1' >普通收缴</input>
+		<input type='radio' name='AdnKnd' value='1' >非税缴费</input>
 		<input type='hidden' name='preSaveKey' value='AdnKnd' />
 
 		<input type='submit' value='确定'/><br/>

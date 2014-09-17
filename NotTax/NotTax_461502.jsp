@@ -17,7 +17,7 @@
 	//设置出错情况需要跳转的页面
 	String errPage = "../../errPage.jsp";
 	//设置需要从网关正常返回中获取下来的值的名称,
-	String saveKey = "";
+	String saveKey = "TckNo,";
 
 	//添加额外字段
 	pageContext.setAttribute("VchTyp", " ", PageContext.SESSION_SCOPE);

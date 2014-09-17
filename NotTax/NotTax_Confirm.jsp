@@ -20,42 +20,37 @@
 	
 	//设置需要显示的值和名称,
 	Map showKey = new HashMap();
+	Map seque = new HashMap();
 	String adnKnd = (String)pageContext.getAttribute("AdnKnd", PageContext.SESSION_SCOPE);
 	gzLog.Write(adnKnd+"["+adnKnd+"]");
 	if("3".equals(adnKnd)){
 		showKey.put("AdnCod", "通知书编号");
-		showKey.put("LevFlg", "征收方式");
 		showKey.put("DitCod", "行政区划");
-		showKey.put("ColUntCd", "执收单位编码");
 		showKey.put("ColUntNm", "执收单位名称");
 		showKey.put("CsgUntNm", "执罚单位名称");
 		showKey.put("XPayNam", "当事人");
-		showKey.put("XGatNam", "收款人名称");
-		showKey.put("AdnSmr", "违法信息备注");
 		showKey.put("AdnAmt", "应收总金额");
-		showKey.put("FinAccIn", "入账账号");
-		showKey.put("PntAmt", "非税收入金额");
-		showKey.put("AgtAmt", "代理代收金额");
-		showKey.put("AgtFlg", "代收标识");
-		showKey.put("RgnFlg", "区域标识");
-		showKey.put("AdnTyp", "通知书种类");
+
+		seque.put( "0", "AdnCod");
+		seque.put( "1", "DitCod");
+		seque.put( "2", "ColUntNm");
+		seque.put( "3", "CsgUntNm");
+		seque.put( "4", "XPayNam");
+		seque.put( "5", "AdnAmt");
+
 	}else if("1".equals(adnKnd)){
 		showKey.put("AdnCod", "通知书编号");
-		showKey.put("LevFlg", "征收方式");
 		showKey.put("DitCod", "行政区划");
-		showKey.put("ColUntCd", "执收单位编码");
 		showKey.put("ColUntNm", "执收单位名称");
-//		showKey.put("CsgUntNm", "执罚单位名称");
 		showKey.put("XPayNam", "当事人");
-		showKey.put("XGatNam", "收款人名称");
-		showKey.put("AdnSmr", "违法信息备注");
 		showKey.put("AdnAmt", "应收总金额");
-		showKey.put("FinAccIn", "入账账号");
-		showKey.put("PntAmt", "非税收入金额");
-		showKey.put("AgtAmt", "代理代收金额");
-		showKey.put("AgtFlg", "代收标识");
-		showKey.put("RgnFlg", "区域标识");
-		showKey.put("AdnTyp", "通知书种类");
+
+		seque.put( "0", "AdnCod");
+		seque.put( "1", "DitCod");
+		seque.put( "2", "ColUntNm");
+		seque.put( "3", "XPayNam");
+		seque.put( "4", "AdnAmt");
+		
 	}
 
 	//设置需要显示的值的类型
@@ -98,13 +93,10 @@
             <label>  </label><br/>
             <label>请确认缴费信息:</label><br/>
 <%
-
 	//显示确认值
-	Set keys = showKey.keySet();
+	for(int i=0; i<seque.size(); i++){
 
-	for(Iterator it = keys.iterator(); it.hasNext(); ){
-
-		String key = (String) it.next();
+		String key = (String) seque.get(String.valueOf(i));
 		String showValue = (String)showKey.get(key);
 		String type = (String)keyType.get(key);
 
@@ -124,8 +116,6 @@
 			<br/>
 			<input type='password' name='password' isRandomPass='true' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
 			<input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input>
-
-			<input type='hidden'  name='MBK_VERIFY' value='true'></input>
 
 			<input type='submit' value='确定'/><br/>
 		</form>
@@ -152,7 +142,7 @@
 			}else{
 				return value;
 			}			
-		}else if("DitCod".equals(type)){//TODO
+		}else if("DitCod".equals(type)){
 			if("440192".equals(value)){return "广州南沙经济技术开发区";
 			}else if("440100".equals(value)){return "广州市";
 			}else if("440103".equals(value)){return "荔湾区";

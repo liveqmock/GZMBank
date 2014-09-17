@@ -26,8 +26,8 @@
 			<input type='radio' name='HndFlg' value='0'  checked>机打票</input><br/>
 			<input type='radio' name='HndFlg' value='1' >手写票</input><br/>
 			<label>查询刷新标识</label>
-			<input type='radio' name='UpdAdnFg' value='0' >首次查询</input><br/>
-			<input type='radio' name='UpdAdnFg' value='1' checked>信息刷新</input><br/>
+			<input type='radio' name='UpdAdnFg' value='0' checked>首次查询</input><br/>
+			<input type='radio' name='UpdAdnFg' value='1' >信息刷新</input><br/>
 			<input type='hidden' name='PBilTyp' value=' ' /><br/>
 			<input type='hidden' name='PBilNo' value=' ' /><br/>
 			<input type='hidden' name='RipFlg' value='0' /><br/>
