@@ -32,17 +32,18 @@
 	<content>
 		<form method='post' action='/GZMBank/NotTax/NotTax_461501.jsp'>
 
-			<label>文书编号</label>
+			<label>文书编号：</label>
 			<input type='text' name='AdnCod' style="-wap-input-required: 'true'" /><br/>
-			<label>通知书填写方式</label>
+			<label>通知书填写方式：</label>
 			<input type='radio' name='HndFlg' value='0'  checked>机打票</input><br/>
 			<input type='radio' name='HndFlg' value='1' >手写票</input><br/>
-			<label>查询刷新标识</label>
+			<label>查询刷新标识：</label>
 			<input type='radio' name='UpdAdnFg' value='0' checked>首次查询</input><br/>
-			<input type='radio' name='UpdAdnFg' value='1' >信息刷新</input><br/>
+			<input type='radio' name='UpdAdnFg' value='1' >非首次查询</input><br/>
+			<label>缴费地区：</label>
 			<select name="DitCod">
-				<option value="440192">广州南沙经济技术开发区</option>
 				<option value="440100" checked>广州市</option>
+				<option value="440192">广州南沙经济技术开发区</option>
 				<option value="440103">荔湾区</option>
 				<option value="440104">越秀区</option>
 				<option value="440105">海珠区</option>
