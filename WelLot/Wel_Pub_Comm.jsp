@@ -6,6 +6,7 @@
 <%@ page import="com.viatt.util.*"%>
 <%@ page import="com.gdbocom.util.*" %>
 <%@ page import="com.viatt.util.GzLog" %>
+<%@ page import="com.gdbocom.Transactions.WelLot" %>
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String uri = request.getRequestURI();
@@ -15,7 +16,7 @@
 	//gzLog.Write(request.getQueryString().toString());
 	
 	//获取bus字段,判断交易类型
-	String bus = (String)pageContext.getAttribute("Bus");
+	int bus = Integer.parseInt((String)pageContext.getAttribute("Bus"));
 
 	//设置正常情况需要跳转的页面
 	String forwardPage = "Wel_Result.jsp";
@@ -23,8 +24,10 @@
 	String errPage = "../../errPage.jsp";
 	//设置需要从网关正常返回中获取下来的值的名称,
 	String saveKey = null;
-	if(bus.equals("1")){
+	if(bus==WelLot.ADDREG){
 		saveKey="LotNam";
+	}else if(bus==WelLot.UPDREG){
+		saveKey="MobTel";
 	}
 
 	//BEGIN 身份认证
@@ -47,7 +50,7 @@
 
 	//根据bus字段来决定通讯方式
 	String biz_id = "34";
-	String biz_step_id = bus;
+	String biz_step_id = String.valueOf(bus);
 
 	//在这里开始拼装即将发往服务器的一串报文
 	String requestContext = Context.createContext(pageContext, biz_id, biz_step_id);

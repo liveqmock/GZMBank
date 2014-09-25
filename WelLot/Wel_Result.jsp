@@ -4,7 +4,7 @@
 <%@ page import="com.viatt.util.GzLog" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.*" %>
-
+<%@ page import="com.gdbocom.Transactions.WelLot" %>
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String uri = request.getRequestURI();
@@ -14,13 +14,13 @@
 	
 	//设置需要显示的值和名称,
 	Map showKey = new HashMap();
-	String bus = (String)pageContext.getAttribute("Bus", PageContext.SESSION_SCOPE);
+	int bus = Integer.parseInt((String)pageContext.getAttribute("Bus"));
 	String title = "";
 	String remark = "";
-	if("1".equals(bus)){
+	if(bus==WelLot.ADDREG){
 		title = "福彩用户注册成功";
-	}else if("2".equals(bus)){
-		showKey.put("AdnCod", "通知书编号");
+	}else if(bus==WelLot.UPDREG){
+		title = "福彩用户注册信息更改成功";
 	}
 
 	//设置需要显示的值的类型

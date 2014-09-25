@@ -21,20 +21,22 @@
 
 	String action_next;
 	
-	switch(bus){
-	case(WelLot.ADDREG):
+	if(bus==WelLot.ADDREG){
 		action_next="Wel_Reg_Add.jsp";
-		break;
-	case(WelLot.ADDREG):
+
+	}else if(bus==WelLot.UPDREG){
+		action_next="Wel_Reg_Add.jsp";
+
+	}else if(bus==WelLot.DOUBLEBUY){
 		action_next="Wel_Buy_Dou.jsp";
-		break;
-	case(WelLot.ADDREG):
+
+	}else if(bus==WelLot.DOUBLEFIXBUY){
 		action_next="Wel_Fix_Dou.jsp";
-		break;
-	case(WelLot.ADDREG):
+
+	}else if(bus==WelLot.TENBUY){
 		action_next="Wel_Buy_Ten.jsp";
-		break;
-	default:
+
+	}else{
 		action_next="Wel_Bus_Sel.jsp";
 	}
 %>
