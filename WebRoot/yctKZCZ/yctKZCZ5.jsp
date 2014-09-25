@@ -32,6 +32,7 @@
        
          <input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
          <input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input>
+         <input type='hidden'  name='MBK_VERIFY' value='true'></input>
        <%
         //更改加密方式此段程序封闭20110419
        //<input type='hidden' name='MBK_SECURITY_PASSWORD'  value='password'></input>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/xml; charset=UTF-8"%>
 <%@page pageEncoding="utf-8"%>
 <%request.setCharacterEncoding("utf-8");%>
+<%@ page import="com.bocom.mobilebank.security.*"%>
 <%@ page import="com.viatt.util.GzLog" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.*" %>
@@ -16,9 +17,8 @@
 	Map showKey = new HashMap();
 	showKey.put("TelNum", "充值手机号");
 	showKey.put("TxnAmt", "充值金额");
-	showKey.put("ActDat", "充值日期");
-	showKey.put("TckNo", "银行流水号");
-	showKey.put("TLogNo", "联通流水号");
+  showKey.put("TckNo", "会计流水号");
+  
 
 	Map keyType = new HashMap();
 	keyType.put("TxnAmt", "BigDecimal");
@@ -27,7 +27,8 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <res>
 	<content>	
-			<label>交易成功:</label><br/>
+       <form method='post' action='/GZMBank/ChongZhi/liantong/ChongZhi_liantong_TelNum.jsp'>
+			<label>充值交易成功，感谢您的使用!</label>
 <%
 
 	Map form = request.getParameterMap();
@@ -45,13 +46,14 @@
 		if(form.containsKey(key)){
 			String formValue = ( (String[])form.get(key) )[0];
 			String formattedValue = null==type?formValue:getFormattedValue(formValue, type);
-			out.println("<label>"+showValue+":"+formattedValue+"</label><br/>");
+			out.println("<label>"+showValue+":"+formattedValue+"</label>");
 		}else{
-			out.println("<label>"+showValue+":null</label><br/>");
+			out.println("<label>"+showValue+":null</label>");
 		}
 	}
 
 %>
+  </form> 
 	</content>
 </res>
 <%!

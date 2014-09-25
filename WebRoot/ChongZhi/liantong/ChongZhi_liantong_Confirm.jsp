@@ -20,11 +20,12 @@
 	Map showKey = new HashMap();
 	showKey.put("TelNum", "充值手机号");
 	showKey.put("TxnAmt", "充值金额");
+ 
 
 	Map keyType = new HashMap();
 	keyType.put("TelNum", "String");
 	keyType.put("TxnAmt", "BigDecimal");
-
+ // <input type='hidden' name='MBK_VERIFY' value='true'/>
 	//备注
 	String remark = "请仔细核对充值手机号码的准确性，如因客户输入错误导致充值失败的，将不予退还充值金额";
 %>
@@ -32,7 +33,7 @@
 <res>
 	<content>	
 		<form method='post' action='/GZMBank/ChongZhi/liantong/ChongZhi_liantong_460602.jsp'>
-			<label>请确认充值信息:</label><br/>
+			<label>请确认充值信息:</label>
 <%
 	Map form = request.getParameterMap();
 	//设置隐藏表单值
@@ -57,22 +58,23 @@
 		if(form.containsKey(key)){
 			String formValue = ( (String[])form.get(key) )[0];
 			String formattedValue = null==type?formValue:getFormattedValue(formValue, type);
-			out.println("<label>"+showValue+":"+formattedValue+"</label><br/>");
+			out.println("<label>"+showValue+":"+formattedValue+"</label>");
 		}else{
-			out.println("<label>"+showValue+":null</label><br/>");
+			out.println("<label>"+showValue+":null</label>");
 		}
 	}
 
 %>
 
 			<label>请输入交易密码：</label>
-			<br/>
-			<input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
+			
+			<input type='password' name='password' isRandomPass='true' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
 			<input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input>
-
-			<input type='submit' value='确定'/><br/>
+  　　<input type='hidden' name='MBK_VERIFY' value='true'/>
+			<input type='submit' value='确定'/>
+      <label><%=remark%></label>
 		</form>
-		<label><%=remark%></label>
+		
 	</content>
 </res>
 <%!

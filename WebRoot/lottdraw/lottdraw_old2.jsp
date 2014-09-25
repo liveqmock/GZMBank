@@ -98,7 +98,7 @@
 			return TipsShow.MAJOR;
 		}else if(ACCESSIT_switch&&(exist_number==999979)){//二等奖
 			return TipsShow.ACCESSIT;
-		}else if(exist_number%100==1){//三等奖
+		}else if(exist_number%150==1){//三等奖
 			return TipsShow.THIRD_CLASS;
 		}else{//不中
 			return TipsShow.NONE;

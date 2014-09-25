@@ -117,6 +117,7 @@
 			<br/>
 			<input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
 			<input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input>
+			<input type='hidden'  name='MBK_VERIFY' value='true'></input>
 			<br/>
 			
 			<br/>
@@ -147,7 +148,7 @@
 			
 			<input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
 			<input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input>
-			
+			<input type='hidden'  name='MBK_VERIFY' value='true'></input>
 			<input type='submit' value='解约'/>		
 		</form>		
     <%

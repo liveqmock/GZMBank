@@ -88,6 +88,7 @@
 			<br/>
 			<input type='password' name='password' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
 			<input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input>
+			<input type='hidden'  name='MBK_VERIFY' value='true'></input>
 			<input type='hidden' name='dxNumber' value="<%=dxNumber%>"/>
 			<input type='hidden' name='optType' value="<%=numType%>"/>
 			<input type='hidden' name='tranAmt' value="<%=tranAmt%>"/>

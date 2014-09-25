@@ -49,6 +49,9 @@
 		
 			MidServer midServer = new MidServer();
 		
+		
+		
+		  
 			//发送报文，并且获取返回的报文
 			BwResult bwResult = midServer.sendMessage(sendContext);
 			String message = bwResult.getContext();
