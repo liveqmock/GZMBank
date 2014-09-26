@@ -33,7 +33,7 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <res> 
 	<content>
-		<form method='post' action='/GZMBank/Efek/JiaoFei/Efek_460444.jsp'>
+		<form method='post' action='/GZMBank/Efek/QianYue/Efek_Confirm.jsp'>
 <%
 	Map form = request.getParameterMap();
 

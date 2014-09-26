@@ -17,7 +17,7 @@
 	}else if("0".equals(qdbz)){
 		action_next="Efek_Add_Input.jsp";
 	}else if("2".equals(qdbz)){
-		action_next="Efek_460444.jsp";
+		action_next="Efek_Confirm.jsp";
 	}else{
 		action_next="Efek_Qry_Input.jsp";
 	}

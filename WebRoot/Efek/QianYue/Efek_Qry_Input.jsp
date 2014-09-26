@@ -16,7 +16,7 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <res> 
 	<content>
-		<form method='post' action='/GZMBank/Efek/JiaoFei/Efek_460444.jsp'>
+		<form method='post' action='/GZMBank/Efek/QianYue/Efek_460444.jsp'>
 			<lable>缴费卡号：</lable>
 			<br/>
 			<%=CrdNo%>
