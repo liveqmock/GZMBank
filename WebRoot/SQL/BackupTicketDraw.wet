@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WinSQLExportTemplate>
+	<exportType>odbc</exportType>
+	<numTargetFields>7</numTargetFields>
+	<suid>miduser</suid>
+	<spwd encrypted="true">DJ1914gNIMRACQDCOSpTfye</spwd>
+	<sdsn>182.53.4.118</sdsn>
+	<tuid/>
+	<tpwd encrypted="true">KcV1cdHzrxrCXjtJ</tpwd>
+	<tdsn>lott</tdsn>
+	<oTable>TicketDrawBackup</oTable>
+	<oOwner/>
+	<sourceSQL><![CDATA[select * from dbo.TICKETDRAW t
+
+]]></sourceSQL>
+	<targetSQL><![CDATA[insert into TicketDrawBackup (`id`, `crdno`, `sgnmob`, `mobtel`, `drawlevel`, `recvsign`, `no`) values(?, ?, ?, ?, ?, ?, ?)]]></targetSQL>
+	<targetFields>
+		<field>
+			<fieldName>id</fieldName>
+			<transfer>1</transfer>
+		</field>
+		<field>
+			<fieldName>crdno</fieldName>
+			<transfer>1</transfer>
+		</field>
+		<field>
+			<fieldName>sgnmob</fieldName>
+			<transfer>1</transfer>
+		</field>
+		<field>
+			<fieldName>mobtel</fieldName>
+			<transfer>1</transfer>
+		</field>
+		<field>
+			<fieldName>drawlevel</fieldName>
+			<transfer>1</transfer>
+		</field>
+		<field>
+			<fieldName>recvsign</fieldName>
+			<transfer>1</transfer>
+		</field>
+		<field>
+			<fieldName>no</fieldName>
+			<transfer>1</transfer>
+		</field>
+	</targetFields>
+</WinSQLExportTemplate>

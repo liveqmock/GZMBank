@@ -3,3 +3,8 @@ WEB-INF/classes/*
 *.tar
 *.rar
 *.tmp
+.project
+.classpath
+.settings/*
+*.swp
+/bin

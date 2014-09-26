@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <display-name>GZMBank</display-name>
+
+  <servlet>
+    <servlet-name>Gds_Add_9901</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Gds_Add_9901</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Gds_GdsBIds</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Gds_GdsBIds</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Gds_PreCorfirm</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Gds_PreCorfirm</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Gds_Qry_9901</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Gds_Qry_9901</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Gds_Qry_9998</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Gds_Qry_9998</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>Hello</servlet-name>
+    <servlet-class>com.gdbocom.action.gds.Hello</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Gds_Add_9901</servlet-name>
+    <url-pattern>/SignAtOne/Gds_Add_9901</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Gds_GdsBIds</servlet-name>
+    <url-pattern>/SignAtOne/Gds_GdsBIds</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Gds_PreCorfirm</servlet-name>
+    <url-pattern>/SignAtOne/Gds_PreCorfirm</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Gds_Qry_9901</servlet-name>
+    <url-pattern>/SignAtOne/Gds_Qry_9901</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Gds_Qry_9998</servlet-name>
+    <url-pattern>/SignAtOne/Gds_Qry_9998</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>Hello</servlet-name>
+    <url-pattern>/SignAtOne/Hello</url-pattern>
+  </servlet-mapping>
+
+  <mime-mapping>
+    <extension>html</extension>
+    <mime-type>text/html</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>htm</extension>
+    <mime-type>text/html</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>gif</extension>
+    <mime-type>image/gif</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>jpeg</extension>
+    <mime-type>image/jpeg</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>jpg</extension>
+    <mime-type>image/jpeg</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>pdf</extension>
+    <mime-type>application/pdf</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>zip</extension>
+    <mime-type>application/zip</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>class</extension>
+    <mime-type>application/x-java-vm</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>jar</extension>
+    <mime-type>application/x-java-archive</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>ser</extension>
+    <mime-type>application/x-java-serialized</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>exe</extension>
+    <mime-type>application/octet-stream</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>hdml</extension>
+    <mime-type>text/x-hdml</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>bmp</extension>
+    <mime-type>image/bmp</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>wml</extension>
+    <mime-type>text/vnd.wap.wml</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>wmls</extension>
+    <mime-type>text/vnd.wap.wmlscript</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>wmlc</extension>
+    <mime-type>application/vnd.wap.wmlc</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>wmlsc</extension>
+    <mime-type>application/vnd.wap.wmlscript</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>wbmp</extension>
+    <mime-type>image/vnd.wap.wbmp</mime-type>
+  </mime-mapping>
+
+</web-app>
