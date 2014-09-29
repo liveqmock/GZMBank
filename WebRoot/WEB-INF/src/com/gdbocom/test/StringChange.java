@@ -8,11 +8,11 @@ public class StringChange {
 
 	public static void main(String[] args) throws Exception{
 
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//ÉèÖÃÈÕÆÚ¸ñÊ½
-	      System.out.println(df.format(new Date()));// new Date()Îª»ñÈ¡µ±Ç°ÏµÍ³Ê±¼ä
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//è®¾ç½®æ—¥æœŸæ ¼å¼
+	      System.out.println(df.format(new Date()));// new Date()ä¸ºè·å–å½“å‰ç³»ç»Ÿæ—¶é—´
 	   String lChkTm = "201202";
 	   
-	   System.out.println(lChkTm.substring(0,4)+"Äê"+(("0".equals(lChkTm.substring(4, 5)))?lChkTm.substring(5, 6):lChkTm.substring(4, 6))+"ÔÂ");
+	   System.out.println(lChkTm.substring(0,4)+"å¹´"+(("0".equals(lChkTm.substring(4, 5)))?lChkTm.substring(5, 6):lChkTm.substring(4, 6))+"æœˆ");
 	}
 	
 	public void DecimalFormat() throws Exception{

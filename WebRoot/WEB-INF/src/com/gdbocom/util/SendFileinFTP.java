@@ -31,39 +31,39 @@ import org.apache.commons.net.ftp.FTPReply;
 import com.viatt.util.GzLog;
 
 /***
- * ±¾ÓÃÀıÓÃÓÚÊ¹ÓÃ´«ÊäºÍ½ÓÊÕÎÄ¼ş
+ * æœ¬ç”¨ä¾‹ç”¨äºä½¿ç”¨ä¼ è¾“å’Œæ¥æ”¶æ–‡ä»¶
  ***/
 public class SendFileinFTP
 {
-	/** ´«ÊäÎÄ¼şÎªbinÄ£Ê½ */
+	/** ä¼ è¾“æ–‡ä»¶ä¸ºbinæ¨¡å¼ */
 	public static final int BINARY_FILE_TYPE = 1;
-	/** ´«ÊäÎÄ¼şÎªasciiÄ£Ê½ */
+	/** ä¼ è¾“æ–‡ä»¶ä¸ºasciiæ¨¡å¼ */
 	public static final int ASCII_FILE_TYPE = 2;
-	/** ftpÄ£Ê½Îª±»¶¯Ä£Ê½ */
+	/** ftpæ¨¡å¼ä¸ºè¢«åŠ¨æ¨¡å¼ */
 	public static final int PassiveMode = 3;
-	/** ftpÄ£Ê½ÎªÖ÷¶¯Ä£Ê½ */
+	/** ftpæ¨¡å¼ä¸ºä¸»åŠ¨æ¨¡å¼ */
 	public static final int ActiveMode = 4;
 	//boolean error = false;
-	/** Ë½ÓĞ±äÁ¿FTP¿Í»§¶Ë */
+	/** ç§æœ‰å˜é‡FTPå®¢æˆ·ç«¯ */
 	private FTPClient ftp = new FTPClient();
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 
 	/**
-	 * ±¾·½·¨ÓÃÓÚÁ¬½ÓºÍµÇÂ¼FTP·şÎñÆ÷
-	 * @param server ·şÎñÆ÷IP
-	 * @param username ÓÃ»§Ãû
-	 * @param password ÃÜÂë
-	 * @return ÊÇ·ñ³É¹¦Á¬½Ó
+	 * æœ¬æ–¹æ³•ç”¨äºè¿æ¥å’Œç™»å½•FTPæœåŠ¡å™¨
+	 * @param server æœåŠ¡å™¨IP
+	 * @param username ç”¨æˆ·å
+	 * @param password å¯†ç 
+	 * @return æ˜¯å¦æˆåŠŸè¿æ¥
 	 */
     public boolean connect(String server, String username, String password){
     	
-    	//Á¬½ÓFTP·şÎñÆ÷
+    	//è¿æ¥FTPæœåŠ¡å™¨
         try{
             int reply;
             ftp.connect(server);
             gzLog.Write("Connected to " + server + ".");
 
-            // ²âÊÔÁ¬½ÓºóËù·µ»ØµÄ·µ»ØÂëÊÇ·ñÕıÈ·
+            // æµ‹è¯•è¿æ¥åæ‰€è¿”å›çš„è¿”å›ç æ˜¯å¦æ­£ç¡®
             reply = ftp.getReplyCode();
 
             if (!FTPReply.isPositiveCompletion(reply)){
@@ -71,7 +71,7 @@ public class SendFileinFTP
                 gzLog.Write("FTP server refused connection.");
                 return false;
             }
-        }catch (IOException e){//³öÏÖIO´íÎóºó,¶Ï¿ªÁ¬½Ó
+        }catch (IOException e){//å‡ºç°IOé”™è¯¯å,æ–­å¼€è¿æ¥
             if (ftp.isConnected()){
                 try{
                     ftp.disconnect();
@@ -84,9 +84,9 @@ public class SendFileinFTP
             return false;
         }
 
-        //Ê¹ÓÃÓÃ»§ÃûºÍÃÜÂëµÇÂ¼
+        //ä½¿ç”¨ç”¨æˆ·åå’Œå¯†ç ç™»å½•
         try{
-            if (!ftp.login(username, password)){//µÇÂ¼´íÎóºóÈ¡ÏûµÇÂ¼
+            if (!ftp.login(username, password)){//ç™»å½•é”™è¯¯åå–æ¶ˆç™»å½•
                 ftp.logout();
                 return false;
             }
@@ -100,53 +100,53 @@ public class SendFileinFTP
     }
     
 	/**
-	 * ±¾·½·¨ÓÃÓÚÉÏ´«ÎÄ¼ş,¿ÉÒÔÊ¹ÓÃÖ÷¶¯»òÕß±»¶¯FTPÄ£Ê½ºÍBIN»òÕßASCII´«ÊäÄ£Ê½
-	 * @param local ±¾µØÎÄ¼şÃû(¿É°üÀ¨Â·¾¶,Â·¾¶±ØĞëÊ¹ÓÃ"/"·ûºÅ·Ö¸ô),²»¿ÉÒÔ°üÀ¨ÖĞÎÄ
-	 * @param remotePath Ô¶³ÌÎÄ¼şÂ·¾¶(Ìí¼ÓÔ¶³ÌÎÄ¼şËùÔÚÂ·¾¶)
-	 * @param remote Ô¶³ÌÎÄ¼şÃû(²»¿É°üÀ¨Â·¾¶),²»¿ÉÒÔ°üÀ¨ÖĞÎÄ
-	 * @param filetype ´«ÊäÄ£Ê½Ñ¡Ôñ,ÓĞBINºÍASCIIÁ½ÖÖÄ£Ê½
-	 * @param ftptype FTPÄ£Ê½Ñ¡Ôñ,ÓĞÖ÷¶¯ºÍ±»¶¯Á½ÖÖÄ£Ê½
-	 * @return ÊÇ·ñ³É¹¦Á¬½Ó
+	 * æœ¬æ–¹æ³•ç”¨äºä¸Šä¼ æ–‡ä»¶,å¯ä»¥ä½¿ç”¨ä¸»åŠ¨æˆ–è€…è¢«åŠ¨FTPæ¨¡å¼å’ŒBINæˆ–è€…ASCIIä¼ è¾“æ¨¡å¼
+	 * @param local æœ¬åœ°æ–‡ä»¶å(å¯åŒ…æ‹¬è·¯å¾„,è·¯å¾„å¿…é¡»ä½¿ç”¨"/"ç¬¦å·åˆ†éš”),ä¸å¯ä»¥åŒ…æ‹¬ä¸­æ–‡
+	 * @param remotePath è¿œç¨‹æ–‡ä»¶è·¯å¾„(æ·»åŠ è¿œç¨‹æ–‡ä»¶æ‰€åœ¨è·¯å¾„)
+	 * @param remote è¿œç¨‹æ–‡ä»¶å(ä¸å¯åŒ…æ‹¬è·¯å¾„),ä¸å¯ä»¥åŒ…æ‹¬ä¸­æ–‡
+	 * @param filetype ä¼ è¾“æ¨¡å¼é€‰æ‹©,æœ‰BINå’ŒASCIIä¸¤ç§æ¨¡å¼
+	 * @param ftptype FTPæ¨¡å¼é€‰æ‹©,æœ‰ä¸»åŠ¨å’Œè¢«åŠ¨ä¸¤ç§æ¨¡å¼
+	 * @return æ˜¯å¦æˆåŠŸè¿æ¥
 	 */
     public boolean putFile(String local, String remotePath, String remote, int filetype, int ftptype) throws IOException{
 
-    	//Ñ¹ËõÎÄ¼şÊ¹ÓÃbinÄ£Ê½,ÆÕÍ¨ÎÄ¼şÊ¹ÓÃASCIIÄ£Ê½
+    	//å‹ç¼©æ–‡ä»¶ä½¿ç”¨binæ¨¡å¼,æ™®é€šæ–‡ä»¶ä½¿ç”¨ASCIIæ¨¡å¼
     	if (filetype==SendFileinFTP.BINARY_FILE_TYPE){
     		ftp.setFileType(FTP.BINARY_FILE_TYPE);
-    		gzLog.Write("ÒÑ½øÈëBIN´«ÊäÄ£Ê½");
+    		gzLog.Write("å·²è¿›å…¥BINä¼ è¾“æ¨¡å¼");
     	}else if(filetype==SendFileinFTP.ASCII_FILE_TYPE){
     		ftp.setFileType(FTP.ASCII_FILE_TYPE);
-    		gzLog.Write("ÒÑ½øÈëASCII´«ÊäÄ£Ê½");
+    		gzLog.Write("å·²è¿›å…¥ASCIIä¼ è¾“æ¨¡å¼");
     	}else{
-    		gzLog.Write("Î´Öª´«ÊäÎÄ¼şÀàĞÍ");
+    		gzLog.Write("æœªçŸ¥ä¼ è¾“æ–‡ä»¶ç±»å‹");
     		return false;
     	}
     		
-        // Ô¶³ÌFTP·şÎñÆ÷Èç¹û°²×°ÁË·À»ğÇ½,Í¨³£ÊÇ±»¶¯FTPÄ£Ê½
+        // è¿œç¨‹FTPæœåŠ¡å™¨å¦‚æœå®‰è£…äº†é˜²ç«å¢™,é€šå¸¸æ˜¯è¢«åŠ¨FTPæ¨¡å¼
     	if(ftptype==SendFileinFTP.ActiveMode){
     		ftp.enterLocalActiveMode();
-    		gzLog.Write("ÒÑ½øÈëÖ÷¶¯FTPÄ£Ê½");
+    		gzLog.Write("å·²è¿›å…¥ä¸»åŠ¨FTPæ¨¡å¼");
     	}else if(ftptype==SendFileinFTP.PassiveMode){
     		ftp.enterLocalPassiveMode();
-    		gzLog.Write("ÒÑ½øÈë±»¶¯FTPÄ£Ê½");
+    		gzLog.Write("å·²è¿›å…¥è¢«åŠ¨FTPæ¨¡å¼");
     	}else{
     		ftp.enterLocalPassiveMode();
-    		gzLog.Write("Î´ÖªFTPÄ£Ê½,Ê¹ÓÃ±»¶¯FTPÄ£Ê½");
+    		gzLog.Write("æœªçŸ¥FTPæ¨¡å¼,ä½¿ç”¨è¢«åŠ¨FTPæ¨¡å¼");
     		return false;
     	}
     
-    	//¸Ä±äÔ¶³ÌÄ¿Â¼Â·¾¶
+    	//æ”¹å˜è¿œç¨‹ç›®å½•è·¯å¾„
     	ftp.changeWorkingDirectory(remotePath);
     	
-    	//ÉÏ´«ÎÄ¼şµ½FTP·şÎñÆ÷
+    	//ä¸Šä¼ æ–‡ä»¶åˆ°FTPæœåŠ¡å™¨
     	try{
     		InputStream input;
             input = new FileInputStream(local);
 
             if(ftp.storeFile(remote, input)){
-            	gzLog.Write("ÉÏ´«"+remote+"ÎÄ¼ş³É¹¦,±£´æÂ·¾¶Îª:/"+remotePath);
+            	gzLog.Write("ä¸Šä¼ "+remote+"æ–‡ä»¶æˆåŠŸ,ä¿å­˜è·¯å¾„ä¸º:/"+remotePath);
             }else{
-            	gzLog.Write("ÉÏ´«ÎÄ¼şÊ§°Ü");
+            	gzLog.Write("ä¸Šä¼ æ–‡ä»¶å¤±è´¥");
             }
             input.close();
 
@@ -159,53 +159,53 @@ public class SendFileinFTP
     }
 
 	/**
-	 * ±¾·½·¨ÓÃÓÚÉÏ´«ÎÄ¼ş,¿ÉÒÔÊ¹ÓÃÖ÷¶¯»òÕß±»¶¯FTPÄ£Ê½ºÍBIN»òÕßASCII´«ÊäÄ£Ê½
-	 * @param local ±¾µØÎÄ¼şÃû(¿É°üÀ¨Â·¾¶,Â·¾¶±ØĞëÊ¹ÓÃ"/"·ûºÅ·Ö¸ô),²»¿ÉÒÔ°üÀ¨ÖĞÎÄ
-	 * @param remotePath Ô¶³ÌÎÄ¼şÂ·¾¶(Ìí¼ÓÔ¶³ÌÎÄ¼şËùÔÚÂ·¾¶)
-	 * @param remote Ô¶³ÌÎÄ¼şÃû(²»¿É°üÀ¨Â·¾¶),²»¿ÉÒÔ°üÀ¨ÖĞÎÄ
-	 * @param filetype ´«ÊäÄ£Ê½Ñ¡Ôñ,ÓĞBINºÍASCIIÁ½ÖÖÄ£Ê½
-	 * @param ftptype FTPÄ£Ê½Ñ¡Ôñ,ÓĞÖ÷¶¯ºÍ±»¶¯Á½ÖÖÄ£Ê½
-	 * @return ÊÇ·ñ³É¹¦Á¬½Ó
+	 * æœ¬æ–¹æ³•ç”¨äºä¸Šä¼ æ–‡ä»¶,å¯ä»¥ä½¿ç”¨ä¸»åŠ¨æˆ–è€…è¢«åŠ¨FTPæ¨¡å¼å’ŒBINæˆ–è€…ASCIIä¼ è¾“æ¨¡å¼
+	 * @param local æœ¬åœ°æ–‡ä»¶å(å¯åŒ…æ‹¬è·¯å¾„,è·¯å¾„å¿…é¡»ä½¿ç”¨"/"ç¬¦å·åˆ†éš”),ä¸å¯ä»¥åŒ…æ‹¬ä¸­æ–‡
+	 * @param remotePath è¿œç¨‹æ–‡ä»¶è·¯å¾„(æ·»åŠ è¿œç¨‹æ–‡ä»¶æ‰€åœ¨è·¯å¾„)
+	 * @param remote è¿œç¨‹æ–‡ä»¶å(ä¸å¯åŒ…æ‹¬è·¯å¾„),ä¸å¯ä»¥åŒ…æ‹¬ä¸­æ–‡
+	 * @param filetype ä¼ è¾“æ¨¡å¼é€‰æ‹©,æœ‰BINå’ŒASCIIä¸¤ç§æ¨¡å¼
+	 * @param ftptype FTPæ¨¡å¼é€‰æ‹©,æœ‰ä¸»åŠ¨å’Œè¢«åŠ¨ä¸¤ç§æ¨¡å¼
+	 * @return æ˜¯å¦æˆåŠŸè¿æ¥
 	 */
     public boolean getFile(String local, String remotePath, String remote, int filetype, int ftptype) throws IOException{
     	
-    	//Ñ¹ËõÎÄ¼şÊ¹ÓÃbinÄ£Ê½,ÆÕÍ¨ÎÄ¼şÊ¹ÓÃASCIIÄ£Ê½
+    	//å‹ç¼©æ–‡ä»¶ä½¿ç”¨binæ¨¡å¼,æ™®é€šæ–‡ä»¶ä½¿ç”¨ASCIIæ¨¡å¼
 		if (filetype==SendFileinFTP.BINARY_FILE_TYPE){
 			ftp.setFileType(FTP.BINARY_FILE_TYPE);
-			gzLog.Write("ÒÑ½øÈëBIN´«ÊäÄ£Ê½");
+			gzLog.Write("å·²è¿›å…¥BINä¼ è¾“æ¨¡å¼");
 		}else if(filetype==SendFileinFTP.ASCII_FILE_TYPE){
 			ftp.setFileType(FTP.ASCII_FILE_TYPE);
-			gzLog.Write("ÒÑ½øÈëASCII´«ÊäÄ£Ê½");
+			gzLog.Write("å·²è¿›å…¥ASCIIä¼ è¾“æ¨¡å¼");
 		}else{
-			gzLog.Write("Î´Öª´«ÊäÎÄ¼şÀàĞÍ");
+			gzLog.Write("æœªçŸ¥ä¼ è¾“æ–‡ä»¶ç±»å‹");
 			return false;
 		}
 		
-        // Ô¶³ÌFTP·şÎñÆ÷Èç¹û°²×°ÁË·À»ğÇ½,Í¨³£ÊÇ±»¶¯FTPÄ£Ê½
+        // è¿œç¨‹FTPæœåŠ¡å™¨å¦‚æœå®‰è£…äº†é˜²ç«å¢™,é€šå¸¸æ˜¯è¢«åŠ¨FTPæ¨¡å¼
 		if(ftptype==SendFileinFTP.ActiveMode){
 			ftp.enterLocalActiveMode();
-			gzLog.Write("ÒÑ½øÈëÖ÷¶¯FTPÄ£Ê½");
+			gzLog.Write("å·²è¿›å…¥ä¸»åŠ¨FTPæ¨¡å¼");
 		}else if(ftptype==SendFileinFTP.PassiveMode){
 			ftp.enterLocalPassiveMode();
-			gzLog.Write("ÒÑ½øÈë±»¶¯FTPÄ£Ê½");
+			gzLog.Write("å·²è¿›å…¥è¢«åŠ¨FTPæ¨¡å¼");
 		}else{
     		ftp.enterLocalPassiveMode();
-    		gzLog.Write("Î´ÖªFTPÄ£Ê½,Ê¹ÓÃ±»¶¯FTPÄ£Ê½");
+    		gzLog.Write("æœªçŸ¥FTPæ¨¡å¼,ä½¿ç”¨è¢«åŠ¨FTPæ¨¡å¼");
     		return false;
     	}
         
-    	//¸Ä±äÔ¶³ÌÄ¿Â¼Â·¾¶
+    	//æ”¹å˜è¿œç¨‹ç›®å½•è·¯å¾„
 		ftp.changeWorkingDirectory(remotePath);
 		
-    	//ÏÂÔØÎÄ¼şµ½±¾µØ
+    	//ä¸‹è½½æ–‡ä»¶åˆ°æœ¬åœ°
 		try{
             OutputStream output;
             output = new FileOutputStream(local);
             
             if(ftp.retrieveFile(remote, output)){
-            	gzLog.Write("ÏÂÔØ"+remote+"ÎÄ¼ş³É¹¦,±£´æÂ·¾¶Îª:./"+local);
+            	gzLog.Write("ä¸‹è½½"+remote+"æ–‡ä»¶æˆåŠŸ,ä¿å­˜è·¯å¾„ä¸º:./"+local);
             }else{
-            	gzLog.Write("ÉÏ´«ÎÄ¼şÊ§°Ü");
+            	gzLog.Write("ä¸Šä¼ æ–‡ä»¶å¤±è´¥");
             }
             output.close();
             
@@ -218,7 +218,7 @@ public class SendFileinFTP
     }
     
     /**
-     * ±¾·½·¨ÓÃÓÚÍË³öµÇÂ¼ºÍ¹Ø±ÕÁ¬½Ó
+     * æœ¬æ–¹æ³•ç”¨äºé€€å‡ºç™»å½•å’Œå…³é—­è¿æ¥
      *
      */
     public void close(){
@@ -226,13 +226,13 @@ public class SendFileinFTP
     	try{
     		ftp.logout();
     	}catch(IOException e){
-    		gzLog.Write("ÎŞ·¨ÍË³öµÇÂ¼,Á¬½ÓÒÑÊ§Ğ§");
+    		gzLog.Write("æ— æ³•é€€å‡ºç™»å½•,è¿æ¥å·²å¤±æ•ˆ");
     	}
     	if (ftp.isConnected()){
             try{
                 ftp.disconnect();
             }catch (IOException f){
-            	gzLog.Write("ÎŞ·¨¹Ø±ÕÁ¬½Ó,Á¬½ÓÒÑÊ§Ğ§");
+            	gzLog.Write("æ— æ³•å…³é—­è¿æ¥,è¿æ¥å·²å¤±æ•ˆ");
             }
         }
     }

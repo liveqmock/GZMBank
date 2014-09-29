@@ -1,26 +1,26 @@
 package com.sportticket.format;
 
 /**
- * ÓÃÓÚ¸ñÊ½»¯Í¶×¢ºÅÂë
- * @author ¹ËÆôÃ÷
+ * ç”¨äºæ ¼å¼åŒ–æŠ•æ³¨å·ç 
+ * @author é¡¾å¯æ˜
  *
  */
 public class LotNumFormat {
 	
 	/**
-	 * ½«·µ»Ø×Ö¶Î²ğ·ÖÎª¶àÌõ¼ÇÂ¼
-	 * @param LotNum Í¶×¢ºÅÂë·µ»Ø×Ö¶Î
-	 * @return ¶àÌõÍ¶×¢¼ÇÂ¼
+	 * å°†è¿”å›å­—æ®µæ‹†åˆ†ä¸ºå¤šæ¡è®°å½•
+	 * @param LotNum æŠ•æ³¨å·ç è¿”å›å­—æ®µ
+	 * @return å¤šæ¡æŠ•æ³¨è®°å½•
 	 */
 	public static String[] ReturnManyRecords(String LotNum){
 		return LotNum.split(",");
 	}
 	
 	/**
-	 * ¸ñÊ½»¯Ò»Ìõµ¥Ê½µÄÍ¶×¢ºÅÂë
-	 * @param OneSingleRecord µ¥Ê½Í¶×¢ºÅÂë
-	 * @param LotTyp ²ÊÆ±ÀàĞÍ
-	 * @return ¸ñÊ½»¯ºóµÄµ¥Ê½Í¶×¢ºÅÂë
+	 * æ ¼å¼åŒ–ä¸€æ¡å•å¼çš„æŠ•æ³¨å·ç 
+	 * @param OneSingleRecord å•å¼æŠ•æ³¨å·ç 
+	 * @param LotTyp å½©ç¥¨ç±»å‹
+	 * @return æ ¼å¼åŒ–åçš„å•å¼æŠ•æ³¨å·ç 
 	 */
 	public static String OneSimplexRecordFormat(String OneSingleRecord, String LotTyp){
 
@@ -34,9 +34,9 @@ public class LotNumFormat {
 	}
 	
 	/**
-	 * ¸ñÊ½»¯Ò»Ìõµ¥Ê½µÄ´óÀÖÍ¸Í¶×¢ºÅÂë
-	 * @param OneSingleRecord µ¥Ê½Í¶×¢ºÅÂë
-	 * @return ¸ñÊ½»¯ºóµÄµ¥Ê½Í¶×¢ºÅÂë
+	 * æ ¼å¼åŒ–ä¸€æ¡å•å¼çš„å¤§ä¹é€æŠ•æ³¨å·ç 
+	 * @param OneSingleRecord å•å¼æŠ•æ³¨å·ç 
+	 * @return æ ¼å¼åŒ–åçš„å•å¼æŠ•æ³¨å·ç 
 	 */
 	public static String OneSimplexRecordFormat_DALETOU(String OneSingleRecord){
 		String[] tmpstr=OneSingleRecord.split("\\*");
@@ -52,9 +52,9 @@ public class LotNumFormat {
 	}
 	
 	/**
-	 * ¸ñÊ½»¯Ò»Ìõµ¥Ê½µÄ12Ñ¡2Í¶×¢ºÅÂë
-	 * @param OneSingleRecord µ¥Ê½Í¶×¢ºÅÂë
-	 * @return ¸ñÊ½»¯ºóµÄµ¥Ê½Í¶×¢ºÅÂë
+	 * æ ¼å¼åŒ–ä¸€æ¡å•å¼çš„12é€‰2æŠ•æ³¨å·ç 
+	 * @param OneSingleRecord å•å¼æŠ•æ³¨å·ç 
+	 * @return æ ¼å¼åŒ–åçš„å•å¼æŠ•æ³¨å·ç 
 	 */
 	public static String RecordFormat_12xuan2(String OneSingleRecord){
 		String[] tmpstr=OneSingleRecord.split("\\*");
@@ -69,10 +69,10 @@ public class LotNumFormat {
 	}
 
 	/**
-	 * ¸ñÊ½»¯Ò»Ìõ¸´Ê½µÄÍ¶×¢ºÅÂë
-	 * @param OneSingleRecord ¸´Ê½Í¶×¢ºÅÂë
-	 * @param LotTyp ²ÊÆ±ÀàĞÍ
-	 * @return ¸ñÊ½»¯ºóµÄµ¥Ê½Í¶×¢ºÅÂë
+	 * æ ¼å¼åŒ–ä¸€æ¡å¤å¼çš„æŠ•æ³¨å·ç 
+	 * @param OneSingleRecord å¤å¼æŠ•æ³¨å·ç 
+	 * @param LotTyp å½©ç¥¨ç±»å‹
+	 * @return æ ¼å¼åŒ–åçš„å•å¼æŠ•æ³¨å·ç 
 	 */
 	public static String OneMultipleRecordFormat(String MultipleRecord, String LotTyp){
 		if("26".equals(LotTyp)||"27".equals(LotTyp)){
@@ -85,9 +85,9 @@ public class LotNumFormat {
 	}
 	
 	/**
-	 * ¸ñÊ½»¯Ò»Ìõ¸´Ê½µÄÍ¶×¢ºÅÂë
-	 * @param OneSingleRecord ¸´Ê½µÄÍ¶×¢ºÅÂë
-	 * @return ¸ñÊ½»¯ºóµÄ¸´Ê½µÄÍ¶×¢ºÅÂë
+	 * æ ¼å¼åŒ–ä¸€æ¡å¤å¼çš„æŠ•æ³¨å·ç 
+	 * @param OneSingleRecord å¤å¼çš„æŠ•æ³¨å·ç 
+	 * @return æ ¼å¼åŒ–åçš„å¤å¼çš„æŠ•æ³¨å·ç 
 	 */
 	public static String OneMultipleRecordFormat_DALETOU(String MultipleRecord){
 		String[] tmpstr=MultipleRecord.split("\\*");
@@ -111,9 +111,9 @@ public class LotNumFormat {
 	}
 	
 	/**
-	 * ½«Í¶×¢ºÅÂë·µ»Ø×Ö¶Î²ğ·ÖÎª¶àÌõ¼ÇÂ¼²¢¸ñÊ½»¯Êä³ö
-	 * @param LotNum Í¶×¢ºÅÂë·µ»Ø×Ö¶Î
-	 * @return ¸ñÊ½»¯Êä³ö
+	 * å°†æŠ•æ³¨å·ç è¿”å›å­—æ®µæ‹†åˆ†ä¸ºå¤šæ¡è®°å½•å¹¶æ ¼å¼åŒ–è¾“å‡º
+	 * @param LotNum æŠ•æ³¨å·ç è¿”å›å­—æ®µ
+	 * @return æ ¼å¼åŒ–è¾“å‡º
 	 */
 	public static String ReturnManyFormatedRecords(String LotNum, String LotTyp){
 		String formatedstr="";
@@ -132,17 +132,17 @@ public class LotNumFormat {
 	}
 
 	public static void main(String[] args){
-		//µ¥Ê½
-		//´óÀÖÍ¸
+		//å•å¼
+		//å¤§ä¹é€
 		System.out.println(LotNumFormat.OneSimplexRecordFormat("01*02*03*04*05*07*08", "26"));
-		//12Ñ¡2
+		//12é€‰2
 		System.out.println(LotNumFormat.OneSimplexRecordFormat("01*02", "28"));
-		//¸´Ê½
-		//´óÀÖÍ¸
+		//å¤å¼
+		//å¤§ä¹é€
 		System.out.println(LotNumFormat.OneMultipleRecordFormat("010203040506*070809", "27"));
-		//12Ñ¡2
+		//12é€‰2
 		System.out.println(LotNumFormat.OneSimplexRecordFormat("01*02*03*04*05*07*08", "28"));
-		//×ÛºÏ
+		//ç»¼åˆ
 		System.out.println(LotNumFormat.ReturnManyFormatedRecords("01*02*03*04*05*07*08,01*02*03*04*05*09*10,01*02*03*04*05*07*08,01*02*03*04*05*01*02, ,010203040506*070809", "26"));
 		System.out.println(LotNumFormat.ReturnManyFormatedRecords("02*06*11*16*17*08*12, , , , ,                           ", "26"));
 		System.out.println(LotNumFormat.ReturnManyFormatedRecords("01*02*03*04*05*07*08,01*02*03*04*05*09*10,01*02*03*04*05*07*08,,,", "26"));

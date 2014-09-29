@@ -22,12 +22,12 @@ public class InsertLOTTRecord {
 		
 		try{ 
 			
-	     	//¼ÓÔØÊı¾İ¿âÇı¶¯
+	     	//åŠ è½½æ•°æ®åº“é©±åŠ¨
 			Class.forName("com.sybase.jdbc3.jdbc.SybDriver");
-		     	//»ñÈ¡Êı¾İ¿âÁ¬½Ó
+		     	//è·å–æ•°æ®åº“è¿æ¥
 			connection = DriverManager.getConnection(url, user, pass);
 
-			System.out.println("Á¬½ÓÊı¾İ¿âÕı³££º"+connection);
+			System.out.println("è¿æ¥æ•°æ®åº“æ­£å¸¸ï¼š"+connection);
 			st = connection.createStatement();
 			
 			st.executeUpdate("truncate table LOTTDRAW");
