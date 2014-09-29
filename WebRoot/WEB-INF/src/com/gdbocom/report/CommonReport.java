@@ -18,8 +18,8 @@ import com.gdbocom.util.SendFileinFTP;
 import com.viatt.util.GzLog;
 
 /**
- * ±¾ÀàÓÃÓÚ¶¨Ê±µ¼³öÌå²Ê¹º²Ê³é½±ÖĞ½±Ãûµ¥
- * @author ¹ËÆôÃ÷
+ * æœ¬ç±»ç”¨äºå®šæ—¶å¯¼å‡ºä½“å½©è´­å½©æŠ½å¥–ä¸­å¥–åå•
+ * @author é¡¾å¯æ˜
  *
  */
 public class CommonReport {
@@ -44,18 +44,18 @@ public class CommonReport {
 
 		try{
 			
-		//Ê¹ÓÃPropertiesÀàÀ´¼ÓÔØÊôĞÔÎÄ¼ş
+		//ä½¿ç”¨Propertiesç±»æ¥åŠ è½½å±æ€§æ–‡ä»¶
 		Properties props = new Properties();
 		props.load(new FileInputStream("./com/gdbocom/report/"+reportfile));
 	
-    	//Éú²úÎÄ¼şµÄÎÄ¼şÍ·
+    	//ç”Ÿäº§æ–‡ä»¶çš„æ–‡ä»¶å¤´
 		this.file_head=props.getProperty("file_head");
-    	//ÉèÖÃÁ¬½ÓÊı¾İ¿âµÄÂ·¾¶
+    	//è®¾ç½®è¿æ¥æ•°æ®åº“çš„è·¯å¾„
 		this.url=props.getProperty("url");
 		System.out.println(this.url);
-    	//ÉèÖÃÁ¬½ÓÊı¾İ¿âÓÃ»§Ãû
+    	//è®¾ç½®è¿æ¥æ•°æ®åº“ç”¨æˆ·å
 		this.user=props.getProperty("user");
-    	//ÉèÖÃÁ¬½ÓÊı¾İ¿âµÄÃÜÂë
+    	//è®¾ç½®è¿æ¥æ•°æ®åº“çš„å¯†ç 
 		this.pass=props.getProperty("pass");
 		this.query_sql=new String(props.getProperty("query_sql").getBytes("ISO-8859-1"), "GBK");
 		this.reportitle=new String(props.getProperty("reportitle").getBytes("ISO-8859-1"), "GBK");
@@ -67,7 +67,7 @@ public class CommonReport {
 		this.remotepath=props.getProperty("remotepath");
 
 		}catch(IOException e){
-			gzLog.Write("CommonReport:³õÊ¼»¯Ê§°Ü");
+			gzLog.Write("CommonReport:åˆå§‹åŒ–å¤±è´¥");
 			System.exit(-1);
 		}
 
@@ -89,16 +89,16 @@ public class CommonReport {
             date =cal.getTime();
             String ReportDate = reportdateformat.format(date); 
             
-	     	//¼ÓÔØÊı¾İ¿âÇı¶¯
+	     	//åŠ è½½æ•°æ®åº“é©±åŠ¨
 			Class.forName("com.sybase.jdbc3.jdbc.SybDriver");
-		    //»ñÈ¡Êı¾İ¿âÁ¬½Ó
+		    //è·å–æ•°æ®åº“è¿æ¥
 			connection = DriverManager.getConnection(url, user, pass);
-			gzLog.Write("Á¬½ÓÊı¾İ¿âÕı³££º"+connection);
+			gzLog.Write("è¿æ¥æ•°æ®åº“æ­£å¸¸ï¼š"+connection);
 			st = connection.createStatement();
 			rs = st.executeQuery(this.query_sql);
 			
 			this.writeFile("<html xmlns=\"http://www.w3.org/TR/REC-html40\">");
-			this.writeFile("<head><meta http-equiv=Content-Type content=\"text/html; charset=gb2312\"><style type=\"text/css\"><!--#title{	font-family:\"ºÚÌå\";	font-size:20px;	text-align:center;}#date{	text-align:center;}.content{	text-align:center;}--></style></head>");
+			this.writeFile("<head><meta http-equiv=Content-Type content=\"text/html; charset=gb2312\"><style type=\"text/css\"><!--#title{	font-family:\"é»‘ä½“\";	font-size:20px;	text-align:center;}#date{	text-align:center;}.content{	text-align:center;}--></style></head>");
 			this.writeFile("<body><table border=1 cellpadding=0 cellspacing=0 width=80%><tr><td colspan=3 height=37 width=500><div id=\"title\">"+this.reportitle+"</div></td></tr><tr><td colspan=3 height=18 align=\"right\">");
 			this.writeFile(ReportDate);
 			this.writeFile("</td></tr>");
@@ -121,15 +121,15 @@ public class CommonReport {
 
 			this.SendFileonFTP();
 		}catch(SQLException e){
-			gzLog.Write("Êı¾İ¿â¹ÊÕÏ:"+e.getMessage());
+			gzLog.Write("æ•°æ®åº“æ•…éšœ:"+e.getMessage());
 			e.printStackTrace();
 			System.exit(-1);
 		}catch(IOException e){
-			gzLog.Write("Ğ´ÈëÎÄ¼şÊ§°Ü:"+e.getMessage());
+			gzLog.Write("å†™å…¥æ–‡ä»¶å¤±è´¥:"+e.getMessage());
 			e.printStackTrace();
 			System.exit(-1);
 		}catch(Exception e){
-			gzLog.Write("ÆäËû¹ÊÕÏ:"+e.getMessage());
+			gzLog.Write("å…¶ä»–æ•…éšœ:"+e.getMessage());
 			e.printStackTrace();
 			System.exit(-1);
 		}finally{
@@ -151,7 +151,7 @@ public class CommonReport {
 		}
 	}
 	
-	private void writeFile(String content) throws IOException{//Ğ´ÈëÎÄ¼ş·½·¨
+	private void writeFile(String content) throws IOException{//å†™å…¥æ–‡ä»¶æ–¹æ³•
 
 		FileWriter fw = null;
 		fw = new FileWriter(this.file_name,true);
@@ -163,14 +163,14 @@ public class CommonReport {
 		SendFileinFTP sendfile = new SendFileinFTP();
 		try{
 			File localfile = new File(this.file_name);
-			//Á¬½ÓFTP·şÎñÆ÷
+			//è¿æ¥FTPæœåŠ¡å™¨
 			sendfile.connect(this.FTPServer, this.FTPUser, this.FTPPass);
-			//ÉÏ´«ÎÄ¼ş:±¾µØÎÄ¼ş,Ô¶³ÌÂ·¾¶,Ô¶³ÌÎÄ¼şÃû,´«ÊäÄ£Ê½,ftpÄ£Ê½
+			//ä¸Šä¼ æ–‡ä»¶:æœ¬åœ°æ–‡ä»¶,è¿œç¨‹è·¯å¾„,è¿œç¨‹æ–‡ä»¶å,ä¼ è¾“æ¨¡å¼,ftpæ¨¡å¼
 			sendfile.putFile(this.file_name, this.remotepath, localfile.getName(),SendFileinFTP.BINARY_FILE_TYPE,SendFileinFTP.ActiveMode);
 			sendfile.close();
 			
 		}catch(IOException e){
-			System.out.println("ÎÄ¼ş³ö´í"+e.getMessage());
+			System.out.println("æ–‡ä»¶å‡ºé”™"+e.getMessage());
 		}
 	}
 	

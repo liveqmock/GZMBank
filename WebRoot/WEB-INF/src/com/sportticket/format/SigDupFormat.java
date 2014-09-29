@@ -3,25 +3,25 @@ package com.sportticket.format;
 public class SigDupFormat implements FieldFormat {
 	public String CtoN(String SigDup){
 		String SigDup_num="0";
-		if("µ¥Ê½".equals(SigDup)){
+		if("å•å¼".equals(SigDup)){
 			SigDup_num="1";
-		}else if("¸´Ê½".equals(SigDup)){
+		}else if("å¤å¼".equals(SigDup)){
 			SigDup_num="2";
-		}else if("µ¨ÍÏ".equals(SigDup)){
+		}else if("èƒ†æ‹–".equals(SigDup)){
 			SigDup_num="3";
-		}else if("°üÎ»".equals(SigDup)){
+		}else if("åŒ…ä½".equals(SigDup)){
 			SigDup_num="5";
-		}else if("°ü¶Î".equals(SigDup)){
+		}else if("åŒ…æ®µ".equals(SigDup)){
 			SigDup_num="6";
-		}else if("ºÍÖµ".equals(SigDup)){
+		}else if("å’Œå€¼".equals(SigDup)){
 			SigDup_num="7";
-		}else if("°üµ¨".equals(SigDup)){
+		}else if("åŒ…èƒ†".equals(SigDup)){
 			SigDup_num="8";
-		}else if("°ü´®".equals(SigDup)){
+		}else if("åŒ…ä¸²".equals(SigDup)){
 			SigDup_num="9";
-		}else if("°üÆæÅ¼".equals(SigDup)){
+		}else if("åŒ…å¥‡å¶".equals(SigDup)){
 			SigDup_num="10";
-		}else if("°ü¶Ô".equals(SigDup)){
+		}else if("åŒ…å¯¹".equals(SigDup)){
 			SigDup_num="11";
 		}else{
 			SigDup_num="0";
@@ -29,29 +29,29 @@ public class SigDupFormat implements FieldFormat {
 		return SigDup_num;
 	}
 	public String NtoC(String SigDup_num){
-		String SigDup="ÎŞÒâÒå";
+		String SigDup="æ— æ„ä¹‰";
 		if("1".equals(SigDup_num)){
-			SigDup="µ¥Ê½";
+			SigDup="å•å¼";
 		}else if("2".equals(SigDup_num)){
-			SigDup="¸´Ê½";
+			SigDup="å¤å¼";
 		}else if("3".equals(SigDup_num)){
-			SigDup="µ¨ÍÏ";
+			SigDup="èƒ†æ‹–";
 		}else if("5".equals(SigDup_num)){
-			SigDup="°üÎ»";
+			SigDup="åŒ…ä½";
 		}else if("6".equals(SigDup_num)){
-			SigDup="°ü¶Î";
+			SigDup="åŒ…æ®µ";
 		}else if("7".equals(SigDup_num)){
-			SigDup="ºÍÖµ";
+			SigDup="å’Œå€¼";
 		}else if("8".equals(SigDup_num)){
-			SigDup="°üµ¨";
+			SigDup="åŒ…èƒ†";
 		}else if("9".equals(SigDup_num)){
-			SigDup="°ü´®";
+			SigDup="åŒ…ä¸²";
 		}else if("10".equals(SigDup_num)){
-			SigDup="°üÆæÅ¼";
+			SigDup="åŒ…å¥‡å¶";
 		}else if("11".equals(SigDup_num)){
-			SigDup="°ü¶Ô";
+			SigDup="åŒ…å¯¹";
 		}else{
-			SigDup="ÎŞÒâÒå";
+			SigDup="æ— æ„ä¹‰";
 		}
 		return SigDup;
 	}

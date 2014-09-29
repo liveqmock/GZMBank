@@ -10,11 +10,11 @@ public class MoneyUtils {
 	}
 
 	/**
-	 * ½«Ç®¸ñÊ½»¯
+	 * å°†é’±æ ¼å¼åŒ–
 	 * 
 	 * @param money
-	 *            Ç®Êı
-	 * @return ×Ö·û´®
+	 *            é’±æ•°
+	 * @return å­—ç¬¦ä¸²
 	 */
 	public static String FormatMoney(double money) {
 		DecimalFormat df = new DecimalFormat(moneyFormat);
@@ -32,13 +32,13 @@ public class MoneyUtils {
 	}
 
 	/**
-	 * ½«Ç®¸ñÊ½»¯
+	 * å°†é’±æ ¼å¼åŒ–
 	 * 
 	 * @param money
-	 *            Ç®Êı
+	 *            é’±æ•°
 	 * @param format
-	 *            ¸ñÊ½»¯²ÎÊı
-	 * @return ×Ö·û´®
+	 *            æ ¼å¼åŒ–å‚æ•°
+	 * @return å­—ç¬¦ä¸²
 	 */
 	public static String FormatMoney(double money, String format) {
 		DecimalFormat df = new DecimalFormat(format);
@@ -72,76 +72,76 @@ public class MoneyUtils {
 	}
 
 	/**
-	 * ËµÃ÷: °ÑÇ®µÄÊı×Ö¸ñÊ½×ª»¯³ÉÖĞÎÄ±í´ï
+	 * è¯´æ˜: æŠŠé’±çš„æ•°å­—æ ¼å¼è½¬åŒ–æˆä¸­æ–‡è¡¨è¾¾
 	 * 
 	 * @param number
-	 *            Êı×ÖÇ®Êı
-	 * @return String ÖĞÎÄÇ®Êı
+	 *            æ•°å­—é’±æ•°
+	 * @return String ä¸­æ–‡é’±æ•°
 	 */
 	private String hashWord(int number) {
 		switch (number) {
 		case 0:
-			return "Áã";
+			return "é›¶";
 		case 1:
-			return "Ò¼";
+			return "å£¹";
 		case 2:
-			return "·¡";
+			return "è´°";
 		case 3:
-			return "Èş";
+			return "å";
 		case 4:
-			return "ËÁ";
+			return "è‚†";
 		case 5:
-			return "Îé";
+			return "ä¼";
 		case 6:
-			return "Â½";
+			return "é™†";
 		case 7:
-			return "Æâ";
+			return "æŸ’";
 		case 8:
-			return "°Æ";
+			return "æŒ";
 		case 9:
-			return "¾Á";
+			return "ç–";
 		default:
 			return null;
 		}
 	}
 
 	/**
-	 * ËµÃ÷: °ÑÎ»Êı×ª»¯³ÉÖĞÎÄ
+	 * è¯´æ˜: æŠŠä½æ•°è½¬åŒ–æˆä¸­æ–‡
 	 * 
 	 * @param number
-	 *            Êı×ÖÇ®Êı
-	 * @return String ÖĞÎÄÎ»Êı
+	 *            æ•°å­—é’±æ•°
+	 * @return String ä¸­æ–‡ä½æ•°
 	 */
 	private String hashCellWord(int number) {
 		switch (number) {
 		case 0:
 			return "";
 		case 1:
-			return "Ê®";
+			return "å";
 		case 2:
-			return "°Ù";
+			return "ç™¾";
 		case 3:
-			return "Ç§";
+			return "åƒ";
 		case 4:
-			return "Íò";
+			return "ä¸‡";
 		case 5:
-			return "Ê®";
+			return "å";
 		case 6:
-			return "°Ù";
+			return "ç™¾";
 		case 7:
-			return "Ç§";
+			return "åƒ";
 		case 8:
-			return "ÒÚ";
+			return "äº¿";
 		case 9:
-			return "Ê®";
+			return "å";
 		case 10:
-			return "°Ù";
+			return "ç™¾";
 		case 11:
-			return "Ç§";
+			return "åƒ";
 		case 12:
-			return "Íò";
+			return "ä¸‡";
 		default:
-			return "Ê®Íò";
+			return "åä¸‡";
 		}
 	}
 }

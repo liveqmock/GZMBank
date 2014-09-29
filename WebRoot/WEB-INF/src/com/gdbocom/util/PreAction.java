@@ -15,7 +15,7 @@ public class PreAction {
 	 * @param request
 	 * @param preSaveKey
 	 */
-	public void savePreFormValue(PageContext pageContext, HttpServletRequest request, String preSaveKey){
+	public static void savePreFormValue(PageContext pageContext, HttpServletRequest request, String preSaveKey){
 		String[] preSaveKeys = preSaveKey.split("\\,");
 		for(int i=0; i<preSaveKeys.length; i++){
 			pageContext.setAttribute(preSaveKeys[i], request.getParameter(preSaveKeys[i]), PageContext.SESSION_SCOPE);
@@ -28,7 +28,7 @@ public class PreAction {
 	 * @param pageContext
 	 * @return
 	 */
-	public String strOfPageContext(PageContext pageContext){
+	public static String strOfPageContext(PageContext pageContext){
 		StringBuffer sb = new StringBuffer();
 		sb.append("PageContext里面的字段如下：\n");
 		String key;
@@ -46,7 +46,7 @@ public class PreAction {
 	 * @param responseContext
 	 * @param saveKey
 	 */
-	public void saveMidServerValue(PageContext pageContext, String responseContext, String saveKey){
+	public static void saveMidServerValue(PageContext pageContext, String responseContext, String saveKey){
 		String[] saveKeys = saveKey.split("\\,");
 		for(int i=0; i<saveKeys.length; i++){
 			pageContext.setAttribute(saveKeys[i], MessManTool.getValueByName(responseContext, saveKeys[i]), PageContext.SESSION_SCOPE);

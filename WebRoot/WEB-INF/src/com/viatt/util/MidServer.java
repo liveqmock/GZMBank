@@ -62,11 +62,11 @@ public class MidServer {
 			String head="|bocom_mid|";
 			int length=MessManTool.getMessLength(head+content);
 			if(length<=0){
-				return new BwResult("001","±¨ÎÄÎª¿Õ£¡");
+				return new BwResult("001","æŠ¥æ–‡ä¸ºç©ºï¼");
 			}
 			String lengthStr=String.valueOf(length);
 			if(lengthStr.length()>4){
-				return new BwResult("001","±¨ÎÄ³¤¶ÈÌ«´ó£¡");
+				return new BwResult("001","æŠ¥æ–‡é•¿åº¦å¤ªå¤§ï¼");
 			}else if(lengthStr.length()==3){
 				lengthStr="0"+lengthStr;
 			}else if(lengthStr.length()==2){
@@ -78,9 +78,9 @@ public class MidServer {
 			String message=head+content;
 			out.println(message);
 			String tmp=in.readLine();
-			//System.out.println("===·µ»ØµÄÖ±½Ó±¨ÎÄÊÇ£º"+tmp);
+			//System.out.println("===è¿”å›çš„ç›´æ¥æŠ¥æ–‡æ˜¯ï¼š"+tmp);
 			/*if(tmp==null||tmp.equals("")){
-				return new BwResult("001","·µ»Ø½á¹ûÎª¿Õ");
+				return new BwResult("001","è¿”å›ç»“æœä¸ºç©º");
 			}*/
 			/*String MGID = MessManTool.getValueByName(tmp, "MGID");
 			if(MGID==null||MGID.equals("")||!MGID.equals("000000")){

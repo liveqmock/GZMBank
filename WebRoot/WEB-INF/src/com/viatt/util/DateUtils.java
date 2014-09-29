@@ -15,13 +15,13 @@ public class DateUtils {
 	public DateUtils() {
 	}
 
-	// È¡ÏµÍ³Ê±¼äÊ±Ò»¶¨ÒªÓÃÕâ¸ö·½·¨£¬·ñÔòÈÕÆÚ¿ÉÄÜ²»¶¯
+	// å–ç³»ç»Ÿæ—¶é—´æ—¶ä¸€å®šè¦ç”¨è¿™ä¸ªæ–¹æ³•ï¼Œå¦åˆ™æ—¥æœŸå¯èƒ½ä¸åŠ¨
 	public static Date getCurrDateTime() {
 		return new Date(System.currentTimeMillis());
 	}
 
 	/**
-	 * È¡µÃµ±Ç°ÏµÍ³Ê±¼ä
+	 * å–å¾—å½“å‰ç³»ç»Ÿæ—¶é—´
 	 *  
 	 * @return yyyy-MM-dd HH:mm:ss
 	 */
@@ -36,89 +36,89 @@ public class DateUtils {
 	}
 
 	/**
-	 * È¡µÃÈÕÆÚµÄÄê·İ
+	 * å–å¾—æ—¥æœŸçš„å¹´ä»½
 	 * 
 	 * @param date
-	 *            ÈÕÆÚ
-	 * @return yyyy Äê·İ×Ö·û´®
+	 *            æ—¥æœŸ
+	 * @return yyyy å¹´ä»½å­—ç¬¦ä¸²
 	 */
 	public static String getYear(Date date) {
 		return FormatDate(date, "yyyy");
 	}
 
 	/**
-	 * È¡µÃÈÕÆÚµÄÔÂ·İ
+	 * å–å¾—æ—¥æœŸçš„æœˆä»½
 	 * 
 	 * @param date
-	 *            ÈÕÆÚ
-	 * @return mm ÔÂ·İ×Ö·û´®
+	 *            æ—¥æœŸ
+	 * @return mm æœˆä»½å­—ç¬¦ä¸²
 	 */
 	public static String getMonth(Date date) {
 		return FormatDate(date, "MM");
 	}
 
 	/**
-	 * È¡µÃÈÕÆÚµÄÌì·İ
+	 * å–å¾—æ—¥æœŸçš„å¤©ä»½
 	 * 
 	 * @param date
-	 *            ÈÕÆÚ
-	 * @return dd Ìì×Ö·û´®
+	 *            æ—¥æœŸ
+	 * @return dd å¤©å­—ç¬¦ä¸²
 	 */
 	public static String getDay(Date date) {
 		return FormatDate(date, "dd");
 	}
 
 	/**
-	 * È¡µÃÈÕÆÚµÄĞ¡Ê±
+	 * å–å¾—æ—¥æœŸçš„å°æ—¶
 	 * 
 	 * @param date
-	 *            ÈÕÆÚ
-	 * @return hh Ğ¡Ê±×Ö·û´®
+	 *            æ—¥æœŸ
+	 * @return hh å°æ—¶å­—ç¬¦ä¸²
 	 */
 	public static String getHour(Date date) {
 		return FormatDate(date, "HH");
 	}
 
 	/**
-	 * È¡µÃÈÕÆÚµÄ·ÖÖÓ
+	 * å–å¾—æ—¥æœŸçš„åˆ†é’Ÿ
 	 * 
 	 * @param date
-	 *            Ê±¼ä
-	 * @return mm ·ÖÖÓ×Ö·û´®
+	 *            æ—¶é—´
+	 * @return mm åˆ†é’Ÿå­—ç¬¦ä¸²
 	 */
 	public static String getMinute(Date date) {
 		return FormatDate(date, "mm");
 	}
 
 	/**
-	 * È¡µÃÊ±¼äµÄÃë
+	 * å–å¾—æ—¶é—´çš„ç§’
 	 * 
 	 * @param date
-	 *            Ê±¼ä
-	 * @return ss Ãë×Ö·û´®
+	 *            æ—¶é—´
+	 * @return ss ç§’å­—ç¬¦ä¸²
 	 */
 	public static String getSecond(Date date) {
 		return FormatDate(date, "ss");
 	}
 
 	/**
-	 * È¡µÃÈÕÒÔÉÏÁ£¶ÈÆğÊ¼Ê±¼ä
+	 * å–å¾—æ—¥ä»¥ä¸Šç²’åº¦èµ·å§‹æ—¶é—´
 	 * 
 	 * @param granularity
-	 *            Á£¶È
+	 *            ç²’åº¦
 	 * @param statisticDate
-	 *            ½áÊøÊ±¼ä
-	 * @return ÆğÊ¼Ê±¼ä
+	 *            ç»“æŸæ—¶é—´
+	 * @return èµ·å§‹æ—¶é—´
 	 */
 	public String getBeginDate(String granularity, String statisticDate) {
 		String beginDate = "";
 		Date date = this.stringToDateShort(statisticDate);
 		Date beginDateTemp = null;
-		if (granularity.equals("2")) {// ÔÂ
+		if (granularity.equals("2")) {// æœˆ
 			beginDateTemp = this.getMonthBegin(date);
-		} else if (granularity.equals("3")) {// ¼¾
+		} else if (granularity.equals("3")) {// å­£
 			beginDateTemp = this.getSeasonBegin(date);
-		} else if (granularity.equals("4")) {// Äê
+		} else if (granularity.equals("4")) {// å¹´
 			beginDateTemp = this.getYearBegin(date);
 		}
 		beginDate = this.dateToStringShort(beginDateTemp);
@@ -126,13 +126,13 @@ public class DateUtils {
 	}
 
 	/**
-	 * È¡µÃÊ±¼äÃèÊö ÈÕ yyyy£­mm£­dd ÔÂ yyyyÄêmmÔÂ ¼¾ yyyyÄêµÚ¡Á¼¾¶È Äê yyyyÄê
+	 * å–å¾—æ—¶é—´æè¿° æ—¥ yyyyï¼mmï¼dd æœˆ yyyyå¹´mmæœˆ å­£ yyyyå¹´ç¬¬Ã—å­£åº¦ å¹´ yyyyå¹´
 	 * 
 	 * @param granularity
-	 *            Á£¶È
+	 *            ç²’åº¦
 	 * @param statisticDate
-	 *            Ê±¼ä
-	 * @return Ê±¼ä¶ÔÓ¦Á£¶ÈµÄÃèÊö
+	 *            æ—¶é—´
+	 * @return æ—¶é—´å¯¹åº”ç²’åº¦çš„æè¿°
 	 */
 	public String getTimedes(String granularity, String statisticDate) {
 		String timedes = "";
@@ -141,34 +141,34 @@ public class DateUtils {
 		year = DateUtils.getYear(date);
 		month = DateUtils.getMonth(date);
 		day = DateUtils.getDay(date);
-		if (granularity.equals("1")) {// ÈÕ
+		if (granularity.equals("1")) {// æ—¥
 			timedes = statisticDate;
-		} else if (granularity.equals("4")) {// ÔÂ
-			timedes = year + "Äê" + month + "ÔÂ";
+		} else if (granularity.equals("4")) {// æœˆ
+			timedes = year + "å¹´" + month + "æœˆ";
 
-		} else if (granularity.equals("8")) {// ¼¾
+		} else if (granularity.equals("8")) {// å­£
 			String quarter = month + "-" + day;
 			if (quarter.equals("03-31")) {
-				timedes = year + "Äê µÚ1¼¾¶È";
+				timedes = year + "å¹´ ç¬¬1å­£åº¦";
 			} else if (quarter.equals("06-30")) {
-				timedes = year + "Äê µÚ2¼¾¶È";
+				timedes = year + "å¹´ ç¬¬2å­£åº¦";
 			} else if (quarter.equals("09-30")) {
-				timedes = year + "Äê µÚ3¼¾¶È";
+				timedes = year + "å¹´ ç¬¬3å­£åº¦";
 			} else if (quarter.equals("12-31")) {
-				timedes = year + "Äê µÚ4¼¾¶È";
+				timedes = year + "å¹´ ç¬¬4å­£åº¦";
 			}
-		} else if (granularity.equals("32")) {// Äê
-			timedes = year + "Äê";
+		} else if (granularity.equals("32")) {// å¹´
+			timedes = year + "å¹´";
 		}
 		return timedes;
 	}
 
 	/**
-	 * ÈÕÆÚ×ª»¯Îª×Ö·û´®
+	 * æ—¥æœŸè½¬åŒ–ä¸ºå­—ç¬¦ä¸²
 	 * 
 	 * @param date
-	 *            Ê±¼ä
-	 * @return yyyy-MM-dd HH:mm:ss ¸ñÊ½»¯µÄÊ±¼ä×Ö·û´®
+	 *            æ—¶é—´
+	 * @return yyyy-MM-dd HH:mm:ss æ ¼å¼åŒ–çš„æ—¶é—´å­—ç¬¦ä¸²
 	 */
 	public static String dateToString(Date date) {
 		if (date == null)
@@ -183,11 +183,11 @@ public class DateUtils {
 	}
 
 	/**
-	 * ÈÕÆÚ×ª»¯Îª×Ö·û´®
+	 * æ—¥æœŸè½¬åŒ–ä¸ºå­—ç¬¦ä¸²
 	 * 
 	 * @param date
-	 *            Ê±¼ä
-	 * @return yyyy-MM-dd ¸ñÊ½»¯µÄÊ±¼ä×Ö·û´®
+	 *            æ—¶é—´
+	 * @return yyyy-MM-dd æ ¼å¼åŒ–çš„æ—¶é—´å­—ç¬¦ä¸²
 	 */
 	public static String dateToStringShort(Date date) {
 		if (date == null)
@@ -196,11 +196,11 @@ public class DateUtils {
 	}
 
 	/**
-	 * ×Ö·û´®×ª»»ÎªÈÕÆÚ
+	 * å­—ç¬¦ä¸²è½¬æ¢ä¸ºæ—¥æœŸ
 	 * 
 	 * @param dateString
 	 *            yyyy-MM-dd HH:mm:ss
-	 * @return ÈÕÆÚ
+	 * @return æ—¥æœŸ
 	 */
 	public static Date stringToDate(String dateString) {
 		String sf = "yyyy-MM-dd HH:mm:ss";
@@ -215,11 +215,11 @@ public class DateUtils {
 	}
 
 	/**
-	 * ×Ö·û´®×ª»»ÎªÈÕÆÚ
+	 * å­—ç¬¦ä¸²è½¬æ¢ä¸ºæ—¥æœŸ
 	 * 
 	 * @param dateString
 	 *            yyyy-MM-dd
-	 * @return ÈÕÆÚ
+	 * @return æ—¥æœŸ
 	 */
 	public static Date stringToDateShort(String dateString) {
 		if (dateString == null)
@@ -230,13 +230,13 @@ public class DateUtils {
 	}
 
 	/**
-	 * ¶ÔÈÕÆÚ½øĞĞ¸ñÊ½»¯
+	 * å¯¹æ—¥æœŸè¿›è¡Œæ ¼å¼åŒ–
 	 * 
 	 * @param date
-	 *            ÈÕÆÚ
+	 *            æ—¥æœŸ
 	 * @param sf
-	 *            ÈÕÆÚ¸ñÊ½
-	 * @return ×Ö·û´®
+	 *            æ—¥æœŸæ ¼å¼
+	 * @return å­—ç¬¦ä¸²
 	 */
 	public static String FormatDate(Date date, String sf) {
 		if (date == null)
@@ -246,13 +246,13 @@ public class DateUtils {
 	}
 
 	/**
-	 * ×Ö·û´®×ª»»ÎªÈÕÆÚ
+	 * å­—ç¬¦ä¸²è½¬æ¢ä¸ºæ—¥æœŸ
 	 * 
 	 * @param dateString
-	 *            ÈÕÆÚ¸ñÊ½×Ö·û´®
+	 *            æ—¥æœŸæ ¼å¼å­—ç¬¦ä¸²
 	 * @param sf
-	 *            ÈÕÆÚ¸ñÊ½»¯¶¨Òå
-	 * @return ×ª»»ºóµÄÈÕÆÚ
+	 *            æ—¥æœŸæ ¼å¼åŒ–å®šä¹‰
+	 * @return è½¬æ¢åçš„æ—¥æœŸ
 	 */
 	public static Date stringToDate(String dateString, String sf) {
 		ParsePosition pos = new ParsePosition(0);
@@ -262,13 +262,13 @@ public class DateUtils {
 	}
 
 	/**
-	 * ¼ÆËãÁ½¸öÈÕÆÚ²î£¨ºÁÃë£©
+	 * è®¡ç®—ä¸¤ä¸ªæ—¥æœŸå·®ï¼ˆæ¯«ç§’ï¼‰
 	 * 
 	 * @param date1
-	 *            Ê±¼ä1
+	 *            æ—¶é—´1
 	 * @param date2
-	 *            Ê±¼ä2
-	 * @return Ïà²îºÁÃëÊı
+	 *            æ—¶é—´2
+	 * @return ç›¸å·®æ¯«ç§’æ•°
 	 */
 	public static long diffTwoDate(Date date1, Date date2) {
 		long l1 = date1.getTime();
@@ -277,13 +277,13 @@ public class DateUtils {
 	}
 
 	/**
-	 * ¼ÆËãÁ½¸öÈÕÆÚ²î£¨Ìì£©
+	 * è®¡ç®—ä¸¤ä¸ªæ—¥æœŸå·®ï¼ˆå¤©ï¼‰
 	 * 
 	 * @param date1
-	 *            Ê±¼ä1
+	 *            æ—¶é—´1
 	 * @param date2
-	 *            Ê±¼ä2
-	 * @return Ïà²îÌìÊı
+	 *            æ—¶é—´2
+	 * @return ç›¸å·®å¤©æ•°
 	 */
 	public static int diffTwoDateDay(Date date1, Date date2) {
 		long l1 = date1.getTime();
@@ -295,12 +295,12 @@ public class DateUtils {
 	/**
 	 * 
 	 * @param currentTime
-	 *            ¼ÆËãµÄÈÕÆÚ
+	 *            è®¡ç®—çš„æ—¥æœŸ
 	 * @param type
-	 *            Æ«ÒÆµÄÀà±ğ
+	 *            åç§»çš„ç±»åˆ«
 	 * @param iQuantity
-	 *            Æ«ÒÆÊıÁ¿
-	 * @return Æ«ÒÆºóµÄÊ±¼ä´®
+	 *            åç§»æ•°é‡
+	 * @return åç§»åçš„æ—¶é—´ä¸²
 	 */
 	public String getDateChangeTime(String currentTime, String type,
 			int iQuantity) {
@@ -312,19 +312,19 @@ public class DateUtils {
 	/**
 	 * 
 	 * @param currentTime
-	 *            ¼ÆËãµÄÈÕÆÚ
+	 *            è®¡ç®—çš„æ—¥æœŸ
 	 * @param type
-	 *            Æ«ÒÆµÄÀà±ğ
+	 *            åç§»çš„ç±»åˆ«
 	 * @param iQuantity
-	 *            Æ«ÒÆÊıÁ¿
-	 * @return Æ«ÒÆºóµÄÊ±¼ä
+	 *            åç§»æ•°é‡
+	 * @return åç§»åçš„æ—¶é—´
 	 */
 	public Date getDateChangeTime(Date currentTime, String type, int iQuantity) {
 		// System.out.println("currentTime:"+currentTime+"
 		// type:"+type+iQuantity);
 		int year = Integer.parseInt(this.FormatDate(currentTime, "yyyy"));
 		int month = Integer.parseInt(this.FormatDate(currentTime, "MM"));
-		// ÔÂ·İĞŞÕı
+		// æœˆä»½ä¿®æ­£
 		month = month - 1;
 		int day = Integer.parseInt(this.FormatDate(currentTime, "dd"));
 		int hour = Integer.parseInt(this.FormatDate(currentTime, "HH"));
@@ -332,7 +332,7 @@ public class DateUtils {
 		int ss = Integer.parseInt(this.FormatDate(currentTime, "ss"));
 		GregorianCalendar gc = new GregorianCalendar(year, month, day, hour,
 				mi, ss);
-		// ÔÂ·İĞŞÕı
+		// æœˆä»½ä¿®æ­£
 		// gc.add(GregorianCalendar.MONTH, -1);
 		if (type.equalsIgnoreCase("y")) {
 			gc.add(GregorianCalendar.YEAR, iQuantity);
@@ -354,12 +354,12 @@ public class DateUtils {
 	/**
 	 * 
 	 * @param currentTime
-	 *            ¼ÆËãÈÕÆÚ
+	 *            è®¡ç®—æ—¥æœŸ
 	 * @param type
-	 *            Æ«ÒÆµÄÀà±ğ
+	 *            åç§»çš„ç±»åˆ«
 	 * @param iQuantity
-	 *            Æ«ÒÆÊıÁ¿
-	 * @return Æ«ÒÆºóµÄÊ±¼ä´®
+	 *            åç§»æ•°é‡
+	 * @return åç§»åçš„æ—¶é—´ä¸²
 	 */
 	public String getDateChangeALL(String currentTime, String type,
 			int iQuantity) {
@@ -385,22 +385,22 @@ public class DateUtils {
 	}
 
 	/**
-	 * Ö÷º¯Êı
+	 * ä¸»å‡½æ•°
 	 * 
 	 * @param args
-	 *            ²âÊÔ²ÎÊı
+	 *            æµ‹è¯•å‚æ•°
 	 */
 	public static void main(String[] args) {
 		System.out.println(getCurrDate());
 	}
 
 	/**
-	 * ¸ù¾İÄê¡¢ÔÂÈ¡µÃÔÂÄ©µÄÈÕÆÚ
+	 * æ ¹æ®å¹´ã€æœˆå–å¾—æœˆæœ«çš„æ—¥æœŸ
 	 * 
 	 * @param year
-	 *            Äê
-	 * @parm month ÔÂ
-	 * @return time ·µ»ØÈÕÆÚ¸ñÊ½"yyyy-mm-dd"
+	 *            å¹´
+	 * @parm month æœˆ
+	 * @return time è¿”å›æ—¥æœŸæ ¼å¼"yyyy-mm-dd"
 	 */
 	public static String getTime(String year, String month) {
 		String time = "";
@@ -421,7 +421,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * È¡ÔÂ³õ
+	 * å–æœˆåˆ
 	 * 
 	 * @param date
 	 * @return
@@ -433,10 +433,10 @@ public class DateUtils {
 	}
 
 	/**
-	 * È¡ÔÂÄ©Ê±¼ä
+	 * å–æœˆæœ«æ—¶é—´
 	 * 
 	 * @param date
-	 *            ÈÕÆÚ
+	 *            æ—¥æœŸ
 	 * @return date
 	 */
 	public static Date getMonthEnd(Date date) {
@@ -457,7 +457,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * È¡¼¾³õ
+	 * å–å­£åˆ
 	 * 
 	 * @param date
 	 * @return
@@ -479,10 +479,10 @@ public class DateUtils {
 	}
 
 	/**
-	 * È¡¼¾¶ÈÄ©Ê±¼ä
+	 * å–å­£åº¦æœ«æ—¶é—´
 	 * 
 	 * @param date
-	 *            ÈÕÆÚ
+	 *            æ—¥æœŸ
 	 * @return date
 	 */
 	public static Date getSeasonEnd(Date date) {
@@ -502,10 +502,10 @@ public class DateUtils {
 	}
 
 	/**
-	 * ÊÇ·ñÎª°ëÄêÄ©
+	 * æ˜¯å¦ä¸ºåŠå¹´æœ«
 	 * 
 	 * @param date
-	 *            Ê±¼ä
+	 *            æ—¶é—´
 	 * @return
 	 */
 	public Date getHalfYearEnd(Date date) {
@@ -520,7 +520,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * È¡µÃÄê³õ
+	 * å–å¾—å¹´åˆ
 	 * 
 	 * @param date
 	 * @return
@@ -531,10 +531,10 @@ public class DateUtils {
 	}
 
 	/**
-	 * ÊÇ·ñÎªÄêÄ©
+	 * æ˜¯å¦ä¸ºå¹´æœ«
 	 * 
 	 * @param date
-	 *            Ê±¼ä
+	 *            æ—¶é—´
 	 * @return
 	 */
 	public static Date getYearEnd(Date date) {
@@ -543,11 +543,11 @@ public class DateUtils {
 	}
 
 	/**
-	 * ÊÇ·ñÎªÑ®Ä©
+	 * æ˜¯å¦ä¸ºæ—¬æœ«
 	 * 
 	 * @param date
-	 *            Ê±¼ä
-	 * @return ÊÇ»ò·ñ
+	 *            æ—¶é—´
+	 * @return æ˜¯æˆ–å¦
 	 */
 	public boolean IsXperiodEnd(Date date) {
 
@@ -561,7 +561,7 @@ public class DateUtils {
 		} else if (day.equalsIgnoreCase("20")) {
 			flag = true;
 		}
-		// ÔÂÄ©²»ËãÑ®Ä©
+		// æœˆæœ«ä¸ç®—æ—¬æœ«
 		// else if( this.getMonthEnd(date).compareTo(date)==0 ){
 		// flag = true;
 		// }
@@ -569,8 +569,8 @@ public class DateUtils {
 		return flag;
 	}
 
-	// ÅĞ¶ÏÊ±¼ädate1ÊÇ·ñÔÚÊ±¼ädate2Ö®Ç°
-	// Ê±¼ä¸ñÊ½ 2007-1-21 16:16:34
+	// åˆ¤æ–­æ—¶é—´date1æ˜¯å¦åœ¨æ—¶é—´date2ä¹‹å‰
+	// æ—¶é—´æ ¼å¼ 2007-1-21 16:16:34
 	public static boolean isDateBefore(String date1, String date2) {
 		try {
 			DateFormat df = DateFormat.getDateTimeInstance();
@@ -581,8 +581,8 @@ public class DateUtils {
 		}
 	}
 
-	// ÅĞ¶ÏÊ±¼ädate1ÊÇ·ñÔÚÊ±¼ädate2Ö®Ç°
-	// Ê±¼ä¸ñÊ½ 2007-1-21
+	// åˆ¤æ–­æ—¶é—´date1æ˜¯å¦åœ¨æ—¶é—´date2ä¹‹å‰
+	// æ—¶é—´æ ¼å¼ 2007-1-21
 	public static boolean isDateBefore2(String date1, String date2) {
 		try {
 			return DateUtils.stringToDateShort(date1).before(
@@ -593,8 +593,8 @@ public class DateUtils {
 		}
 	}
 
-	// ÅĞ¶ÏÊ±¼ädate1ÊÇ·ñµÈÓÚdate2
-	// Ê±¼ä¸ñÊ½ 2007-1-21
+	// åˆ¤æ–­æ—¶é—´date1æ˜¯å¦ç­‰äºdate2
+	// æ—¶é—´æ ¼å¼ 2007-1-21
 	public static boolean isDateEquals(String date1, String date2) {
 		try {
 			return DateUtils.stringToDateShort(date1).equals(
@@ -605,8 +605,8 @@ public class DateUtils {
 		}
 	}
 
-	// ÅĞ¶Ïµ±Ç°Ê±¼äÊÇ·ñÔÚÊ±¼ädate2Ö®Ç°
-	// Ê±¼ä¸ñÊ½ 2005-1-21 16:16:34
+	// åˆ¤æ–­å½“å‰æ—¶é—´æ˜¯å¦åœ¨æ—¶é—´date2ä¹‹å‰
+	// æ—¶é—´æ ¼å¼ 2005-1-21 16:16:34
 	public static boolean isDateBefore(String date2) {
 		try {
 			Date date1 = new Date();

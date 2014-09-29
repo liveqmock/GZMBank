@@ -213,7 +213,7 @@ public class MessManTool {
 					bf = new StringBuffer();
 				}
 				if (m == 9 + (474 * f)) {
-					map.put("param2", bf.toString());// ½»Ò×Âë
+					map.put("param2", bf.toString());// äº¤æ˜“ç 
 					bf = new StringBuffer();
 				}
 				if (m == 69 + (474 * f)) {
@@ -225,7 +225,7 @@ public class MessManTool {
 					bf = new StringBuffer();
 				}
 				if (m == 131 + (474 * f)) {
-					map.put("param5", bf.toString());// ¶©µ¥±àºÅ
+					map.put("param5", bf.toString());// è®¢å•ç¼–å·
 					bf = new StringBuffer();
 				}
 				if (m == 142 + (474 * f)) {
@@ -237,39 +237,39 @@ public class MessManTool {
 					bf = new StringBuffer();
 				}
 				if (m == 252 + (474 * f)) {
-					map.put("param8", bf.toString());// Ô¤¶¨ÄÚÈİ
+					map.put("param8", bf.toString());// é¢„å®šå†…å®¹
 					bf = new StringBuffer();
 				}
 				if (m == 266 + (474 * f)) {
-					map.put("param9", bf.toString());// ×Ü½ğ¶î
+					map.put("param9", bf.toString());// æ€»é‡‘é¢
 					bf = new StringBuffer();
 				}
 				if (m == 280 + (474 * f)) {
-					map.put("param10", bf.toString());// µç×ÓÓÅ»İ¼Û
+					map.put("param10", bf.toString());// ç”µå­ä¼˜æƒ ä»·
 					bf = new StringBuffer();
 				}
 				if (m == 284 + (474 * f)) {
-					map.put("param11", bf.toString());// Ô¤¶©²úÆ·ÊıÁ¿
+					map.put("param11", bf.toString());// é¢„è®¢äº§å“æ•°é‡
 					bf = new StringBuffer();
 				}
 				if (m == 287 + (474 * f)) {
-					map.put("param12", bf.toString());// ÓĞĞ§ÌìÊı
+					map.put("param12", bf.toString());// æœ‰æ•ˆå¤©æ•°
 					bf = new StringBuffer();
 				}
 				if (m == 447 + (474 * f)) {
-					map.put("param13", bf.toString());// ±¸×¢
+					map.put("param13", bf.toString());// å¤‡æ³¨
 					bf = new StringBuffer();
 				}
 				if (m == 458 + (474 * f)) {
-					map.put("param14", bf.toString());// »á¼ÆÁ÷Ë®
+					map.put("param14", bf.toString());// ä¼šè®¡æµæ°´
 					bf = new StringBuffer();
 				}
 				if (m == 466 + (474 * f)) {
-					map.put("param16", bf.toString());// ½»Ò×ÈÕÆÚ
+					map.put("param16", bf.toString());// äº¤æ˜“æ—¥æœŸ
 					bf = new StringBuffer();
 				}
 				if (m == 474 + (474 * f)) {
-					map.put("param15", bf.toString());// Ê¹ÓÃÈÕÆÚ
+					map.put("param15", bf.toString());// ä½¿ç”¨æ—¥æœŸ
 					bf = new StringBuffer();
 					f += 1;
 					result.add(map);
@@ -315,23 +315,23 @@ public class MessManTool {
 					bf = new StringBuffer();
 				}
 				if (m == 13 + (51 * f)) {
-					map.put("param2", bf.toString());// Ñò³ÇÍ¨¿¨ºÅ
+					map.put("param2", bf.toString());// ç¾ŠåŸé€šå¡å·
 					bf = new StringBuffer();
 				}
 				if (m == 21 + (51 * f)) {
-					map.put("param3", bf.toString());// ³äÖµÈÕÆÚ
+					map.put("param3", bf.toString());// å……å€¼æ—¥æœŸ
 					bf = new StringBuffer();
 				}
 				if (m == 33 + (51 * f)) {
-					map.put("param4", bf.toString());// »á¼ÆÁ÷Ë®ºÅ
+					map.put("param4", bf.toString());// ä¼šè®¡æµæ°´å·
 					bf = new StringBuffer();
 				}
 				if (m == 45 + (51 * f)) {
-					map.put("param5", bf.toString());// ½»Ò×½ğ¶î
+					map.put("param5", bf.toString());// äº¤æ˜“é‡‘é¢
 					bf = new StringBuffer();
 				}
 				if (m == 51 + (51 * f)) {
-					map.put("param6", bf.toString());// ³äÖµÖÕ¶ËºÅ
+					map.put("param6", bf.toString());// å……å€¼ç»ˆç«¯å·
 					bf = new StringBuffer();
 					f += 1;
 					result.add(map);
@@ -613,8 +613,8 @@ public class MessManTool {
 		MessManTool messManTool = new MessManTool();
 		String tmp = "0958|bocom_mid|biz_id,25|biz_no,00025|biz_step_id,6|display_zone,048012234999920090423ABIA0410313 000000010000Z01051048012234999920090423ABIA0410312 000000010000Z01051|MGID,000000|";
 		// String
-		// tmp="0142|bocom_mid|biz_id,24|biz_no,00024|biz_step_id,1|display_zone,031Ğ¡ÁéÍ¨30
-		// 000000000003000031Ğ¡ÁéÍ¨50 000000000005000|MGID,000000|";
+		// tmp="0142|bocom_mid|biz_id,24|biz_no,00024|biz_step_id,1|display_zone,031å°çµé€š30
+		// 000000000003000031å°çµé€š50 000000000005000|MGID,000000|";
 		// List list=messManTool.lianTongShouKa1(tmp);
 		List list = messManTool.kongZhongChongZhiGetResult3(tmp);
 

@@ -52,49 +52,49 @@ public class ConnDXPT {
 	}
 	
 	/**
-	* ·¢ËÍĞÅÏ¢µ½¶ÌĞÅÆ½Ì¨
-	* @param message ¶ÌĞÅĞÅÏ¢
-	* @param phone   ÊÖ»úºÅÂë
-	* @param cardno  ÒøĞĞ¿¨ºÅ
+	* å‘é€ä¿¡æ¯åˆ°çŸ­ä¿¡å¹³å°
+	* @param message çŸ­ä¿¡ä¿¡æ¯
+	* @param phone   æ‰‹æœºå·ç 
+	* @param cardno  é“¶è¡Œå¡å·
 	* @return
 	*/
 	
 	public String sendMessage(String message,String phone,String cardno){
 		char ff ='\u0000';
-		String content      = "";      //·¢ËÍ±¨ÎÄ
-		String sRecvContent = "";      //½ÓÊÕ±¨ÎÄ
+		String content      = "";      //å‘é€æŠ¥æ–‡
+		String sRecvContent = "";      //æ¥æ”¶æŠ¥æ–‡
 		String unino    = "";
 		String sCardno  = ConnDXPT.addBit(cardno, 20);
 		String sPhone   = ConnDXPT.addBit(phone, 15);
 		String sMessage = ConnDXPT.addBit(message,500);
 		
 		if(sPhone.substring(0, 3).equals("139")|| sPhone.substring(0, 3).equals("138") ||sPhone.substring(0, 3).equals("137") ||sPhone.substring(0, 3).equals("136") ||sPhone.substring(0, 3).equals("135") ||sPhone.substring(0, 3).equals("134") || sPhone.substring(0, 3).equals("150") || sPhone.substring(0, 3).equals("151") || sPhone.substring(0, 3).equals("157") || sPhone.substring(0, 3).equals("158") || sPhone.substring(0, 3).equals("159") || sPhone.substring(0, 3).equals("187") || sPhone.substring(0, 3).equals("188"))
-			unino = "0001";/*ÒÆ¶¯*/
+			unino = "0001";/*ç§»åŠ¨*/
 		else if(sPhone.substring(0, 3).equals("130") || sPhone.substring(0, 3).equals("131") || sPhone.substring(0, 3).equals("132") || sPhone.substring(0, 3).equals("152") || sPhone.substring(0, 3).equals("155") || sPhone.substring(0, 3).equals("156") || sPhone.substring(0, 3).equals("185") || sPhone.substring(0, 3).equals("186"))
-			unino = "0002";/*ÁªÍ¨*/
+			unino = "0002";/*è”é€š*/
 		else 
-			unino = "0003";/*µçĞÅ*/		
+			unino = "0003";/*ç”µä¿¡*/		
 				
-		content = sCardno; /*ÕÊºÅ  ÎŞÓÃ*/
-		content = content + ff;            /*·Ö¸ô·û*/
-		content = content + "00000000000000000000"; /*¿Í»§ºÅ  ÎŞÓÃ*/
-		content = content + ff;            /*·Ö¸ô·û*/
-		content = content + sPhone;       /*ÊÖ»úºÅ*/
-		content = content + ff;            /*·Ö¸ô·û*/
-		content = content + "0";          /*¼´·¢±êÖ¾*/
-		content = content + ff;            /*·Ö¸ô·û*/
-		content = content + "2";          /*ÊÕ·Ñ±ê×¼*/
-		content = content + ff;            /*·Ö¸ô·û*/
-		content = content + unino;         /*ÔËÓªÉÌ±êÖ¾*/
-		content = content + ff;            /*·Ö¸ô·û*/
-		content = content + sMessage;     /*¶ÌĞÅĞÅÏ¢*/
-		content = content + ff;            /*·Ö¸ô·û*/
+		content = sCardno; /*å¸å·  æ— ç”¨*/
+		content = content + ff;            /*åˆ†éš”ç¬¦*/
+		content = content + "00000000000000000000"; /*å®¢æˆ·å·  æ— ç”¨*/
+		content = content + ff;            /*åˆ†éš”ç¬¦*/
+		content = content + sPhone;       /*æ‰‹æœºå·*/
+		content = content + ff;            /*åˆ†éš”ç¬¦*/
+		content = content + "0";          /*å³å‘æ ‡å¿—*/
+		content = content + ff;            /*åˆ†éš”ç¬¦*/
+		content = content + "2";          /*æ”¶è´¹æ ‡å‡†*/
+		content = content + ff;            /*åˆ†éš”ç¬¦*/
+		content = content + unino;         /*è¿è¥å•†æ ‡å¿—*/
+		content = content + ff;            /*åˆ†éš”ç¬¦*/
+		content = content + sMessage;     /*çŸ­ä¿¡ä¿¡æ¯*/
+		content = content + ff;            /*åˆ†éš”ç¬¦*/
 		content = content + "0000000";    /*0000000*/
-		content = content + ff;            /*·Ö¸ô·û*/
+		content = content + ff;            /*åˆ†éš”ç¬¦*/
 		content = content + "             ";
-		content = content + ff;            /*·Ö¸ô·û*/
+		content = content + ff;            /*åˆ†éš”ç¬¦*/
 		content = content + "1";
-		content = content + ff;            /*·Ö¸ô·û*/	
+		content = content + ff;            /*åˆ†éš”ç¬¦*/	
 		try {
 			BufferedReader in = null; /* receive */
 			// *BufferedWriter out=null;
@@ -115,9 +115,9 @@ public class ConnDXPT {
 	}
 
 	/**
-	* ×Ö·û´®³¤¶È²»¹»²¹Î»Îª¿Õ¸ñ
+	* å­—ç¬¦ä¸²é•¿åº¦ä¸å¤Ÿè¡¥ä½ä¸ºç©ºæ ¼
 	* @param str
-	* @param bitNum Òª´ïµ½µÄ³¤¶È
+	* @param bitNum è¦è¾¾åˆ°çš„é•¿åº¦
 	* @return
 	*/
 
@@ -148,7 +148,7 @@ public class ConnDXPT {
 	}
 	
 	public static void main(String arg[]){
-        /*¿ÉÒÔ×ª»»×Ö·û±àÂë
+        /*å¯ä»¥è½¬æ¢å­—ç¬¦ç¼–ç 
 		String b ="";
         try {
 		   byte[] bytes={00};
@@ -164,7 +164,7 @@ public class ConnDXPT {
 		
 		ConnDXPT ConnDXPT=new ConnDXPT();
 		
-		String sReturnCod = ConnDXPT.sendMessage("Î´½â¾ö89899","13800000000","60142890000");
+		String sReturnCod = ConnDXPT.sendMessage("æœªè§£å†³89899","13800000000","60142890000");
 
 		System.out.println("==="+sReturnCod);
 
