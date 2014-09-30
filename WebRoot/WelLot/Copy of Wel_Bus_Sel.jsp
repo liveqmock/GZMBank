@@ -31,4 +31,8 @@
 		<input type='submit' value='确定'/><br/>
 		</form>
     </content>
+<<<<<<< HEAD
 </res> 
+=======
+</res>
+>>>>>>> tmp

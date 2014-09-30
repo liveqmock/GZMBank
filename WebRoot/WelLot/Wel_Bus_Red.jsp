@@ -28,7 +28,7 @@
 		action_next="Wel_Reg_Add.jsp";
 
 	}else if(bus==WelLot.DOUBLEBUY){
-		action_next="Wel_Buy_Dou.jsp";
+		action_next="Wel_Sub_Sel.jsp";
 
 	}else if(bus==WelLot.DOUBLEFIXBUY){
 		action_next="Wel_Fix_Dou.jsp";

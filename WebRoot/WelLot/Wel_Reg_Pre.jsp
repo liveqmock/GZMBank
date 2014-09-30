@@ -40,9 +40,9 @@
 //		pageContext.setAttribute("IdNo", " ");
 		pageContext.setAttribute("FixTel", " ");
 		pageContext.setAttribute("Email", " ");
-		if("0".equals(SigTyp)){
-			pageContext.setAttribute("MobTel", CrdNo);
-		}else{
+		if("0".equals(SigTyp)){//选择了签约手机号
+			pageContext.setAttribute("MobTel", sjNo);
+		}else{//选择其他手机号
 			pageContext.setAttribute("MobTel", MobTel);
 		}
 		
