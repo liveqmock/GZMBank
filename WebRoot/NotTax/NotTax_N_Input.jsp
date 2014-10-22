@@ -10,19 +10,6 @@
 	String sjNo = request.getHeader("MBK_MOBILE");
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	gzLog.Write("进入["+uri+"]");
-	//准备显示字段
-	Map showE = new HashMap();
-
-	//准备更新字段
-	Map updateE = new HashMap();
-	updateE.put("AdnCod", "文书编号");
-	updateE.put("PBilTyp", "打印票据种类");
-	updateE.put("PBilNo", "打印票据编号");
-	updateE.put("HndFlg", "通知书填写方式");
-	updateE.put("UpdAdnFg", "查询刷新标识");
-	updateE.put("RipFlg", "撕定额票标志");
-	updateE.put("DitCod", "撕定额票标志");
-
 
 %>
 

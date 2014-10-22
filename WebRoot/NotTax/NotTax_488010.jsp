@@ -23,8 +23,8 @@
 
 	//BEGIN 身份认证
 	//
-	/*String verify = request.getHeader("MBK_VERIFY_RESULT");
-	if(verify!=null&&!verify.equals("P")){
+	String verify = request.getHeader("MBK_VERIFY_RESULT");
+	if(verify==null||!verify.equals("P")){
 		String RspCod = "MID999";
 		String RspMsg = "手机短信密码验证不通过"; 
 		gzLog.Write("["+uri+"]MGID不正确");
@@ -35,7 +35,7 @@
 		forwardString.append("&");
 		forwardString.append("RspMsg").append("=").append(RspMsg);
         pageContext.forward(forwardString.toString());
-	}*/
+	}
 	
     //END 身份认证
 
