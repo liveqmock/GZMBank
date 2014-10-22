@@ -50,24 +50,25 @@
 
 
 	//根据业务标志来进行通讯
-	int transactionName;
+	int txnCod;
+	String txnName = null;
 	if(bus==WelLot.ADDREG){
 		saveKey="LotNam";
-		transactionName=TransationFactory.WEL485404;
+		txnCod=TransationFactory.WEL485404;
 	}else if(bus==WelLot.UPDREG){
 		saveKey="MobTel";
-		transactionName=TransationFactory.WEL485405;
+		txnCod=TransationFactory.WEL485405;
 	}else{
-		transactionName=0;
+		txnCod=0;
 	}
-
+	txnName = WelLot.getTxnCod(txnCod);
 	Map responseValues = new HashMap();
 	try{
 		responseValues.putAll(
 				Transation.createMapSend(pageContext,
-						String.valueOf(bus),
+						txnName,
 						"@Wel",
-						transactionName
+						txnCod
 					)
 				);
 

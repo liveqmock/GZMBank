@@ -1,10 +1,42 @@
 package com.gdbocom.Transactions;
 
 public class WelLot {
-	public static final int ADDREG = 485404;
-	public static final int UPDREG = 485405;
-	public static final int DOUBLEBUY = 1;
-	public static final int DOUBLEFIXBUY = 1;
-	public static final int TENBUY = 1;
 
+	/**
+	 * 首页菜单
+	 */
+	public static final int ADDREG = 1;
+	public static final int UPDREG = 2;
+	public static final int DOUBLEBUY = 3;
+	public static final int DOUBLEFIXBUY = 4;
+	public static final int TENBUY = 5;
+
+	/**
+	 * 双色球投注菜单
+	 */
+	public static final int DOUBLE_SEL = 31;
+	public static final int DOUBLE_BETSQRY = 32;
+	public static final int DOUBLE_WINQRY = 33;
+
+	/**
+	 * 
+	 * @param busType
+	 * @return
+	 */
+	public static String getTxnCod(int busType){
+		switch(busType){
+		case ADDREG:
+			return "485404";
+		case UPDREG:
+			return "485405";
+		case DOUBLEBUY:
+			return "485404";
+		case DOUBLEFIXBUY:
+			return "485404";
+		case TENBUY:
+			return "485404";
+		default:
+			return "";
+		}
+	}
 }
