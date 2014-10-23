@@ -19,7 +19,7 @@ public class WelLot {
 	public static final int DOUBLE_WINQRY = 33;
 
 	/**
-	 * 
+	 * 转换菜单值为通讯码
 	 * @param busType
 	 * @return
 	 */
@@ -29,11 +29,11 @@ public class WelLot {
 			return "485404";
 		case UPDREG:
 			return "485405";
-		case DOUBLEBUY:
+		case DOUBLE_SEL:
+			return "485412";
+		case DOUBLE_BETSQRY:
 			return "485404";
-		case DOUBLEFIXBUY:
-			return "485404";
-		case TENBUY:
+		case DOUBLE_WINQRY:
 			return "485404";
 		default:
 			return "";

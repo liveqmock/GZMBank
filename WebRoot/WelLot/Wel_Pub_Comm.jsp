@@ -52,15 +52,25 @@
 	//根据业务标志来进行通讯
 	int txnCod;
 	String txnName = null;
-	if(bus==WelLot.ADDREG){
+	if(bus==WelLot.ADDREG){//用户注册
 		saveKey="LotNam";
 		txnCod=TransationFactory.WEL485404;
-	}else if(bus==WelLot.UPDREG){
+	}else if(bus==WelLot.UPDREG){//注册变更
+		saveKey="MobTel";
+		txnCod=TransationFactory.WEL485405;
+	}else if(bus==WelLot.DOUBLE_SEL){//双色球自选
+		saveKey="TLogNo,Cipher,Verify,LotNam,LotBal";
+		txnCod=TransationFactory.WEL485412;
+	}else if(bus==WelLot.DOUBLE_BETSQRY){//双色球投注查询
+		saveKey="MobTel";
+		txnCod=TransationFactory.WEL485405;
+	}else if(bus==WelLot.DOUBLE_WINQRY){//双色球中奖查询
 		saveKey="MobTel";
 		txnCod=TransationFactory.WEL485405;
 	}else{
 		txnCod=0;
 	}
+
 	txnName = WelLot.getTxnCod(txnCod);
 	Map responseValues = new HashMap();
 	try{

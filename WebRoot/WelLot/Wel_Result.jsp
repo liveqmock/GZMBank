@@ -14,6 +14,10 @@
 	
 	//设置需要显示的值和名称,
 	Map showKey = new HashMap();
+
+	//设置需要显示的值的类型
+	Map keyType = new HashMap();
+
 	int bus = Integer.parseInt((String)pageContext.getAttribute("Bus"));
 	String title = "";
 	String remark = "";
@@ -21,11 +25,17 @@
 		title = "福彩用户注册成功";
 	}else if(bus==WelLot.UPDREG){
 		title = "福彩用户注册信息更改成功";
+	}else if(bus==WelLot.DOUBLE_SEL){//双色球自选
+		title = "双色球实时投注购买成功";
+		showKey.put("TLogNo", "购彩流水号");
+		showKey.put("ShowNum", "投注号码");
+	}else if(bus==WelLot.DOUBLE_BETSQRY){//双色球投注查询
+		title = "福彩用户注册信息更改成功";
+	}else if(bus==WelLot.DOUBLE_WINQRY){//双色球中奖查询
+		title = "福彩用户注册信息更改成功";
+	}else{
+		title = "";
 	}
-
-	//设置需要显示的值的类型
-	Map keyType = new HashMap();
-
 
 %>
 <?xml version = "1.0" encoding = "utf-8"?>

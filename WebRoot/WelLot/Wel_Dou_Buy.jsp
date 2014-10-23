@@ -10,6 +10,11 @@
 	String uri = request.getRequestURI();
 	gzLog.Write("进入["+uri+"]");
 
+	//补充通讯字段
+	pageContext.setAttribute("GameId", "5", PageContext.SESSION_SCOPE);
+	pageContext.setAttribute("PlayId", "1", PageContext.SESSION_SCOPE);
+	pageContext.setAttribute("GrpNum", "2", PageContext.SESSION_SCOPE);
+	
 %>
 <?xml version="1.0" encoding="utf-8"?>
 <res>
@@ -33,7 +38,7 @@
 			<%
 					if(lstFore.contains(Integer.valueOf(tmp))){
 			%>
-	        		<input type='checkbox' name='forepart<%=tmp%>' value='<%=this.formatnumber(tmp)%>'></input><label><%=tmp%></label>
+	        		<input type='checkbox' name='forepart<%=tmp%>' value='<%=this.formatnumber(tmp)%>'></input><label><%=this.formatnumber(tmp)%></label>
 			<%
 					}
 			%>
@@ -67,7 +72,7 @@
 			<%
 					if(lstRear.contains(Integer.valueOf(tmp))){
 			%>
-	        		<input type='checkbox' name='rear<%=tmp%>' value='<%=this.formatnumber(tmp)%>'></input><label><%=tmp%></label>
+	        		<input type='checkbox' name='rear<%=tmp%>' value='<%=this.formatnumber(tmp)%>'></input><label><%=this.formatnumber(tmp)%></label>
 			<%
 					}
 			%>
@@ -85,7 +90,8 @@
 
 		<!--倍数-->
 		<label>请填写倍数（倍数不超过100）：</label>
-		<input type='text' name='MulTip' value='1'></input>
+		<input type='text' name=BetMul value='1'></input>
+		<input type='hidden' name='preSaveKey' value='BetMul' />
 		<input type='submit' value='下一步'></input>
 	</form>
 	</content>
