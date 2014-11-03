@@ -18,7 +18,7 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <res> 
 	<content>
-		<form method='post' action='/GZMBank/NotTax/Wel_Bus_Red.jsp'>
+		<form method='post' action='/GZMBank/WelLot/Wel_Bus_Red.jsp'>
 
 		<label>请选择业务类别：</label>
 		<input type='radio' name='Bus' value='<%=WelLot.ADDREG%>' checked>用户注册</input>

@@ -4,13 +4,15 @@
 <%@ page import="java.net.*" %>
 <%@ page import="com.viatt.util.*"%>
 <%@ page import="com.gdbocom.util.*" %>
-<%@ page import="com.viatt.util.GzLog" %>
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String uri = request.getRequestURI();
 	String CrdNo = request.getHeader("MBK_ACCOUNT");  //银行账户
 	String sjNo = request.getHeader("MBK_MOBILE");  //手机号码
 	gzLog.Write("进入["+uri+"]");
+
+	//打印SESSION保存字段
+	gzLog.Write(PreAction.strOfPageContext(pageContext));
 
 	//保存上一表单(交易)字段
 	String preSaveKey = request.getParameter("preSaveKey");

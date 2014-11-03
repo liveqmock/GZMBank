@@ -9,7 +9,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-
+<%@ page import="com.gdbocom.util.PreAction" %>
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String uri = request.getRequestURI();
@@ -17,6 +17,8 @@
 	String sjNo = request.getHeader("MBK_MOBILE");  //手机号码
 	gzLog.Write("进入["+uri+"]");
 
+	//打印SESSION保存字段
+	gzLog.Write(PreAction.strOfPageContext(pageContext));
 	
 	//备注
 	String remark = "";

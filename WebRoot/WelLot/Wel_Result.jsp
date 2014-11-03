@@ -5,6 +5,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.*" %>
 <%@ page import="com.gdbocom.Transactions.WelLot" %>
+<%@ page import="com.gdbocom.util.*" %>
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String uri = request.getRequestURI();
@@ -12,6 +13,9 @@
 	String sjNo = request.getHeader("MBK_MOBILE");  //手机号码
 	gzLog.Write("进入["+uri+"]");
 	
+	//打印SESSION保存字段
+	gzLog.Write(PreAction.strOfPageContext(pageContext));
+
 	//设置需要显示的值和名称,
 	Map showKey = new HashMap();
 
