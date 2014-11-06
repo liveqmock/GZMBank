@@ -25,7 +25,7 @@
 		action_next="Wel_Dou_Buy.jsp";
 
 	}else if(bus==WelLot.DOUBLE_BETSQRY){
-		action_next="Wel_Dou_Bet.jsp";
+		action_next="Wel_Pub_Comm.jsp";
 
 	}else if(bus==WelLot.DOUBLE_WINQRY){
 		action_next="Wel_Dou_Win.jsp";

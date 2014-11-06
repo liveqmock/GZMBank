@@ -23,33 +23,17 @@
 	int bus = null==busStr?0:Integer.parseInt(busStr);
 
 	//设置正常情况需要跳转的页面
-	String forwardPage = "Wel_Result.jsp";
+	String forwardPage = null;
 	//设置出错情况需要跳转的页面
 	String errPage = "../../errPage.jsp";
 	//设置需要从网关正常返回中获取下来的值的名称,
 	String saveKey = null;
 	//保存上一页面的值
+	//保存交易密码值
 	String password = request.getHeader("password");
 	pageContext.setAttribute("password", password, PageContext.SESSION_SCOPE);
-
-
-	//BEGIN 身份认证
-	//
-	/*String verify = request.getHeader("MBK_VERIFY_RESULT");
-	if(verify!=null&&!verify.equals("P")){
-		String RspCod = "MID999";
-		String RspMsg = "手机短信密码验证不通过"; 
-		gzLog.Write("["+uri+"]MGID不正确");
-
-		StringBuffer forwardString = new StringBuffer();
-		forwardString.append(errPage).append("?");
-		forwardString.append("RspCod").append("=").append(RspCod);
-		forwardString.append("&");
-		forwardString.append("RspMsg").append("=").append(RspMsg);
-        pageContext.forward(forwardString.toString());
-	}*/
-	
-    //END 身份认证
+	//是否需要验证短信密码
+	int isCheckMessagePw = 0;//0:不检验，非0检验
 
 
 	//根据业务标志来进行通讯
@@ -60,24 +44,53 @@
 		saveKey="LotNam";
 		txnCod=TransationFactory.WEL485404;
 		serverName = "@WEL_A";
+		isCheckMessagePw = 1;
+		forwardPage = "Wel_Result.jsp";
 	}else if(bus==WelLot.UPDREG){//注册变更
 		saveKey="MobTel";
 		txnCod=TransationFactory.WEL485405;
 		serverName = "@WEL_A";
+		isCheckMessagePw = 1;
+		forwardPage = "Wel_Result.jsp";
 	}else if(bus==WelLot.DOUBLE_SEL){//双色球自选
 		saveKey="TLogNo,Cipher,Verify,LotNam,LotBal";
 		txnCod=TransationFactory.WEL485412;
 		serverName = "@WEL_B";
+		isCheckMessagePw = 1;
+		forwardPage = "Wel_Result.jsp";
 	}else if(bus==WelLot.DOUBLE_BETSQRY){//双色球投注查询
 		saveKey="MobTel";
 		txnCod=TransationFactory.WEL485405;
 		serverName = "@WEL_B";
+		isCheckMessagePw = 0;
+		forwardPage = "Wel__More_Result.jsp";
 	}else if(bus==WelLot.DOUBLE_WINQRY){//双色球中奖查询
 		saveKey="MobTel";
 		txnCod=TransationFactory.WEL485405;
 		serverName = "@WEL_B";
+		isCheckMessagePw = 0;
+		forwardPage = "Wel__More_Result.jsp";
 	}else{
 		txnCod=0;
+	}
+
+	if(0!=isCheckMessagePw){
+		//BEGIN 身份认证
+		//
+		/*String verify = request.getHeader("MBK_VERIFY_RESULT");
+		if(verify!=null&&!verify.equals("P")){
+			String RspCod = "MID999";
+			String RspMsg = "手机短信密码验证不通过"; 
+			gzLog.Write("["+uri+"]MGID不正确");
+
+			StringBuffer forwardString = new StringBuffer();
+			forwardString.append(errPage).append("?");
+			forwardString.append("RspCod").append("=").append(RspCod);
+			forwardString.append("&");
+			forwardString.append("RspMsg").append("=").append(RspMsg);
+	        pageContext.forward(forwardString.toString());
+		}*/
+	    //END 身份认证
 	}
 
 	txnName = WelLot.getTxnCod(bus);

@@ -20,7 +20,7 @@
 	int bus = Integer.parseInt((String)pageContext.getAttribute("Bus"));
 
 	//设置正常情况需要跳转的页面
-	String forwardPage = "Wel_Result.jsp";
+	String forwardPage = "Wel_More_Result.jsp";
 	//设置出错情况需要跳转的页面
 	String errPage = "../../errPage.jsp";
 	//设置需要从网关正常返回中获取下来的值的名称,
