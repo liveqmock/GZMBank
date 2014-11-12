@@ -26,7 +26,7 @@
 	//设置需要显示的值的类型
 	Map keyType = new HashMap();
 
-	int bus = Integer.parseInt((String)pageContext.getAttribute("Bus"));
+	int bus = Integer.parseInt((String)pageContext.getAttribute("Bus"), PageContext.SESSION_SCOPE);
 	String title = "";
 	String remark = "";
 	if(bus==WelLot.DOUBLE_BETSQRY){//双色球投注查询
@@ -80,6 +80,3 @@
 			<label> </label>
 	</content>
 </res>
-<%!
-
-%>

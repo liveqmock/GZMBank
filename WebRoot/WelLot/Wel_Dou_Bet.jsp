@@ -17,7 +17,7 @@
 	//gzLog.Write(request.getQueryString().toString());
 	
 	//获取bus字段,判断交易类型
-	int bus = Integer.parseInt((String)pageContext.getAttribute("Bus"));
+	int bus = Integer.parseInt((String)pageContext.getAttribute("Bus"), PageContext.SESSION_SCOPE);
 
 	//设置正常情况需要跳转的页面
 	String forwardPage = "Wel_More_Result.jsp";

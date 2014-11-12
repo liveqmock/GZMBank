@@ -19,7 +19,7 @@
 	gzLog.Write(PreAction.strOfPageContext(pageContext));
 
 	//获取bus字段,判断交易类型
-	String busStr = (String)pageContext.getAttribute("Bus");
+	String busStr = (String)pageContext.getAttribute("Bus", PageContext.SESSION_SCOPE);
 	int bus = null==busStr?0:Integer.parseInt(busStr);
 
 	//设置正常情况需要跳转的页面
@@ -46,6 +46,7 @@
 		serverName = "@WEL_A";
 		isCheckMessagePw = 1;
 		forwardPage = "Wel_Result.jsp";
+		txnName = WelLot.getTxnCod(bus);
 	}else if(bus==WelLot.UPDREG){//注册变更
 		saveKey="MobTel";
 		txnCod=TransationFactory.WEL485405;
@@ -71,7 +72,7 @@
 		isCheckMessagePw = 0;
 		forwardPage = "Wel__More_Result.jsp";
 	}else{
-		txnCod=0;
+		throw new IllegalArgumentException();
 	}
 
 	if(0!=isCheckMessagePw){

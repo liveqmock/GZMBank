@@ -14,19 +14,20 @@
 	pageContext.setAttribute("GameId", "5", PageContext.SESSION_SCOPE);
 	pageContext.setAttribute("PlayId", "1", PageContext.SESSION_SCOPE);
 	pageContext.setAttribute("GrpNum", "2", PageContext.SESSION_SCOPE);
+	pageContext.setAttribute("CrdNo", cdno, PageContext.SESSION_SCOPE);
 	
 %>
 <?xml version="1.0" encoding="utf-8"?>
 <res>
 	<content>
-	<form method='post' action='/GZMBank/Welot/Wel_N_Confirm.jsp'>
+	<form method='post' action='/GZMBank/WelLot/Wel_N_Confirm.jsp'>
 		<label>双色球</label><br/>
 		<label>红色球（至少选择6个红球）</label>
 
 		<table>
     <%
     	List lstFore = new ArrayList();
-    	for(int i=1; i<34; i++){lstFore.add(Integer.valueOf(i));}
+    	for(int i=1; i<34; i++){lstFore.add(i+"");}
         for(int i=0; i<7; i++){
     %>
 			<tr>
@@ -36,9 +37,9 @@
             %>
 				<td> 
 			<%
-					if(lstFore.contains(Integer.valueOf(tmp))){
+					if(lstFore.contains(tmp+"")){
 			%>
-	        		<input type='checkbox' name='forepart<%=tmp%>' value='<%=this.formatnumber(tmp)%>'></input><label><%=this.formatnumber(tmp)%></label>
+	        		<input type='checkbox' name='forepart<%=tmp%>' value='<%=this.formatnumber(tmp)%>'><%=this.formatnumber(tmp)%></input>
 			<%
 					}
 			%>
@@ -51,16 +52,16 @@
 		}
 	%>
 		</table>
-   
+
 
 
 		<label>*******************************</label>
-		<label>红色球（至少选择1个蓝球）</label>
+		<label>蓝色球（至少选择1个蓝球）</label>
 
 		<table>
     <%
     	List lstRear = new ArrayList();
-    	for(int i=1; i<17; i++){lstRear.add(Integer.valueOf(i));}
+    	for(int i=1; i<17; i++){lstRear.add(i+"");}
         for(int i=0; i<4; i++){
     %>
 			<tr>
@@ -70,9 +71,9 @@
             %>
 				<td> 
 			<%
-					if(lstRear.contains(Integer.valueOf(tmp))){
+					if(lstRear.contains(tmp+"")){
 			%>
-	        		<input type='checkbox' name='rear<%=tmp%>' value='<%=this.formatnumber(tmp)%>'></input><label><%=this.formatnumber(tmp)%></label>
+	        		<input type='checkbox' name='rear<%=tmp%>' value='<%=this.formatnumber(tmp)%>'><%=this.formatnumber(tmp)%></input>
 			<%
 					}
 			%>
@@ -86,13 +87,12 @@
 	%>
 		</table>
    
-    
-
-		<!--倍数-->
-		<label>请填写倍数（倍数不超过100）：</label>
-		<input type='text' name=BetMul value='1'></input>
+   		<label>请填写倍数（倍数不超过100）：</label>
+		<input type='text' name='BetMul' value='1'></input>
 		<input type='hidden' name='preSaveKey' value='BetMul' />
 		<input type='submit' value='下一步'></input>
+    
+
 	</form>
 	</content>
 </res>

@@ -34,18 +34,19 @@
 	if(SigTyp=="0"||MobTel.equals(MobTel_Con)){//如果返回正确
 		gzLog.Write("["+uri+"]forward到"+forwardPage);
 
-		pageContext.setAttribute("CusNam", " ");
-		pageContext.setAttribute("CrdNo", CrdNo);
-		pageContext.setAttribute("ActNo", CrdNo);
-		pageContext.setAttribute("NodNo", " ");
+		pageContext.setAttribute("CusNam", " ", PageContext.SESSION_SCOPE);
+		pageContext.setAttribute("CrdNo", CrdNo, PageContext.SESSION_SCOPE);
+		pageContext.setAttribute("ActNo", CrdNo, PageContext.SESSION_SCOPE);
+		pageContext.setAttribute("NodNo", " ", PageContext.SESSION_SCOPE);
 //		pageContext.setAttribute("IdTyp", " ");
 //		pageContext.setAttribute("IdNo", " ");
-		pageContext.setAttribute("FixTel", " ");
-		pageContext.setAttribute("Email", " ");
+		pageContext.setAttribute("FixTel", " ", PageContext.SESSION_SCOPE);
+		pageContext.setAttribute("Email", " ", PageContext.SESSION_SCOPE);
+		gzLog.Write("SigTyp:["+SigTyp+"]");
 		if("0".equals(SigTyp)){//选择了签约手机号
-			pageContext.setAttribute("MobTel", sjNo);
+			pageContext.setAttribute("MobTel", sjNo, PageContext.SESSION_SCOPE);
 		}else{//选择其他手机号
-			pageContext.setAttribute("MobTel", MobTel);
+			pageContext.setAttribute("MobTel", MobTel, PageContext.SESSION_SCOPE);
 		}
 		
 	    pageContext.forward(forwardPage);

@@ -4,6 +4,7 @@
 <%@ page import="com.viatt.util.GzLog" %>
 <%@ page import="java.math.BigInteger" %>
 <%@ page import="com.gdbocom.util.*" %>
+<%@ page import="com.gdbocom.action.wel.*" %>
 <!-- 分行特色业务频道列表 -->
 <?xml version="1.0" encoding="utf-8"?>
 <res>
@@ -40,8 +41,8 @@
 			gzLog.Write("前区号码为:"+i);
 		}
 	}
-	//去掉尾部的，
-	ShowNum = ShowNum.substring(0, ShowNum.length());
+	//去掉尾部的逗号
+	ShowNum = ShowNum.substring(0, ShowNum.length()-1);
 	ShowNum = ShowNum + "#";
 	for(int i=1;i<=16;i++){
 		if(request.getParameter("rear"+i)!=null){
@@ -51,13 +52,12 @@
 			gzLog.Write("后区号码为:"+i);
 		}
 	}
-	//去掉尾部的，
-	ShowNum = ShowNum.substring(0, ShowNum.length());
+	//去掉尾部的逗号
+	ShowNum = ShowNum.substring(0, ShowNum.length()-1);
 	//拼接投注号码字段
-	BetLin = this.formatnumber(forepart_cnt)+forepart+rear_cnt+this.formatnumber(rear_cnt);
-	pageContext.setAttribute("LotNum", BetLin, PageContext.SESSION_SCOPE);
-	
-	if(forepart_cnt>=5&&forepart_cnt<=16&&rear_cnt>=2){//合法的号码个数
+	BetLin = this.formatnumber(forepart_cnt)+forepart+this.formatnumber(rear_cnt)+rear;
+	pageContext.setAttribute("BetLin", BetLin, PageContext.SESSION_SCOPE);
+	if(forepart_cnt>=6&&forepart_cnt<=16&&rear_cnt>=1){//合法的号码个数
 
 		if(forepart_cnt==5&&rear_cnt==2){//单式
 			BetMod="1";
@@ -65,7 +65,7 @@
 			BetMod="12";
 		}
 		pageContext.setAttribute("BetMod", BetMod, PageContext.SESSION_SCOPE);
-	    pageContext.forward(forwardPage);
+	    //pageContext.forward(forwardPage);
 
 	}else{//非法的号码个数
 		String RspCod = "Wel999";
@@ -80,7 +80,7 @@
         pageContext.forward(forwardString.toString());
 	}
 	String BetAmt = String.valueOf(getTicketPay(2,
-			Integer.parseInt((String)pageContext.getAttribute("MulTip", PageContext.SESSION_SCOPE)),
+			Integer.parseInt((String)pageContext.getAttribute("BetMul", PageContext.SESSION_SCOPE)),
 			forepart_cnt,
 			rear_cnt));
 	pageContext.setAttribute("BetAmt", BetAmt, PageContext.SESSION_SCOPE);
@@ -88,7 +88,7 @@
 	pageContext.setAttribute("ShowNum", ShowNum, PageContext.SESSION_SCOPE);
 	
 	%>
-		<form method='post' action='/GZMBank/Welot/Wel_Confirm.jsp'>
+		<form method='post' action='/GZMBank/WelLot/Wel_Confirm.jsp'>
 			<label>银行卡号：<%=cdno%></label><br/>
 			<label>投注号码：<%=ShowNum%></label>
 			<label>交易金额：<%=BetAmt%>元</label>
@@ -115,8 +115,8 @@
 	public BigInteger getTicketPay(int oneTicketPay, int mul, int redCnt, int blueCnt){
 
 		return BigInteger.valueOf(mul*oneTicketPay)
-				.multiply(getCombination(33, redCnt))
-				.multiply(getCombination(16, blueCnt));
+				.multiply(getCombination(redCnt, 6))
+				.multiply(getCombination(blueCnt, 1));
 		
 	}
 
