@@ -4,6 +4,7 @@
 <%@ page import="com.viatt.util.GzLog" %>
 <%@ page import="java.math.BigInteger" %>
 <%@ page import="com.gdbocom.util.*" %>
+<%@ page import="com.gdbocom.util.format.*" %>
 <%@ page import="com.gdbocom.action.wel.*" %>
 <!-- 分行特色业务频道列表 -->
 <?xml version="1.0" encoding="utf-8"?>
@@ -27,35 +28,28 @@
 
 	String BetMod="";
 	String BetLin="";
-	String ShowNum="";
 	String forepart="";
 	String rear="";
 	int forepart_cnt=0;
 	int rear_cnt=0;
-	
+
+	//遍历前区
 	for(int i=1;i<=33;i++){
 		if(request.getParameter("forepart"+i)!=null){
 			forepart+=request.getParameter("forepart"+i);
 			forepart_cnt++;
-			ShowNum = ShowNum + i +",";
-			gzLog.Write("前区号码为:"+i);
 		}
 	}
-	//去掉尾部的逗号
-	ShowNum = ShowNum.substring(0, ShowNum.length()-1);
-	ShowNum = ShowNum + "#";
+	//遍历后区
 	for(int i=1;i<=16;i++){
 		if(request.getParameter("rear"+i)!=null){
 			rear+=request.getParameter("rear"+i);
 			rear_cnt++;
-			ShowNum = ShowNum + i +",";
-			gzLog.Write("后区号码为:"+i);
 		}
 	}
-	//去掉尾部的逗号
-	ShowNum = ShowNum.substring(0, ShowNum.length()-1);
 	//拼接投注号码字段
 	BetLin = this.formatnumber(forepart_cnt)+forepart+this.formatnumber(rear_cnt)+rear;
+	String ShowNum = WelFormatter.getFormattedValue(BetLin, WelFormatter.BETNUM);
 	pageContext.setAttribute("BetLin", BetLin, PageContext.SESSION_SCOPE);
 	if(forepart_cnt>=6&&forepart_cnt<=16&&rear_cnt>=1){//合法的号码个数
 
@@ -65,7 +59,6 @@
 			BetMod="12";
 		}
 		pageContext.setAttribute("BetMod", BetMod, PageContext.SESSION_SCOPE);
-	    //pageContext.forward(forwardPage);
 
 	}else{//非法的号码个数
 		String RspCod = "Wel999";
@@ -79,11 +72,24 @@
 		forwardString.append("RspMsg").append("=").append(RspMsg);
         pageContext.forward(forwardString.toString());
 	}
-	String BetAmt = String.valueOf(getTicketPay(2,
-			Integer.parseInt((String)pageContext.getAttribute("BetMul", PageContext.SESSION_SCOPE)),
-			forepart_cnt,
-			rear_cnt));
-	pageContext.setAttribute("BetAmt", BetAmt, PageContext.SESSION_SCOPE);
+
+	//复式
+	int betMode = BetMoney.betMode_Multiple;//单复式
+	int multiple = Integer.parseInt((String)pageContext.getAttribute("BetMul", PageContext.SESSION_SCOPE));//投注倍数
+	double price = 2;//单注投注金额
+	int section = 0;//单式投注注数,复式无意义
+	int betRedNum = 6;//单注红球号码个数
+	int redTailNum = forepart_cnt;//选择红球号码个数
+	int betBlueNum = 1;//单注蓝球号码个数
+	int blueNum = rear_cnt;//选择蓝球号码个数
+	int redBaseNum = 0;//实际投注红球胆号码个数，复式无意义
+	System.out.println();
+	double BetAmt = new BetMoney().CalculateBMoney(betMode, multiple,
+		    		price, section, betRedNum,
+		    		betBlueNum, redBaseNum, redTailNum, blueNum);
+	pageContext.setAttribute("BetAmt",
+			String.valueOf((int)BetAmt*100),
+			PageContext.SESSION_SCOPE);
 	pageContext.setAttribute("BetNum", String.valueOf(forepart_cnt+rear_cnt), PageContext.SESSION_SCOPE);
 	pageContext.setAttribute("ShowNum", ShowNum, PageContext.SESSION_SCOPE);
 	
@@ -109,34 +115,4 @@
 		return outputstr;
 	}
 
-	/**
-	 * 计算投注金额
-	 */
-	public BigInteger getTicketPay(int oneTicketPay, int mul, int redCnt, int blueCnt){
-
-		return BigInteger.valueOf(mul*oneTicketPay)
-				.multiply(getCombination(redCnt, 6))
-				.multiply(getCombination(blueCnt, 1));
-		
-	}
-
-	/**
-	 * 计算组合数
-	 */
-	public BigInteger getCombination(int n, int m){
-		return getFactorial(n)
-				.divide(getFactorial(n-m).multiply(getFactorial(m)));
-		
-	}
-
-	/**
-	 * 计算阶乘
-	 */
-	public BigInteger getFactorial(int n){
-		BigInteger fact = new BigInteger("1");
-		for(int i=2; i<=n; i++){
-			fact.multiply(BigInteger.valueOf(n));
-		}
-		return fact;
-	}
 %>
