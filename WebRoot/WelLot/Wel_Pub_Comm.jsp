@@ -60,17 +60,17 @@
 		isCheckMessagePw = 1;
 		forwardPage = "Wel_Result.jsp";
 	}else if(bus==WelLot.DOUBLE_BETSQRY){//双色球投注查询
-		saveKey="MobTel";
-		txnCod=TransationFactory.WEL485405;
+		saveKey="LoopBody";
+		txnCod=TransationFactory.WEL485413;
 		serverName = "@WEL_B";
 		isCheckMessagePw = 0;
-		forwardPage = "Wel__More_Result.jsp";
+		forwardPage = "Wel_More_Result.jsp";
 	}else if(bus==WelLot.DOUBLE_WINQRY){//双色球中奖查询
-		saveKey="MobTel";
-		txnCod=TransationFactory.WEL485405;
+		saveKey="LoopBody";
+		txnCod=TransationFactory.WEL485414;
 		serverName = "@WEL_B";
 		isCheckMessagePw = 0;
-		forwardPage = "Wel__More_Result.jsp";
+		forwardPage = "Wel_More_Result.jsp";
 	}else{
 		throw new IllegalArgumentException();
 	}

@@ -28,7 +28,7 @@
 		action_next="Wel_Pub_Comm.jsp";
 
 	}else if(bus==WelLot.DOUBLE_WINQRY){
-		action_next="Wel_Dou_Win.jsp";
+		action_next="Wel_Pub_Comm.jsp";
 
 	}else{
 		action_next="Wel_Bus_Sel.jsp";

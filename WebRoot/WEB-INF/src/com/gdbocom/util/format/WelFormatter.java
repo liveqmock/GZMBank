@@ -1,25 +1,57 @@
 package com.gdbocom.util.format;
 
-import com.gdbocom.util.format.CommonFormatter;
-
-public class WelFormatter {
+public class WelFormatter implements FormatterInterface{
 
 	/** 福利彩票特殊的格式化类型 */
 	public static final int BETNUM = 2;
 	/** 格式话金额类型 */
 	public static final int CURRENCY = 3;
+	/** 格式类型 */
+	private int formatterType = 0;
+	/** 单例 */
+	private static WelFormatter betNumFormatter =
+			new WelFormatter(WelFormatter.BETNUM);
+	private static WelFormatter currencyFormatter =
+			new WelFormatter(WelFormatter.CURRENCY);
+
+
+	/**
+	 * 生成对应的格式类
+	 * @param FormatterType
+	 */
+	private WelFormatter(int formatterType){
+		this.formatterType = formatterType;
+	}
+
+	/**
+	 * 为防止格式类太多，使用单例模式获取格式话对象
+	 * @param formatterType
+	 * @return
+	 */
+	public static WelFormatter getSingleton(int formatterType){
+		if(BETNUM==formatterType){
+			return betNumFormatter;
+
+		}else if(CURRENCY==formatterType){
+			return currencyFormatter;
+
+		}else{
+			return null;
+		}
+
+	}
 
 	/**
 	 * 根据不同格式类型来格式化值
 	 * @param value
-	 * @param FormaterType
+	 * @param formatterType
 	 * @return
 	 */
-	public static String getFormattedValue(String value, int FormaterType) {
-		if(BETNUM==FormaterType){
+	public String getFormattedValue(String value) {
+		if(BETNUM==this.formatterType){
 			return getBetNumFormatter(value);
 
-		}else if(CURRENCY==FormaterType){
+		}else if(CURRENCY==this.formatterType){
 			return getCurrencyFormatter(value);
 
 		}else{
@@ -33,8 +65,8 @@ public class WelFormatter {
 	 * @return
 	 */
 	private static String getCurrencyFormatter(String value){
-		return CommonFormatter
-				.getFormattedValue(value, CommonFormatter.CURRENCY)
+		return CommonFormatter.getSingleton(CommonFormatter.CURRENCY)
+				.getFormattedValue(value)
 				+ " 元";
 	};
 
@@ -82,14 +114,14 @@ public class WelFormatter {
 
 	public static void main(String[] args) {
 
-		System.out.println(WelFormatter
-				.getFormattedValue("0211120122", WelFormatter.BETNUM));
+		System.out.println(WelFormatter.getSingleton(WelFormatter.BETNUM)
+				.getFormattedValue("0211120122"));
 
-		System.out.println(WelFormatter
-				.getFormattedValue("02111203222324", WelFormatter.BETNUM));
+		System.out.println(WelFormatter.getSingleton(WelFormatter.BETNUM)
+				.getFormattedValue("02111203222324"));
 		
-		System.out.println(WelFormatter
-				.getFormattedValue("1", WelFormatter.CURRENCY));
+		System.out.println(WelFormatter.getSingleton(WelFormatter.CURRENCY)
+				.getFormattedValue("1011"));
 
 
 	}

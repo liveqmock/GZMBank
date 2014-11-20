@@ -2,13 +2,46 @@ package com.gdbocom.util.format;
 
 import java.text.*;
 
-public class CommonFormatter{
+public class CommonFormatter implements FormatterInterface{
 
 	/** 格式话金额类型 */
 	public static final int CURRENCY = 1;
+	/** 格式类型 */
+	private int FormatterType = 0;
+	/** 单例 */
+	private static CommonFormatter currencyFormatter =
+			new CommonFormatter(CommonFormatter.CURRENCY);
 
-	public static String getFormattedValue(String value, int FormaterType) {
-		if(CURRENCY==FormaterType){
+	/**
+	 * 生成对应的格式类
+	 * @param FormatterType
+	 */
+	private CommonFormatter(int formatterType){
+		this.FormatterType = formatterType;
+	}
+
+	/**
+	 * 为防止格式类太多，使用单例模式
+	 * @param formatterType
+	 * @return
+	 */
+	public static CommonFormatter getSingleton(int formatterType){
+		if(CURRENCY==formatterType){
+			return currencyFormatter;
+
+		}else{
+			return null;
+		}
+
+	}
+
+	/**
+	 * 得到对应的值
+	 * @param value
+	 * @return
+	 */
+	public String getFormattedValue(String value) {
+		if(CURRENCY==this.FormatterType){
 			return getCurrencyFormatter(value);
 
 		}else{
@@ -27,11 +60,11 @@ public class CommonFormatter{
 	};
 
 	public static void main(String[] args) {
-		System.out.println(CommonFormatter
-				.getFormattedValue("1000", CommonFormatter.CURRENCY));
+		System.out.println(CommonFormatter.getSingleton(CommonFormatter.CURRENCY)
+				.getFormattedValue("1000"));
 				
-		System.out.println(CommonFormatter
-				.getFormattedValue("1000", 0));
+		System.out.println(CommonFormatter.getSingleton(0)
+				.getFormattedValue("1000"));
 
 	}
 

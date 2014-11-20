@@ -4,8 +4,9 @@
 <%@ page import="com.viatt.util.GzLog" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.*" %>
-<%@ page import="com.gdbocom.Transactions.WelLot" %>
 <%@ page import="com.gdbocom.util.*" %>
+<%@ page import="com.gdbocom.util.format.*" %>
+<%@ page import="com.gdbocom.Transactions.WelLot" %>
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String uri = request.getRequestURI();
@@ -26,25 +27,39 @@
 	//设置需要显示的值的类型
 	Map keyType = new HashMap();
 
+	//设置显示的值的顺序
+	String[] keyOrder = null;
+
 	int bus = Integer.parseInt((String)pageContext.getAttribute("Bus"), PageContext.SESSION_SCOPE);
 	String title = "";
 	String remark = "";
 	if(bus==WelLot.DOUBLE_BETSQRY){//双色球投注查询
 		title = "";
-		loopShowKey.put("DrawId", "当前大期");
-		loopShowKey.put("KenoId", "当前小期");
+		keyOrder = new String[]{"DrawId", "BetLin", "BetAmt"};
+		
+		loopShowKey.put("DrawId", "投注期号");
 		loopShowKey.put("BetLin", "投注号码");
 		loopShowKey.put("BetAmt", "投注金额");
-		loopShowKey.put("KenoId", "当前小期");
 		
-		keyType.put("BetLin", "BetNum");
-		keyType.put("BetAmt", "Currency");
+		keyType.put("BetLin", WelFormatter.getSingleton(WelFormatter.BETNUM));
+		keyType.put("BetAmt", WelFormatter.getSingleton(WelFormatter.CURRENCY));
 
 	}else if(bus==WelLot.DOUBLE_WINQRY){//双色球中奖查询
-		title = "福彩用户注册信息更改成功";
+		title = "";
+		keyOrder = new String[]{"DrawId", "BetLin", "BetAmt"};
+		
+		loopShowKey.put("DrawId", "投注期号");
+		loopShowKey.put("BetLin", "投注号码");
+		loopShowKey.put("BetAmt", "投注金额");
+		
+		keyType.put("BetLin", WelFormatter.getSingleton(WelFormatter.BETNUM));
+		keyType.put("BetAmt", WelFormatter.getSingleton(WelFormatter.CURRENCY));
+
 	}else{
 		title = "";
 	}
+
+
 
 %>
 <?xml version = "1.0" encoding = "utf-8"?>
@@ -53,27 +68,42 @@
 			<label><%=title%></label><br/>
 <%
 
-	Map form = request.getParameterMap();
+
+	//解拆循环字段
+	List loopBody = (List)pageContext.getAttribute("LoopBody", PageContext.SESSION_SCOPE);
+	for(int recordIndex=0; recordIndex<loopBody.size(); recordIndex++){
+		Map oneRecord = (Map)loopBody.get(recordIndex);
 
 
-	//显示确认值
-	Set keys = sequenceShowKey.keySet();
+		for(int keyIndex=0; keyIndex<keyOrder.length; keyIndex++){
 
-	for(Iterator it = keys.iterator(); it.hasNext(); ){
+			//英文值，类似"DrawId"
+			String key = keyOrder[keyIndex];
+			//显示的中文名字，类似"投注期号"
+			String showName = (String)loopShowKey.get(key);
+			//使用的格式化对象，类似 WelFormatter.getSingleton(WelFormatter.BETNUM)
+			FormatterInterface type = (FormatterInterface)keyType.get(key);
+			//为格式化的值
+			String originValue = (String)oneRecord.get(key);
 
-		String key = (String) it.next();
-		String showValue = (String)sequenceShowKey.get(key);
-		String type = (String)keyType.get(key);
 
-		String pageContextValue = (String)pageContext.getAttribute(key, PageContext.SESSION_SCOPE);
-		if(null!=pageContextValue){
-			String formattedValue = null==type?pageContextValue:getFormattedValue(pageContextValue, type);
-			out.println("<label>"+showValue+":"+formattedValue+"</label><br/>");
-		}else{
-			out.println("<label>"+showValue+":null</label><br/>");
+			if(null==originValue){
+				out.println("<label>"+showName+":null</label><br/>");
+			}else if(null==type){
+				out.println("<label>"+showName+":"+originValue+"</label><br/>");
+			}else{
+				//格式化后的值
+				String formattedValue = type.getFormattedValue(originValue);
+				out.println("<label>"+showName+":"+formattedValue+"</label><br/>");
+
+			}
+
 		}
-		
+		out.println("<label>***********************</label><br/>");
+
 	}
+
+	
 
 %>
 			<label><%=remark%></label>
