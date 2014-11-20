@@ -48,9 +48,9 @@
 		title = "";
 		keyOrder = new String[]{"DrawId", "BetLin", "BetAmt"};
 		
-		loopShowKey.put("DrawId", "投注期号");
-		loopShowKey.put("BetLin", "投注号码");
-		loopShowKey.put("BetAmt", "投注金额");
+		loopShowKey.put("DrawId", "中奖期号");
+		loopShowKey.put("BetLin", "中奖号码");
+		loopShowKey.put("BetAmt", "中奖金额");
 		
 		keyType.put("BetLin", WelFormatter.getSingleton(WelFormatter.BETNUM));
 		keyType.put("BetAmt", WelFormatter.getSingleton(WelFormatter.CURRENCY));
