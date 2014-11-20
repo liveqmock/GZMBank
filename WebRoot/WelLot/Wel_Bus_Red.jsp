@@ -31,7 +31,7 @@
 		action_next="Wel_Dou_Sel.jsp";
 
 	}else if(bus==WelLot.DOUBLEFIXBUY){
-		action_next="Wel_Fix_Dou.jsp";
+		action_next="Wel_Fix_Sel.jsp";
 
 	}else if(bus==WelLot.TENBUY){
 		action_next="Wel_Buy_Ten.jsp";
