@@ -18,7 +18,7 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <res> 
 	<content>
-		<form method='post' action='/GZMBank/WelLot/Wel_Sub_Red.jsp'>
+		<form method='post' action='/GZMBank/WelLot/Wel_Dou_Red.jsp'>
 
 		<label>请选择业务类别：</label>
 		<input type='radio' name='Bus' value='<%=WelLot.DOUBLE_SEL%>' checked>自选</input>
