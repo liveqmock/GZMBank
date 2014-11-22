@@ -30,7 +30,7 @@
 		pageContext.setAttribute("BegDat", "19990101", PageContext.SESSION_SCOPE);
 		pageContext.setAttribute("EndDat", "29991231", PageContext.SESSION_SCOPE);*/
 
-		action_next="Wel_Pub_Comm.jsp";
+		action_next="Wel_Pck_Sel.jsp";
 
 	}else if(bus==WelLot.DOUBLE_FIX_QRY_CANCEL){
 		//保存通讯字段

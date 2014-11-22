@@ -97,6 +97,7 @@
 	%>
 		<form method='post' action='/GZMBank/WelLot/Wel_Confirm.jsp'>
 			<label>银行卡号：<%=cdno%></label><br/>
+			<label>套餐类型：<%=ShowNum%></label>
 			<label>投注号码：<%=ShowNum%></label>
 			<label>交易金额：<%=BetAmt%>元</label>
 
