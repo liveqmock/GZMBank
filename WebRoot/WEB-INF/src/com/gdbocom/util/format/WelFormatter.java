@@ -1,11 +1,15 @@
 package com.gdbocom.util.format;
 
+import com.gdbocom.Transactions.WelLot;
+
 public class WelFormatter implements FormatterInterface{
 
 	/** 福利彩票特殊的格式化类型 */
 	public static final int BETNUM = 2;
-	/** 格式话金额类型 */
+	/** 格式化金额类型 */
 	public static final int CURRENCY = 3;
+	/** 格式化套餐类型 */
+	public static final int PACKAGE = 4;
 	/** 格式类型 */
 	private int formatterType = 0;
 	/** 单例 */
@@ -13,6 +17,8 @@ public class WelFormatter implements FormatterInterface{
 			new WelFormatter(WelFormatter.BETNUM);
 	private static WelFormatter currencyFormatter =
 			new WelFormatter(WelFormatter.CURRENCY);
+	private static WelFormatter packageFormatter =
+			new WelFormatter(WelFormatter.PACKAGE);
 
 
 	/**
@@ -35,6 +41,9 @@ public class WelFormatter implements FormatterInterface{
 		}else if(CURRENCY==formatterType){
 			return currencyFormatter;
 
+		}else if(PACKAGE==formatterType){
+			return packageFormatter;
+
 		}else{
 			return null;
 		}
@@ -54,6 +63,9 @@ public class WelFormatter implements FormatterInterface{
 		}else if(CURRENCY==this.formatterType){
 			return getCurrencyFormatter(value);
 
+		}else if(PACKAGE==this.formatterType){
+			return getPackageFormatter(Integer.valueOf(value).intValue());
+
 		}else{
 			return value;
 		}
@@ -68,6 +80,21 @@ public class WelFormatter implements FormatterInterface{
 		return CommonFormatter.getSingleton(CommonFormatter.CURRENCY)
 				.getFormattedValue(value)
 				+ " 元";
+	};
+
+	/**
+	 * 套餐名称代码转换
+	 * @param value
+	 * @return
+	 */
+	private static String getPackageFormatter(int value){
+		if(value==WelLot.DOUBLE_FIX_PACKAGE_153){
+			return "双色球153期套餐";
+		}else if(value==WelLot.DOUBLE_FIX_PACKAGE_72){
+			return "双色球72期套餐";
+		}else{
+			return "非法套餐";
+		}
 	};
 
 	/**
@@ -122,6 +149,9 @@ public class WelFormatter implements FormatterInterface{
 		
 		System.out.println(WelFormatter.getSingleton(WelFormatter.CURRENCY)
 				.getFormattedValue("1011"));
+
+		System.out.println(WelFormatter.getSingleton(WelFormatter.PACKAGE)
+				.getFormattedValue(String.valueOf(WelLot.DOUBLE_FIX_PACKAGE_72)));
 
 
 	}

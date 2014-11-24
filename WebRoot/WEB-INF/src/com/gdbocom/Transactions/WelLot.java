@@ -12,11 +12,25 @@ public class WelLot {
 	public static final int TENBUY = 5;
 
 	/**
-	 * 双色球投注菜单
+	 * 双色球投注子菜单
 	 */
 	public static final int DOUBLE_SEL = 31;
 	public static final int DOUBLE_BETSQRY = 32;
 	public static final int DOUBLE_WINQRY = 33;
+
+	/**
+	 * 双色球定投子菜单
+	 */
+	public static final int DOUBLE_FIX_SUMMARY = 41;
+	public static final int DOUBLE_FIX_BUY = 42;
+	public static final int DOUBLE_FIX_QRY_CANCEL = 43;
+	public static final int DOUBLE_FIX_WINQRY = 44;
+
+	/**
+	 * 双色球定投套餐子菜单
+	 */
+	public static final int DOUBLE_FIX_PACKAGE_153 = 153;
+	public static final int DOUBLE_FIX_PACKAGE_72 = 72;
 
 	/**
 	 * 转换菜单值为通讯码
@@ -32,9 +46,9 @@ public class WelLot {
 		case DOUBLE_SEL:
 			return "485412";
 		case DOUBLE_BETSQRY:
-			return "485404";
+			return "485413";
 		case DOUBLE_WINQRY:
-			return "485404";
+			return "485414";
 		default:
 			return "";
 		}

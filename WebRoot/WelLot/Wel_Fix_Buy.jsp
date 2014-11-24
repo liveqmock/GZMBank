@@ -20,7 +20,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <res>
 	<content>
-	<form method='post' action='/GZMBank/WelLot/Wel_Fix_Confirm.jsp'>
+	<form method='post' action='/GZMBank/WelLot/Wel_Pck_Confirm.jsp'>
 		<label>双色球</label><br/>
 		<label>红色球（至少选择6个红球）</label>
 

@@ -84,10 +84,18 @@
 	int betBlueNum = 1;//单注蓝球号码个数
 	int blueNum = rear_cnt;//选择蓝球号码个数
 	int redBaseNum = 0;//实际投注红球胆号码个数，复式无意义
-	System.out.println();
+
+	//期数
+	String betPer = (String)pageContext.getAttribute("BetPer", PageContext.SESSION_SCOPE);
+	String planNm = WelFormatter.getSingleton(WelFormatter.PACKAGE)
+			.getFormattedValue(String.valueOf(betPer));
+	pageContext.setAttribute("PlanNm", planNm, PageContext.SESSION_SCOPE);
+	int packageCnt = new Integer(betPer).intValue();
 	double BetAmt = new BetMoney().CalculateBMoney(betMode, multiple,
 		    		price, section, betRedNum,
 		    		betBlueNum, redBaseNum, redTailNum, blueNum);
+	//乘以期数
+	BetAmt *= packageCnt;
 	pageContext.setAttribute("BetAmt",
 			String.valueOf((int)BetAmt*100),
 			PageContext.SESSION_SCOPE);
@@ -97,9 +105,9 @@
 	%>
 		<form method='post' action='/GZMBank/WelLot/Wel_Confirm.jsp'>
 			<label>银行卡号：<%=cdno%></label><br/>
-			<label>套餐类型：<%=ShowNum%></label>
+			<label>套餐类型：<%=planNm%></label>
 			<label>投注号码：<%=ShowNum%></label>
-			<label>交易金额：<%=BetAmt%>元</label>
+			<label>本期交易金额：<%=BetAmt%>元</label>
 
 			<input type='submit' value='确认'></input>
 		</form>

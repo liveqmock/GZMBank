@@ -6,6 +6,7 @@
 <%@ page import="java.text.*" %>
 <%@ page import="com.gdbocom.Transactions.WelLot" %>
 <%@ page import="com.gdbocom.util.*" %>
+<%@ page import="com.gdbocom.util.format.*" %>
 <%
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	String uri = request.getRequestURI();
@@ -17,7 +18,13 @@
 	//打印SESSION保存字段
 	gzLog.Write(PreAction.strOfPageContext(pageContext));
 
-	//设置需要显示的值和名称,
+	//设置显示的值的顺序
+	String[] keyOrder = null;
+
+	//设置非循环体需要显示的值和名称,
+	Map sequenceShowKey = new HashMap();
+
+	//设置循环体需要显示的值和名称,
 	Map showKey = new HashMap();
 
 	//设置需要显示的值的类型
@@ -38,8 +45,18 @@
 		title = "福彩用户注册信息更改成功";
 	}else if(bus==WelLot.DOUBLE_WINQRY){//双色球中奖查询
 		title = "福彩用户注册信息更改成功";
+	}else if(bus==WelLot.DOUBLE_FIX_BUY){//双色球中奖查询
+		title = "双色球定投购买成功";
+
+		keyOrder = new String[]{"DrawId", "BetLin", "BetAmt"};
+		
+		showKey.put("TLogNo", "购彩流水号");
+		showKey.put("ShowNum", "投注号码");
+		showKey.put("BetPer", "注数");
+		
+		keyType.put("BetLin", WelFormatter.getSingleton(WelFormatter.BETNUM));
 	}else{
-		title = "";
+		throw new IllegalArgumentException("错误的bus值");
 	}
 
 %>
@@ -49,26 +66,29 @@
 			<label><%=title%></label><br/>
 <%
 
-	Map form = request.getParameterMap();
-
-
-	//显示确认值
-	Set keys = showKey.keySet();
-
-	for(Iterator it = keys.iterator(); it.hasNext(); ){
-
-		String key = (String) it.next();
-		String showValue = (String)showKey.get(key);
-		String type = (String)keyType.get(key);
-
-		String pageContextValue = (String)pageContext.getAttribute(key, PageContext.SESSION_SCOPE);
-		if(null!=pageContextValue){
-			String formattedValue = null==type?pageContextValue:getFormattedValue(pageContextValue, type);
-			out.println("<label>"+showValue+":"+formattedValue+"</label><br/>");
+	for(int keyIndex=0; keyIndex<keyOrder.length; keyIndex++){
+	
+		//英文值，类似"DrawId"
+		String key = keyOrder[keyIndex];
+		//显示的中文名字，类似"投注期号"
+		String showName = (String)showKey.get(key);
+		//使用的格式化对象，类似 WelFormatter.getSingleton(WelFormatter.BETNUM)
+		FormatterInterface type = (FormatterInterface)keyType.get(key);
+		//为格式化的值
+		String originValue = (String)pageContext.getAttribute(key, PageContext.SESSION_SCOPE);
+	
+	
+		if(null==originValue){
+			out.println("<label>"+showName+":null</label><br/>");
+		}else if(null==type){
+			out.println("<label>"+showName+":"+originValue+"</label><br/>");
 		}else{
-			out.println("<label>"+showValue+":null</label><br/>");
+			//格式化后的值
+			String formattedValue = type.getFormattedValue(originValue);
+			out.println("<label>"+showName+":"+formattedValue+"</label><br/>");
+	
 		}
-		
+	
 	}
 
 %>

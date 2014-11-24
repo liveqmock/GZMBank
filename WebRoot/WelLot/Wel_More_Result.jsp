@@ -18,6 +18,9 @@
 	//打印SESSION保存字段
 	gzLog.Write(PreAction.strOfPageContext(pageContext));
 
+	//设置显示的值的顺序
+	String[] keyOrder = null;
+
 	//设置非循环体需要显示的值和名称,
 	Map sequenceShowKey = new HashMap();
 
@@ -26,9 +29,6 @@
 
 	//设置需要显示的值的类型
 	Map keyType = new HashMap();
-
-	//设置显示的值的顺序
-	String[] keyOrder = null;
 
 	int bus = Integer.parseInt((String)pageContext.getAttribute("Bus"), PageContext.SESSION_SCOPE);
 	String title = "";

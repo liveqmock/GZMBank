@@ -71,6 +71,12 @@
 		serverName = "@WEL_B";
 		isCheckMessagePw = 0;
 		forwardPage = "Wel_More_Result.jsp";
+	}else if(bus==WelLot.DOUBLE_FIX_BUY){//双色球定投录入
+		saveKey="";//TODO 需要增加购彩流水号，但是接口没有
+		txnCod=TransationFactory.WEL485407;
+		serverName = "@WEL_A";
+		isCheckMessagePw = 1;
+		forwardPage = "Wel_Result.jsp";
 	}else{
 		throw new IllegalArgumentException();
 	}
