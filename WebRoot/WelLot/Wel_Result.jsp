@@ -55,6 +55,9 @@
 		showKey.put("BetPer", "注数");
 		
 		keyType.put("BetLin", WelFormatter.getSingleton(WelFormatter.BETNUM));
+	}else if(bus==WelLot.DOUBLE_FIX_CANCEL){//双色球中奖查询
+		title = "双色球定投取消成功";
+
 	}else{
 		throw new IllegalArgumentException("错误的bus值");
 	}

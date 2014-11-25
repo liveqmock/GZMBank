@@ -18,17 +18,9 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <res> 
 	<content>
-		<form method='post' action='/GZMBank/WelLot/Wel_Bus_Red.jsp'>
+		<form method='post' action='/GZMBank/WelLot/Wel_Pub_Comm.jsp'>
 
-		<label>请选择业务类别：</label>
-		<input type='radio' name='Bus' value='<%=WelLot.ADDREG%>' checked>用户注册</input>
-		<input type='radio' name='Bus' value='<%=WelLot.UPDREG%>' >更改用户注册</input>
-		<input type='radio' name='Bus' value='<%=WelLot.DOUBLEBUY%>' >双色球实时投注</input>
-		<input type='radio' name='Bus' value='<%=WelLot.DOUBLEFIXBUY%>' >双色球定投</input>
-<!--
-		<input type='radio' name='Bus' value='<%=WelLot.TENBUY%>' >快乐十分实时投注</input>
- -->
-		<input type='hidden' name='preSaveKey' value='Bus' />
+		<input type='radio' name='bus' value='<%=WelLot.DOUBLE_FIX_CANCEL%>' checked>坚持撤销</input>
 		<input type='submit' value='确定'/><br/>
 		</form>
     </content>

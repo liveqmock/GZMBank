@@ -77,10 +77,22 @@
 		serverName = "@WEL_A";
 		isCheckMessagePw = 1;
 		forwardPage = "Wel_Result.jsp";
+	}else if(bus==WelLot.DOUBLE_FIX_QRY){//双色球定投查询、撤销
+		saveKey="";//TODO 需要增加购彩流水号，但是接口没有
+		txnCod=TransationFactory.WEL485409;
+		serverName = "@WEL_A";
+		isCheckMessagePw = 1;
+		forwardPage = "Wel_Fix_QryD.jsp";
+	}else if(bus==WelLot.DOUBLE_FIX_CANCEL){//双色球定投查询、撤销
+		saveKey="";//TODO 需要增加购彩流水号，但是接口没有
+		txnCod=TransationFactory.WEL485410;
+		serverName = "@WEL_A";
+		isCheckMessagePw = 1;
+		forwardPage = "Wel_Result.jsp";
 	}else{
 		throw new IllegalArgumentException();
 	}
-
+	
 	if(0!=isCheckMessagePw){
 		//BEGIN 身份认证
 		//

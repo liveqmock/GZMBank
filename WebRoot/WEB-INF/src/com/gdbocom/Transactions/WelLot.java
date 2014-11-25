@@ -23,8 +23,9 @@ public class WelLot {
 	 */
 	public static final int DOUBLE_FIX_SUMMARY = 41;
 	public static final int DOUBLE_FIX_BUY = 42;
-	public static final int DOUBLE_FIX_QRY_CANCEL = 43;
-	public static final int DOUBLE_FIX_WINQRY = 44;
+	public static final int DOUBLE_FIX_QRY = 43;
+	public static final int DOUBLE_FIX_CANCEL = 44;
+	public static final int DOUBLE_FIX_WINQRY = 45;
 
 	/**
 	 * 双色球定投套餐子菜单
@@ -47,10 +48,14 @@ public class WelLot {
 			return "485412";
 		case DOUBLE_BETSQRY:
 			return "485413";
-		case DOUBLE_WINQRY:
-			return "485414";
+		case DOUBLE_FIX_BUY:
+			return "485407";
+		case DOUBLE_FIX_QRY:
+			return "485409";
+		case DOUBLE_FIX_CANCEL:
+			return "485410";
 		default:
-			return "";
+			throw new IllegalArgumentException("没有定义交易码");
 		}
 	}
 }
