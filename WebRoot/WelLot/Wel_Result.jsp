@@ -45,16 +45,18 @@
 		title = "福彩用户注册信息更改成功";
 	}else if(bus==WelLot.DOUBLE_WINQRY){//双色球中奖查询
 		title = "福彩用户注册信息更改成功";
-	}else if(bus==WelLot.DOUBLE_FIX_BUY){//双色球中奖查询
+	}else if(bus==WelLot.DOUBLE_FIX_BUY){//双色球定投购买
 		title = "双色球定投购买成功";
 
-		keyOrder = new String[]{"DrawId", "BetLin", "BetAmt"};
-		
-		showKey.put("TLogNo", "购彩流水号");
-		showKey.put("ShowNum", "投注号码");
-		showKey.put("BetPer", "注数");
+		keyOrder = new String[]{"BetLin", "BetPer"};
+
+		/*showKey.put("TLogNo", "购彩流水号");*/
+		showKey.put("BetLin", "投注号码");
+		showKey.put("BetPer", "套餐类型");
 		
 		keyType.put("BetLin", WelFormatter.getSingleton(WelFormatter.BETNUM));
+		keyType.put("BetPer", WelFormatter.getSingleton(WelFormatter.PACKAGE));
+
 	}else if(bus==WelLot.DOUBLE_FIX_CANCEL){//双色球中奖查询
 		title = "双色球定投取消成功";
 

@@ -33,7 +33,7 @@
 
 		action_next="Wel_Pck_Sel.jsp";
 
-	}else if(bus==WelLot.DOUBLE_FIX_QRY_CANCEL){
+	}else if(bus==WelLot.DOUBLE_FIX_QRY){
 		//保存通讯字段
 		/*pageContext.setAttribute("CrdNo", cdno, PageContext.SESSION_SCOPE);
 		pageContext.setAttribute("BetTyp", "", PageContext.SESSION_SCOPE);

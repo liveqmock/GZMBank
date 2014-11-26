@@ -23,7 +23,7 @@
 		<label>请选择业务类别：</label>
 		<input type='radio' name='Bus' value='<%=WelLot.DOUBLE_FIX_SUMMARY%>' checked>业务简介</input>
 		<input type='radio' name='Bus' value='<%=WelLot.DOUBLE_FIX_BUY%>' >定投购买</input>
-		<input type='radio' name='Bus' value='<%=WelLot.DOUBLE_FIX_QRY_CANCEL%>' >定投查询及撤销</input>
+		<input type='radio' name='Bus' value='<%=WelLot.DOUBLE_FIX_QRY%>' >定投查询及撤销</input>
 		<input type='radio' name='Bus' value='<%=WelLot.DOUBLE_FIX_WINQRY%>' >中奖查询</input>
 		<input type='hidden' name='preSaveKey' value='Bus' />
 

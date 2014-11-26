@@ -18,7 +18,7 @@ public class PreAction {
 	public static void savePreFormValue(PageContext pageContext, HttpServletRequest request, String preSaveKey){
 		String[] preSaveKeys = preSaveKey.split("\\,");
 		for(int i=0; i<preSaveKeys.length; i++){
-			pageContext.setAttribute(preSaveKeys[i], request.getParameter(preSaveKeys[i]), PageContext.SESSION_SCOPE);
+			pageContext.setAttribute(preSaveKeys[i], request.getParameter(preSaveKeys[i]).trim(), PageContext.SESSION_SCOPE);
 		}
 		
 	}
