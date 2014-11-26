@@ -103,16 +103,17 @@ public class WelFormatter implements FormatterInterface{
 	 * @param value
 	 * @return
 	 */
-	private static String getBetNumFormatter(String value){
+	private static String getBetNumFormatter(String betNum){
 
+		String formattedBetNum = betNum.trim();
 		StringBuffer result = new StringBuffer();
 		int offset = 0;
 
 		//前区
-		int foreCnt = Integer.valueOf(value.substring(0, 2)).intValue();
+		int foreCnt = Integer.valueOf(formattedBetNum.substring(0, 2)).intValue();
 		offset += 2;
 		for(int i=0; i<foreCnt; i++, offset +=2){
-			result.append(value.substring(i*2+2, i*2+4));
+			result.append(formattedBetNum.substring(i*2+2, i*2+4));
 
 			//最后一个号码不需要逗号
 			if(i<foreCnt-1){
@@ -123,13 +124,13 @@ public class WelFormatter implements FormatterInterface{
 		result.append("#");
 
 		//双色球交易没有后区
-		if(offset<value.length()){
+		if(offset<formattedBetNum.length()){
 			//后区
-			int backCnt = Integer.valueOf(value.substring(offset, offset+2)).intValue();
+			int backCnt = Integer.valueOf(formattedBetNum.substring(offset, offset+2)).intValue();
 			offset += 2;
 
 			for(int i=0; i<backCnt; i++, offset +=2){
-				result.append(value.substring(foreCnt*2+i*2+2, foreCnt*2+i*2+4));
+				result.append(formattedBetNum.substring(foreCnt*2+i*2+2, foreCnt*2+i*2+4));
 				//最后一个号码不需要逗号
 				if(i<backCnt-1){
 					result.append(", ");

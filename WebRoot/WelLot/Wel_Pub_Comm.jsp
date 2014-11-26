@@ -65,7 +65,7 @@
 		serverName = "@WEL_B";
 		isCheckMessagePw = 0;
 		forwardPage = "Wel_More_Result.jsp";
-	}else if(bus==WelLot.DOUBLE_WINQRY){//双色球中奖查询
+	}else if(bus==WelLot.DOUBLE_WINQRY||bus==WelLot.DOUBLE_FIX_WINQRY){//双色球中奖查询(定投/实时)
 		saveKey="LoopBody,LoopCnt";
 		txnCod=TransationFactory.WEL485414;
 		serverName = "@WEL_B";
@@ -81,7 +81,7 @@
 		saveKey="LoopBody,LoopCnt";
 		txnCod=TransationFactory.WEL485409;
 		serverName = "@WEL_A";
-		isCheckMessagePw = 1;
+		isCheckMessagePw = 0;
 		forwardPage = "Wel_Fix_QryD.jsp";
 	}else if(bus==WelLot.DOUBLE_FIX_CANCEL){//双色球定投查询、撤销
 		saveKey="";//TODO 需要增加购彩流水号，但是接口没有
@@ -90,7 +90,7 @@
 		isCheckMessagePw = 1;
 		forwardPage = "Wel_Result.jsp";
 	}else{
-		throw new IllegalArgumentException();
+		throw new IllegalArgumentException("没有定义的BUS代码");
 	}
 	
 	if(0!=isCheckMessagePw){

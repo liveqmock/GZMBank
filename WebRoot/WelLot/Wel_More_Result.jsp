@@ -19,7 +19,7 @@
 	gzLog.Write(PreAction.strOfPageContext(pageContext));
 
 	//设置显示的值的顺序
-	String[] keyOrder = null;
+	String[] keyOrder = {};
 
 	//设置非循环体需要显示的值和名称,
 	Map sequenceShowKey = new HashMap();
@@ -44,16 +44,16 @@
 		keyType.put("BetLin", WelFormatter.getSingleton(WelFormatter.BETNUM));
 		keyType.put("BetAmt", WelFormatter.getSingleton(WelFormatter.CURRENCY));
 
-	}else if(bus==WelLot.DOUBLE_WINQRY){//双色球中奖查询
+	}else if(bus==WelLot.DOUBLE_WINQRY||WelLot.DOUBLE_FIX_WINQRY==bus){//双色球中奖查询
 		title = "";
-		keyOrder = new String[]{"DrawId", "BetLin", "BetAmt"};
+		keyOrder = new String[]{"DrawId", "BetLin", "PrzAmt"};
 		
 		loopShowKey.put("DrawId", "中奖期号");
 		loopShowKey.put("BetLin", "中奖号码");
-		loopShowKey.put("BetAmt", "中奖金额");
+		loopShowKey.put("PrzAmt", "中奖金额");
 		
 		keyType.put("BetLin", WelFormatter.getSingleton(WelFormatter.BETNUM));
-		keyType.put("BetAmt", WelFormatter.getSingleton(WelFormatter.CURRENCY));
+		keyType.put("PrzAmt", WelFormatter.getSingleton(WelFormatter.CURRENCY));
 
 	}else{
 		title = "";
@@ -75,9 +75,9 @@
 	}else{
 		//解拆循环字段
 		List loopBody = (List)pageContext.getAttribute("LoopBody", PageContext.SESSION_SCOPE);
+
 		for(int recordIndex=0; recordIndex<loopBody.size(); recordIndex++){
 			Map oneRecord = (Map)loopBody.get(recordIndex);
-
 
 			for(int keyIndex=0; keyIndex<keyOrder.length; keyIndex++){
 

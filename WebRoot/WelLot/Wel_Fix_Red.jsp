@@ -45,7 +45,7 @@
 	}else if(bus==WelLot.DOUBLE_FIX_WINQRY){
 		//保存通讯字段
 		pageContext.setAttribute("CrdNo", cdno, PageContext.SESSION_SCOPE);
-		pageContext.setAttribute("BetTyp", "", PageContext.SESSION_SCOPE);
+		pageContext.setAttribute("BetTyp", "1", PageContext.SESSION_SCOPE);
 		pageContext.setAttribute("BegDat", "19990101", PageContext.SESSION_SCOPE);
 		pageContext.setAttribute("EndDat", "29991231", PageContext.SESSION_SCOPE);
 
