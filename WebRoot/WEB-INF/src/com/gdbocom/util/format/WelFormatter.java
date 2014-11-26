@@ -122,18 +122,21 @@ public class WelFormatter implements FormatterInterface{
 		}
 		result.append("#");
 
-		//后区
-		int backCnt = Integer.valueOf(value.substring(offset, offset+2)).intValue();
-		offset += 2;
+		//双色球交易没有后区
+		if(offset<value.length()){
+			//后区
+			int backCnt = Integer.valueOf(value.substring(offset, offset+2)).intValue();
+			offset += 2;
 
-		for(int i=0; i<backCnt; i++, offset +=2){
-			result.append(value.substring(foreCnt*2+i*2+2, foreCnt*2+i*2+4));
-			//最后一个号码不需要逗号
-			if(i<backCnt-1){
-				result.append(", ");
+			for(int i=0; i<backCnt; i++, offset +=2){
+				result.append(value.substring(foreCnt*2+i*2+2, foreCnt*2+i*2+4));
+				//最后一个号码不需要逗号
+				if(i<backCnt-1){
+					result.append(", ");
+				}
+				
+				
 			}
-			
-			
 		}
 		return result.toString();
 

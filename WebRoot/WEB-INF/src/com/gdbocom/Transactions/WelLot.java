@@ -48,6 +48,8 @@ public class WelLot {
 			return "485412";
 		case DOUBLE_BETSQRY:
 			return "485413";
+		case DOUBLE_WINQRY:
+			return "485414";
 		case DOUBLE_FIX_BUY:
 			return "485407";
 		case DOUBLE_FIX_QRY:

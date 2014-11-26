@@ -19,7 +19,7 @@
 	gzLog.Write(PreAction.strOfPageContext(pageContext));
 
 	//设置显示的值的顺序
-	String[] keyOrder = null;
+	String[] keyOrder = {};
 
 	//设置非循环体需要显示的值和名称,
 	Map sequenceShowKey = new HashMap();
