@@ -4,6 +4,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.viatt.util.*"%>
 <%@ page import="com.viatt.util.GzLog" %>
+<%@ page import="com.gdbocom.util.PreAction" %>
 <%@ page import="com.gdbocom.Transactions.WelLot" %>
 <%
 	String uri = request.getRequestURI();
@@ -12,6 +13,13 @@
 	GzLog gzLog = new GzLog("c:/gzLog_sj");
 	gzLog.Write("进入["+uri+"]");
 
+	//保存上一表单(交易)字段
+	String preSaveKey = request.getParameter("preSaveKey");
+	PreAction.savePreFormValue(pageContext, request, preSaveKey);
+	gzLog.Write(PreAction.strOfPageContext(pageContext));
+	
+	//保存特殊字段
+	pageContext.setAttribute("Bus", String.valueOf(WelLot.DOUBLE_FIX_CANCEL), PageContext.SESSION_SCOPE);
 %>
 
 
