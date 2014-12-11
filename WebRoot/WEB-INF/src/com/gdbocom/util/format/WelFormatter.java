@@ -130,7 +130,9 @@ public class WelFormatter implements FormatterInterface{
 			offset += 2;
 
 			for(int i=0; i<backCnt; i++, offset +=2){
-				result.append(formattedBetNum.substring(foreCnt*2+i*2+2, foreCnt*2+i*2+4));
+				//foreCnt*2+i*2+4的计算方法是：前区个数*每个球位数+数到第几个球+两个前后区球个数（每个区球个数2）
+				String number = formattedBetNum.substring(foreCnt*2+i*2+4, foreCnt*2+i*2+6);
+				result.append(number);
 				//最后一个号码不需要逗号
 				if(i<backCnt-1){
 					result.append(", ");
