@@ -58,7 +58,7 @@
 <res>
 	<content>
 		<label><%=title%></label><br/>
-		<label>签约手机号：<%=CrdNo%></label><br/>
+		<label>签约卡号：<%=CrdNo%></label><br/>
 		<form method='post' action='/GZMBank/WelLot/Wel_Fix_DCnf.jsp'>
 <%
 

@@ -54,7 +54,7 @@
 	pageContext.setAttribute("BetLin", BetLin, PageContext.SESSION_SCOPE);
 	if(forepart_cnt>=6&&forepart_cnt<=16&&rear_cnt>=1){//合法的号码个数
 
-		if(forepart_cnt==5&&rear_cnt==2){//单式
+		if(forepart_cnt==6&&rear_cnt==1){//单式
 			BetMod="1";
 		}else{//复式
 			BetMod="12";
