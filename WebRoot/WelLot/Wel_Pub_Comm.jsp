@@ -54,7 +54,7 @@
 		isCheckMessagePw = 1;
 		forwardPage = "Wel_Result.jsp";
 	}else if(bus==WelLot.DOUBLE_SEL){//双色球自选
-		saveKey="TLogNo,Cipher,Verify,LotNam,LotBal";
+		saveKey="TLogNo,Cipher,Verify,LotNam,LotBal,TckNo";
 		txnCod=TransationFactory.WEL485412;
 		serverName = "@WEL_B";
 		isCheckMessagePw = 1;

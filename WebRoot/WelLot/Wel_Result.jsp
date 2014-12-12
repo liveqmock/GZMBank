@@ -38,9 +38,20 @@
 	}else if(bus==WelLot.UPDREG){
 		title = "福彩用户注册信息更改成功";
 	}else if(bus==WelLot.DOUBLE_SEL){//双色球自选
+
 		title = "双色球实时投注购买成功";
-		showKey.put("TLogNo", "购彩流水号");
-		showKey.put("ShowNum", "投注号码");
+
+		keyOrder = new String[]{"BetLin", "BetAmt", "TLogNo"};
+		
+		showKey.put("DrawId", "投注期号");
+		showKey.put("BetLin", "投注号码");
+		showKey.put("BetAmt", "投注金额");
+		showKey.put("TLogNo", "投注流水号");
+		showKey.put("TckNo", "会计流水号");
+		
+		keyType.put("BetLin", WelFormatter.getSingleton(WelFormatter.BETNUM));
+		keyType.put("BetAmt", WelFormatter.getSingleton(WelFormatter.CURRENCY));
+
 	}else if(bus==WelLot.DOUBLE_BETSQRY){//双色球投注查询
 		title = "福彩用户注册信息更改成功";
 	}else if(bus==WelLot.DOUBLE_WINQRY){//双色球中奖查询

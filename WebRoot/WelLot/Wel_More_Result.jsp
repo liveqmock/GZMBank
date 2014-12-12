@@ -35,22 +35,24 @@
 	String remark = "";
 	if(bus==WelLot.DOUBLE_BETSQRY){//双色球投注查询
 		title = "";
-		keyOrder = new String[]{"DrawId", "BetLin", "BetAmt"};
+		keyOrder = new String[]{"DrawId", "BetLin", "BetAmt", "TLogNo"};
 		
 		loopShowKey.put("DrawId", "投注期号");
 		loopShowKey.put("BetLin", "投注号码");
 		loopShowKey.put("BetAmt", "投注金额");
+		loopShowKey.put("TLogNo", "投注流水号");
 		
 		keyType.put("BetLin", WelFormatter.getSingleton(WelFormatter.BETNUM));
 		keyType.put("BetAmt", WelFormatter.getSingleton(WelFormatter.CURRENCY));
 
 	}else if(bus==WelLot.DOUBLE_WINQRY||WelLot.DOUBLE_FIX_WINQRY==bus){//双色球中奖查询
 		title = "";
-		keyOrder = new String[]{"DrawId", "BetLin", "PrzAmt"};
+		keyOrder = new String[]{"DrawId", "BetLin", "PrzAmt", "TLogNo"};
 		
 		loopShowKey.put("DrawId", "中奖期号");
 		loopShowKey.put("BetLin", "中奖号码");
 		loopShowKey.put("PrzAmt", "中奖金额");
+		loopShowKey.put("TLogNo", "投注流水号");
 		
 		keyType.put("BetLin", WelFormatter.getSingleton(WelFormatter.BETNUM));
 		keyType.put("PrzAmt", WelFormatter.getSingleton(WelFormatter.CURRENCY));

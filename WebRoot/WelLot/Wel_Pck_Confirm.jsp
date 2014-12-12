@@ -94,8 +94,8 @@
 	double BetAmt = new BetMoney().CalculateBMoney(betMode, multiple,
 		    		price, section, betRedNum,
 		    		betBlueNum, redBaseNum, redTailNum, blueNum);
-	//乘以期数
-	BetAmt *= packageCnt;
+	//乘以期数，由于金额在每期投注的时候才进行扣账，因此上送的时候仍然是送每票彩票金额
+	//BetAmt *= packageCnt;
 	pageContext.setAttribute("BetAmt",
 			String.valueOf((int)BetAmt*100),
 			PageContext.SESSION_SCOPE);
@@ -107,7 +107,7 @@
 			<label>银行卡号：<%=cdno%></label><br/>
 			<label>套餐类型：<%=planNm%></label>
 			<label>投注号码：<%=ShowNum%></label>
-			<label>本期交易金额：<%=BetAmt%>元</label>
+			<label>每期投注金额：<%=BetAmt%>元</label>
 
 			<input type='submit' value='确认'></input>
 		</form>
