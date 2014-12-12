@@ -22,7 +22,7 @@
 
 		<label>请选择业务类别：</label>
 		<input type='radio' name='BetPer' value='<%=WelLot.DOUBLE_FIX_PACKAGE_153%>' checked>153期套餐</input>
-		<input type='radio' name='BetPer' value='<%=WelLot.DOUBLE_FIX_PACKAGE_72%>' >72期套餐</input>
+		<input type='radio' name='BetPer' value='<%=WelLot.DOUBLE_FIX_PACKAGE_76%>' >76期套餐</input>
 		<input type='hidden' name='preSaveKey' value='BetPer' />
 
 		<input type='submit' value='确定'/><br/>

@@ -31,7 +31,7 @@ public class WelLot {
 	 * 双色球定投套餐子菜单
 	 */
 	public static final int DOUBLE_FIX_PACKAGE_153 = 153;
-	public static final int DOUBLE_FIX_PACKAGE_72 = 72;
+	public static final int DOUBLE_FIX_PACKAGE_76 = 76;
 
 	/**
 	 * 转换菜单值为通讯码

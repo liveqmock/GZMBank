@@ -90,8 +90,8 @@ public class WelFormatter implements FormatterInterface{
 	private static String getPackageFormatter(int value){
 		if(value==WelLot.DOUBLE_FIX_PACKAGE_153){
 			return "双色球153期套餐";
-		}else if(value==WelLot.DOUBLE_FIX_PACKAGE_72){
-			return "双色球72期套餐";
+		}else if(value==WelLot.DOUBLE_FIX_PACKAGE_76){
+			return "双色球76期套餐";
 		}else{
 			return "非法套餐";
 		}
@@ -157,7 +157,7 @@ public class WelFormatter implements FormatterInterface{
 				.getFormattedValue("1011"));
 
 		System.out.println(WelFormatter.getSingleton(WelFormatter.PACKAGE)
-				.getFormattedValue(String.valueOf(WelLot.DOUBLE_FIX_PACKAGE_72)));
+				.getFormattedValue(String.valueOf(WelLot.DOUBLE_FIX_PACKAGE_76)));
 
 
 	}
