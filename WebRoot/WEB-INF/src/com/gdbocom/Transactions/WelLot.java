@@ -32,6 +32,60 @@ public class WelLot {
 	 */
 	public static final int DOUBLE_FIX_PACKAGE_153 = 153;
 	public static final int DOUBLE_FIX_PACKAGE_76 = 76;
+	
+	/**
+	 * 快乐十分菜单
+	 */
+	public static final int HP_TEN_SUMMARY = 51;
+	public static final int HP_TEN_BUY = 52;
+	public static final int HP_TEN_QRY = 53;
+	public static final int HP_TEN_WINQRY = 54;
+	
+	/**
+	 * 快乐十分投注方式
+	 */
+	public class HpTenBuy{
+		/**
+		 * 选一数投
+		 */
+		public static final int ONE = 521;
+		/**
+		 * 选一红投
+		 */
+		public static final int ONE_RED = 522;
+		/**
+		 * 任选二
+		 */
+		public static final int TWO = 523;
+		/**
+		 * 选二连直
+		 */
+		public static final int TWO_LINE= 524;
+		/**
+		 * 选一连组
+		 */
+		public static final int TWO_GROUP= 525;
+		/**
+		 * 任选三
+		 */
+		public static final int THREE = 526;
+		/**
+		 * 选三前直
+		 */
+		public static final int THREE_LINE= 527;
+		/**
+		 * 选三前组
+		 */
+		public static final int THREE_GROUP= 528;
+		/**
+		 * 任选四
+		 */
+		public static final int FOUR = 529;
+		/**
+		 * 任选五
+		 */
+		public static final int FIVE = 5210;
+	}
 
 	/**
 	 * 转换菜单值为通讯码

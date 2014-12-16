@@ -8,3 +8,4 @@ WEB-INF/classes/*
 .settings/*
 *.swp
 /bin
+/build/
