@@ -6,6 +6,10 @@ public class WelFormatter implements FormatterInterface{
 
 	/** 福利彩票特殊的格式化类型 */
 	public static final int BETNUM = 2;
+	/**
+	 * 快乐十分格式
+	 */
+	public static final int BETNUM_HPTEN = 7;
 	/** 格式化金额类型 */
 	public static final int CURRENCY = 3;
 	/** 格式化套餐类型 */
@@ -15,6 +19,8 @@ public class WelFormatter implements FormatterInterface{
 	/** 单例 */
 	private static WelFormatter betNumFormatter =
 			new WelFormatter(WelFormatter.BETNUM);
+	private static WelFormatter hpTenFormatter =
+			new WelFormatter(WelFormatter.BETNUM_HPTEN);
 	private static WelFormatter currencyFormatter =
 			new WelFormatter(WelFormatter.CURRENCY);
 	private static WelFormatter packageFormatter =
@@ -43,7 +49,10 @@ public class WelFormatter implements FormatterInterface{
 
 		}else if(PACKAGE==formatterType){
 			return packageFormatter;
-
+			
+		}else if(BETNUM_HPTEN==formatterType){
+			return hpTenFormatter;
+			
 		}else{
 			return null;
 		}
@@ -59,7 +68,8 @@ public class WelFormatter implements FormatterInterface{
 	public String getFormattedValue(String value) {
 		if(BETNUM==this.formatterType){
 			return getBetNumFormatter(value);
-
+		}else if(BETNUM_HPTEN==this.formatterType){
+			return hpTenBetNumFormatter(value);
 		}else if(CURRENCY==this.formatterType){
 			return getCurrencyFormatter(value);
 
@@ -143,6 +153,28 @@ public class WelFormatter implements FormatterInterface{
 		}
 		return result.toString();
 
+	}
+	
+	/**
+	 * 快乐十分投注号码反格式化，如
+	 * 020110将格式化成1，10
+	 * @return
+	 */
+	private static String hpTenBetNumFormatter(String betNum){
+		String formattedBetNum = betNum.trim();
+		StringBuffer result = new StringBuffer();
+		int offset = 0;
+
+		int count = Integer.valueOf(formattedBetNum.substring(0, 2)).intValue();
+		offset += 2;
+		for(int i=0; i<count; i++, offset +=2){
+			result.append(formattedBetNum.substring(i*2+2, i*2+4));
+			//最后一个号码不需要逗号
+			if(i<count-1){
+				result.append(", ");
+			}
+		}
+		return result.toString();
 	}
 
 	public static void main(String[] args) {

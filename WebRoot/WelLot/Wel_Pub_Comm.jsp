@@ -35,7 +35,9 @@
 	//是否需要验证短信密码
 	int isCheckMessagePw = 0;//0:不检验，非0检验
 
-
+	
+	pageContext.getAttribute("GameId",WelLot.GameId.DOUBLE_BALL,PageContext.SESSION_SCOPE);//标识只查询双色球
+	
 	//根据业务标志来进行通讯
 	int txnCod;
 	String txnName = null;
@@ -92,6 +94,8 @@
 	}else{
 		throw new IllegalArgumentException("没有定义的BUS代码");
 	}
+	
+	gzLog.Write("#######"+PreAction.strOfPageContext(pageContext));
 	
 	if(0!=isCheckMessagePw){
 		//BEGIN 身份认证
