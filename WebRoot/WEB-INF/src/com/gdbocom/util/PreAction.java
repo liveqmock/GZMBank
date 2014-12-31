@@ -1,6 +1,7 @@
 package com.gdbocom.util;
 
 import java.util.Enumeration;
+import java.util.Map;
 
 import javax.servlet.jsp.PageContext;
 import javax.servlet.http.HttpServletRequest;
@@ -51,6 +52,20 @@ public class PreAction {
 		for(int i=0; i<saveKeys.length; i++){
 			pageContext.setAttribute(saveKeys[i], MessManTool.getValueByName(responseContext, saveKeys[i]), PageContext.SESSION_SCOPE);
 		}
+	}
+
+	/**
+	 * 根据preSaveKey来保存上map的数据到pagecontext
+	 * @param pageContext
+	 * @param params
+	 * @param preSaveKey
+	 */
+	public static void savePreFormValue(PageContext pageContext, Map params, String preSaveKey){
+		String[] preSaveKeys = preSaveKey.split("\\,");
+		for(int i=0; i<preSaveKeys.length; i++){
+			pageContext.setAttribute(preSaveKeys[i], params.get(preSaveKeys[i]), PageContext.SESSION_SCOPE);
+		}
+		
 	}
 
 }
