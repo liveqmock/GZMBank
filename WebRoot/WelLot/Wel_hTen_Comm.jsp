@@ -34,7 +34,6 @@
 	Map callMap=new HashMap();
 	callMap.put("GameId",WelLot.GameId.HPAAY_TEN);//标识只查询快乐十分
 	
-	DebugUtils.log(request,"#################BUS"+bus+"   "+String.valueOf(bus==WelLot.HP_TEN_BUY));
 	if(bus==WelLot.HP_TEN_BUY){//投注购买
 		txnCod=TransationFactory.WEL485412;
 		serverName = "@WEL_B";
@@ -59,7 +58,6 @@
 	//获取调用字段
 	callMap.put("TTxnCd", txnName);
 	callMap.put("FeCod", txnName );
-	DebugUtils.log(request,"#################"+txnName);
     //获取attribute和parameter的全部参数
     Map paMap=ReqParamUtil.getParamAttr(request);
     callMap.putAll(paMap);
@@ -109,7 +107,6 @@
 
 	request.setAttribute("responseVal", responseValues);
 	if ("N".equals(responseValues.get("MsgTyp"))) {// ICS返回Normal
-		DebugUtils.log(request,"forward到"+forwardPage);
 	    pageContext.forward(forwardPage);
 
     } else if ("E".equals(responseValues.get("MsgTyp"))) {// ICS返回Error
