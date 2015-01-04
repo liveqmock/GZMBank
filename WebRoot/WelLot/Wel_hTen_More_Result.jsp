@@ -83,7 +83,7 @@
 				FormatterInterface type = (FormatterInterface)keyType.get(key);
 				//为格式化的值
 				String originValue = StringUtils.trimToEmpty((String)oneRecord.get(key));
-				//DebugUtils.log(request,"结果值  key:"+key+" val:"+originValue);
+				DebugUtils.log(request,"结果值  key:"+key+" val:"+originValue);
 				
 				if("PlayId".equals(key)&&StringUtils.isNotEmpty(originValue)){
 					HpTenParam param=new HpTenBallCreater(originValue).getParam();

@@ -39,7 +39,7 @@ String selNum=String.valueOf(param.selNum);//需选择的号码个数
 			%>
 		</table>
 		<input type='hidden' name='group' value='1'></input>
-   		<label>倍数(不超过100)：</label>
+   		<label>倍数：</label>
 		<input type='text' name='BetMul' value='1'></input>
 		<%=
 			ReqParamUtil.reqParamAttrToHtmlStr(request)
