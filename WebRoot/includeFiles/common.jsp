@@ -2,6 +2,6 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	
-	PrintTheReqeustHeaderUtils.printParam(request);   
-	PrintTheReqeustHeaderUtils.printAttr(request);   
+	//PrintTheReqeustHeaderUtils.printParam(request);   
+	//PrintTheReqeustHeaderUtils.printAttr(request);   
 %>
