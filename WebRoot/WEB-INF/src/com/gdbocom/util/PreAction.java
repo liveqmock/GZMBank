@@ -60,7 +60,7 @@ public class PreAction {
 	 * @param params
 	 * @param preSaveKey
 	 */
-	public static void savePreFormValue(PageContext pageContext, Map params, String preSaveKey){
+	public static void saveMapValue(PageContext pageContext, Map params, String preSaveKey){
 		String[] preSaveKeys = preSaveKey.split("\\,");
 		for(int i=0; i<preSaveKeys.length; i++){
 			pageContext.setAttribute(preSaveKeys[i], params.get(preSaveKeys[i]), PageContext.SESSION_SCOPE);
