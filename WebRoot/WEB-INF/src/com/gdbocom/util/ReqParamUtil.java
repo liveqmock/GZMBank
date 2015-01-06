@@ -28,6 +28,7 @@ public class ReqParamUtil {
 	private static final List DEF_IGNORE_PARAM_NAME=new ArrayList();
 	static{
 		DEF_IGNORE_PARAM_NAME.add("MBK_BOCOMACC_PASSWORD");
+		DEF_IGNORE_PARAM_NAME.add("'MBK_VERIFY'");
 	}
 	
 	/**在request对象中，获得参数的值<br/>
@@ -78,6 +79,11 @@ public class ReqParamUtil {
 		while (iter.hasNext()) {
 			Map.Entry entry = (Map.Entry) iter.next();
 			String key = (String) entry.getKey();
+			
+			if(DEF_IGNORE_PARAM_NAME.contains(key)){
+				continue;
+			}
+			
 			String[] vals = (String[]) entry.getValue();
 			//如果值是数组，将转换为“a;b;c”形式的字符串
 			if (vals.length > 1) {
@@ -207,6 +213,11 @@ public class ReqParamUtil {
 			if(reqParamMap.containsKey(key)){
 				continue;
 			}
+			
+			if(DEF_IGNORE_PARAM_NAME.contains(key)){
+				continue;
+			}
+			
             val=request.getAttribute(key).toString();
 			sb.append(PARAM_INPUT_STRING_START).append(key)
 			.append(PARAM_INPUT_STRING_MID)
