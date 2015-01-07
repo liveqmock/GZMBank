@@ -28,8 +28,12 @@
 	<content>
 		<form method='post' action='/GZMBank/WelLot/Wel_Pub_Comm.jsp'>
 
-		<input type='radio' name='bus' value='<%=WelLot.DOUBLE_FIX_CANCEL%>' checked>坚持撤销</input>
-		<input type='submit' value='确定'/><br/>
+			<label>请输入交易密码：</label><br/>
+			<input type='password' name='password' isRandomPass='true' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
+			<input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input>
+			<input type='hidden'  name='MBK_VERIFY' value='true'></input>
+
+			<input type='submit' value='坚持撤销'/><br/>
 		</form>
     </content>
 </res> 

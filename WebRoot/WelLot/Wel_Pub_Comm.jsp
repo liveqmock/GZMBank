@@ -35,7 +35,9 @@
 	//是否需要验证短信密码
 	int isCheckMessagePw = 0;//0:不检验，非0检验
 
-
+	
+	pageContext.setAttribute("GameId",WelLot.GameId.DOUBLE_BALL,PageContext.SESSION_SCOPE);//标识只查询双色球
+	
 	//根据业务标志来进行通讯
 	int txnCod;
 	String txnName = null;
@@ -93,11 +95,13 @@
 		throw new IllegalArgumentException("没有定义的BUS代码");
 	}
 	
+	gzLog.Write("#######"+PreAction.strOfPageContext(pageContext));
+	
 	if(0!=isCheckMessagePw){
 		//BEGIN 身份认证
 		//
-		/*String verify = request.getHeader("MBK_VERIFY_RESULT");
-		if(verify!=null&&!verify.equals("P")){
+		String verify = request.getHeader("MBK_VERIFY_RESULT");
+		if(verify==null||!verify.equals("P")){
 			String RspCod = "MID999";
 			String RspMsg = "手机短信密码验证不通过"; 
 			gzLog.Write("["+uri+"]MGID不正确");
@@ -108,7 +112,7 @@
 			forwardString.append("&");
 			forwardString.append("RspMsg").append("=").append(RspMsg);
 	        pageContext.forward(forwardString.toString());
-		}*/
+		}
 	    //END 身份认证
 	}
 

@@ -31,6 +31,7 @@
 			<label>请输入交易密码：</label><br/>
 			<input type='password' name='password' isRandomPass='true' style="-wap-input-required: 'true'" minleng='6' maxleng='6' encrypt/>
 			<input type='hidden' name='MBK_BOCOMACC_PASSWORD'  value='password'></input>
+			<input type='hidden'  name='MBK_VERIFY' value='true'></input>
 
 			<input type='submit' value='确定'/><br/>
 			<label><%=remark%></label>
