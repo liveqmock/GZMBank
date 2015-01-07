@@ -1,7 +1,9 @@
 package com.gdbocom.util;
 
 import java.util.*;
+
 import javax.servlet.http.*;
+import javax.servlet.jsp.PageContext;
 
 public class Context {
 
@@ -28,6 +30,27 @@ public class Context {
 			}
 		}
 		return context;
+	}
+
+	/**
+	 * 用于将表单数据自动转换成<key,value>字符串,如:|biz_id,28|biz_step_id,1|TXNSRC,MB441|.已经测试过text、select、radio等控件，不过<b>checkbox</b>除外
+	 * @param pageContext 
+	 * @param biz_id 发送网关的交易类型
+	 * @param biz_step_id 发送网关的交易步骤
+	 * @return 格式化好的字符串
+	 */
+	public static String createContext(PageContext pageContext, String biz_id, String biz_step_id){
+
+		StringBuffer sb = new StringBuffer();
+		sb.append("|biz_id,"+biz_id+"|biz_step_id,"+biz_step_id+"|TXNSRC,MB441|");
+
+		String key;
+		for (Enumeration e = pageContext.getSession().getAttributeNames(); e.hasMoreElements();){
+			key = (String)e.nextElement();
+			sb.append(key+","+pageContext.getAttribute(key, PageContext.SESSION_SCOPE)+"|");
+		}
+
+		return sb.toString();
 	}
 
 	/**
