@@ -35,9 +35,9 @@
 	String remark = "";
 	if(bus==WelLot.DOUBLE_BETSQRY){//双色球投注查询
 		title = "";
-		keyOrder = new String[]{"DrawId", "BetLin", "BetAmt", "TLogNo"};
+		keyOrder = new String[]{"DrawNm", "BetLin", "BetAmt", "TLogNo"};
 		
-		loopShowKey.put("DrawId", "投注期号");
+		loopShowKey.put("DrawNm", "投注期号");
 		loopShowKey.put("BetLin", "投注号码");
 		loopShowKey.put("BetAmt", "投注金额");
 		loopShowKey.put("TLogNo", "投注流水号");
@@ -47,9 +47,9 @@
 
 	}else if(bus==WelLot.DOUBLE_WINQRY||WelLot.DOUBLE_FIX_WINQRY==bus){//双色球中奖查询
 		title = "";
-		keyOrder = new String[]{"DrawId", "BetLin", "PrzAmt", "TLogNo"};
+		keyOrder = new String[]{"DrawNm", "BetLin", "PrzAmt", "TLogNo"};
 		
-		loopShowKey.put("DrawId", "中奖期号");
+		loopShowKey.put("DrawNm", "中奖期号");
 		loopShowKey.put("BetLin", "中奖号码");
 		loopShowKey.put("PrzAmt", "中奖金额");
 		loopShowKey.put("TLogNo", "投注流水号");
@@ -83,7 +83,7 @@
 
 			for(int keyIndex=0; keyIndex<keyOrder.length; keyIndex++){
 
-				//英文值，类似"DrawId"
+				//英文值，类似"DrawNm"
 				String key = keyOrder[keyIndex];
 				//显示的中文名字，类似"投注期号"
 				String showName = (String)loopShowKey.get(key);

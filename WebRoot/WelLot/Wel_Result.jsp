@@ -41,9 +41,9 @@
 
 		title = "双色球实时投注购买成功";
 
-		keyOrder = new String[]{"BetLin", "BetAmt", "TLogNo"};
+		keyOrder = new String[]{"BetLin", "BetAmt", "TLogNo","DrawNm"};
 		
-		showKey.put("DrawId", "投注期号");
+		showKey.put("DrawNm", "投注期号");
 		showKey.put("BetLin", "投注号码");
 		showKey.put("BetAmt", "投注金额");
 		showKey.put("TLogNo", "投注流水号");
