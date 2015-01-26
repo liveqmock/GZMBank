@@ -89,17 +89,17 @@
 </res>
 <%!
 	private int drawLaw(int exist_number){
-    	boolean OUTSTANDING_switch = false;//特等奖开关
-	    boolean MAJOR_switch = false;//一等奖开关
-	    boolean ACCESSIT_switch = false;//二等奖开关
+    	boolean OUTSTANDING_switch = false;//开关
+	    boolean MAJOR_switch = false;//特等奖开关
+	    boolean ACCESSIT_switch = false;//一等奖开关
 	    
-		if(OUTSTANDING_switch&&exist_number==999999){//特等奖
+		if(OUTSTANDING_switch&&exist_number==99999999){//
 			return TipsShow.OUTSTANDING;
-		}else if(MAJOR_switch&&(exist_number==50000)){//一等奖
+		}else if(MAJOR_switch&&(exist_number==99999999)){//特等奖
 			return TipsShow.MAJOR;
-		}else if(ACCESSIT_switch&&(exist_number==999999)){//二等奖
+		}else if(ACCESSIT_switch&&(exist_number==99999999)){//一等奖
 			return TipsShow.ACCESSIT;
-		}else if(exist_number%150==1){//三等奖
+		}else if(exist_number%5==1){//三等奖
 			return TipsShow.THIRD_CLASS;
 		}else{//不中
 			return TipsShow.NONE;
