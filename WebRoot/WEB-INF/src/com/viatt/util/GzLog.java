@@ -1,9 +1,11 @@
 package com.viatt.util;
-import java.io.*;
-import java.awt.event.*;
-import java.util.*;
-import java.text.*;
-import javax.swing.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import com.gdbocom.util.Constants;
 
 public class GzLog
 {
@@ -13,6 +15,11 @@ public class GzLog
     public GzLog(String Direct)
     {
     	LogDirect = Direct;
+    }
+    
+    public GzLog()
+    {
+    	LogDirect =Constants.Log.SAVE_ADDRESS;
     }
 
     public void Write(String strLog)
@@ -28,7 +35,6 @@ public class GzLog
             	new File(LogDirect).mkdir();
             fw = new FileWriter(LogDirect+"/"+current_date+".log",true);
             fw.write(current_time+"	"+strLog+"\n");
-            fw.write("------------------------------------------------------------------\n");
             fw.close();
 	}
        	catch(IOException e)

@@ -1,74 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" 
-	xmlns="http://java.sun.com/xml/ns/javaee" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <display-name>GZMBank</display-name>
-
   <servlet>
     <servlet-name>Gds_Add_9901</servlet-name>
     <servlet-class>com.gdbocom.action.gds.Gds_Add_9901</servlet-class>
   </servlet>
-
   <servlet>
     <servlet-name>Gds_GdsBIds</servlet-name>
     <servlet-class>com.gdbocom.action.gds.Gds_GdsBIds</servlet-class>
   </servlet>
-
   <servlet>
     <servlet-name>Gds_PreCorfirm</servlet-name>
     <servlet-class>com.gdbocom.action.gds.Gds_PreCorfirm</servlet-class>
   </servlet>
-
   <servlet>
     <servlet-name>Gds_Qry_9901</servlet-name>
     <servlet-class>com.gdbocom.action.gds.Gds_Qry_9901</servlet-class>
   </servlet>
-
   <servlet>
     <servlet-name>Gds_Qry_9998</servlet-name>
     <servlet-class>com.gdbocom.action.gds.Gds_Qry_9998</servlet-class>
   </servlet>
-
   <servlet>
     <servlet-name>Hello</servlet-name>
     <servlet-class>com.gdbocom.action.gds.Hello</servlet-class>
   </servlet>
-
+  <servlet>
+    <servlet-name>ToHtml</servlet-name>
+    <servlet-class>com.ToHtml</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ToHtml</servlet-name>
+    <url-pattern>/ToHtml</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Gds_Add_9901</servlet-name>
     <url-pattern>/SignAtOne/Gds_Add_9901</url-pattern>
   </servlet-mapping>
-
   <servlet-mapping>
     <servlet-name>Gds_GdsBIds</servlet-name>
     <url-pattern>/SignAtOne/Gds_GdsBIds</url-pattern>
   </servlet-mapping>
-
   <servlet-mapping>
     <servlet-name>Gds_PreCorfirm</servlet-name>
     <url-pattern>/SignAtOne/Gds_PreCorfirm</url-pattern>
   </servlet-mapping>
-
   <servlet-mapping>
     <servlet-name>Gds_Qry_9901</servlet-name>
     <url-pattern>/SignAtOne/Gds_Qry_9901</url-pattern>
   </servlet-mapping>
-
   <servlet-mapping>
     <servlet-name>Gds_Qry_9998</servlet-name>
     <url-pattern>/SignAtOne/Gds_Qry_9998</url-pattern>
   </servlet-mapping>
-
   <servlet-mapping>
     <servlet-name>Hello</servlet-name>
     <url-pattern>/SignAtOne/Hello</url-pattern>
   </servlet-mapping>
-
   <mime-mapping>
     <extension>html</extension>
     <mime-type>text/html</mime-type>
@@ -141,5 +132,4 @@
     <extension>wbmp</extension>
     <mime-type>image/vnd.wap.wbmp</mime-type>
   </mime-mapping>
-
 </web-app>

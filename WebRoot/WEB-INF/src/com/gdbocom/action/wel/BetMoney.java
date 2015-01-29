@@ -6,6 +6,8 @@
 
 package com.gdbocom.action.wel;
 
+import com.gdbocom.Transactions.WelLot;
+
 /**
  * 计算投注金额
  * 
@@ -123,7 +125,7 @@ public class BetMoney {
      * @param tailNum 实际投注托号码个数(复式实际投注号码个数)
      * @return 投注金额:double类型值
      */
-    private double CalculateNMoney(int playID, int betMode, int multiple, double price, int section, int betNum, int baseNum, int tailNum) {
+    public double CalculateNMoney(int playID, int betMode, int multiple, double price, int section, int betNum, int baseNum, int tailNum) {
         double money = 0;
 
         switch (betMode) {
@@ -144,33 +146,56 @@ public class BetMoney {
     }
     
     public static void main(String[] args){
-    	//单式
-    	int betMode = BetMoney.betMode_Single;//单复式
-    	int multiple = 1;//投注倍数
-    	double price = 2;//单注投注金额
-    	int section = 1;//单式投注注数
-    	int betRedNum = 0;//选择红球号码个数,单式无意义
-		int redTailNum = 0;//投注号码红球总个数,单式无意义
-		int betBlueNum = 0;//应投注蓝球号码个数,单式无意义
-		int redBaseNum = 0;//实际投注红球胆号码个数,单式无意义
-		int blueNum = 0;//实际投注蓝球号码个数,单式无意义
-    	System.out.println(new BetMoney().CalculateBMoney(betMode, multiple,
-        		price, section, betRedNum,
-        		betBlueNum, redBaseNum, redTailNum, blueNum));
+//    	//单式
+//    	int betMode = BetMoney.betMode_Single;//单复式
+//    	int multiple = 1;//投注倍数
+//    	double price = 2;//单注投注金额
+//    	int section = 1;//单式投注注数
+//    	int betRedNum = 0;//选择红球号码个数,单式无意义
+//		int redTailNum = 0;//投注号码红球总个数,单式无意义
+//		int betBlueNum = 0;//应投注蓝球号码个数,单式无意义
+//		int redBaseNum = 0;//实际投注红球胆号码个数,单式无意义
+//		int blueNum = 0;//实际投注蓝球号码个数,单式无意义
+//    	System.out.println(new BetMoney().CalculateBMoney(betMode, multiple,
+//        		price, section, betRedNum,
+//        		betBlueNum, redBaseNum, redTailNum, blueNum));
+//    	
+//    	//复式
+//    	betMode = BetMoney.betMode_Multiple;//单复式
+//    	multiple = 1;//投注倍数
+//    	price = 2;//单注投注金额
+//    	section = 0;//单式投注注数,复式无意义
+//    	betRedNum = 6;//单注红球号码个数
+//		redTailNum = 7;//选择红球号码个数
+//		betBlueNum = 1;//单注蓝球号码个数
+//		blueNum = 1;//选择蓝球号码个数
+//		redBaseNum = 0;//实际投注红球胆号码个数，复式无意义
+//    	System.out.println(new BetMoney().CalculateBMoney(betMode, multiple,
+//        		price, section, betRedNum,
+//        		betBlueNum, redBaseNum, redTailNum, blueNum));
     	
-    	//复式
-    	betMode = BetMoney.betMode_Multiple;//单复式
-    	multiple = 1;//投注倍数
-    	price = 2;//单注投注金额
-    	section = 0;//单式投注注数,复式无意义
-    	betRedNum = 6;//单注红球号码个数
-		redTailNum = 7;//选择红球号码个数
-		betBlueNum = 1;//单注蓝球号码个数
-		blueNum = 1;//选择蓝球号码个数
-		redBaseNum = 0;//实际投注红球胆号码个数，复式无意义
-    	System.out.println(new BetMoney().CalculateBMoney(betMode, multiple,
-        		price, section, betRedNum,
-        		betBlueNum, redBaseNum, redTailNum, blueNum));
+    	
+        int playID=WelLot.HpTenBuy.THREE_GROUP;//玩法编号
+        int betMode=BetMoney.betMode_Single;//投注模式
+        int multiple=1;//投注倍数
+        double price=2;//单注投注金额
+        int section=1; //单式投注注数
+        int betNum=3; //应投注号码个数
+        int baseNum=0;//实际投注胆号码个数
+        int tailNum=1;//实际投注托号码个数(复式实际投注号码个数)
+        double rs=new BetMoney().CalculateNMoney(playID, betMode, multiple, price, section, betNum, baseNum, tailNum);
+        System.out.println(rs);
+        
+        playID=WelLot.HpTenBuy.THREE_GROUP;//玩法编号
+        betMode=BetMoney.betMode_Multiple;//投注模式
+        multiple=1;//投注倍数
+        price=2;//单注投注金额
+        section=1; //单式投注注数
+        betNum=3; //应投注号码个数
+        baseNum=0;//实际投注胆号码个数
+        tailNum=20;//实际投注托号码个数(复式实际投注号码个数)
+        rs=new BetMoney().CalculateNMoney(playID, betMode, multiple, price, section, betNum, baseNum, tailNum);
+        System.out.println(rs);
     }
 
 }

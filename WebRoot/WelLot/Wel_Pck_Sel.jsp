@@ -23,6 +23,7 @@
 		<label>请选择业务类别：</label>
 		<input type='radio' name='BetPer' value='<%=WelLot.DOUBLE_FIX_PACKAGE_153%>' checked>153期套餐</input>
 		<input type='radio' name='BetPer' value='<%=WelLot.DOUBLE_FIX_PACKAGE_76%>' >76期套餐</input>
+		<label>定投购买在开奖日19:00前，则为当期双色球投注；若在开奖日19:00后，则为下一期双色球投注</label>
 		<input type='hidden' name='preSaveKey' value='BetPer' />
 
 		<input type='submit' value='确定'/><br/>
