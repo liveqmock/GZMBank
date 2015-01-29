@@ -23,12 +23,12 @@ public class InsertTICKETRecord {
 		
 		try{ 
 			
-	     	//¼ÓÔØÊı¾İ¿âÇı¶¯
+	     	//åŠ è½½æ•°æ®åº“é©±åŠ¨
 			Class.forName("com.sybase.jdbc3.jdbc.SybDriver");
-		     	//»ñÈ¡Êı¾İ¿âÁ¬½Ó
+		     	//è·å–æ•°æ®åº“è¿æ¥
 			connection = DriverManager.getConnection(url, user, pass);
 
-			System.out.println("Á¬½ÓÊı¾İ¿âÕı³££º"+connection);
+			System.out.println("è¿æ¥æ•°æ®åº“æ­£å¸¸ï¼š"+connection);
 			st = connection.createStatement();
 			//
 			st.executeUpdate("truncate table TICKETDRAW");
@@ -47,12 +47,12 @@ public class InsertTICKETRecord {
 					insertobject.insertGapValidRecord(count, st);
 				}
 			}else{
-				System.out.println("ÊäÈëµÄ²ÎÊıÓĞÎó£º");
-				System.out.println("-s:²åÈë¶àÌõ¼ÇÂ¼£¬Ö»ÓĞÒ»ÌõÎ´³é½±¼ÇÂ¼");
-				System.out.println("-t:²åÈë¶àÌõ¼ÇÂ¼£¬ÓĞÁ½ÌõÎ´³é½±¼ÇÂ¼");
-				System.out.println("-m:²åÈë¶àÌõ¼ÇÂ¼£¬È«²¿ÎªÎ´³é½±¼ÇÂ¼");
-				System.out.println("-g:²åÈë¶àÌõ¼ÇÂ¼£¬ÆæÊıÎªÎ´³é½±¼ÇÂ¼");
-				System.out.println("Àı×Ó£ºjava InsertTICKETRecord -s 50");
+				System.out.println("è¾“å…¥çš„å‚æ•°æœ‰è¯¯ï¼š");
+				System.out.println("-s:æ’å…¥å¤šæ¡è®°å½•ï¼Œåªæœ‰ä¸€æ¡æœªæŠ½å¥–è®°å½•");
+				System.out.println("-t:æ’å…¥å¤šæ¡è®°å½•ï¼Œæœ‰ä¸¤æ¡æœªæŠ½å¥–è®°å½•");
+				System.out.println("-m:æ’å…¥å¤šæ¡è®°å½•ï¼Œå…¨éƒ¨ä¸ºæœªæŠ½å¥–è®°å½•");
+				System.out.println("-g:æ’å…¥å¤šæ¡è®°å½•ï¼Œå¥‡æ•°ä¸ºæœªæŠ½å¥–è®°å½•");
+				System.out.println("ä¾‹å­ï¼šjava InsertTICKETRecord -s 50");
 				System.exit(-1);
 			}
 			

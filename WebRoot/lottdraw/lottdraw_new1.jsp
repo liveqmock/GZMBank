@@ -33,7 +33,7 @@
 	
      <label>您的手机号码为：</label>
 	 <label><%=sjNo%></label><br/>
-	 <label>温馨提示:"本次活动奖品为iPhone5及20元话费,祝您中奖!"</label><br/>
+	 <label>温馨提示:"本次活动奖品为小米4及20元话费,祝您中奖!"</label><br/>
 	 <label>参与对象:首次登录手机银行客户</label><br/>
 		
 <%

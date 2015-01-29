@@ -19,18 +19,18 @@ public class drawLawTest {
 	}
 
 	public int drawLaw(int exist_number){
-    	boolean OUTSTANDING_switch = false;//ÌØµÈ½±¿ª¹Ø
-	    boolean MAJOR_switch = true;//Ò»µÈ½±¿ª¹Ø
+    	boolean OUTSTANDING_switch = false;//ç‰¹ç­‰å¥–å¼€å…³
+	    boolean MAJOR_switch = true;//ä¸€ç­‰å¥–å¼€å…³
 	    
-		if(OUTSTANDING_switch&&exist_number==99999){//ÌØµÈ½±
+		if(OUTSTANDING_switch&&exist_number==99999){//ç‰¹ç­‰å¥–
 			return TipsShow.OUTSTANDING;
-		}else if(MAJOR_switch&&(exist_number==2641)){//Ò»µÈ½±
+		}else if(MAJOR_switch&&(exist_number==2641)){//ä¸€ç­‰å¥–
 			return TipsShow.MAJOR;
-		}else if((exist_number%1000==999||exist_number==3001)&&(exist_number!=1999)){//¶şµÈ½±
+		}else if((exist_number%1000==999||exist_number==3001)&&(exist_number!=1999)){//äºŒç­‰å¥–
 			return TipsShow.ACCESSIT;
-		}else if(exist_number%2==0){//ÈıµÈ½±
+		}else if(exist_number%2==0){//ä¸‰ç­‰å¥–
 			return TipsShow.THIRD_CLASS;
-		}else{//²»ÖĞ
+		}else{//ä¸ä¸­
 			return TipsShow.NONE;
 		}
 	}

@@ -1,23 +1,25 @@
 package com.gdbocom.util;
 
 import java.util.*;
+
 import javax.servlet.http.*;
+import javax.servlet.jsp.PageContext;
 
 public class Context {
 
 	private Map context = new HashMap();
 
 	/**
-	 * ÓÃÓÚ½«±íµ¥Êı¾İ×Ô¶¯×ª»»³É<key,value>×Ö·û´®,Èç:|biz_id,28|biz_step_id,1|TXNSRC,MB441|.ÒÑ¾­²âÊÔ¹ıtext¡¢select¡¢radioµÈ¿Ø¼ş£¬²»¹ı<b>checkbox</b>³ıÍâ
-	 * @param request Ç°Ò»Ò³ÃæµÄÇëÇó¶ÔÏó
-	 * @param biz_id ·¢ËÍÍø¹ØµÄ½»Ò×ÀàĞÍ
-	 * @param biz_step_id ·¢ËÍÍø¹ØµÄ½»Ò×²½Öè
-	 * @return ¸ñÊ½»¯ºÃµÄ×Ö·û´®
+	 * ç”¨äºå°†è¡¨å•æ•°æ®è‡ªåŠ¨è½¬æ¢æˆ<key,value>å­—ç¬¦ä¸²,å¦‚:|biz_id,28|biz_step_id,1|TXNSRC,MB441|.å·²ç»æµ‹è¯•è¿‡textã€selectã€radioç­‰æ§ä»¶ï¼Œä¸è¿‡<b>checkbox</b>é™¤å¤–
+	 * @param request å‰ä¸€é¡µé¢çš„è¯·æ±‚å¯¹è±¡
+	 * @param biz_id å‘é€ç½‘å…³çš„äº¤æ˜“ç±»å‹
+	 * @param biz_step_id å‘é€ç½‘å…³çš„äº¤æ˜“æ­¥éª¤
+	 * @return æ ¼å¼åŒ–å¥½çš„å­—ç¬¦ä¸²
 	 */
 	public static String createContext(HttpServletRequest request, String biz_id, String biz_step_id){
 
 		String context = "|biz_id,"+biz_id+"|biz_step_id,"+biz_step_id+"|TXNSRC,MB441|";
-		Map form = request.getParameterMap(); //³äÖµµÄÁªÍ¨ÊÖ»úºÅÂë
+		Map form = request.getParameterMap(); //å……å€¼çš„è”é€šæ‰‹æœºå·ç 
 
 		Iterator itKeys = form.keySet().iterator();
 		while(itKeys.hasNext()){
@@ -28,6 +30,27 @@ public class Context {
 			}
 		}
 		return context;
+	}
+
+	/**
+	 * ç”¨äºå°†è¡¨å•æ•°æ®è‡ªåŠ¨è½¬æ¢æˆ<key,value>å­—ç¬¦ä¸²,å¦‚:|biz_id,28|biz_step_id,1|TXNSRC,MB441|.å·²ç»æµ‹è¯•è¿‡textã€selectã€radioç­‰æ§ä»¶ï¼Œä¸è¿‡<b>checkbox</b>é™¤å¤–
+	 * @param pageContext 
+	 * @param biz_id å‘é€ç½‘å…³çš„äº¤æ˜“ç±»å‹
+	 * @param biz_step_id å‘é€ç½‘å…³çš„äº¤æ˜“æ­¥éª¤
+	 * @return æ ¼å¼åŒ–å¥½çš„å­—ç¬¦ä¸²
+	 */
+	public static String createContext(PageContext pageContext, String biz_id, String biz_step_id){
+
+		StringBuffer sb = new StringBuffer();
+		sb.append("|biz_id,"+biz_id+"|biz_step_id,"+biz_step_id+"|TXNSRC,MB441|");
+
+		String key;
+		for (Enumeration e = pageContext.getSession().getAttributeNames(); e.hasMoreElements();){
+			key = (String)e.nextElement();
+			sb.append(key+","+pageContext.getAttribute(key, PageContext.SESSION_SCOPE)+"|");
+		}
+
+		return sb.toString();
 	}
 
 	/**

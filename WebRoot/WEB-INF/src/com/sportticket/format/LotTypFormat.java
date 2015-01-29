@@ -3,29 +3,29 @@ package com.sportticket.format;
 public class LotTypFormat implements FieldFormat {
 	public String CtoN(String LotTyp){
 		String LotTyp_num="00";
-		if("ÆßĞÇ²Ê".equals(LotTyp)){
+		if("ä¸ƒæ˜Ÿå½©".equals(LotTyp)){
 			LotTyp_num="05";
-		}else if("ÅÅÁĞ3Ö±Ñ¡".equals(LotTyp)){
+		}else if("æ’åˆ—3ç›´é€‰".equals(LotTyp)){
 			LotTyp_num="11";
-		}else if("ÅÅÁĞ3×éÑ¡3".equals(LotTyp)){
+		}else if("æ’åˆ—3ç»„é€‰3".equals(LotTyp)){
 			LotTyp_num="12";
-		}else if("ÅÅÁĞ3×éÑ¡6".equals(LotTyp)){
+		}else if("æ’åˆ—3ç»„é€‰6".equals(LotTyp)){
 			LotTyp_num="13";
-		}else if("ÅÅÁĞ5".equals(LotTyp)){
+		}else if("æ’åˆ—5".equals(LotTyp)){
 			LotTyp_num="14";
-		}else if("ÅÅÁĞ3Ö±Ñ¡ºÍÖµ".equals(LotTyp)){
+		}else if("æ’åˆ—3ç›´é€‰å’Œå€¼".equals(LotTyp)){
 			LotTyp_num="15";
-		}else if("ÅÅÁĞ3×éÑ¡ºÍÖµ".equals(LotTyp)){
+		}else if("æ’åˆ—3ç»„é€‰å’Œå€¼".equals(LotTyp)){
 			LotTyp_num="16";
-		}else if("ÅÅÁĞ3Ö±Ñ¡×éºÏ¸´Ê½".equals(LotTyp)){
+		}else if("æ’åˆ—3ç›´é€‰ç»„åˆå¤å¼".equals(LotTyp)){
 			LotTyp_num="17";
-		}else if("ÅÅÁĞ3Ö±Ñ¡×éºÏµ¨ÍÏ".equals(LotTyp)){
+		}else if("æ’åˆ—3ç›´é€‰ç»„åˆèƒ†æ‹–".equals(LotTyp)){
 			LotTyp_num="18";
-		}else if("Ìå²Ê´óÀÖÍ¸".equals(LotTyp)){
+		}else if("ä½“å½©å¤§ä¹é€".equals(LotTyp)){
 			LotTyp_num="26";
-		}else if("Ìå²Ê´óÀÖÍ¸×·¼ÓÍ¶×¢".equals(LotTyp)){
+		}else if("ä½“å½©å¤§ä¹é€è¿½åŠ æŠ•æ³¨".equals(LotTyp)){
 			LotTyp_num="27";
-		}else if("Ìå²Ê´óÀÖÍ¸12Ñ¡2".equals(LotTyp)){
+		}else if("ä½“å½©å¤§ä¹é€12é€‰2".equals(LotTyp)){
 			LotTyp_num="28";
 		}else{
 			LotTyp_num="00";
@@ -33,33 +33,33 @@ public class LotTypFormat implements FieldFormat {
 		return LotTyp_num;
 	}
 	public String NtoC(String LotTyp_num){
-		String LotTyp="ÎŞÒâÒå";
+		String LotTyp="æ— æ„ä¹‰";
 		if("05".equals(LotTyp_num)){
-			LotTyp="ÆßĞÇ²Ê";
+			LotTyp="ä¸ƒæ˜Ÿå½©";
 		}else if("11".equals(LotTyp_num)){
-			LotTyp="ÅÅÁĞ3Ö±Ñ¡";
+			LotTyp="æ’åˆ—3ç›´é€‰";
 		}else if("12".equals(LotTyp_num)){
-			LotTyp="ÅÅÁĞ3×éÑ¡3";
+			LotTyp="æ’åˆ—3ç»„é€‰3";
 		}else if("13".equals(LotTyp_num)){
-			LotTyp="ÅÅÁĞ3×éÑ¡6";
+			LotTyp="æ’åˆ—3ç»„é€‰6";
 		}else if("14".equals(LotTyp_num)){
-			LotTyp="ÅÅÁĞ5";
+			LotTyp="æ’åˆ—5";
 		}else if("15".equals(LotTyp_num)){
-			LotTyp="ÅÅÁĞ3Ö±Ñ¡ºÍÖµ";
+			LotTyp="æ’åˆ—3ç›´é€‰å’Œå€¼";
 		}else if("16".equals(LotTyp_num)){
-			LotTyp="ÅÅÁĞ3×éÑ¡ºÍÖµ";
+			LotTyp="æ’åˆ—3ç»„é€‰å’Œå€¼";
 		}else if("17".equals(LotTyp_num)){
-			LotTyp="ÅÅÁĞ3Ö±Ñ¡×éºÏ¸´Ê½";
+			LotTyp="æ’åˆ—3ç›´é€‰ç»„åˆå¤å¼";
 		}else if("18".equals(LotTyp_num)){
-			LotTyp="ÅÅÁĞ3Ö±Ñ¡×éºÏµ¨ÍÏ";
+			LotTyp="æ’åˆ—3ç›´é€‰ç»„åˆèƒ†æ‹–";
 		}else if("26".equals(LotTyp_num)){
-			LotTyp="Ìå²Ê´óÀÖÍ¸";
+			LotTyp="ä½“å½©å¤§ä¹é€";
 		}else if("27".equals(LotTyp_num)){
-			LotTyp="Ìå²Ê´óÀÖÍ¸×·¼ÓÍ¶×¢";
+			LotTyp="ä½“å½©å¤§ä¹é€è¿½åŠ æŠ•æ³¨";
 		}else if("28".equals(LotTyp_num)){
-			LotTyp="Ìå²Ê´óÀÖÍ¸12Ñ¡2";
+			LotTyp="ä½“å½©å¤§ä¹é€12é€‰2";
 		}else{
-			LotTyp="ÎŞÒâÒå";
+			LotTyp="æ— æ„ä¹‰";
 		}
 		return LotTyp;
 	}

@@ -20,8 +20,17 @@
       <url>/GZMBank/lottdraw/lottdraw1.jsp</url>
   </channel-->
  
-   
+   <channel>
+      <id>441111</id>
+      <title>韶关代收付</title>
+      <url>/GZMBank/sgdsf/dsf_channelList.jsp</url>
+  </channel>
   
+  <channel>
+      <id>441029</id>
+      <title>非税交通罚款</title>
+      <url>/GZMBank/NotTax/NotTax_Act_Sel.jsp</url>
+  </channel> 
   <channel>
       <id>441013</id>
       <title>新客户0元抽奖</title>
@@ -88,14 +97,28 @@
       <title>查询体彩投注情况</title>
       <url>/GZMBank/SportsTicket/TicketQuery1.jsp</url>
   </channel-->
-  <channel>
+  <!--channel>
       <id>441028</id>
       <title>体彩业务</title>
       <url>/GZMBank/SportsTicket/SportsTicket1.jsp</url>
-  </channel>
+  </channel-->
   <channel>
 		<id>441017</id>
 		<title>广州电力</title>
 		<url>/GZMBank/ElectronicBill/BillPayment1.jsp</url>
   </channel>
+  
+  <channel>
+      <id>441018</id>
+      <title>联通账单缴费</title>
+      <url>/GZMBank/LtJiaofei/LtJiaofei1.jsp</url>
+  </channel>
+  
+  
+  <channel>
+		<id>441030</id>
+		<title>福利彩票</title>
+		<url>/GZMBank/WelLot/Wel_Bus_Sel.jsp</url>
+	</channel>
+	
 </res>

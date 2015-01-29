@@ -3,8 +3,8 @@ package com.gdbocom.lottdraw;
 import java.io.UnsupportedEncodingException;
 
 /**
- * �Է���ǰ̨����ʾ��Ϣ���и�ʽ��
- * @author ������
+ * 对返回前台的提示信息进行格式化
+ * @author 顾启明
  *
  */
 public class TipsShow {
@@ -18,9 +18,9 @@ public class TipsShow {
 	
 	
 	/**
-	 * �����ʹ��ʳ齱���͵��н��ȼ����и�ʽ��
-	 * @param drawlevel �н��ȼ�
-	 * @return ��ʽ���ַ���
+	 * 针对体彩购彩抽奖发送的中奖等级进行格式化
+	 * @param drawlevel 中奖等级
+	 * @return 格式化字符串
 	 * @throws UnsupportedEncodingException
 	 * @deprecated
 	 */
@@ -28,11 +28,11 @@ public class TipsShow {
 		String Tips="";
 		switch(drawlevel){
 			case 1:{
-				Tips="<label>��ϲ����<br/>�ڱ��ι��ʻ��ϲ��50Ԫ�ƶ����ѳ�ֵ��!��������ѯ��95559��</label><br/>";
+				Tips="<label>恭喜您！<br/>在本次购彩活动中喜中50元移动话费充值卡!详情请咨询“95559”</label><br/>";
 				break;
 			}
 			case 2:{
-				Tips="<label>лл���Ĳ��롣�벻Ҫ�������������ʻ��л���Ŷ��</label><br/>";
+				Tips="<label>谢谢您的参与。请不要放弃！继续购彩还有机会哦！</label><br/>";
 				break;
 			}
 			default:{
@@ -43,9 +43,9 @@ public class TipsShow {
 	}*/
 	
 	/**
-	 * ��Է��͵��н��ȼ����и�ʽ��
-	 * @param drawlevel �н��ȼ�
-	 * @return ��ʽ���ַ���
+	 * 针对发送的中奖等级进行格式化
+	 * @param drawlevel 中奖等级
+	 * @return 格式化字符串
 	 * @throws UnsupportedEncodingException
 	 */
 	public static String getTips(int drawlevel) throws UnsupportedEncodingException{
@@ -56,19 +56,19 @@ public class TipsShow {
 				break;
 			}
 			case TipsShow.MAJOR:{
-				Tips="<label>��ϲ������ϲ�񱾴λ��һ�Ƚ���ֵ5300ԪiPhone5�ֻ�������ϵ���пͷ����ġ�95559�����жҽ���</label><br/>";
+				Tips="<label>恭喜您！您喜获本次活动的一等奖价值5300元iPhone5手机！请联系我行客服中心“95559”进行兑奖！</label><br/>";
 				break;
 			}
 			case TipsShow.ACCESSIT:{
-				Tips="<label>��ϲ������ϲ�񱾴λ�Ķ��Ƚ���ֵ2500ԪNew ipad������ϵ���пͷ����ġ�95559�����жҽ���</label><br/>";
+				Tips="<label>恭喜您！您喜获本次活动的二等奖价值2500元New ipad！请联系我行客服中心“95559”进行兑奖！</label><br/>";
 				break;
 			}
 			case TipsShow.THIRD_CLASS:{
-				Tips="<label>��ϲ������ϲ�񱾴λ�����Ƚ�20Ԫ���ѣ����г�ֵ��Ա���ڴ��ܽ����ѳ�������¼�ֻ����е��ֻ����룡</label><br/>";
+				Tips="<label>恭喜您！您喜获本次活动的三等奖20元话费！我行充值人员将于次周将话费充入您登录手机银行的手机号码！</label><br/>";
 				break;
 			}
 			case TipsShow.NONE:{
-				Tips="<label>��л��һֱ�����Խ��е�֧�֣�лл���룡</label><br/>";
+				Tips="<label>感谢您一直以来对交行的支持，谢谢参与！</label><br/>";
 				break;
 			}
 			default:{
@@ -79,9 +79,9 @@ public class TipsShow {
 	}
 	
 	/**
-	 * ����ڳ齱����,���Ѿ����жҽ����н��ȼ����и�ʽ��
-	 * @param drawlevel �н��ȼ�
-	 * @return ��ʽ���ַ���
+	 * 针对在抽奖界面,且已经进行兑奖的中奖等级进行格式化
+	 * @param drawlevel 中奖等级
+	 * @return 格式化字符串
 	 * @throws UnsupportedEncodingException
 	 */
 	public static String getTipsRev(int drawlevel) throws UnsupportedEncodingException{
@@ -92,19 +92,19 @@ public class TipsShow {
 				break;
 			}
 			case TipsShow.MAJOR:{
-				Tips="<label>��ϲ������ϲ�񱾴λ��һ�Ƚ���ֵ5300ԪiPhone5�ֻ�����Ʒ�Ѿ����֡�</label><br/>";
+				Tips="<label>恭喜您！您喜获本次活动的一等奖价值5300元iPhone5手机！奖品已经兑现。</label><br/>";
 				break;
 			}
 			case TipsShow.ACCESSIT:{
-				Tips="<label>��ϲ������ϲ�񱾴λ�Ķ��Ƚ���ֵ2500ԪNew ipad����Ʒ�Ѿ����֡�</label><br/>";
+				Tips="<label>恭喜您！您喜获本次活动的二等奖价值2500元New ipad！奖品已经兑现。</label><br/>";
 				break;
 			}
 			case TipsShow.THIRD_CLASS:{
-				Tips="<label>��ϲ������ϲ�񱾴λ�����Ƚ�20Ԫ���ѣ���Ʒ�Ѿ����֡�</label><br/>";
+				Tips="<label>恭喜您！您喜获本次活动的三等奖20元话费！奖品已经兑现。</label><br/>";
 				break;
 			}
 			case TipsShow.NONE:{
-				Tips="<label>��л��һֱ�����Խ��е�֧�֣�лл���룡</label><br/>";
+				Tips="<label>感谢您一直以来对交行的支持，谢谢参与！</label><br/>";
 				break;
 			}
 			default:{
@@ -115,9 +115,9 @@ public class TipsShow {
 	}
 	
 	/**
-	 * ��Է��͵��н��ȼ����ڶҽ�ҳ����и�ʽ��
-	 * @param drawlevel �н��ȼ�
-	 * @return ��ʽ���ַ���
+	 * 针对发送的中奖等级，在兑奖页面进行格式化
+	 * @param drawlevel 中奖等级
+	 * @return 格式化字符串
 	 * @throws UnsupportedEncodingException
 	 * @deprecated
 	 */
@@ -125,23 +125,23 @@ public class TipsShow {
 		String Tips="";
 		switch(drawlevel){
 			case 1:{
-				Tips="<label>��ϲ���صȽ�����������Ա���ڶ�����Ʒ���ύ�콱����ֹ�����콱����</label><br/>";
+				Tips="<label>您喜中特等奖，（由我行员工在兑现礼品后，提交领奖，防止多重领奖。）</label><br/>";
 				break;
 			}
 			case 2:{
-				Tips="<label>��ϲ��һ�Ƚ�����������Ա���ڶ�����Ʒ���ύ�콱����ֹ�����콱����</label><br/>";
+				Tips="<label>您喜中一等奖，（由我行员工在兑现礼品后，提交领奖，防止多重领奖。）</label><br/>";
 				break;
 			}
 			case 3:{
-				Tips="<label>��ϲ�ж��Ƚ�����������Ա���ڶ�����Ʒ���ύ�콱����ֹ�����콱����</label><br/>";
+				Tips="<label>您喜中二等奖，（由我行员工在兑现礼品后，提交领奖，防止多重领奖。）</label><br/>";
 				break;
 			}
 			case 4:{
-				Tips="<label>��ϲ�����Ƚ�����������Ա���ڶ�����Ʒ���ύ�콱����ֹ�����콱����</label><br/>";
+				Tips="<label>您喜中三等奖，（由我行员工在兑现礼品后，提交领奖，防止多重领奖。）</label><br/>";
 				break;
 			}
 			case 5:{
-				Tips="<label>��л��һֱ�����Խ��е�֧�֣�лл���룡</label><br/>";
+				Tips="<label>感谢您一直以来对交行的支持，谢谢参与！</label><br/>";
 				break;
 			}
 			default:{
